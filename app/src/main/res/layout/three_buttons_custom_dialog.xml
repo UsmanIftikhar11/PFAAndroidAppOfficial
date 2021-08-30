@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_dialogbox_rounded_corners"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/dialogtitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@mipmap/dialog_logo"
+        android:drawableLeft="@mipmap/dialog_logo"
+        android:drawablePadding="7dp"
+        android:paddingTop="10dp"
+        android:lineSpacingExtra="3sp"
+       android:gravity="center_vertical"
+        android:text="@string/app_name"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingBottom="7dp"/>
+
+    <TextView
+        android:id="@+id/dialogmessage"
+        style="@style/black_17_sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="3sp"
+        android:padding="7dp"
+        android:text="@string/message" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white" />
+
+    <LinearLayout
+        android:id="@+id/btnsLL"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="right|end"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        tools:ignore="RtlHardcoded">
+
+        <Button
+            android:id="@+id/eixtBTn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="right|end"
+            android:layout_marginTop="10dp"
+            android:background="@color/transparent"
+            android:text="@string/exit"
+            android:textColor="@color/light_green"
+        />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white" />
+
+        <Button
+            android:id="@+id/saveInDraftsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@color/transparent"
+            android:text="@string/save_in_drafts"
+            android:paddingLeft="7dp"
+            android:textColor="@color/light_green"
+            tools:ignore="RtlSymmetry" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white" />
+
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="left|start"
+            android:layout_marginTop="10dip"
+            android:background="@color/transparent"
+            android:text="@string/cancel"
+            android:textColor="@color/light_green"
+           />
+    </LinearLayout>
+
+</LinearLayout>

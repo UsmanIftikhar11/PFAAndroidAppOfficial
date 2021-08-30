@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?><!--suppress ALL -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:background="@color/hor_tab_color">
+
+
+
+    <ImageButton
+        android:id="@+id/backImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:background="@color/transparent"
+        android:contentDescription="@string/app_name"
+        android:onClick="onClickBackImgBtn"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+        android:src="@mipmap/left_arrow_white"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/endView"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" />
+
+    <ImageButton
+        android:id="@+id/headerPanicImgBtn"
+        style="@style/white_19_sp_bold"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/endView"
+        android:layout_toLeftOf="@+id/endView"
+        android:background="@color/transparent"
+        android:contentDescription="@string/app_name"
+        android:padding="@dimen/dp_7"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        android:src="@mipmap/panic_button" />
+
+    <FrameLayout
+        android:id="@+id/rightIconsFL"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@+id/headerPanicImgBtn">
+
+        <ImageButton
+            android:id="@+id/logoutImgBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="7dp"
+            android:layout_marginRight="7dp"
+            android:background="@color/transparent"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/logout"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/downloadLocalImgBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/transparent"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/download_white"
+            android:visibility="gone" />
+
+
+        <Button
+            android:id="@+id/clearFilterBtn"
+            style="@style/white_15_sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@color/transparent"
+            android:contentDescription="@string/app_name"
+            android:drawableEnd="@mipmap/clear_filter_white"
+            android:drawableRight="@mipmap/clear_filter_white"
+            android:drawablePadding="7dp"
+            android:onClick="onClickClearFilterBtn"
+            android:text="@string/clear_filters"
+            android:textAllCaps="false"
+            android:visibility="gone" />
+
+
+
+    </FrameLayout>
+
+
+
+    <!--android:src="@mipmap/signal_green"-->
+    <TextView
+        android:id="@+id/titleTV"
+        style="@style/white_17_sp_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/rightIconsFL"
+        android:layout_toLeftOf="@+id/rightIconsFL"
+        android:layout_toEndOf="@+id/backImgBtn"
+        android:layout_toRightOf="@+id/backImgBtn"
+        android:background="@color/transparent"
+        android:paddingStart="7dp"
+        android:paddingLeft="7dp"
+        android:singleLine="true" />
+
+
+    <View
+        android:id="@+id/horizontalSep"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/horizontal_line"
+        android:visibility="gone" />
+
+    <!--android:drawableStart="@mipmap/title_logo"-->
+    <!--android:drawableLeft="@mipmap/title_logo"-->
+</RelativeLayout>

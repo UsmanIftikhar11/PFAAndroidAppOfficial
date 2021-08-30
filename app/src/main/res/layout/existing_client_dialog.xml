@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@drawable/white_dialogbox_rounded_corners"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:padding="5dip">
+
+    <TextView
+        android:id="@+id/dialogtitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableStart="@mipmap/dialog_logo"
+        android:drawableLeft="@mipmap/dialog_logo"
+        android:drawablePadding="7dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="3sp"
+        android:paddingTop="10dp"
+        android:paddingBottom="7dp"
+        android:text="@string/app_name"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/dialogmessage"
+        style="@style/black_17_sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="3sp"
+        android:padding="7dp"
+        android:text="@string/message" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_grey" />
+
+    <ListView
+        android:id="@+id/clientsLV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:cacheColorHint="@color/transparent"
+        android:scrollbars="none" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/light_grey" />
+
+    <LinearLayout
+        android:id="@+id/btnsLL"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="right|end"
+        android:layout_marginTop="10dp"
+        tools:ignore="RtlHardcoded">
+
+        <Button
+            android:id="@+id/yesbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dip"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:text="@string/yes"
+            android:textColor="@color/light_green"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:background="@color/white" />
+
+        <Button
+            android:id="@+id/noBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dip"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:text="@string/no"
+            android:textColor="@color/light_green"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

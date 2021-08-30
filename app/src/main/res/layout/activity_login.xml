@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:fillViewport="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context="com.pfa.pfaapp.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <include layout="@layout/ttl_bar" />
+
+        <TextView
+            android:id="@+id/loginToAccountTV"
+            style="@style/inner_tv_20_sp_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:text="@string/login_to_account"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/existingAccountTV"
+            style="@style/black_15_sp_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:text="@string/please_sign_in_with_an_existing_account" />
+
+        <com.pfa.pfaapp.customviews.PFATextInputLayout
+            android:id="@+id/cnicETTIL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:background="@mipmap/text_bg_star"
+            android:hint="@string/cnic_number">
+
+            <com.pfa.pfaapp.customviews.CNICEditText
+                android:id="@+id/cnicET"
+                style="@style/black_15_sp_et"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/transparent"
+                android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
+                android:gravity="center_vertical"
+                android:hint="@string/cnic_number"
+                android:inputType="text"
+                android:maxLength="15"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp"
+                android:singleLine="true" />
+            <!--android:text="00000-0000000-0"-->
+        </com.pfa.pfaapp.customviews.PFATextInputLayout>
+
+        <com.pfa.pfaapp.customviews.PFATextInputLayout
+            android:id="@+id/pinNumETTIL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@mipmap/text_bg_star"
+            android:gravity="center_vertical"
+            android:hint="@string/pin"
+            android:visibility="gone">
+
+            <com.pfa.pfaapp.customviews.PFAEditText
+                android:id="@+id/pinNumET"
+                style="@style/black_15_sp_et"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/transparent"
+                android:digits="0123456789"
+                android:gravity="center_vertical"
+                android:hint="@string/pin"
+                android:inputType="numberPassword"
+                android:maxLength="4"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp"
+                android:singleLine="true" />
+        </com.pfa.pfaapp.customviews.PFATextInputLayout>
+
+        <com.pfa.pfaapp.customviews.PFATextInputLayout
+            android:id="@+id/phoneNumETTIL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@mipmap/text_bg_star"
+            android:hint="@string/mobile_number"
+            android:visibility="gone">
+
+            <com.pfa.pfaapp.customviews.PFAEditText
+                android:id="@+id/phoneNumET"
+                style="@style/black_15_sp_et"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@color/transparent"
+                android:digits="0123456789"
+                android:gravity="center_vertical"
+                android:hint="@string/mobile_number"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="0dp"
+                android:singleLine="true" />
+            <!--android:text="03990000000"-->
+        </com.pfa.pfaapp.customviews.PFATextInputLayout>
+
+        <RelativeLayout
+            style="@style/green_17_sp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="50dp"
+            android:layout_weight="1"
+            android:paddingBottom="7dp">
+
+            <Button
+                android:id="@+id/getCodeBtn"
+                style="@style/white_17_sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button_green"
+                android:onClick="onClickGetCodeBtn"
+                android:text="@string/login"
+                android:textAllCaps="false"
+                tools:ignore="RelativeOverlap" />
+
+
+
+
+            <TextView
+                android:id="@+id/forgotPinTV"
+                style="@style/inner_tv_17_sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/getCodeBtn"
+                android:layout_marginStart="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginTop="10dp"
+                android:onClick="onClickForgotPinBtn"
+                android:text="@string/forgotPin"
+                android:layout_alignParentEnd="true" />
+
+            <TextView
+                android:id="@+id/loginAsMTOBtn"
+                style="@style/inner_tv_17_sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/forgotPinTV"
+                android:layout_marginStart="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginEnd="10dp"
+                android:layout_alignParentEnd="true"
+                android:onClick="onClickMTOLoginBtn"
+                android:text="@string/login_as_mto"
+                android:visibility="gone"
+                />
+
+
+            <TextView
+                android:id="@+id/newRegTV"
+                style="@style/grey_15_sp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:drawableTop="@drawable/horizontal_line_long"
+                android:drawablePadding="7dp"
+                android:paddingStart="7dp"
+                android:paddingEnd="0dp"
+                android:text="@string/new_registration"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/signupBTn"
+                style="@style/light_green_15_sp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:background="@color/transparent"
+                android:onClick="onClickRegisterBtn"
+                android:text="@string/sign_up_capital"
+                android:textAllCaps="false"
+                android:visibility="gone"
+                tools:ignore="RelativeOverlap" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>

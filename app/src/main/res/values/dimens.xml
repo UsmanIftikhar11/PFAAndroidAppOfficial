@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="sp_20">25sp</dimen>
+    <dimen name="sp_17">17sp</dimen>
+    <dimen name="sp_15">16sp</dimen>
+    <dimen name="sp_13">13sp</dimen>
+    <dimen name="sp_10">11sp</dimen>
+
+    <dimen name="form_text_field_height">45dp</dimen>
+    <dimen name="form_text_area_height">80dp</dimen>
+    <dimen name="form_left_padding">15dp</dimen>
+    <dimen name="form_right_padding">15dp</dimen>
+    <dimen name="form_top_margin">10dp</dimen>
+    <dimen name="spinner_left_padding">7dp</dimen>
+    <dimen name="hor_rb_height">55dp</dimen>
+    <dimen name="drawable_top_padding">2dp</dimen>
+    <dimen name="hor_rb_text_size">12</dimen>
+    <dimen name="height_60_dp">60dp</dimen>
+    <dimen name="hor_rb_width">150dp</dimen>
+
+    <dimen name="vertical_margin_1">1dp</dimen>
+
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+
+    <dimen name="sp_20_2">30sp</dimen>
+    <dimen name="sp_17_2">22sp</dimen>
+    <dimen name="sp_15_2">21sp</dimen>
+    <dimen name="sp_13_2">18sp</dimen>
+    <dimen name="sp_10_2">16sp</dimen>
+    <dimen name="dp_7">7dp</dimen>
+    <dimen name="sp_12">12sp</dimen>
+    <dimen name="sp_32">32sp</dimen>
+    <dimen name="sp_25">25sp</dimen>
+    <dimen name="sp_19">19sp</dimen>
+    <dimen name="sp_8">8sp</dimen>
+    <dimen name="sp_14">14sp</dimen>
+    <dimen name="sp_18">18sp</dimen>
+    <dimen name="sp_28">28dp</dimen>
+    <dimen name="dp_150">150dp</dimen>
+</resources>

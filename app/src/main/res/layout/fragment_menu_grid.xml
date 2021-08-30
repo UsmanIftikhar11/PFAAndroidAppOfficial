@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_menu_grid_ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.pfa.pfaapp.fragments.MenuGridFragment">
+
+    <GridView
+        android:id="@+id/menuGL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="7dp"
+        android:cacheColorHint="@color/transparent"
+        android:horizontalSpacing="10dp"
+        android:numColumns="2"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:scrollbars="none"
+        android:verticalSpacing="10dp" />
+
+    <LinearLayout
+        android:id="@+id/sorry_iv"
+        style="@style/inner_tv_20_sp_bold"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f2f2f4"
+        android:gravity="center"
+        android:text="@string/no_results_found"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/inner_tv_20_sp_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/sorry_img"
+            android:drawablePadding="20dp"
+            android:gravity="center_horizontal"
+            android:text="@string/no_results_found"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/addGridItemBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/transparent"
+        android:contentDescription="@string/app_name"
+        android:src="@mipmap/add_new"
+        android:text="@string/add_new"
+        android:visibility="visible" />
+
+</RelativeLayout>

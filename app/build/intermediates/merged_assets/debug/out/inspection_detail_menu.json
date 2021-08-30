@@ -1,0 +1,87 @@
+{
+  "status": true,
+  "message_code": "REQUEST COMPLETED SUCCESSFULLY",
+  "data": {
+    "menus": [
+      {
+        "menuType": "list",
+        "menuItemName": "Dashboard",
+        "menuItemID": 1,
+        "menuItemOrder": 0,
+        "menuItemImg": "https:\/\/cell.pfa.gop.pk\/live\/assets\/images\/icons\/dashboard.png",
+        "bg_color":"#fb3d54"
+      },
+      {
+        "menuType": "list",
+        "menuItemName": "Businesses",
+        "menuItemID": 2,
+        "menuItemOrder": 1,
+        "API_URL": "client\/nearest_businesses\/",
+        "menuItemImg": "https:\/\/cell.pfa.gop.pk\/live\/assets\/images\/icons\/new-business.png",
+        "bg_color":"#fe8035"
+      },
+      {
+        "menuType": "form",
+        "menuItemName": "New Business",
+        "menuItemID": 3,
+        "menuItemOrder": 2,
+        "API_URL": "client\/business_form",
+        "menuItemImg": "https:\/\/cell.pfa.gop.pk\/live\/assets\/images\/icons\/new-business.png",
+        "bg_color":"#5685ce"
+      },
+      {
+        "menuType": "menu",
+        "menuItemName": "Inspections",
+        "menuItemID": 4,
+        "menuItemOrder": 3,
+        "API_URL": "client\/inspectionListing\/57",
+        "menuItemImg": "https:\/\/cell.pfa.gop.pk\/live\/assets\/images\/icons\/enforcements.png",
+        "bg_color":"#71cf86"
+      },
+      {
+        "menuType": "list",
+        "menuItemName": "Complains",
+        "menuItemID": 5,
+        "menuItemOrder": 4,
+        "API_URL": "complains\/staff\/57\/1\/complain",
+        "menuItemImg": "https:\/\/cell.pfa.gop.pk\/live\/assets\/images\/icons\/support-desk.png",
+        "bg_color":"#2dc7e2"
+      },
+      {
+        "menuType": "list",
+        "menuItemName": "Support Desk",
+        "menuItemID": 6,
+        "menuItemOrder": 5,
+        "API_URL": "complains\/staff\/57",
+        "menuItemImg": "https:\/\/cell.pfa.gop.pk\/live\/assets\/images\/icons\/support-desk.png",
+        "bg_color":"#d79645"
+      },
+      {
+        "menuType": "list",
+        "menuItemName": "Announcements",
+        "menuItemID": 7,
+        "menuItemOrder": 6,
+        "API_URL": "Announcements\/",
+        "menuItemImg": "https:\/\/cell.pfa.gop.pk\/live\/assets\/images\/icons\/announcements.png",
+        "bg_color":"#4065e9"
+      },
+      {
+        "menuType": "list",
+        "menuItemName": "Latest News",
+        "menuItemID": 8,
+        "menuItemOrder": 7,
+        "API_URL": "LatestNews\/",
+        "menuItemImg": "https:\/\/cell.pfa.gop.pk\/live\/assets\/images\/icons\/latest-news.png",
+        "bg_color":"#5398e1"
+      },
+      {
+        "menuType": "logout",
+        "menuItemName": "Logout",
+        "menuItemID": 9,
+        "menuItemOrder": 8,
+        "menuItemImg": "https:\/\/cell.pfa.gop.pk\/live\/assets\/images\/icons\/latest-news.png",
+        "bg_color":"#c83347"
+      }
+    ]
+  }
+}

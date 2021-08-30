@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--<color name="colorPrimary">#086038</color>-->
+    <!--<color name="colorPrimaryDark">#086038</color>-->
+    <!--<color name="colorAccent">#086038</color>-->
+    <!--<color name="green_btn_color">#086038</color>-->
+
+    <color name="colorPrimary">#29A444</color>
+    <color name="colorPrimaryDark">#29A444</color>
+    <color name="colorAccent">#29A444</color>
+    <color name="green_btn_color">#29A444</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#0000</color>
+    <color name="light_green">#2E9043</color>
+    <color name="hor_tab_color">#29A444</color>
+
+    <color name="light_grey">#b8b8b8</color>
+    <color name="white_grey">#BCBCBC</color>
+    <color name="button_light_grey">#cecccd</color>
+    <color name="dark_grey">#3a393e</color>
+    <color name="inner_text_color">#1c233f</color>
+    <color name="maroon">#FF0000</color>
+
+    <color name="circle_green">#8ee5a1</color>
+    <color name="btn_light_green">#89c798</color>
+    <color name="disable_color">#f1f1f1</color>
+
+
+    <!-- Listview text colors-->
+    <color name="text_grey">#9da1ad</color>
+    <color name="text_black">#212121</color>
+    <color name="text_light_grey">#c2c2c2</color>
+    <color name="text_blue">#3d99c2</color>
+
+    <color name="list_selector">#efefef</color>
+
+    <color name="red">#EB5757</color>
+    <color name="tab_bar_color">#fcfcfc</color>
+
+    <color name="cfcfcf">#cacaca</color>
+    <color name="top_bar_default_color">#f9fafc</color>
+
+    <color name="hint_color">#666666</color>
+
+    <color name="checklist_error_color">#FF9494</color>
+
+    <color name="chat_list_footer_bg">#F0F0F0</color>
+
+
+
+</resources>

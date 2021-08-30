@@ -1,0 +1,105 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewGroup"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    tools:context="com.pfa.pfaapp.fragments.MenuListFragment">
+
+    <LinearLayout
+        android:id="@+id/searchLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/text_bg"
+        android:gravity="center_vertical"
+        android:minHeight="50dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:id="@+id/newsSearchLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <RelativeLayout
+        style="@style/black_14_sp_et"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.pfa.pfaapp.customviews.PullAndLoadListView
+            android:id="@+id/menuTableLV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@color/transparent"
+            android:divider="@mipmap/horizontal_line"
+            android:paddingBottom="7dp" />
+
+        <View
+            android:id="@+id/clickableWrapperView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@color/transparent"
+            android:clickable="true"
+            android:divider="@mipmap/horizontal_line"
+            android:focusable="true"
+            android:paddingBottom="7dp"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/sorry_iv12"
+            style="@style/inner_tv_20_sp_bold"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#f2f2f4"
+            android:gravity="center"
+            android:text="@string/no_results_found"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/inner_tv_20_sp_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableTop="@mipmap/sorry_img"
+                android:drawablePadding="20dp"
+                android:gravity="center_horizontal"
+                android:text="@string/no_results_found" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/addNewBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:background="@color/transparent"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/add_new"
+            android:text="@string/add_new"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/deseizeAllBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:background="@color/transparent"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/deseize_all"
+            android:text="@string/add_new"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>
+

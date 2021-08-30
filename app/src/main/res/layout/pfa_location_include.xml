@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:focusable="false"
+    android:orientation="vertical"
+    tools:ignore="RtlSymmetry"
+    tools:targetApi="lollipop">
+
+    <com.pfa.pfaapp.customviews.PFATextInputLayout
+        android:id="@+id/regionACTIL"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_gravity="center_vertical"
+        android:hint="@string/region">
+
+        <com.pfa.pfaapp.customviews.PFALocationACTV
+            android:id="@+id/regionACTV"
+            style="@style/dropdown_14sp_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:completionThreshold="1"
+            android:ems="10"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:hint="@string/region"
+            android:paddingStart="@dimen/form_left_padding"
+            android:paddingLeft="@dimen/form_left_padding"
+            android:paddingTop="9dp"
+            android:paddingBottom="5dp"
+            android:popupBackground="@color/white"
+            android:popupElevation="0dp"
+            android:singleLine="true" />
+    </com.pfa.pfaapp.customviews.PFATextInputLayout>
+
+    <com.pfa.pfaapp.customviews.PFATextInputLayout
+        android:id="@+id/divisionACTIL"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_gravity="center_vertical"
+        android:hint="@string/division">
+
+        <com.pfa.pfaapp.customviews.PFALocationACTV
+            android:id="@+id/divisionACTV"
+            style="@style/dropdown_14sp_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:completionThreshold="1"
+            android:ems="10"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:hint="@string/division"
+            android:paddingStart="@dimen/form_left_padding"
+            android:paddingLeft="@dimen/form_left_padding"
+            android:paddingTop="9dp"
+            android:paddingBottom="5dp"
+            android:popupBackground="@color/white"
+            android:popupElevation="0dp"
+            android:singleLine="true" />
+    </com.pfa.pfaapp.customviews.PFATextInputLayout>
+
+
+    <com.pfa.pfaapp.customviews.PFATextInputLayout
+        android:id="@+id/districtACTIL"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_gravity="center_vertical"
+        android:hint="@string/district">
+
+        <com.pfa.pfaapp.customviews.PFALocationACTV
+            android:id="@+id/districtACTV"
+            style="@style/dropdown_14sp_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:completionThreshold="1"
+            android:ems="10"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:hint="@string/district"
+            android:paddingStart="@dimen/form_left_padding"
+            android:paddingLeft="@dimen/form_left_padding"
+            android:paddingTop="9dp"
+            android:paddingBottom="5dp"
+            android:popupBackground="@color/white"
+            android:popupElevation="0dp"
+            android:singleLine="true" />
+    </com.pfa.pfaapp.customviews.PFATextInputLayout>
+
+    <com.pfa.pfaapp.customviews.PFATextInputLayout
+        android:id="@+id/townACTIL"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_gravity="center_vertical"
+        android:hint="@string/town">
+
+        <com.pfa.pfaapp.customviews.PFALocationACTV
+            android:id="@+id/townACTV"
+            style="@style/dropdown_14sp_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:completionThreshold="1"
+            android:editable="false"
+            android:ems="10"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:hint="@string/town"
+            android:paddingStart="@dimen/form_left_padding"
+            android:paddingLeft="@dimen/form_left_padding"
+            android:paddingTop="9dp"
+            android:paddingBottom="5dp"
+            android:popupBackground="@color/white"
+            android:popupElevation="0dp"
+            android:singleLine="true" />
+    </com.pfa.pfaapp.customviews.PFATextInputLayout>
+
+
+    <com.pfa.pfaapp.customviews.PFATextInputLayout
+        android:id="@+id/sub_townACTIL"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_gravity="center_vertical"
+        android:hint="@string/sub_town">
+
+        <com.pfa.pfaapp.customviews.PFALocationACTV
+            android:id="@+id/subTownACTV"
+            style="@style/dropdown_14sp_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:completionThreshold="1"
+            android:editable="false"
+            android:ems="10"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:hint="@string/sub_town"
+            android:paddingStart="@dimen/form_left_padding"
+            android:paddingLeft="@dimen/form_left_padding"
+            android:paddingTop="9dp"
+            android:paddingBottom="5dp"
+            android:popupBackground="@color/white"
+            android:popupElevation="0dp"
+            android:singleLine="true" />
+    </com.pfa.pfaapp.customviews.PFATextInputLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.pfa.pfaapp.PinSuccessActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/transparent">
+
+        <TextView
+            android:id="@+id/successMsgTV"
+            style="@style/green_15_sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:drawableTop="@mipmap/checkicon"
+            android:drawablePadding="10dp"
+            android:focusable="true"
+            android:gravity="center_horizontal"
+            android:onClick="onClickSuccessBtn"
+            android:text="@string/security_pin_success" />
+
+
+        <View
+            android:id="@+id/sepIcon"
+            android:layout_width="20dp"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true" />
+
+        <Button
+            android:id="@+id/callUsNumBtn"
+            style="@style/grey_13_sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/successMsgTV"
+            android:layout_toStartOf="@+id/sepIcon"
+            android:layout_toLeftOf="@+id/sepIcon"
+            android:background="@color/transparent"
+            android:drawableStart="@mipmap/call_grey"
+            android:drawableLeft="@mipmap/call_grey"
+            android:drawablePadding="7dp"
+            android:onClick="onClickCallUsBtn"
+            android:text="@string/contact_phone_num" />
+
+        <Button
+            android:id="@+id/emailBtn"
+            style="@style/grey_13_sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/successMsgTV"
+            android:layout_toEndOf="@+id/sepIcon"
+            android:layout_toRightOf="@+id/sepIcon"
+            android:background="@color/transparent"
+            android:drawableStart="@mipmap/env"
+            android:drawableLeft="@mipmap/env"
+            android:drawablePadding="7dp"
+            android:onClick="onClickEmailBtn"
+            android:text="@string/contact_email"
+            android:textAllCaps="false" />
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/continueBtn"
+        style="@style/white_15_sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_green"
+        android:drawableEnd="@mipmap/ur_left_arrow_white"
+        android:drawableRight="@mipmap/ur_left_arrow_white"
+        android:drawablePadding="7dp"
+        android:padding="7dp"
+        android:onClick="onClickContinueBtn"
+        android:text="@string/continue_str"
+        android:textAllCaps="false" />
+
+</FrameLayout>

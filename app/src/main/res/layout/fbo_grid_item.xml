@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2018. All Rights Reserved by Punjab Food Authority
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fbo_grid_ll"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_150"
+    android:background="@color/light_grey"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/menuCNIV"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        fresco:actualImageScaleType="none" />
+
+    <TextView
+        android:id="@+id/fboMenuNameTV"
+        style="@style/white_15_sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" />
+
+</LinearLayout>

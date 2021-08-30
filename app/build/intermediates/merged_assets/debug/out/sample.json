@@ -1,0 +1,370 @@
+{
+  "status": "OK",
+  "status_msg": "Data fetched successfully",
+  "form": [
+    {
+      "section_id": "1",
+      "section_name": "User Profile",
+      "fields": [
+        {
+          "field_name": "designation",
+          "field_type": "dropdown",
+          "data_type": "text",
+          "order": 10,
+          "required": true,
+          "multiple": false,
+          "value": "Designation",
+          "default_value": "Owner",
+          "icon": "",
+          "data": [
+            {
+              "name": "designation",
+              "value": ""
+            },
+            {
+              "name": "designation",
+              "value": "Owner"
+            },
+            {
+              "name": "designation",
+              "value": "Manager"
+            },
+            {
+              "name": "designation",
+              "value": "Other"
+            }
+          ]
+        },
+        {
+          "field_name": "subjects",
+          "field_type": "dropdown",
+          "data_type": "text",
+          "order": 5,
+          "required": false,
+          "multiple": true,
+          "value": "Subjects",
+          "default_value": "Maths",
+          "icon": "",
+          "data": [
+            {
+              "name": "subjects",
+              "value": "Math"
+            },
+            {
+              "name": "subjects",
+              "value": "English"
+            },
+            {
+              "name": "subjects",
+              "value": "Urdu"
+            },
+            {
+              "name": "subjects",
+              "value": "Persian"
+            },
+            {
+              "name": "subjects",
+              "value": "Sociology"
+            },
+            {
+              "name": "subjects",
+              "value": "Other"
+            }
+          ]
+        },
+        {
+          "field_name": "cnic",
+          "field_type": "numeric",
+          "data_type": "text",
+          "order": 0,
+          "required": true,
+          "multiple": true,
+          "value": "CNIC#",
+          "icon": "http://www.jazzcash.com.pk/assets/uploads/2016/05/new-icon-set-CNIC.png",
+          "data": [
+            {
+              "name": "cnic",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "field_name": "phone_number",
+          "field_type": "numeric",
+          "data_type": "numeric",
+          "order": 2,
+          "required": true,
+          "multiple": false,
+          "value": "Phone Number",
+          "icon": "http://www.jazzcash.com.pk/assets/uploads/2016/05/new-icon-set-CNIC.png",
+          "data": [
+            {
+              "name": "phone_number",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "field_name": "firstname_lastname",
+          "field_type": "text",
+          "data_type": "text",
+          "order": 1,
+          "required": true,
+          "multiple": false,
+          "value": "First Name/Last Name",
+          "icon": "http://www.jazzcash.com.pk/assets/uploads/2016/05/new-icon-set-CNIC.png",
+          "data": [
+            {
+              "name": "firstname_lastname",
+              "value": "Aijaz Ali"
+            }
+          ]
+        },
+        {
+          "field_name": "description",
+          "field_type": "textarea",
+          "data_type": "textarea",
+          "order": 6,
+          "required": false,
+          "multiple": false,
+          "value": "Description",
+          "icon": "",
+          "data": [
+            {
+              "name": "description",
+              "value": "This is the dynamic view creation testing for Punjab food authority"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "2",
+      "section_name": "Extra Information",
+      "fields": [
+        {
+          "field_name": "dateOfBirth",
+          "field_type": "date",
+          "data_type": "text",
+          "order": 6,
+          "required": true,
+          "multiple": false,
+          "value": "Date of Birth",
+          "icon": "",
+          "data": [
+            {
+              "name": "dateOfBirth",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "field_name": "genderRG",
+          "field_type": "radiogroup",
+          "data_type": "text",
+          "order": 3,
+          "required": true,
+          "multiple": true,
+          "value": "Gender",
+          "default_value": "Male",
+          "icon": "",
+          "horizontal": true,
+          "data": [
+            {
+              "name": "genderRG",
+              "value": "Male"
+            },
+            {
+              "name": "genderRG",
+              "value": "Female"
+            },
+            {
+              "name": "genderRG",
+              "value": "None"
+            }
+          ]
+        },
+        {
+          "field_name": "locations",
+          "field_type": "dropdown",
+          "data_type": "text",
+          "order": 5,
+          "required": false,
+          "multiple": false,
+          "value": "Locations",
+          "default_value": "Owner",
+          "icon": "http://www.jazzcash.com.pk/assets/uploads/2016/05/new-icon-set-CNIC.png",
+          "data": [
+            {
+              "name": "locations",
+              "value": ""
+            },
+            {
+              "name": "locations",
+              "value": "Lahore"
+            },
+            {
+              "name": "locations",
+              "value": "Karachi"
+            },
+            {
+              "name": "locations",
+              "value": "Other"
+            }
+          ]
+        },
+        {
+          "field_name": "cnicImg",
+          "field_type": "imageView",
+          "data_type": "imageView",
+          "order": 7,
+          "required": true,
+          "multiple": false,
+          "value": "CNIC Image",
+          "icon": "",
+          "clickable": true,
+          "data": [
+            {
+              "name": "cnicImg",
+              "value": "http://www.incpak.com/wp-content/uploads/2017/04/NADRA.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "3",
+      "section_name": "Test Section",
+      "fields": [
+        {
+          "field_name": "CoursesChecks",
+          "field_type": "checkbox",
+          "data_type": "text",
+          "order": 9,
+          "required": true,
+          "multiple": true,
+          "value": "Courses",
+          "default_value": "Maths",
+          "icon": "",
+          "horizontal": true,
+          "data": [
+            {
+              "name": "CoursesChecks",
+              "value": "Maths"
+            },
+            {
+              "name": "CoursesChecks",
+              "value": "English"
+            },
+            {
+              "name": "CoursesChecks",
+              "value": "Urdu"
+            },
+            {
+              "name": "CoursesChecks",
+              "value": "None"
+            }
+          ]
+        },
+        {
+          "field_name": "CoursesChecks",
+          "field_type": "checkbox",
+          "data_type": "text",
+          "order": 9,
+          "required": true,
+          "multiple": true,
+          "value": "Courses",
+          "default_value": "Maths",
+          "icon": "",
+          "horizontal": false,
+          "data": [
+            {
+              "name": "CoursesChecks",
+              "value": "Maths"
+            },
+            {
+              "name": "CoursesChecks",
+              "value": "English"
+            },
+            {
+              "name": "CoursesChecks",
+              "value": "Urdu"
+            },
+            {
+              "name": "CoursesChecks",
+              "value": "None"
+            }
+          ]
+        },
+        {
+          "field_name": "licenseImg",
+          "field_type": "imageView",
+          "data_type": "imageView",
+          "order": 11,
+          "required": true,
+          "multiple": false,
+          "value": "License Image",
+          "icon": "",
+          "clickable": true,
+          "data": [
+            {
+              "name": "licenseImg",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "field_name": "sideImgLeft",
+          "field_type": "imageView",
+          "data_type": "imageView",
+          "order": 4,
+          "required": true,
+          "multiple": false,
+          "value": "Side Image test1",
+          "icon": "",
+          "clickable": false,
+          "data": [
+            {
+              "name": "sideImgLeft",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "field_name": "sideImgeRight",
+          "field_type": "imageView",
+          "data_type": "imageView",
+          "order": 8,
+          "required": true,
+          "multiple": false,
+          "value": "Side Image test 2",
+          "icon": "",
+          "clickable": true,
+          "data": [
+            {
+              "name": "sideImgeRight",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "field_name": "submitBtn",
+          "field_type": "button",
+          "data_type": "text",
+          "order": 15,
+          "required": true,
+          "multiple": false,
+          "value": "Submit",
+          "icon": "",
+          "clickable": true,
+          "data": [
+            {
+              "name": "submitBtn",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

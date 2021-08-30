@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2018. All Rights Reserved by Punjab Food Authority
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:paddingBottom="1dp"
+
+    tools:context="com.pfa.pfaapp.FBOMainGridActivity">
+
+    <include
+        android:id="@+id/ttl_bar"
+        layout="@layout/ttl_bar" />
+
+
+    <RadioGroup
+        android:id="@+id/langRG"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/top_bar_default_color"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:visibility="gone">
+
+        <RadioButton
+            android:id="@+id/englisRB"
+            style="@style/black_15_sp_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:button="@null"
+            android:checked="true"
+            android:drawableStart="@drawable/grid_lang_rb_selector"
+            android:drawableLeft="@drawable/grid_lang_rb_selector"
+            android:drawablePadding="10dp"
+            android:text="@string/english" />
+
+        <RadioButton
+            android:id="@+id/urduRB"
+            style="@style/black_15_sp_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginLeft="15dp"
+            android:button="@null"
+            android:drawableStart="@drawable/grid_lang_rb_selector"
+            android:drawableLeft="@drawable/grid_lang_rb_selector"
+            android:drawablePadding="10dp"
+            android:text="@string/urdu" />
+    </RadioGroup>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/horizontal_line"
+        android:contentDescription="@string/app_name"
+        android:visibility="gone" />
+
+    <GridView
+        android:id="@+id/fboMainGV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:cacheColorHint="@color/transparent"
+        android:horizontalSpacing="10dp"
+        android:numColumns="2"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:scrollbars="none"
+        android:verticalSpacing="10dp" />
+
+</LinearLayout>

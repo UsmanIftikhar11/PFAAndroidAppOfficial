@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fbo_grid_ll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/grey_box"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <com.pfa.pfaapp.customviews.CustomNetworkImageView
+        android:id="@+id/mediaGridNIV"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:scaleType="fitCenter" />
+
+
+
+    <ImageView
+        android:id="@+id/vidImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/app_name"
+        android:src="@mipmap/video_btn"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/fboMenuNameTV"
+        style="@style/black_15_sp_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mediaGridNIV"
+        android:gravity="center_horizontal"
+        android:visibility="gone" />
+
+    <ImageButton
+        android:id="@+id/deleteImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/transparent"
+        android:contentDescription="@string/app_name"
+        android:src="@mipmap/download_cancel" />
+
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:fillViewport="true"
+    android:focusable="true"
+    android:gravity="center_horizontal"
+    android:minWidth="300dp"
+    android:orientation="vertical"
+    android:padding="7dp"
+    android:scrollbars="none">
+
+    <ScrollView
+        android:id="@+id/addBizDialogSV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:focusable="true"
+        android:minWidth="300dp"
+        android:orientation="vertical"
+        android:paddingEnd="7dp"
+        android:paddingRight="7dp"
+        android:paddingBottom="7dp"
+        tools:ignore="RtlSymmetry">
+
+        <LinearLayout
+            android:id="@+id/businessVisitLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:orientation="vertical" />
+    </ScrollView>
+
+</LinearLayout>
+
+

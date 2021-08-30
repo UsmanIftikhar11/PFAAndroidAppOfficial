@@ -1,0 +1,52 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"
+    tools:context="com.pfa.pfaapp.fragments.DraftsFragment">
+
+    <ListView
+        android:id="@+id/draftsLV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@mipmap/horizontal_line"
+        android:scrollbars="none"
+        android:text="@string/hello_blank_fragment" />
+
+    <LinearLayout
+        android:id="@+id/sorry_iv11"
+        style="@style/inner_tv_20_sp_bold"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f2f2f4"
+        android:gravity="center"
+        android:text="@string/no_results_found"
+        android:visibility="gone" >
+
+        <TextView
+            style="@style/inner_tv_20_sp_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/sorry_img"
+            android:drawablePadding="20dp"
+            android:gravity="center_horizontal"
+            android:text="@string/no_results_found"
+             />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/addNewBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:layout_gravity="right|bottom"
+        android:contentDescription="@string/app_name"
+        android:src="@mipmap/add_new"
+        android:text="@string/add_new"
+        android:visibility="gone"
+        tools:ignore="RtlHardcoded" />
+
+</FrameLayout>

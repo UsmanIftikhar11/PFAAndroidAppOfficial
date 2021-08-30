@@ -1,0 +1,124 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/viewGroup"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true">
+
+    <ListView
+        android:id="@+id/localFormLV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:cacheColorHint="@color/transparent"
+        android:divider="@mipmap/horizontal_line" />
+
+    <LinearLayout
+        android:id="@+id/sorry_iv"
+        style="@style/inner_tv_20_sp_bold"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f2f2f4"
+        android:gravity="center"
+        android:text="@string/no_results_found"
+        android:visibility="gone">
+
+        <TextView
+            style="@style/inner_tv_20_sp_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/sorry_img"
+            android:drawablePadding="20dp"
+            android:gravity="center_horizontal"
+            android:text="@string/no_results_found"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|end"
+            android:gravity="right|end"
+            android:orientation="vertical"
+            tools:ignore="RtlHardcoded,UselessParent">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                >
+                <com.pfa.pfaapp.customviews.CircularImageView
+                    android:id="@+id/addProofCNIV"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="right|end"
+                    android:clickable="false"
+                    android:layout_marginRight="15dp"
+                    android:src="@mipmap/no_img"
+                    android:visibility="gone"
+                    android:layout_marginBottom="15dp"/>
+
+                <ImageButton
+                    android:id="@+id/deleteProofImgBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right|end"
+                    android:background="@color/transparent"
+                    android:contentDescription="@string/app_name"
+                    android:src="@mipmap/download_cancel"
+                    android:visibility="gone"
+                    tools:ignore="RtlHardcoded" />
+
+                <ImageButton
+                    android:id="@+id/addLLImgBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:contentDescription="@string/app_name"
+                    android:src="@mipmap/proof_camera"
+                    android:text="@string/add_new"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/printBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:background="@color/transparent"
+                    android:contentDescription="@string/app_name"
+                    app:srcCompat="@mipmap/printt"
+           />
+
+
+            </FrameLayout>
+
+            <ImageButton
+                android:id="@+id/addNewBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:contentDescription="@string/app_name"
+                android:src="@mipmap/add_new"
+                android:text="@string/add_new"
+                android:scaleType="fitXY"
+                android:visibility="gone"
+                tools:ignore="RelativeOverlap" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</RelativeLayout>

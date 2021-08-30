@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:fillViewport="true"
+    android:focusable="true"
+    tools:context="com.pfa.pfaapp.SetPinActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <include layout="@layout/ttl_bar" />
+
+        <TextView
+            android:id="@+id/setPinLblTV"
+            style="@style/grey_15_sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="1dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/setpassCode"
+            android:textColor="@color/dark_grey" />
+
+        <TextView
+            android:id="@+id/pinCodeTV"
+            style="@style/black_17_sp_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:padding="10dp"
+            android:text="@string/security_code" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/pinCodeET1"
+                style="@style/black_25_sp_et"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@mipmap/text_bg"
+                android:gravity="center"
+                android:hint="@string/star"
+                android:inputType="number"
+                android:maxLength="1"
+                android:nextFocusRight="@+id/pinCodeET2"
+                android:singleLine="true"
+                tools:ignore="Autofill,LabelFor" />
+
+            <EditText
+                android:id="@+id/pinCodeET2"
+                style="@style/black_25_sp_et"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="1"
+                android:background="@mipmap/text_bg"
+                android:gravity="center"
+                android:hint="@string/star"
+                android:inputType="number"
+                android:maxLength="1"
+                android:nextFocusLeft="@+id/pinCodeET1"
+                android:nextFocusRight="@+id/pinCodeET3"
+                android:singleLine="true"
+                tools:ignore="Autofill,LabelFor" />
+
+            <EditText
+                android:id="@+id/pinCodeET3"
+                style="@style/black_25_sp_et"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="1"
+                android:background="@mipmap/text_bg"
+                android:gravity="center"
+                android:hint="@string/star"
+                android:inputType="number"
+                android:maxLength="1"
+                android:nextFocusLeft="@+id/pinCodeET2"
+                android:nextFocusRight="@+id/pinCodeET4"
+                android:singleLine="true"
+                tools:ignore="Autofill,LabelFor" />
+
+            <EditText
+                android:id="@+id/pinCodeET4"
+                style="@style/black_25_sp_et"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="1"
+                android:background="@mipmap/text_bg"
+                android:gravity="center"
+                android:hint="@string/star"
+                android:inputType="number"
+                android:maxLength="1"
+                android:nextFocusLeft="@+id/pinCodeET3"
+                android:nextFocusRight="@+id/pinCodeET5"
+                android:singleLine="true"
+                tools:ignore="Autofill,LabelFor" />
+
+            <EditText
+                android:id="@+id/pinCodeET5"
+                style="@style/black_25_sp_et"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="1"
+                android:background="@mipmap/text_bg"
+                android:gravity="center"
+                android:hint="@string/star"
+                android:inputType="number"
+                android:maxLength="1"
+                android:nextFocusLeft="@+id/pinCodeET4"
+                android:nextFocusRight="@+id/pinCodeET6"
+                android:singleLine="true"
+                tools:ignore="Autofill,LabelFor" />
+
+            <EditText
+                android:id="@+id/pinCodeET6"
+                style="@style/black_25_sp_et"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="1"
+                android:background="@mipmap/text_bg"
+                android:gravity="center"
+                android:hint="@string/star"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:maxLength="1"
+                android:nextFocusLeft="@+id/pinCodeET5"
+                android:singleLine="true"
+                tools:ignore="Autofill,LabelFor" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/confirmPinTV"
+            style="@style/black_17_sp_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:padding="10dp"
+            android:text="@string/confirm_security_code" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/pinCodeET11"
+                style="@style/black_25_sp_et"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@mipmap/text_bg"
+                android:gravity="center"
+                android:hint="@string/star"
+                android:inputType="number"
+                android:maxLength="1"
+                android:nextFocusRight="@+id/pinCodeET22"
+                android:singleLine="true"
+                tools:ignore="Autofill,LabelFor" />
+
+            <EditText
+                android:id="@+id/pinCodeET22"
+                style="@style/black_25_sp_et"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="1"
+                android:background="@mipmap/text_bg"
+                android:gravity="center"
+                android:hint="@string/star"
+                android:inputType="number"
+                android:maxLength="1"
+                android:nextFocusLeft="@+id/pinCodeET11"
+                android:nextFocusRight="@+id/pinCodeET33"
+                android:singleLine="true"
+                tools:ignore="Autofill,LabelFor" />
+
+            <EditText
+                android:id="@+id/pinCodeET33"
+                style="@style/black_25_sp_et"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="1"
+                android:background="@mipmap/text_bg"
+                android:gravity="center"
+                android:hint="@string/star"
+                android:inputType="number"
+                android:maxLength="1"
+                android:nextFocusLeft="@+id/pinCodeET22"
+                android:nextFocusRight="@+id/pinCodeET44"
+                android:singleLine="true"
+                tools:ignore="Autofill,LabelFor" />
+
+            <EditText
+                android:id="@+id/pinCodeET44"
+                style="@style/black_25_sp_et"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="1"
+                android:background="@mipmap/text_bg"
+                android:gravity="center"
+                android:hint="@string/star"
+                android:inputType="number"
+                android:maxLength="1"
+                android:nextFocusLeft="@+id/pinCodeET33"
+                android:nextFocusRight="@+id/pinCodeET55"
+                android:singleLine="true"
+                tools:ignore="Autofill,LabelFor" />
+
+            <EditText
+                android:id="@+id/pinCodeET55"
+                style="@style/black_25_sp_et"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="1"
+                android:background="@mipmap/text_bg"
+                android:gravity="center"
+                android:hint="@string/star"
+                android:inputType="number"
+                android:maxLength="1"
+                android:nextFocusLeft="@+id/pinCodeET44"
+                android:nextFocusRight="@+id/pinCodeET66"
+                android:singleLine="true"
+                tools:ignore="Autofill,LabelFor" />
+
+            <EditText
+                android:id="@+id/pinCodeET66"
+                style="@style/black_25_sp_et"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="7dp"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="1"
+                android:background="@mipmap/text_bg"
+                android:gravity="center"
+                android:hint="@string/star"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:maxLength="1"
+                android:nextFocusLeft="@+id/pinCodeET55"
+                android:singleLine="true"
+                tools:ignore="Autofill,LabelFor" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:id="@+id/cancelTVBtn"
+                style="@style/grey_17_sp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/white_dialogbox_rounded_corners"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:onClick="onClickCancelBtn"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/cancel"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/setPinBtn"
+                style="@style/white_15_sp"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/button_green_rounded"
+                android:minWidth="130dp"
+                android:onClick="onClickSetPinBtn"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/set_pin"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

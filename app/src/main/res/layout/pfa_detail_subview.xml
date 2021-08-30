@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@mipmap/text_bg"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="7dp"
+    android:paddingTop="@dimen/form_top_margin"
+    android:paddingRight="7dp"
+    android:paddingBottom="@dimen/form_top_margin">
+
+    <TextView
+        android:id="@+id/lblTV"
+        style="@style/grey_11_sp"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/subviewTV"
+        style="@style/black_15_sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="2dp" />
+</LinearLayout>

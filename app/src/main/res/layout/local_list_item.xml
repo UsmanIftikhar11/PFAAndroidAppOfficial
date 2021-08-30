@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2018. All Rights Reserved by Punjab Food Authority
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/localListItemRL"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/grey_box"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="3dp">
+
+    <LinearLayout
+        android:id="@+id/localListItemLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+    <ImageButton
+        android:id="@+id/deleteImgBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/transparent"
+        android:contentDescription="@string/app_name"
+        android:src="@mipmap/delete" />
+
+</RelativeLayout>

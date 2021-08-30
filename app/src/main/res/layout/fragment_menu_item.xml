@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    tools:context="com.pfa.pfaapp.fragments.MenuFormFragment">
+
+    <ScrollView
+        android:id="@+id/fragMenuItemSV"
+        android:fillViewport="true"
+        android:clickable="true"
+        android:scrollbars="none"
+        android:focusable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/menuFragParentLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:orientation="vertical" />
+    </ScrollView>
+
+
+
+
+</RelativeLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chatBoxLL"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/chat_list_footer_bg"
+    android:orientation="vertical"
+    android:padding="7dp"
+    android:visibility="visible">
+
+    <LinearLayout
+        android:id="@+id/statusSectionLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+    <com.pfa.pfaapp.customviews.PFAEditText
+        android:id="@+id/msgET"
+        style="@style/black_17_sp_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@mipmap/text_bg"
+        android:gravity="top|left"
+        android:hint="@string/type_here"
+        android:minHeight="80dp"
+        android:padding="7dp"
+        tools:ignore="RtlHardcoded" />
+
+    <com.pfa.pfaapp.customviews.PFAButton
+        android:id="@+id/sendBtn"
+        style="@style/white_15_sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_green_rounded"
+        android:text="@string/send" />
+
+</LinearLayout>

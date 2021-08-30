@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@drawable/white_dialogbox_rounded_corners"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/ttleTV"
+        style="@style/black_17_sp_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableBottom="@mipmap/horizontal_line"
+        android:drawablePadding="7dp"
+        android:text="@string/complete_action_using"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/takePhotoFromCameraBtn"
+        style="@style/black_15_sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:drawableStart="@mipmap/camera"
+        android:drawableLeft="@mipmap/camera"
+        android:drawablePadding="7dp"
+        android:gravity="left|center_vertical"
+        android:text="@string/take_photo"
+        android:textAllCaps="false"
+        tools:ignore="RtlHardcoded" />
+
+    <Button
+        android:id="@+id/recordVideoBtn"
+        style="@style/black_15_sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:drawableStart="@mipmap/record_video"
+        android:drawableLeft="@mipmap/record_video"
+        android:drawablePadding="7dp"
+        android:gravity="left|center_vertical"
+        android:text="@string/record_video"
+        android:textAllCaps="false"
+        android:visibility="gone"
+        tools:ignore="RtlHardcoded" />
+
+    <Button
+        android:id="@+id/chooseFromGalleryBtn"
+        style="@style/black_15_sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:drawableStart="@mipmap/gallery"
+        android:drawableLeft="@mipmap/gallery"
+        android:drawableBottom="@mipmap/horizontal_line"
+        android:drawablePadding="7dp"
+        android:gravity="left|center_vertical"
+        android:text="@string/choose_from_camera_roll"
+        android:textAllCaps="false"
+        tools:ignore="RtlHardcoded" />
+
+    <Button
+        android:id="@+id/multiImagesBtn"
+        style="@style/black_15_sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:drawableStart="@mipmap/gallery"
+        android:drawableLeft="@mipmap/gallery"
+        android:drawableBottom="@mipmap/horizontal_line"
+        android:drawablePadding="7dp"
+        android:gravity="left|center_vertical"
+        android:text="@string/choose_multiple_images"
+        android:textAllCaps="false"
+        tools:ignore="RtlHardcoded" />
+
+    <Button
+        android:id="@+id/cancelBtn"
+        style="@style/maroon_15sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="@string/cancel"
+        android:textStyle="bold" />
+
+</LinearLayout>

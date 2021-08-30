@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewGroup"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="com.pfa.pfaapp.PFADetailActivity">
+
+    <include
+        android:id="@+id/ttl_bar"
+        layout="@layout/ttl_bar" />
+
+    <HorizontalScrollView
+        android:id="@+id/menubarHSV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ttl_bar"
+        android:background="@mipmap/text_bg"
+        android:scrollbars="none"
+        android:visibility="gone">
+
+        <RadioGroup
+            android:id="@+id/topbarRG"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
+    <View
+        android:id="@+id/detailSep"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/menubarHSV"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/light_grey"
+        android:visibility="gone" />
+
+    <FrameLayout
+        android:id="@+id/detailSectionsFL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/detailSep"
+        android:visibility="gone"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <ScrollView
+        android:id="@+id/detailDataSV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detailSectionsFL" />
+
+    <LinearLayout
+        android:id="@+id/chatLL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/detailDataSV"
+        android:orientation="vertical" />
+
+</RelativeLayout>
+
+

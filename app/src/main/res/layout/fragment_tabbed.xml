@@ -1,0 +1,43 @@
+<!--
+  ~ Copyright (c) 2018. All Rights Reserved by Punjab Food Authority
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewGroup"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    tools:context="com.pfa.pfaapp.fragments.TabbedFragment">
+
+    <HorizontalScrollView
+        android:id="@+id/menubarHSV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/text_bg"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:visibility="gone">
+
+        <RadioGroup
+            android:id="@+id/topbarRG"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/height_60_dp"
+            android:layout_marginBottom="1dp"
+            android:background="@color/tab_bar_color"
+            android:orientation="horizontal"
+            android:visibility="gone" />
+
+    </HorizontalScrollView>
+
+
+    <FrameLayout
+        android:id="@+id/detailSectionsCVP"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/menubarHSV" />
+
+</RelativeLayout>

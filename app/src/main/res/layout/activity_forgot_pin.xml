@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context="com.pfa.pfaapp.ForgotPinActivity">
+
+    <include layout="@layout/ttl_bar" />
+
+    <TextView
+        android:id="@+id/existingAccountTV"
+        style="@style/grey_15_sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:text="@string/please_enter_the_verified_phone_number" />
+
+    <com.pfa.pfaapp.customviews.PFATextInputLayout
+        android:id="@+id/cnicETTIL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@mipmap/text_bg_star"
+        android:focusable="true"
+        android:hint="@string/cnic_number">
+
+        <com.pfa.pfaapp.customviews.CNICEditText
+            android:id="@+id/cnicNumET"
+            style="@style/black_15_sp_et"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/transparent"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-"
+            android:gravity="center_vertical"
+            android:hint="@string/cnic_number"
+            android:inputType="text"
+            android:maxLength="15"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:paddingEnd="0dp"
+            android:paddingRight="0dp"
+            android:singleLine="true" />
+
+    </com.pfa.pfaapp.customviews.PFATextInputLayout>
+
+    <com.pfa.pfaapp.customviews.PFATextInputLayout
+        android:id="@+id/phoneNumETTIL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@mipmap/text_bg_star"
+        android:hint="@string/phone_number">
+
+        <com.pfa.pfaapp.customviews.PFAEditText
+            android:id="@+id/phoneNumET"
+            style="@style/black_15_sp_et"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/transparent"
+            android:digits="0123456789"
+            android:gravity="center_vertical"
+            android:hint="@string/phone_number"
+            android:inputType="number"
+            android:maxLength="11"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            tools:ignore="RtlSymmetry" />
+
+    </com.pfa.pfaapp.customviews.PFATextInputLayout>
+
+    <Button
+        android:id="@+id/getCodeBtn"
+        style="@style/white_17_sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_green_rounded"
+        android:onClick="onClickGetCodeBtn"
+        android:text="@string/get_new_pin_code"
+        android:textAllCaps="false"
+        tools:ignore="RelativeOverlap" />
+
+</LinearLayout>

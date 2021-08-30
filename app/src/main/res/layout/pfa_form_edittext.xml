@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+<LinearLayout
+    android:id="@+id/textView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@mipmap/text_bg"
+    android:gravity="center_vertical"
+    android:minHeight="60dp"
+    android:orientation="horizontal"
+    android:paddingLeft="7dp"
+    android:paddingTop="@dimen/form_top_margin"
+    android:paddingRight="7dp"
+    android:paddingBottom="@dimen/form_top_margin">
+
+    <TextView
+        android:id="@+id/lblTV"
+        style="@style/grey_11_sp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:visibility="visible" />
+
+    <com.pfa.pfaapp.customviews.PFAEditText
+        android:id="@+id/abcET"
+        style="@style/black_15_sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:singleLine="false"
+        android:gravity="center_vertical" />
+</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/clearfix"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/text_bg"
+        android:gravity="center_vertical"
+        android:minHeight="60dp"
+        android:orientation="vertical"
+        android:paddingLeft="7dp"
+        android:paddingTop="@dimen/form_top_margin"
+        android:paddingRight="7dp"
+        android:paddingBottom="@dimen/form_top_margin">
+
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/rightS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/no_img"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </LinearLayout>
+
+
+
+    </LinearLayout>
+
+

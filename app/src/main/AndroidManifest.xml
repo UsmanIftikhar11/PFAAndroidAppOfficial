@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.pfa.pfaapp">
+
+    <application
+        android:name=".AppController"
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/pfalogo"
+        android:usesCleartextTraffic="true"
+        android:label="@string/app_name"
+        android:debuggable="false"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/pfalogo"
+        android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning,HardcodedDebugMode,RtlEnabled"
+        tools:targetApi="ICE_CREAM_SANDWICH">
+        <activity android:name=".printing.PrinterActivity" />
+        <activity android:name=".BTDeviceList" />
+        <activity android:name=".WebAppActivity" />
+
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter
+                android:autoVerify="true"
+                tools:targetApi="m">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="cell.pfa.gop.pk"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".BaseActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme" />
+        <!--
+             Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
+        <activity
+            android:name=".VerifyActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme" /> <!-- [END fcm_default_icon] -->
+        <!-- [START fcm_default_channel] -->
+        <activity
+            android:name=".PFADrawerActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme" /> <!-- [END fcm_default_channel] -->
+        <!--
+                  The API key for Google Maps-based APIs is defined as a string resource.
+                  (See the file "res/values/google_maps_api.xml").
+                  Note that the API key is linked to the encryption key used to sign the APK.
+                  You need a different API key for each encryption key, including the release key that is used to
+                  sign the APK for publishing.
+                  You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <activity
+            android:name=".PFAFiltersActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme" />
+        <activity
+            android:name=".PFADetailActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".PFAAddNewActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme" />
+        <activity
+            android:name=".SignupActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme" />
+        <activity
+            android:name=".FBOMainGridActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme" />
+        <activity
+            android:name=".LocalFormsActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme" />
+
+        <activity
+            android:name=".MapsActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme" /> <!-- [START firebase_service] -->
+        <activity
+            android:name=".DropdownActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme" /> <!-- [END firebase_service] -->
+        <!-- [START firebase_iid_service] -->
+        <!-- [END firebase_iid_service] -->
+        <activity
+            android:name=".ImageGalleryActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/DrawerActivityTheme" />
+
+        <activity
+            android:name=".ForgotPinActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme" />
+
+        <activity
+            android:name=".PFASearchActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme" />
+        <activity
+            android:name=".FPrintActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme" />
+        <activity
+            android:name=".LocalFormDialogActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme" />
+        <activity
+            android:name=".SetPinActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme" />
+        <activity
+            android:name=".PinSuccessActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme" />
+        <activity
+            android:name=".VerifySMSActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme" /> <!-- android:launchMode="singleInstance" -->
+        <activity
+            android:name=".NotificationActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/DrawerActivityTheme" />
+        <activity
+            android:name=".emergency.LockHelpActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance"
+            android:theme="@style/Theme_Dialog_Translucent" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/pfalogo" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" /> <!-- <activity -->
+        <!-- android:name=".VideoRecordActivity" -->
+        <!-- android:screenOrientation="portrait" -->
+        <!-- android:theme="@style/DrawerActivityTheme" /> -->
+        <!-- <activity -->
+        <!-- android:name=".WebAppActivity" -->
+        <!-- android:screenOrientation="portrait" -->
+        <!-- android:theme="@style/WebViewTheme"> -->
+        <!-- <intent-filter -->
+        <!-- android:autoVerify="true" -->
+        <!-- tools:targetApi="m"> -->
+        <!-- <action android:name="android.intent.action.VIEW" /> -->
+        <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+        <!-- <category android:name="android.intent.category.BROWSABLE" /> -->
+        <!-- <data -->
+        <!-- android:host="cell.pfa.gop.pk" -->
+        <!-- android:scheme="https" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.pfa.pfaapp.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+        <receiver android:name=".receivers.BootBroadcast">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".emergency.ScreenReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:label="RegisterReceiverService">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <service
+            android:name=".locationutils.LocationUpdatesService"
+            android:enabled="true"
+            android:exported="false"
+            android:stopWithTask="true">
+            <intent-filter android:priority="1000">
+                <action android:name="android.location.PROVIDERS_CHANGED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".notifications.MyFirebaseMessagingService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service> <!-- Emergency Contact -->
+        <service
+            android:name=".notifications.MyJobService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".emergency.RegisterReceiverService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+    </application>
+    <uses-feature
+        android:name="android.hardware.camera.any"
+        android:required="true" /> <!-- <uses-permission android:name="android.permission.CALL_PHONE" /> -->
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="com.samsung.android.providers.context.permission.WRITE_USE_APP_FEATURE_SURVEY" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Permission to read/write storage data like image, file -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- Location permissions -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- This app records A/V content from camera and stores it to disk -->
+    <!-- <uses-feature -->
+    <!-- android:name="android.hardware.camera" -->
+    <!-- android:required="true" -->
+    <!-- tools:targetApi="eclair" /> -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+
+</manifest>

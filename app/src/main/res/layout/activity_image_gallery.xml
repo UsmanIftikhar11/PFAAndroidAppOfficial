@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.pfa.pfaapp.ImageGalleryActivity">
+
+    <com.pfa.pfaapp.pinchzoom.PinchZoomPhotoView
+        android:id="@+id/galleryCNIV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:visibility="invisible" />
+
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:id="@+id/videoOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <ImageButton
+        android:id="@+id/deleteImgBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="7dp"
+        android:layout_marginRight="7dp"
+        android:background="@color/transparent"
+        android:contentDescription="@string/app_name"
+        android:src="@mipmap/delete_photo"
+        android:visibility="gone" />
+
+    <ImageButton
+        android:id="@+id/galleryBackImgBtn"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:background="@color/transparent"
+        android:contentDescription="@string/app_name"
+        android:onClick="onClickBackImgBtn"
+        android:paddingLeft="7dp"
+        android:paddingRight="7dp"
+        android:src="@mipmap/left_arrow_green"
+        android:visibility="visible" />
+
+    <ImageButton
+        android:id="@+id/downloadImgBtn"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/transparent"
+        android:contentDescription="@string/app_name"
+        android:onClick="onClickDownloadBtn"
+        android:src="@mipmap/download_file"
+        android:visibility="gone" />
+</RelativeLayout>

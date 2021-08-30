@@ -1,0 +1,201 @@
+{
+  "status": "OK",
+  "status_msg": "Data fetched successfully",
+  "form": [
+    {
+      "section_id": "1",
+      "section_name": "Filters Section",
+      "fields": [
+        {
+          "field_name": "offerChecks",
+          "field_type": "checkbox",
+          "data_type": "text",
+          "order": 9,
+          "required": true,
+          "multiple": true,
+          "value": "Offers",
+          "default_value": "",
+          "icon": "",
+          "horizontal": false,
+          "data": [
+            {
+              "name": "offerChecks",
+              "value": "Free delivery"
+            },
+            {
+              "name": "offerChecks",
+              "value": "Accepts Vouchers"
+            },
+            {
+              "name": "offerChecks",
+              "value": "Deal"
+            },
+            {
+              "name": "offerChecks",
+              "value": "Online Payment Available"
+            }
+          ]
+        },
+        {
+          "field_name": "designation",
+          "field_type": "dropdown",
+          "data_type": "text",
+          "order": 10,
+          "required": true,
+          "multiple": false,
+          "value": "Designation",
+          "default_value": "Owner",
+          "icon": "",
+          "data": [
+            {
+              "name": "designation",
+              "value": ""
+            },
+            {
+              "name": "designation",
+              "value": "Owner"
+            },
+            {
+              "name": "designation",
+              "value": "Manager"
+            },
+            {
+              "name": "designation",
+              "value": "Other"
+            }
+          ]
+        },
+        {
+          "field_name": "subjects",
+          "field_type": "dropdown",
+          "data_type": "text",
+          "order": 5,
+          "required": false,
+          "multiple": true,
+          "value": "Subjects",
+          "default_value": "Maths",
+          "icon": "",
+          "data": [
+            {
+              "name": "subjects",
+              "value": "Math"
+            },
+            {
+              "name": "subjects",
+              "value": "English"
+            },
+            {
+              "name": "subjects",
+              "value": "Urdu"
+            },
+            {
+              "name": "subjects",
+              "value": "Persian"
+            },
+            {
+              "name": "subjects",
+              "value": "Sociology"
+            },
+            {
+              "name": "subjects",
+              "value": "Other"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "2",
+      "section_name": "",
+      "fields": [
+        {
+          "field_name": "cuisineChecks",
+          "field_type": "checkbox",
+          "data_type": "text",
+          "order": 9,
+          "required": true,
+          "multiple": true,
+          "value": "CUISINES",
+          "default_value": "",
+          "icon": "",
+          "horizontal": false,
+          "data": [
+            {
+              "name": "cuisineChecks",
+              "value": "Pizza"
+            },
+            {
+              "name": "cuisineChecks",
+              "value": "Desserts"
+            },
+            {
+              "name": "cuisineChecks",
+              "value": "Pakistani"
+            },
+            {
+              "name": "cuisineChecks",
+              "value": "Burgers"
+            },
+            {
+              "name": "cuisineChecks",
+              "value": "Beverage"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "section_id": "3",
+      "section_name": "ATTRIBUTES Section",
+      "fields": [
+        {
+          "field_name": "attributesChecks",
+          "field_type": "checkbox",
+          "data_type": "text",
+          "order": 9,
+          "required": true,
+          "multiple": true,
+          "value": "Attributes",
+          "default_value": "",
+          "icon": "",
+          "horizontal": false,
+          "data": [
+            {
+              "name": "attributesChecks",
+              "value": "BBQ"
+            },
+            {
+              "name": "attributesChecks",
+              "value": "Crepes"
+            },
+            {
+              "name": "attributesChecks",
+              "value": "Cupcakes"
+            },
+            {
+              "name": "attributesChecks",
+              "value": "All"
+            }
+          ]
+        },
+        {
+          "field_name": "submitBtn",
+          "field_type": "button",
+          "data_type": "text",
+          "order": 15,
+          "required": true,
+          "multiple": false,
+          "value": "Apply Filters",
+          "icon": "",
+          "clickable": true,
+          "data": [
+            {
+              "name": "submitBtn",
+              "value": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

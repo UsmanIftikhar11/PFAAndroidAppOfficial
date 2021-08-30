@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".PFADrawerActivity">
+
+    <RelativeLayout
+        android:id="@+id/ttl_bar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/hor_tab_color">
+
+        <ImageButton
+            android:id="@+id/menuImgBTn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:contentDescription="@string/app_name"
+            android:onClick="onClickMenuImgBtn"
+            android:paddingStart="7dp"
+            android:paddingLeft="7dp"
+            android:paddingEnd="7dp"
+            android:paddingRight="7dp"
+            android:src="@mipmap/menu_button" />
+
+        <ImageButton
+            android:id="@+id/menuPlusImgBtn"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@color/transparent"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/plus"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/downloadInspImgBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@color/transparent"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/download_white"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/endView"
+            android:layout_width="1dp"
+            android:layout_height="1dp"
+            android:layout_alignParentEnd="true"
+            />
+
+        <ImageButton
+            android:id="@+id/panicAlertBtn"
+            style="@style/white_19_sp_bold"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/endView"
+            android:background="@color/transparent"
+            android:contentDescription="@string/app_name"
+            android:padding="@dimen/dp_7"
+            android:scaleType="fitCenter"
+            android:visibility="gone"
+            android:src="@mipmap/panic_button" />
+
+        <RelativeLayout
+            android:id="@+id/searchFilterFL"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="7dp"
+            android:layout_toStartOf="@+id/panicAlertBtn"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/filterIV"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/app_name"
+                android:src="@mipmap/search_filter" />
+
+            <TextView
+                android:id="@+id/filterCountTV"
+                style="@style/white_10_sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/filterIV"
+                android:background="@drawable/count_round_bg"
+                android:gravity="center"
+                android:text=""
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+
+
+
+        <TextView
+            android:id="@+id/titleTV"
+            style="@style/white_19_sp_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/searchFilterFL"
+            android:layout_toEndOf="@+id/menuImgBTn"
+            android:paddingStart="7dp"
+            android:paddingEnd="0dp" />
+
+        <TextView
+            android:id="@+id/notifMsgTV"
+            style="@style/white_19_sp_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/searchFilterFL"
+            android:layout_toEndOf="@+id/menuImgBTn"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="onClickNotifMsgTV"
+            android:paddingStart="7dp"
+            android:paddingEnd="0dp"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <!--<include layout="@layout/content_nav_drawer" />-->
+    <include
+        android:id="@+id/content_nav_drawer"
+        layout="@layout/content_nav_drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

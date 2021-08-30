@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioButton xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/tab_barcolor_15_sp"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+     android:button="@null"
+    android:checked="true"
+    android:textAllCaps="true"
+    android:layout_weight="1"
+    android:drawablePadding="15dp"
+    android:padding="7dp" />

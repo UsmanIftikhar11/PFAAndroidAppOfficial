@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_dialogbox_rounded_corners"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context="com.pfa.pfaapp.fragments.ShareFragment">
+
+    <TextView
+        android:id="@+id/dialogtitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="7dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="3sp"
+        android:paddingTop="10dp"
+        android:paddingBottom="7dp"
+        android:text="@string/select_share_date"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white" />
+
+    <TextView
+        android:id="@+id/startDateLblTV"
+        style="@style/black_17_sp_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/start_date" />
+
+    <TextView
+        android:id="@+id/startDateET"
+        style="@style/black_15_sp_et"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="7dp"
+        android:background="@mipmap/text_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:hint="@string/start_date"
+        android:inputType="none"
+        android:padding="@dimen/dp_7"
+        tools:ignore="TextFields" />
+
+    <TextView
+        android:id="@+id/endDateLblTV"
+        style="@style/black_17_sp_bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/end_date" />
+
+    <TextView
+        android:id="@+id/endDateET"
+        style="@style/black_15_sp_et"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="7dp"
+        android:background="@mipmap/text_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:hint="@string/end_date"
+        android:padding="@dimen/dp_7"
+        tools:ignore="TextFields" />
+
+    <Button
+        android:id="@+id/yesbtn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dip"
+        android:background="@drawable/button_green"
+        android:gravity="center"
+        android:text="@string/share"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+</LinearLayout>

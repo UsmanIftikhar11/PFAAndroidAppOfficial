@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="72dp"
+    android:background="@color/white"
+    android:descendantFocusability="beforeDescendants"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="horizontal"
+    tools:ignore="RtlSymmetry"
+    tools:targetApi="lollipop">
+
+    <com.pfa.pfaapp.customviews.PFATextInputLayout
+        android:id="@+id/pfaAdd_IPL"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_gravity="center_vertical">
+
+        <com.pfa.pfaapp.customviews.PFADDACTV
+            android:id="@+id/pfa_dd_actv"
+            style="@style/dropdown_14sp_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@color/transparent"
+            android:completionThreshold="1"
+            android:ems="10"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:hint="@string/region"
+            android:paddingStart="20dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="9dp"
+            android:paddingBottom="5dp"
+            android:popupBackground="@color/white"
+            android:popupElevation="0dp"
+            android:singleLine="true"
+            android:textColorHint="@color/hint_color"
+            tools:ignore="RtlSymmetry,UnusedAttribute" />
+    </com.pfa.pfaapp.customviews.PFATextInputLayout>
+
+    <ImageButton
+        android:id="@+id/clearImgBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="right|end|center_vertical"
+        android:layout_marginEnd="7dp"
+        android:layout_marginRight="7dp"
+        android:background="@color/transparent"
+        android:contentDescription="@string/app_name"
+        android:paddingBottom="15dp"
+        android:src="@android:drawable/presence_offline"
+        android:visibility="gone"
+        tools:ignore="RtlHardcoded" />
+
+</FrameLayout>
