@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -149,6 +150,8 @@ public class BTDeviceList extends ListActivity {
         @Override
         protected void onActivityResult(int reqCode, int resultCode, Intent intent) {
             super.onActivityResult(reqCode, resultCode, intent);
+
+            Log.d("imagePath" , "onActivityResult = " + "BTDeviceList");
 
             switch (reqCode) {
                 case REQUEST_ENABLE_BT:

@@ -2,6 +2,7 @@ package com.pfa.pfaapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -163,6 +164,7 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
 
     @Override
     public void showImagePickerDialog(CustomNetworkImageView view) {
+        Log.d("imagePath" , "image selection utils PFA filters activity");
         imageSelectionUtils = new ImageSelectionUtils(this, view);
         imageSelectionUtils.showImagePickerDialog(null, false, false);
     }
@@ -228,6 +230,8 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        Log.d("imagePath" , "onActivityResult = " + "PFAFiltersActivity");
 
         if (resultCode != RESULT_OK) {
             customViewCreate.clearFocusOfAllViews(filtersLL);

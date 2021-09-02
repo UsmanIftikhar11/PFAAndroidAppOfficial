@@ -16,6 +16,7 @@ import com.pfa.pfaapp.AppController;
 import com.pfa.pfaapp.R;
 import com.pfa.pfaapp.interfaces.HttpResponseCallback;
 import com.pfa.pfaapp.interfaces.SendMessageCallback;
+import com.pfa.pfaapp.utils.HttpsTrustManager;
 import com.pfa.pfaapp.utils.ScalingUtilities;
 import com.pfa.pfaapp.utils.SharedPrefUtils;
 
@@ -121,6 +122,7 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
         }
 
         printLog("Request Url=>", "" + url.toString());
+//        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest = new StringRequest(Method.GET, url.toString().replaceAll(" ", "%20"), new Response.Listener<String>() {
 
             @Override
@@ -241,6 +243,7 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
         progressDialog.setCancelable(false);
         progressDialog.show();
 
+//        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest = new StringRequest(Method.POST, requestUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

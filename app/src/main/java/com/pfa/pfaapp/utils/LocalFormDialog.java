@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -234,6 +235,7 @@ public class LocalFormDialog extends CustomDialogs implements PFAViewsCallbacks 
                     customViewCreate = new CustomViewCreate(mContext, new PFAViewsCallbacks() {
                         @Override
                         public void showImagePickerDialog(CustomNetworkImageView view) {
+                            Log.d("imagePath" , "image selection utils Local form dialog");
                             imageSelectionUtils = new ImageSelectionUtils(baseActivity, view);
                             imageSelectionUtils.showImagePickerDialog(null, false, false);
                         }

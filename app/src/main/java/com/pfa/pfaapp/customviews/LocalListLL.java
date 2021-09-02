@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -206,6 +207,7 @@ public class LocalListLL extends LinearLayout implements WhichItemClicked {
                         if (addProofCNIV != null && addProofCNIV.getImageFile() != null) {
                             addProofCNIV.performClick();
                         } else {
+                            Log.d("imagePath" , "image selection utils local list LL");
                             imageSelectionUtils = new ImageSelectionUtils(baseActivity, addProofCNIV);
                             imageSelectionUtils.showImagePickerDialog(null, false, false);
                         }
@@ -431,6 +433,9 @@ public class LocalListLL extends LinearLayout implements WhichItemClicked {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        Log.d("imagePath" , "onActivityResult = " + "localListLL");
+
         SendMessageCallback sendMessageCallback = new SendMessageCallback() {
             @Override
             public void sendMsg(String message) {
@@ -446,6 +451,7 @@ public class LocalListLL extends LinearLayout implements WhichItemClicked {
 
                 isImage = true;
 
+                Log.d("imagePath" , "local list LL");
                 if (localFormDialog != null && localFormDialog.imageSelectionUtils != null)
                     localFormDialog.imageSelectionUtils.chooseFromCameraImgPath(data, sendMessageCallback);
                 else if (imageSelectionUtils != null) {

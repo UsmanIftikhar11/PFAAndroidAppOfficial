@@ -112,8 +112,6 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
     SharedPreferences sharedPreferences;
     String  defaultValue = null;
 
-
-
     private boolean setLocationListener;
     private DDSelectedCallback DDCallback;
 
@@ -124,8 +122,6 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
     private List<FormSectionInfo> foodLabSections;
 
     private FormFieldsHideShow formFieldsHideShow;
-
-
 
     /**
      * @param mContext          {@link Context}

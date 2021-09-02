@@ -17,11 +17,11 @@ import static com.pfa.pfaapp.utils.AppConst.SP_LOGIN_TYPE;
 public class HttpService extends HttpUtils {
     //    Dev API
 //    private static final String BASE_URL = "https://cell.pfa.gop.pk/dev/api/";
+//    private static final String BASE_URL = "http://172.16.7.104/pfa/api/";
 
     //    Live APIhttps:
     private static final String BASE_URL = "https://cell.pfa.gop.pk/api/";
 //    private static final String BASE_URL = "https://cellpfa.chimpstudio.co.uk/api/";
-
 
 //    private static final String BASE_URL = "http://54.39.33.105/api/";
 

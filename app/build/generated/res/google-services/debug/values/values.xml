@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="default_web_client_id" translatable="false">866759406266-id4cvcave5ai36is44u27rhelofd743d.apps.googleusercontent.com</string>
-    <string name="firebase_database_url" translatable="false">https://pfaweb-7c553.firebaseio.com</string>
-    <string name="gcm_defaultSenderId" translatable="false">866759406266</string>
-    <string name="google_api_key" translatable="false">AIzaSyBi_1klOSwWKyv3meFy3EsVFoR0c71vmCE</string>
-    <string name="google_app_id" translatable="false">1:866759406266:android:a521ab50633d02fc</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBi_1klOSwWKyv3meFy3EsVFoR0c71vmCE</string>
-    <string name="google_storage_bucket" translatable="false">pfaweb-7c553.appspot.com</string>
-    <string name="project_id" translatable="false">pfaweb-7c553</string>
+    <string name="default_web_client_id" translatable="false">168588805996-92fil193mam6v23un65c4011sib005nj.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">168588805996</string>
+    <string name="google_api_key" translatable="false">AIzaSyAK4pzOc4vu8uLY6_Pu1uL9N1-o34dZfUM</string>
+    <string name="google_app_id" translatable="false">1:168588805996:android:7bd150fec9f09e410a9549</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAK4pzOc4vu8uLY6_Pu1uL9N1-o34dZfUM</string>
+    <string name="google_storage_bucket" translatable="false">pfa-test-601be.appspot.com</string>
+    <string name="project_id" translatable="false">pfa-test-601be</string>
 </resources>

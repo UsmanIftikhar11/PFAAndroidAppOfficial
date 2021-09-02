@@ -66,8 +66,6 @@ public class AddInspectionUtils {
 
     public String downloadUrl;
 
-
-
     public ImageButton downloadLocalImgBtn;
 
     private BaseActivity baseActivity;
@@ -277,8 +275,7 @@ public class AddInspectionUtils {
             }
 
             @Override
-            public void downloadInspection(String downloadUrl, int position) {
-            }
+            public void downloadInspection(String downloadUrl, int position) {}
 
             @Override
             public void deleteRecordAPICall(String deleteUrl, int position) {
@@ -313,13 +310,12 @@ public class AddInspectionUtils {
         if (response != null && response.optBoolean("status")) {
             try {
 
-
                  conducted_inspection = response.optBoolean("conducted_inspection");
 
                 PFATableInfo pfaTableInfo = new PFATableInfo();
 
-
                 JSONObject localMenuObject = response.optJSONObject("localMenu");
+                assert localMenuObject != null;
                 API_URL = localMenuObject.optString("API_URL");
                 inspection_id = localMenuObject.getString("inspection_id");
 

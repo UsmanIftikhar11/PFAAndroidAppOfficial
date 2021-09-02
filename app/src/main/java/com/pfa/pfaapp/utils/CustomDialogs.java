@@ -295,7 +295,7 @@ public class CustomDialogs {
 
             @Override
             public void onClick(View v) {
-                sendMsgCallback.sendMsg("" + AppConst.CAPTURE_PHOTO);
+                sendMsgCallback.sendMsg(String.valueOf(AppConst.CAPTURE_PHOTO));
                 if (alertDialog != null)
                     alertDialog.dismiss();
 

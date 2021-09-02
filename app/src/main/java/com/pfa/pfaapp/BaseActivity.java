@@ -11,9 +11,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.provider.Settings;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.MotionEvent;
@@ -55,6 +58,7 @@ import com.samsung.android.sdk.pass.SpassFingerprint;
 
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.HashMap;
@@ -64,6 +68,7 @@ import java.util.TimerTask;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -355,6 +360,27 @@ public class BaseActivity extends AppCompatActivity {
                                 Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.CALL_PHONE
                                 , Manifest.permission.RECEIVE_BOOT_COMPLETED, Manifest.permission.SYSTEM_ALERT_WINDOW},
                         123);
+
+            }
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.R)
+    public void checkManageStorage(){
+        if (!Environment.isExternalStorageManager())
+        {
+            Intent permissionIntent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION );
+            startActivity(permissionIntent);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 123 && grantResults.length>0){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                checkManageStorage();
             }
         }
     }
@@ -801,6 +827,13 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        Log.d("imagePath" , "onActivityResult = " + "BaseActivity");
+
+        if (requestCode == 253){
+            Toast.makeText(locationUpdatesService, "Permission files granted", Toast.LENGTH_LONG).show();
+        }
+
         try {
             btsocket = BTDeviceList.getSocket();
             if (btsocket != null) {

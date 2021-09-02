@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-he\\values-he.xml",
+            "outputFile": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-he\\values-he.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\HP\\.gradle\\caches\\transforms-2\\files-2.1\\454ef325c78dc0dde7f3991cc0246595\\jetified-zxing-android-embedded-3.2.0\\res\\values-he\\values-he.xml",
+                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-2\\files-2.1\\bad103c085379426d2b08f4f0e083a7e\\jetified-zxing-android-embedded-3.2.0\\res\\values-he\\values-he.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

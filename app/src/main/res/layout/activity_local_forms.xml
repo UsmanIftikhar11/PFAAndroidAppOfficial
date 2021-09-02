@@ -13,9 +13,6 @@
     android:orientation="vertical"
     tools:context="com.pfa.pfaapp.LocalFormsActivity">
 
-
-
-
     <include
         android:id="@+id/ttl_bar"
         layout="@layout/ttl_bar" />

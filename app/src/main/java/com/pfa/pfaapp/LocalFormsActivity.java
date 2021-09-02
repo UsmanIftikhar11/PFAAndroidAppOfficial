@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -93,11 +94,11 @@ public class LocalFormsActivity extends BaseActivity implements HttpResponseCall
         }, 300);
     }
 
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        Log.d("imagePath" , "onActivityResult = " + "localFormActivity");
 
         if (addInspectionUtils.lastClicked >= 0) {
             if (addInspectionUtils.localFormsLL.getChildAt(addInspectionUtils.lastClicked) instanceof LocalFormLL)

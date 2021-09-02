@@ -1,818 +1,822 @@
 [
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_download_cancel_white11.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-hdpi\\download_cancel_white11.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_fbo_grid_item.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\fbo_grid_item.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rb_unchecked.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\rb_unchecked.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_tbl_subview.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pfa_tbl_subview.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_env.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\env.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_white_dialogbox_rounded_corners.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\white_dialogbox_rounded_corners.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_print.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\print.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_inspection_list_item.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\inspection_list_item.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_tab_textcolor_selector.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\tab_textcolor_selector.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_left_slider_arrow_grey.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\left_slider_arrow_grey.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_white_dialogbox_rounded_corners.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\white_dialogbox_rounded_corners.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ur_spinner_bg.9.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\ur_spinner_bg.9.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_existing_client_dialog.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\existing_client_dialog.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_print.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\print.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_proof_camera.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\proof_camera.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_maps.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_maps.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_print.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\print.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_checkicon.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\checkicon.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_tab_rb_selector.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\tab_rb_selector.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_video_record.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_video_record.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_pull_list_view_foot.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\pull_list_view_foot.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_delete_photo.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\delete_photo.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_lock_help.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_lock_help.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_login.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_login.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_video_btn.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\video_btn.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_set_pin.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_set_pin.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_chat_ll.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\pfa_chat_ll.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bgfinger.jpg.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\bgfinger.jpg"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_download_white.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-mdpi\\download_white.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_local_list_item.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\local_list_item.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_dropdown_actv.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\pfa_dropdown_actv.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_text_bg.9.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\text_bg.9.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_pull_list_view_head.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\pull_list_view_head.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_green.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\button_green.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_verify_user_ll.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\verify_user_ll.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_gallery.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\gallery.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_text_input_password_icon.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\design_text_input_password_icon.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_business_visit_dialog.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\business_visit_dialog.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_form_edittext.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\pfa_form_edittext.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_dropdown_list_item.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\dropdown_list_item.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_title_logo.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\title_logo.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ur_text_bg_disabled.9.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\ur_text_bg_disabled.9.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_pfa_gif.gif.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\pfa_gif.gif"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_delete.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\delete.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_plus.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\plus.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_tabbed.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\fragment_tabbed.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_tbl_subview.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\pfa_tbl_subview.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_web_app.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_web_app.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_login.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\login.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_print.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\print.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_name_circle.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\name_circle.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_img_detail_ll.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\img_detail_ll.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_heading_ttl.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\heading_ttl.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_menu_table.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\fragment_menu_table.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_business_visit_dialog.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\business_visit_dialog.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_foodlab_parent_ll.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\foodlab_parent_ll.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_green_rounded.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\button_green_rounded.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_filter_icon1.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\filter_icon1.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_menu_item.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\fragment_menu_item.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_pfalogo.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\pfalogo.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_check_mark.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\check_mark.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_img_attachment_ll.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\img_attachment_ll.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_text_bg_disabled.9.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\text_bg_disabled.9.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_nav_header_main.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\nav_header_main.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_clear_filter_white.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\clear_filter_white.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grey_border.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\grey_border.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_text_bg.9.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\text_bg.9.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_ci_tabbed.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\fragment_ci_tabbed.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_video_record.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_video_record.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_nav_drawer.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\content_nav_drawer.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_dialog_logo.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\dialog_logo.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_go.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\go.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_fbo_grid_item.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\fbo_grid_item.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_clear_filter.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\clear_filter.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_green.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\button_green.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_count_round_bg.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\count_round_bg.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_home_topbar_selector.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\home_topbar_selector.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_logo.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\logo.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_horizontal_line_long.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\horizontal_line_long.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ur_left_arrow_green.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\ur_left_arrow_green.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_bluetooth_list.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\bluetooth_list.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_pin_success.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_pin_success.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_login.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_login.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_sorry_img.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\sorry_img.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_menu_button.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\menu_button.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_no_img.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\no_img.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_left_arrow_grey.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\left_arrow_grey.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_add_insp_include_layout.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\add_insp_include_layout.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_left_slider_arrow.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\left_slider_arrow.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_pfaadd_new.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_pfaadd_new.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_img_attachment_ll.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\img_attachment_ll.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_print.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\print.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_pfalogo.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\pfalogo.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_search_filter.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\search_filter.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_detail_item.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\pfa_detail_item.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_left_arrow_green.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\left_arrow_green.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_badge_verified.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\badge_verified.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_menu_map.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\fragment_menu_map.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_map_detail_ll.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\map_detail_ll.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_filters.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_filters.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_verify_sms.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_verify_sms.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_list_footer.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\list_footer.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_chat_footer.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\pfa_chat_footer.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_local_tabbed.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\fragment_local_tabbed.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_gallery.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\gallery.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_image_gallery.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_image_gallery.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_inspection_list_item.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\inspection_list_item.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_picon.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\picon.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_local_media_grid_item.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\local_media_grid_item.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_horizontal_line_long.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\horizontal_line_long.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_search_actv.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\pfa_search_actv.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grey_box_selector.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\grey_box_selector.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_nav_header_main.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\nav_header_main.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_local_form_dialog.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_local_form_dialog.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_print.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\print.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_detail_heading.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pfa_detail_heading.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_spinner_required.9.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\spinner_required.9.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_print.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\print.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_local_list_item.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\local_list_item.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_green_rounded.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\button_green_rounded.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_menu_grid.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\fragment_menu_grid.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_printer.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_printer.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_splash.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_splash.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_dialog_with_one_option.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\dialog_with_one_option.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_menu_map.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\fragment_menu_map.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_blue_icon.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\blue_icon.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grey_border_round_corners_disabled.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\grey_border_round_corners_disabled.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ur_text_bg.9.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\ur_text_bg.9.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_attachment_link.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\attachment_link.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grid_lang_rb_unchecked.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\grid_lang_rb_unchecked.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_camera.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\camera.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_tab_bg_selected.9.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\tab_bg_selected.9.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_cancel.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\cancel.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_share.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\fragment_share.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_list_item.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\pfa_list_item.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_splash_bg.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\splash_bg.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_sidemenu_rb.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\pfa_sidemenu_rb.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_lang_rb_selector.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\lang_rb_selector.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_horizontal_line.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\horizontal_line.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_deseize_all.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\deseize_all.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_spinner_layout.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\spinner_layout.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_green_border_round_corners.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\green_border_round_corners.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_list_item_selector.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\list_item_selector.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ur_logout.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\ur_logout.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_list_footer.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\list_footer.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_spinner_required.9.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\spinner_required.9.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_call_grey.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\call_grey.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_show_insp_list.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\show_insp_list.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_left_slider_arrow_grey.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\left_slider_arrow_grey.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_text_bg_disabled.9.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\text_bg_disabled.9.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_show_insp_list.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\show_insp_list.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_text_bg_star.9.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\text_bg_star.9.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ur_text_bg.9.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-hdpi\\ur_text_bg.9.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_cancel.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\cancel.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_dialog_with_one_option.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\dialog_with_one_option.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_download.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\download.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_filters.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_filters.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_text_bg_disabled_star.9.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\text_bg_disabled_star.9.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_download.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-hdpi\\download.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_location_include.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pfa_location_include.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_ttl_bar.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\ttl_bar.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_printt.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\printt.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ur_logout.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\ur_logout.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_video_thumb.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\video_thumb.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ur_text_bg_disabled.9.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-hdpi\\ur_text_bg_disabled.9.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_ttl_bar.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\ttl_bar.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_local_forms.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_local_forms.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_left_arrow_grey.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\left_arrow_grey.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_current_loc_pin.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\current_loc_pin.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_spinner_bg.9.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\spinner_bg.9.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_pin_success.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_pin_success.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_bluetooth_list.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\bluetooth_list.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_white_text_bg.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\white_text_bg.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grey_box_selected.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\grey_box_selected.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ur_left_arrow_grey.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\ur_left_arrow_grey.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_search_business_name.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\search_business_name.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_local_tabbed.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\fragment_local_tabbed.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_detail_subview.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pfa_detail_subview.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_checkicon.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-hdpi\\checkicon.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_current_loc_pin.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\current_loc_pin.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_app_bar_nav_drawer.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\app_bar_nav_drawer.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ur_login.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\ur_login.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grid_lang_rb_selector.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\grid_lang_rb_selector.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_notificatin.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_notificatin.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_printer.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_printer.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_panic_button.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\panic_button.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_web_app.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_web_app.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_proof_camera.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\proof_camera.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_textview_for_spinner.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\textview_for_spinner.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_fbo_check_list_item.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\fbo_check_list_item.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_search_filter.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-hdpi\\search_filter.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_datepicker_layout.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\datepicker_layout.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_tab_bg_selected.9.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-hdpi\\tab_bg_selected.9.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_video_btn.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\video_btn.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grid_lang_rb_unchecked.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\grid_lang_rb_unchecked.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_print.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\print.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_deseize_all.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\deseize_all.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_pfadrawer.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_pfadrawer.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_forgot_pin.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_forgot_pin.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_clear_filter_white.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\clear_filter_white.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_record_video.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\record_video.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_menu_item.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\fragment_menu_item.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grey_border_round_corners.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\grey_border_round_corners.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_left_arrow_white.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\left_arrow_white.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_share_icon.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-hdpi\\share_icon.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_spinner_layout.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\spinner_layout.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_plus_add.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\plus_add.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_chat_header.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pfa_chat_header.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_image_gallery.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_image_gallery.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_show_img_dialog.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\show_img_dialog.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_dropdown_list_item.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\dropdown_list_item.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_check_mark.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\check_mark.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_ci_tabbed.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\fragment_ci_tabbed.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_drafts.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\fragment_drafts.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_print.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\print.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_photo_dialog_layout.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\photo_dialog_layout.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_drawer_custom_title.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\drawer_custom_title.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_tab_rb_selector.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\tab_rb_selector.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ur_spinner_required.9.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-hdpi\\ur_spinner_required.9.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_fprint.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_fprint.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_delete_photo.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\delete_photo.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_transparent.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\bg_transparent.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_datepicker_layout.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\datepicker_layout.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_comp.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\comp.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_detail_subview.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\pfa_detail_subview.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_lock_help.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_lock_help.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_location_include.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\pfa_location_include.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pull_list_view_head.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pull_list_view_head.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\anim_fade_out.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\anim\\fade_out.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_existing_client_dialog.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\existing_client_dialog.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_left_arrow_white.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\left_arrow_white.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_fbomain_grid.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_fbomain_grid.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_fbomain_grid.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_fbomain_grid.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_camera.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\camera.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_notificatin.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_notificatin.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_download_file.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\download_file.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_no_img.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\no_img.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_signup.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_signup.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_print.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\print.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_plus.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\plus.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_local_form_list.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\local_form_list.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_download_cancel.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\download_cancel.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_set_pin.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_set_pin.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_proof_list_footer.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\proof_list_footer.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_horizontal_line.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\horizontal_line.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_pfa_gif.gif.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\pfa_gif.gif"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\xml_provider_paths.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\xml\\provider_paths.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grey_border_round_corners_disabled.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\grey_border_round_corners_disabled.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_img_detail_ll.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\img_detail_ll.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grid_lang_rb_checked.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\grid_lang_rb_checked.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_logout.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\logout.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pull_list_view_foot.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pull_list_view_foot.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_chat_header.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\pfa_chat_header.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_list_item.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pfa_list_item.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grey_border.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\grey_border.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_three_buttons_custom_dialog.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\three_buttons_custom_dialog.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_pfaadd_new.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_pfaadd_new.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_local_forms.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_local_forms.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_print.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\print.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_form_img_fl.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\form_img_fl.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_tab_rb.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\pfa_tab_rb.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_tab_textcolor_selector.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\tab_textcolor_selector.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_comp.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\comp.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_left_slider_arrow.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\left_slider_arrow.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_pfadetail.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_pfadetail.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_chat_footer.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pfa_chat_footer.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_search.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-hdpi\\search.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_search_icon.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\search_icon.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_show_img_dialog.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\show_img_dialog.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_share_icon.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\share_icon.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_detail_heading.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\pfa_detail_heading.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ur_spinner_required.9.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\ur_spinner_required.9.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_right_slider_arrow.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\right_slider_arrow.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_download_white.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-mdpi\\download_white.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rb_checked.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\rb_checked.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_add_new.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\add_new.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_filter_icon1.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\filter_icon1.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_home_topbar_selector.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\home_topbar_selector.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_print2.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\print2.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_plus_add.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\plus_add.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_add_new.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\add_new.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\anim_fade_out.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\anim\\fade_out.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_menu_table.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\fragment_menu_table.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_chat_ll.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pfa_chat_ll.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_pfadrawer.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_pfadrawer.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_name_circle.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\name_circle.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_grey.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\button_grey.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\anim_slide_in_from_right.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\anim\\slide_in_from_right.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_search_business_name.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\search_business_name.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_pfasearch.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_pfasearch.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_verify.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_verify.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_map_detail_ll.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\map_detail_ll.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_share.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\fragment_share.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_title_logo.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\title_logo.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_signup.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_signup.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_print.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\print.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_maps.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_maps.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_call_grey.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\call_grey.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_picon.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-hdpi\\picon.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_horizontal_line.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\horizontal_line.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_tabbed.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\fragment_tabbed.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_app_bar_nav_drawer.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\app_bar_nav_drawer.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_printt.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-hdpi\\printt.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_logout.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\logout.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_three_buttons_custom_dialog.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\three_buttons_custom_dialog.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ur_left_arrow_white.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\ur_left_arrow_white.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_foodlab_parent_ll.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\foodlab_parent_ll.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_dropdown_actv.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pfa_dropdown_actv.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_download_cancel.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-hdpi\\download_cancel.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_grey.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\button_grey.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grey_box_selector.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\grey_box_selector.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ur_left_arrow_grey.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\ur_left_arrow_grey.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_two_buttons_custom_dialog.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\two_buttons_custom_dialog.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_right_slider_arrow.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\right_slider_arrow.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_white_rounded_corner_box.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\white_rounded_corner_box.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grid_lang_rb_selector.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\grid_lang_rb_selector.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grid_lang_rb_checked.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\grid_lang_rb_checked.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_verify_sms.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_verify_sms.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ur_left_arrow_white.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\ur_left_arrow_white.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_env.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\env.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\anim_slide_in_from_right.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\anim\\slide_in_from_right.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_textview_for_spinner.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\textview_for_spinner.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bgfinger.jpg.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\bgfinger.jpg"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_splash.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_splash.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_print.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\print.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_menu_textcolor_selector.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\menu_textcolor_selector.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_local_form_dialog.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_local_form_dialog.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_badge_verified.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\badge_verified.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_add_insp_include_layout.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\add_insp_include_layout.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_search.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\search.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_search_icon.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\search_icon.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\xml_network_security_config.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\xml\\network_security_config.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_clear_filter.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\clear_filter.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_heading_ttl.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\heading_ttl.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ur_spinner_bg.9.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-hdpi\\ur_spinner_bg.9.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_attachment_link.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\attachment_link.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_left_arrow_green.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\left_arrow_green.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_verify.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_verify.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ur_login.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\ur_login.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_local_form_dialog.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\local_form_dialog.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_nav_drawer.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\content_nav_drawer.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_tab_rb.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pfa_tab_rb.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_cross.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\cross.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_pfadetail.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_pfadetail.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_spinner_bg.9.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\spinner_bg.9.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_two_buttons_custom_dialog.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\two_buttons_custom_dialog.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_splash_bg.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\splash_bg.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rb_checked.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\rb_checked.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_video_thumb.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\video_thumb.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_local_media_grid_item.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\local_media_grid_item.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grey_box_selected.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\grey_box_selected.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_download_cancel_white11.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\download_cancel_white11.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_text_bg_disabled_star.9.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\text_bg_disabled_star.9.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_dropdown.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_dropdown.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_lang_rb_selector.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\lang_rb_selector.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_cross.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\cross.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_menu_textcolor_selector.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\menu_textcolor_selector.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_printing.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_printing.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grey_box.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\grey_box.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_progress_dialog_layout.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\progress_dialog_layout.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_download_file.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-hdpi\\download_file.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_menu_grid.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\fragment_menu_grid.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_blue_icon.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\blue_icon.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_search_actv.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pfa_search_actv.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_delete.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\delete.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_white_text_bg.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\white_text_bg.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_progress_dialog_layout.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\progress_dialog_layout.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_verify_user_ll.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\verify_user_ll.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ur_text_bg_star.9.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-hdpi\\ur_text_bg_star.9.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_form_edittext.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pfa_form_edittext.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_drafts.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\fragment_drafts.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rb_unchecked.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\rb_unchecked.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_local_form_dialog.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\local_form_dialog.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_login.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\login.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_logo.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\logo.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grey_box.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\grey_box.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_text_bg_star.9.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xhdpi\\text_bg_star.9.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_print.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\print.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_go.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\go.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_text_input_password_icon.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\design_text_input_password_icon.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ur_left_arrow_green.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\ur_left_arrow_green.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_print2.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\print2.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_photo_dialog_layout.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\photo_dialog_layout.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_detail_item.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pfa_detail_item.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_transparent.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\bg_transparent.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_drawer_custom_title.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\drawer_custom_title.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_fbo_check_list_item.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\fbo_check_list_item.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grey_border_round_corners.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\grey_border_round_corners.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_panic_button.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-xxhdpi\\panic_button.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_menu_button.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\menu_button.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_fprint.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_fprint.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ur_text_bg_star.9.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\ur_text_bg_star.9.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_sorry_img.png.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\mipmap-hdpi\\sorry_img.png"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_sidemenu_rb.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pfa_sidemenu_rb.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_green_border_round_corners.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\green_border_round_corners.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_local_form_list.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\local_form_list.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\drawable_count_round_bg.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\drawable\\count_round_bg.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_horizontal_line.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\horizontal_line.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_dropdown.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_dropdown.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\xml_provider_paths.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\xml\\provider_paths.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_proof_list_footer.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\proof_list_footer.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_list_item_selector.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\list_item_selector.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_form_img_fl.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\form_img_fl.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_white_rounded_corner_box.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\white_rounded_corner_box.xml"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_printing.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_printing.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_dialog_logo.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\dialog_logo.png"
     },
     {
-        "merged": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_pfasearch.xml.flat",
-        "source": "C:\\Users\\HP\\AndroidStudioProjects\\PFA Project\\PFAMainRepo\\app\\src\\main\\res\\layout\\activity_pfasearch.xml"
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_forgot_pin.xml.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_forgot_pin.xml"
+    },
+    {
+        "merged": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_record_video.png.flat",
+        "source": "E:\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\record_video.png"
     }
 ]

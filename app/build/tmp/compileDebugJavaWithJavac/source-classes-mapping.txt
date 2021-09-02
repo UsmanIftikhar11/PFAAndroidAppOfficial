@@ -419,6 +419,9 @@ com/pfa/pfaapp/customviews/EmojiExcludeFilter.java
  com.pfa.pfaapp.customviews.EmojiExcludeFilter
 com/pfa/pfaapp/pinchzoom/OnGestureListener.java
  com.pfa.pfaapp.pinchzoom.OnGestureListener
+com/pfa/pfaapp/utils/HttpsTrustManager.java
+ com.pfa.pfaapp.utils.HttpsTrustManager
+ com.pfa.pfaapp.utils.HttpsTrustManager$1
 com/pfa/pfaapp/interfaces/CNICTextWatcher.java
  com.pfa.pfaapp.interfaces.CNICTextWatcher
 com/pfa/pfaapp/UserAuthResponse.java
@@ -515,6 +518,7 @@ com/pfa/pfaapp/LocalFormDialogActivity.java
  com.pfa.pfaapp.LocalFormDialogActivity
  com.pfa.pfaapp.LocalFormDialogActivity$1
  com.pfa.pfaapp.LocalFormDialogActivity$2
+ com.pfa.pfaapp.LocalFormDialogActivity$2$1
  com.pfa.pfaapp.LocalFormDialogActivity$3
 com/pfa/pfaapp/customviews/PFARadio.java
  com.pfa.pfaapp.customviews.PFARadio

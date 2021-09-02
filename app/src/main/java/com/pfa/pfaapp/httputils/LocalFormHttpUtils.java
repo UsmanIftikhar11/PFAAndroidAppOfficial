@@ -50,9 +50,7 @@ public class LocalFormHttpUtils {
     private String inspectionID;
     private String staffID;
     private boolean containsFineImage = false;
-    public LocalFormHttpUtils() {
-
-    }
+    public LocalFormHttpUtils() { }
 
     /**
      * formDataInfo  sendInspectionToServer is used to create the request Param to be sent to server

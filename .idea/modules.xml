@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/PFAMainRepo.iml" filepath="$PROJECT_DIR$/.idea/PFAMainRepo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PFAMainRepo.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PFAMainRepo.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/escposprinter/PFAMainRepo.escposprinter.iml" filepath="$PROJECT_DIR$/.idea/modules/escposprinter/PFAMainRepo.escposprinter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/multipleimageselect/PFAMainRepo.multipleimageselect.iml" filepath="$PROJECT_DIR$/.idea/modules/multipleimageselect/PFAMainRepo.multipleimageselect.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PFAAndroidAppLatest.iml" filepath="$PROJECT_DIR$/.idea/modules/PFAAndroidAppLatest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PFAAndroidAppLatest.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PFAAndroidAppLatest.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/escposprinter/PFAAndroidAppLatest.escposprinter.iml" filepath="$PROJECT_DIR$/.idea/modules/escposprinter/PFAAndroidAppLatest.escposprinter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/multipleimageselect/PFAAndroidAppLatest.multipleimageselect.iml" filepath="$PROJECT_DIR$/.idea/modules/multipleimageselect/PFAAndroidAppLatest.multipleimageselect.iml" />
     </modules>
   </component>
 </project>

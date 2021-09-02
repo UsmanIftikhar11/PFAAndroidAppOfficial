@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -215,6 +217,8 @@ public class MenuFormFragment extends Fragment implements HttpResponseCallback, 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        Log.d("imagePath" , "onActivityResult = " + "MenuFormFragment");
+
         if (resultCode != RESULT_OK) {
             customViewCreate.clearFocusOfAllViews(menuFragParentLL);
             return;
@@ -222,6 +226,7 @@ public class MenuFormFragment extends Fragment implements HttpResponseCallback, 
 
         switch (requestCode) {
             case CAPTURE_PHOTO:
+                Log.d("imagePath" , "menu form fragment");
                 imageSelectionUtils.chooseFromCameraImgPath(data, null);
                 break;
 
@@ -247,6 +252,7 @@ public class MenuFormFragment extends Fragment implements HttpResponseCallback, 
 
     @Override
     public void showImagePickerDialog(CustomNetworkImageView view) {
+        Log.d("imagePath" , "image selection utils menu form fragment");
         imageSelectionUtils = new ImageSelectionUtils(baseActivity, view);
         imageSelectionUtils.showImagePickerDialog(null, false, false);
     }

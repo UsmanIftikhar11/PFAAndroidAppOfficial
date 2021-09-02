@@ -4,11 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pfa.pfaapp.customviews.CustomNetworkImageView;
 import com.pfa.pfaapp.customviews.CustomViewCreate;
@@ -38,6 +43,9 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
     public ImageSelectionUtils imageSelectionUtils;
     public LinearLayout menuFragParentLL;
     FormSectionInfo formSectionInfo;
+    Button yesbtn;
+    ProgressBar saveProgressDialog;
+    TextView txtProgress;
 
     List<FormSectionInfo> formSectionInfos;
 
@@ -64,6 +72,7 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
         customViewCreate.createViews(formSectionInfo, menuFragParentLL, sectionRequired, new PFAViewsCallbacks() {
             @Override
             public void showImagePickerDialog(CustomNetworkImageView view) {
+                Log.d("imagePath" , "image selection utils local form dialog activity1");
                 imageSelectionUtils = new ImageSelectionUtils(LocalFormDialogActivity.this, view);
                 imageSelectionUtils.showImagePickerDialog(null, false, false);
             }
@@ -94,12 +103,36 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
             }
         }, false, (ScrollView) findViewById(R.id.formDialogSV));
 
-        Button yesbtn = findViewById(R.id.yesbtn);
+         yesbtn = findViewById(R.id.yesbtn);
+         saveProgressDialog = findViewById(R.id.saveProgressDialog);
+         txtProgress = findViewById(R.id.txtProgress);
+
+        yesbtn.setEnabled(true);
+        yesbtn.setClickable(true);
+        saveProgressDialog.setVisibility(View.GONE);
+        txtProgress.setVisibility(View.GONE);
 
         yesbtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+
+                Log.d("yesButton" , "yes button clicked!!!");
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        yesbtn.setEnabled(true);
+                        yesbtn.setClickable(true);
+                        saveProgressDialog.setVisibility(View.GONE);
+                        txtProgress.setVisibility(View.GONE);
+                    }
+                } , 2000);
+
+                yesbtn.setEnabled(false);
+                yesbtn.setClickable(true);
+                saveProgressDialog.setVisibility(View.VISIBLE);
+                txtProgress.setVisibility(View.VISIBLE);
 
                 HashMap<String, List<FormDataInfo>> formViewsData = pfaFormSubmitUtil.getViewsData(menuFragParentLL, true);
 
@@ -195,8 +228,11 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        Log.d("imagePath" , "onActivityResult = " + "localFormDialogActivity");
+
         switch (requestCode) {
             case CAPTURE_PHOTO:
+                Log.d("imagePath" , "local form dialog");
                 imageSelectionUtils.chooseFromCameraImgPath(data, null);
                 break;
 

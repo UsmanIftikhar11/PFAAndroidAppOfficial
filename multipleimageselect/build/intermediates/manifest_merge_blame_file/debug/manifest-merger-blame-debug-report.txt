@@ -6,68 +6,68 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="17"
-8-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml
+8-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="28" />
-9-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml
+9-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-11-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:5:5-80
-11-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:5:22-78
+11-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:5:5-80
+11-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:5:22-78
 12    <uses-permission android:name="android.permission.CAMERA" />
-12-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:6:5-64
-12-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:6:22-62
+12-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:6:5-64
+12-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:6:22-62
 13
 14    <uses-feature
-14-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:9:5-11:35
+14-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:9:5-11:35
 15        android:name="android.hardware.camera.any"
-15-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:10:9-51
+15-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:10:9-51
 16        android:required="true" />
-16-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:11:9-32
+16-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:11:9-32
 17    <uses-feature
-17-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:12:5-14:36
+17-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:12:5-14:36
 18        android:name="android.hardware.camera.autofocus"
-18-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:13:9-57
+18-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:13:9-57
 19        android:required="false" />
-19-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:14:9-33
+19-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:14:9-33
 20
 21    <application
-21-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:16:5-37:19
+21-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:16:5-37:19
 22        android:allowBackup="true"
-22-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:17:9-35
+22-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:17:9-35
 23        android:label="@string/app_name" >
-23-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:18:9-41
+23-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:18:9-41
 24        <activity
-24-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:19:9-27:20
+24-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:19:9-27:20
 25            android:name="com.darsh.multipleimageselect.activities.AlbumSelectActivity"
-25-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:20:13-59
+25-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:20:13-59
 26            android:configChanges="orientation|screenSize"
-26-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:23:13-59
+26-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:23:13-59
 27            android:label="@string/app_name"
-27-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:21:13-45
+27-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:21:13-45
 28            android:theme="@style/MultipleImageSelectTheme" >
-28-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:22:13-60
+28-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:22:13-60
 29            <intent-filter>
-29-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:24:13-26:29
+29-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:24:13-26:29
 30                <category android:name="android.intent.category.DEFAULT" />
-30-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:25:17-75
-30-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:25:27-73
+30-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:25:17-75
+30-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:25:27-73
 31            </intent-filter>
 32        </activity>
 33        <activity
-33-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:28:9-36:20
+33-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:28:9-36:20
 34            android:name="com.darsh.multipleimageselect.activities.ImageSelectActivity"
-34-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:29:13-59
+34-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:29:13-59
 35            android:configChanges="orientation|screenSize"
-35-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:32:13-59
+35-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:32:13-59
 36            android:label="@string/app_name"
-36-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:30:13-45
+36-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:30:13-45
 37            android:theme="@style/MultipleImageSelectTheme" >
-37-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:31:13-60
+37-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:31:13-60
 38            <intent-filter>
-38-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:24:13-26:29
+38-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:24:13-26:29
 39                <category android:name="android.intent.category.DEFAULT" />
-39-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:25:17-75
-39-->C:\Users\HP\AndroidStudioProjects\PFA Project\PFAMainRepo\multipleimageselect\src\main\AndroidManifest.xml:25:27-73
+39-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:25:17-75
+39-->E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:25:27-73
 40            </intent-filter>
 41        </activity>
 42    </application>

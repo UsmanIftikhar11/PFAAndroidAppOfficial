@@ -26,7 +26,6 @@ public final class LocationUtils {
         }
     }
 
-
     public static void showSettingsAlert(final Activity activity) {
         if (activity != null) {
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);

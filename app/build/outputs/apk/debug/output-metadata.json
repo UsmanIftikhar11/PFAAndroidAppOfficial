@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.pfaofficial",
+  "applicationId": "com.pfaofficial.test",
   "variantName": "processDebugResources",
   "elements": [
     {
@@ -12,7 +12,7 @@
       "filters": [],
       "versionCode": 49,
       "versionName": "1.48",
-      "outputFile": "app-debug.apk"
+      "outputFile": "PFA Official - VC-49 VN-1.48-debug.apk"
     }
   ]
 }

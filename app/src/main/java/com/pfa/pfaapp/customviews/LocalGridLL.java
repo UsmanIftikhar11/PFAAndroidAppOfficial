@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Handler;
 import androidx.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
@@ -197,9 +198,11 @@ public class LocalGridLL extends LinearLayout implements WhichItemClicked {
         };
 
         if (filePath != null) {
+            Log.d("imagePath" , "image selection utils local grid LL1");
             ImageSelectionUtils imageSelectionUtils = new ImageSelectionUtils((Activity) getContext(), customNetworkImageView);
             imageSelectionUtils.chooseMultipleImages(filePath, videoFileCallback);
         } else {
+            Log.d("imagePath" , "image selection utils local grid LL2");
             imageSelectionUtils = new ImageSelectionUtils((Activity) getContext(), customNetworkImageView);
             imageSelectionUtils.showImagePickerDialog(videoFileCallback, true, true);
         }
@@ -239,11 +242,15 @@ public class LocalGridLL extends LinearLayout implements WhichItemClicked {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        Log.d("imagePath" , "onActivityResult = " + "localGridLL");
+
         if (resultCode != RESULT_OK)
             return;
 
         switch (requestCode) {
             case CAPTURE_PHOTO:
+                Log.d("imagePath" , "local form LL Grid");
                 isImage = true;
                 imageSelectionUtils.chooseFromCameraImgPath(data, null);
                 break;

@@ -15,6 +15,7 @@ import android.provider.MediaStore;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -213,6 +214,8 @@ public class AlbumSelectActivity extends HelperActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        Log.d("imagePath" , "onActivityResult = " + "AlbumSelectActivity");
 
         if (requestCode == Constants.REQUEST_CODE
                 && resultCode == RESULT_OK

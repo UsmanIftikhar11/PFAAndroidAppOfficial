@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -91,7 +92,6 @@ public class LocalFormLL extends LinearLayout implements PFAViewsCallbacks{
         customViewCreate = new CustomViewCreate(getContext(), this);
         customViewCreate.setDDCallback(ddSelectedCallback);
 
-
         if (pfaMenuInfo.getData() != null && pfaMenuInfo.getData().getForm() != null) {
             List<FormSectionInfo> formSectionInfos = pfaMenuInfo.getData().getForm();
 
@@ -100,6 +100,7 @@ public class LocalFormLL extends LinearLayout implements PFAViewsCallbacks{
                     @Override
                     public void showImagePickerDialog(CustomNetworkImageView view) {
 //                        mContext.sharedPrefUtils.showToast("CustomNetworkImageView clicked for LocalFormLL");
+                        Log.d("imagePath" , "image selection utils Local From LL");
                         imageSelectionUtils = new ImageSelectionUtils(mContext, view);
                         imageSelectionUtils.showImagePickerDialog(null, false, false);
                     }
@@ -136,15 +137,25 @@ public class LocalFormLL extends LinearLayout implements PFAViewsCallbacks{
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        Log.d("imagePath" , "onActivityResult = " + "local form LL");
+
         if (resultCode != RESULT_OK) {
+            Log.d("imagePath" , "Result = " + RESULT_OK + "  result received = " + resultCode);
+            Log.d("imagePath" , "Result = " + requestCode);
             customViewCreate.clearFocusOfAllViews(menuFragParentLL);
             return;
         }
         switch (requestCode) {
+
             case CAPTURE_PHOTO:
+                Log.d("imagePath" , "requestCode = " + requestCode);
+                Log.d("imagePath" , "local form LL");
                 imageSelectionUtils.chooseFromCameraImgPath(data, null);
+//                Log.d("imagePath" , "local form LL URI = " + data.getData().getPath());
                 break;
             case CHOOSE_FROM_GALLERY:
+                Log.d("imagePath" , "gallery requestCode = " + requestCode);
+                Log.d("imagePath" , "gallery local form LL");
                 imageSelectionUtils.chooseFromGalleryImgPath(data, null);
                 break;
             case RECORD_VIDEO:
@@ -306,6 +317,7 @@ public class LocalFormLL extends LinearLayout implements PFAViewsCallbacks{
     @Override
     public void showImagePickerDialog(CustomNetworkImageView view) {
         mContext.sharedPrefUtils.printLog("ImagePicker", "Image Picker");
+        Log.d("imagePath" , "image selection utils local form ll 2");
         imageSelectionUtils = new ImageSelectionUtils(mContext, view);
         imageSelectionUtils.showImagePickerDialog(new VideoFileCallback() {
             @Override

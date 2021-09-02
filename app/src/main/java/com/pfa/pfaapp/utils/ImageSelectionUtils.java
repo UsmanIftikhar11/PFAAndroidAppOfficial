@@ -1,4 +1,5 @@
 package com.pfa.pfaapp.utils;
+
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
@@ -57,6 +58,7 @@ public class ImageSelectionUtils extends ScalingUtilities {
         super(activity);
         this.activity = activity;
         this.customNetworkImageView = customNetworkImageView;
+        Log.d("imagePath" , "image selection utils");
     }
 
 
@@ -72,9 +74,8 @@ public class ImageSelectionUtils extends ScalingUtilities {
                         filePathOfCamera = null;
                         int i = Integer.parseInt(message);
                         if (i == CAPTURE_PHOTO) {
-
+                            Log.d("imagePath" , "image selection utils capture camera");
                             capturePicFromCamera();
-
 
                         } else if (i == CHOOSE_FROM_GALLERY) {
                             pickImageFromGallery(showVideoBtns);
@@ -90,22 +91,24 @@ public class ImageSelectionUtils extends ScalingUtilities {
         }, 100);
     }
 
-
-
     private void capturePicFromCamera() {
 
+        Log.d("imagePath" , "capturePicFromCamera ()= " + BuildConfig.APPLICATION_ID);
         File fPath = Environment.getExternalStorageDirectory();
         final File f = new File(fPath, "" + (System.currentTimeMillis()) + ".png");
 
         filePathOfCamera = f.getAbsolutePath();
 
 //        Uri mImageCaptureUri = FileProvider.getUriForFile(activity, BuildConfig.APPLICATION_ID + ".provider", f);
-        Uri mImageCaptureUri = FileProvider.getUriForFile(activity, "com.pfa.pfaapp.provider", f);
+        Uri mImageCaptureUri = FileProvider.getUriForFile(activity, "com.pfaofficial.provider", f);
 
         Intent photoCaptureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         photoCaptureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//        photoCaptureIntent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
         photoCaptureIntent.putExtra(MediaStore.EXTRA_OUTPUT, mImageCaptureUri);
         activity.startActivityForResult(photoCaptureIntent, CAPTURE_PHOTO);
+
+        Log.d("imagePath" , "capturePicFromCamera ()= " + mImageCaptureUri.getPath());
 
 //        Intent pictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 //        if (pictureIntent.resolveActivity(mContext.getPackageManager()) != null) {
@@ -114,10 +117,9 @@ public class ImageSelectionUtils extends ScalingUtilities {
 //        }
     }
 
-
-
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void pickImageFromGallery(boolean showVideoBtns) {
+        Log.d("imagePath" , "pickImageFromGallery ()= " + BuildConfig.APPLICATION_ID);
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         if (showVideoBtns) {
@@ -127,6 +129,7 @@ public class ImageSelectionUtils extends ScalingUtilities {
         } else {
             intent.setType("image/*");
         }
+        Log.d("imagePath" , "capturePicFromCamera ()= completed" );
         activity.startActivityForResult(intent, CHOOSE_FROM_GALLERY);
 
     }
@@ -151,6 +154,7 @@ public class ImageSelectionUtils extends ScalingUtilities {
 
     public void chooseFromCameraImgPath(Intent data, SendMessageCallback callback) {
         try {
+            Log.d("imagePath" , "chooseFromCameraImgPath = " + imagePath);
 
             if (filePathOfCamera != null) {
                 imagePath = filePathOfCamera;
@@ -168,6 +172,7 @@ public class ImageSelectionUtils extends ScalingUtilities {
                 stream.close();
 
                 imagePath = f.getAbsolutePath();
+                Log.d("imagePath" , "path = " + imagePath);
             }
 
             setImageInNIV(callback);
@@ -175,6 +180,7 @@ public class ImageSelectionUtils extends ScalingUtilities {
 
         } catch (IOException e) {
             printStackTrace(e);
+            Log.d("imagePath" , "chooseFromCameraImgPath error = " + e.toString());
         }
 
     }
@@ -189,6 +195,8 @@ public class ImageSelectionUtils extends ScalingUtilities {
                 imagePath = FilePathUtils.getPath(activity, mImageCaptureUri);
             }
         }
+
+        Log.d("imagePath" , " galleryPath = " + imagePath);
         setImageInNIV(callback);
 
     }
@@ -261,9 +269,6 @@ public class ImageSelectionUtils extends ScalingUtilities {
 
                             Bitmap bitmap = getBitmap(imagePath);
                             customNetworkImageView.setLocalImageBitmap(bitmap);
-//galleryImageBitmap
-//                            customNetworkImageView.setLocalImageBitmap(BitmapFactory.decodeFile(imageFile[0].getAbsolutePath()));
-
 
                             IMAGE_SELECTION_MAP.put(customNetworkImageView.getTag().toString(), imagePath);
                             customNetworkImageView.setImageFile(imageFile[0]);

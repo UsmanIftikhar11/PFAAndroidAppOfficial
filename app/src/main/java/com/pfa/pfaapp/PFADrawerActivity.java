@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
@@ -192,6 +195,13 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             }
         }
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (!Environment.isExternalStorageManager())
+            {
+                Intent permissionIntent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION );
+                startActivity(permissionIntent);
+            }
+        }
 
 
     }
@@ -325,6 +335,8 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        Log.d("imagePath" , "onActivityResult = " + "PFADrawerActivity");
 
         if (lastClicked >= 0) {
             menuItemFragments.get(lastClicked).onActivityResult(requestCode, resultCode, data);
