@@ -659,7 +659,6 @@ com/pfa/pfaapp/adapters/InspectionAdapter.java
  com.pfa.pfaapp.adapters.InspectionAdapter$3$1
 com/pfa/pfaapp/adapters/ImagesGridAdapter.java
  com.pfa.pfaapp.adapters.ImagesGridAdapter
- com.pfa.pfaapp.adapters.ImagesGridAdapter$1
  com.pfa.pfaapp.adapters.ImagesGridAdapter$ViewHolder
 com/pfa/pfaapp/AppController.java
  com.pfa.pfaapp.AppController

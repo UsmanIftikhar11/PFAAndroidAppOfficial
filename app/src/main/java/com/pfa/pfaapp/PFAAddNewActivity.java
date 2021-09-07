@@ -36,6 +36,8 @@ public class PFAAddNewActivity extends BaseActivity {
         addNewComplainFL = findViewById(R.id.addNewComplainFL);
         bundle = getIntent().getExtras();
 
+        Log.d("onCreateActv" , "PFAAddNewActivity");
+
         if (sharedPrefUtils.getSharedPrefValue(SP_USER_INFO, "") == null) {
             fetchUserInfo(new HttpResponseCallback() {
                 @Override

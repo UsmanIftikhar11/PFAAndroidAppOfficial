@@ -105,7 +105,6 @@ public class BaseActivity extends AppCompatActivity {
     public AddInspectionUtils addInspectionUtils;
     public ImageButton downloadInspImgBtn;
 
-
     byte FONT_TYPE;
     private static BluetoothSocket btsocket;
     private static OutputStream btoutputstream;
@@ -360,7 +359,6 @@ public class BaseActivity extends AppCompatActivity {
                                 Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.CALL_PHONE
                                 , Manifest.permission.RECEIVE_BOOT_COMPLETED, Manifest.permission.SYSTEM_ALERT_WINDOW},
                         123);
-
             }
         }
     }

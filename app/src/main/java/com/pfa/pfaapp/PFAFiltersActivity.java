@@ -81,6 +81,8 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
         pfaFormSubmitUtil.init(filtersLL, reqViews);
         bundle = getIntent().getExtras();
 
+        Log.d("onCreateActv" , "PFAFiltersActivity");
+
         if (bundle != null) {
             setTitle(bundle.getString(EXTRA_ACTIVITY_TITLE), true);
 

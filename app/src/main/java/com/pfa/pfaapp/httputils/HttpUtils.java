@@ -48,12 +48,9 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
     private static final X509Certificate[] _AcceptedIssuers = new X509Certificate[]{};
      ProgressDialog progressDialog;
 
-
     HttpUtils(Context mContext) {
         super(mContext);
     }
-
-
 
     public boolean isNetworkDisconnected() {
         ConnectivityManager cm = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -160,9 +157,9 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
 
                 ////////
                 if (volleyError.networkResponse != null) {
-                    showMsgDialog("Some Error Occurred, Please Try Again!", null);
+                    showMsgDialog("Some Error Occurred, Please Try Again!1", null);
                 } else {
-                    showMsgDialog("Please Check Your Internet Connection and Try Again!", null);
+                    showMsgDialog("Please Check Your Internet Connection and Try Again!1", null);
                 }
 
             }
@@ -280,9 +277,9 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
 
                 if (volleyError.networkResponse != null) {
 //                    showMsgDialog("Http Error: Status Code=> " + volleyError.networkResponse.statusCode + " Message: " + volleyError.getMessage(), null);
-                    showMsgDialog("Some Error Occurred, Please Try Again!", null);
+                    showMsgDialog("Some Error Occurred, Please Try Again!2", null);
                 } else {
-                    showMsgDialog("Please Check Your Internet Connection and Try Again!", null);
+                    showMsgDialog("Please Check Your Internet Connection and Try Again!2", null);
                 }
 
                 if (callback != null)
@@ -384,9 +381,9 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
                 hideProgressDialog();
 
                 if (volleyError.networkResponse != null) {
-                    showMsgDialog("Some Error Occurred, Please Try Again!", null);
+                    showMsgDialog("Some Error Occurred, Please Try Again!3", null);
                 } else {
-                    showMsgDialog("Please Check Your Internet Connection and Try Again!", null);
+                    showMsgDialog("Please Check Your Internet Connection and Try Again!3", null);
                 }
             }
         }, new Response.Listener<String>() {

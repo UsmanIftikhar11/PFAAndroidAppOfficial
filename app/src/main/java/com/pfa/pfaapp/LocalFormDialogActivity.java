@@ -59,6 +59,8 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
         customViewCreate = new CustomViewCreate(this, this);
         pfaFormSubmitUtil = new PFAFormSubmitUtil(this);
 
+        Log.d("onCreateActv" , "LocalFormDialogActivity");
+
         formSectionInfo = (FormSectionInfo) getIntent().getSerializableExtra(EXTRA_DIALOG_ADD_ITEM_FORM_SECTION);
         formSectionInfos.add(formSectionInfo);
         setTitle(formSectionInfo.getSection_name(), true);

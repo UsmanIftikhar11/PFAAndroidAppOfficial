@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -53,6 +54,8 @@ public class PFASearchActivity extends BaseActivity {
         assert formFieldInfo != null;
         setTitle(formFieldInfo.getValue(), true);
         initViews();
+
+        Log.d("onCreateActv" , "PFASearchActivity");
     }
 
     private void initViews() {
@@ -71,7 +74,6 @@ public class PFASearchActivity extends BaseActivity {
         setResult(RESULT_OK, intent);
         finish();
     }
-
 
     private void setSearchData(final List<PFASearchInfo> pfaSearchInfos) {
         List<String> listItemNames = new ArrayList<>();

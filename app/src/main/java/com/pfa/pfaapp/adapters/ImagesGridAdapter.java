@@ -71,6 +71,7 @@ public class ImagesGridAdapter extends BaseAdapter {
             baseActivity.sharedPrefUtils.applyFont(holder.fboMenuNameTV, AppUtils.FONTS.HelveticaNeueMedium);
 
             convertView.setTag(holder);
+
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
@@ -81,15 +82,12 @@ public class ImagesGridAdapter extends BaseAdapter {
             holder.mediaGridNIV.setImageResource(R.mipmap.no_img);
         }
 
-        holder.mediaGridNIV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        holder.mediaGridNIV.setOnClickListener(v -> {
 
-                Bundle bundle = new Bundle();
-                bundle.putString(EXTRA_DOWNLOAD_URL,imagesList.get(position).getData());
-                baseActivity.sharedPrefUtils.startNewActivity(ImageGalleryActivity.class,bundle,false);
+            Bundle bundle = new Bundle();
+            bundle.putString(EXTRA_DOWNLOAD_URL,imagesList.get(position).getData());
+            baseActivity.sharedPrefUtils.startNewActivity(ImageGalleryActivity.class,bundle,false);
 
-            }
         });
         return convertView;
     }

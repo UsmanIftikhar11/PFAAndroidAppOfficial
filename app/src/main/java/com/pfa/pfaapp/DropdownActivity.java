@@ -2,6 +2,7 @@ package com.pfa.pfaapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
@@ -43,6 +44,9 @@ public class DropdownActivity extends BaseActivity {
                 searchDropdownPFAET.setVisibility(View.VISIBLE);
 
         }
+
+        Log.d("onCreateActv" , "DropDownActivity");
+
         searchDDAdapter = new SearchDDAdapter(this, data, new SendMessageCallback() {
             @Override
             public void sendMsg(String position) {

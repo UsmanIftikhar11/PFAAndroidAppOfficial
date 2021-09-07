@@ -159,6 +159,8 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
 
         deseizeAllBtn = rootView.findViewById(R.id.deseizeAllBtn);
 
+        Log.d("onCreateActv" , "MenuListFragment");
+
         menuTableLV.setOnRefreshListener(onRefreshListener);
         clickableWrapperView.setOnClickListener(new View.OnClickListener() {
             @Override

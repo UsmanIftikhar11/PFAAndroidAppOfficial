@@ -74,6 +74,7 @@ public class PFADetailActivity extends BaseActivity implements HttpResponseCallb
 
         MenuMapFragment.businessLatLng = null;
 
+        Log.d("onCreateActv" , "PFADetailActivity");
 
         chatLL = findViewById(R.id.chatLL);
 

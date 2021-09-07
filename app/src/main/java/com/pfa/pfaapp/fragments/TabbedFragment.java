@@ -99,6 +99,9 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
         topbarRG = rootView.findViewById(R.id.topbarRG);
         detailSectionsCVP = rootView.findViewById(R.id.detailSectionsCVP);
         menubarHSV = rootView.findViewById(R.id.menubarHSV);
+
+        Log.d("onCreateActv" , "TabbedFragment");
+
         return rootView;
     }
 

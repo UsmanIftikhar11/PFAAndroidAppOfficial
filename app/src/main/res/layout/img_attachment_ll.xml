@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
+            android:paddingTop="5dp"
             android:text="@string/select_image" />
 
         <ImageButton
@@ -47,6 +48,7 @@
         android:background="@mipmap/text_bg"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
+        android:paddingBottom="10dp"
         android:text="@string/applicant_cnic_image" />
     <!--android:drawableEnd="@mipmap/attachment_link"-->
     <!--android:drawableRight="@mipmap/attachment_link"-->
@@ -54,6 +56,7 @@
     <include
         layout="@layout/form_img_fl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"/>
 
 </LinearLayout>

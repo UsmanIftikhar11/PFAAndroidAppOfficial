@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -217,6 +218,8 @@ public class PFADetailMenu extends SharedPrefUtils {
 
                 case "imageView":
 
+
+
                     if (!fieldInfo.getData().equals("")) {
 
                         if (imagesLL == null) {
@@ -248,6 +251,7 @@ public class PFADetailMenu extends SharedPrefUtils {
                             img_attachment_ll.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
+                                    Log.d("imageCheck" , "fieldInfo = "  + fieldInfo.getField_type());
                                     if (fieldInfo.getData() != null && (!fieldInfo.getData().isEmpty())) {
                                         Bundle bundle = new Bundle();
                                         bundle.putString(EXTRA_DOWNLOAD_URL, fieldInfo.getData());

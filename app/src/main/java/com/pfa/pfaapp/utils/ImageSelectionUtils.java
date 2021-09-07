@@ -53,7 +53,6 @@ public class ImageSelectionUtils extends ScalingUtilities {
 
 //    private static final int REQUEST_IMAGE_CAPTURE = 1000;
 
-
     public ImageSelectionUtils(Activity activity, CustomNetworkImageView customNetworkImageView) {
         super(activity);
         this.activity = activity;

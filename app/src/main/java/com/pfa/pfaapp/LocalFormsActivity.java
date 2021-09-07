@@ -51,6 +51,8 @@ public class LocalFormsActivity extends BaseActivity implements HttpResponseCall
 
         addInspectionUtils.downloadLocalImgBtn = findViewById(R.id.downloadLocalImgBtn);
 
+        Log.d("onCreateActv" , "LocalFormActivity");
+
         if (getIntent().getExtras() != null && getIntent().getExtras().containsKey(EXTRA_INSPECTION_DATA)) {
             addInspectionUtils.populateDraftInspection(getIntent().getExtras());
             if (getIntent().getExtras().containsKey("isDraft")) {

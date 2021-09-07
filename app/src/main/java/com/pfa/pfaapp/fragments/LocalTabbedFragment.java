@@ -53,6 +53,7 @@ public class LocalTabbedFragment extends Fragment implements HttpResponseCallbac
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        Log.d("onCreateActv" , "LocalTabbedFragment");
         return inflater.inflate(R.layout.fragment_local_tabbed, container, false);
     }
 

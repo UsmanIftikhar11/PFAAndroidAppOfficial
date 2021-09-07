@@ -18,6 +18,7 @@ public class HttpService extends HttpUtils {
     //    Dev API
 //    private static final String BASE_URL = "https://cell.pfa.gop.pk/dev/api/";
 //    private static final String BASE_URL = "http://172.16.7.104/pfa/api/";
+//    private static final String BASE_URL = "http://182.176.112.99/pfa/api/";
 
     //    Live APIhttps:
     private static final String BASE_URL = "https://cell.pfa.gop.pk/api/";

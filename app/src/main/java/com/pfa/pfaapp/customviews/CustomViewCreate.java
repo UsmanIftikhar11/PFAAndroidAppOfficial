@@ -861,7 +861,9 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
         ImageButton addMoreImgBtn = img_attachment_ll.findViewById(R.id.addMoreImgBtn);
         final ImageButton deleteImgBtn = img_attachment_ll.findViewById(R.id.deleteImgBtn);
 
-        if (fieldInfo.getField_name().equalsIgnoreCase("application_image") || fieldInfo.getField_name().equalsIgnoreCase("application_cnic_image") ||
+        if (fieldInfo.getField_name().equalsIgnoreCase("application_image") ||
+                fieldInfo.getField_name().equalsIgnoreCase("application_cnic_image") ||
+                fieldInfo.getField_name().equalsIgnoreCase("application_cnic_back_image") ||
                 fieldInfo.getField_name().equalsIgnoreCase("application_business_image")) {
             LinearLayout.LayoutParams imgLLParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             imgLLParams.weight = 1;

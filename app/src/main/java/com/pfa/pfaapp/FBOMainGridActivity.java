@@ -7,6 +7,7 @@ package com.pfa.pfaapp;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageButton;
@@ -54,6 +55,7 @@ public class FBOMainGridActivity extends BaseActivity implements HttpResponseCal
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
 //            checkManageStorage();
 //        }
+        Log.d("onCreateActv" , "FBOMAINGRIDActivity");
         initViews();
         setTitle("", false);
         (findViewById(R.id.ttl_bar)).setBackgroundColor(getResources().getColor(R.color.transparent));

@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.pfa.pfaapp.interfaces.HttpResponseCallback;
@@ -95,6 +96,9 @@ public class SplashActivity extends BaseActivity {
 
                     if (response.optBoolean("status")) {
                         JSONObject dataObject = response.optJSONObject("data");
+
+                        Log.d("currentApiVersion" , "version from api= " + dataObject.optString("api_version"));
+                        Log.d("currentApiVersion" , "version from playstore= " + currentVersion);
 
                         if (currentVersion != null && (currentVersion.equals(dataObject.optString("api_version")))) {
                             startLoginScreen(null);

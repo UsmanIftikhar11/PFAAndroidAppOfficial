@@ -9,6 +9,8 @@ import android.os.Handler;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -102,6 +104,9 @@ public class MenuMapFragment extends Fragment implements OnMapReadyCallback {
                 viewGoogleMap();
             }
         });
+
+        Log.d("onCreateActv" , "MenuMapFragment");
+
         return rootView;
     }
 

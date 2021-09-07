@@ -98,6 +98,7 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
         topbarRG = rootView.findViewById(R.id.topbarCIRG);
         detailSectionsCICVP = rootView.findViewById(R.id.detailSectionsCICVP);
         menubarHSV = rootView.findViewById(R.id.menubarCIHSV);
+        Log.d("onCreateActv" , "CiTabbedFragment");
         return rootView;
     }
 

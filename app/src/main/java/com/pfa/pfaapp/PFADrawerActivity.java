@@ -96,6 +96,8 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
 
         setDownloadInspBtnClick();
 
+        Log.d("onCreateActv" , "PFADrawerActivity");
+
         dbQueriesUtil.deleteExpiredInspections();
         if (sharedPrefUtils.getSharedPrefValue(SP_IS_DELETE_DB_DELETED, "") == null) {
             updateConfigData();

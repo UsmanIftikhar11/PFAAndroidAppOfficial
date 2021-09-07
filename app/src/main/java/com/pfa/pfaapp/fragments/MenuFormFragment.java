@@ -129,11 +129,10 @@ public class MenuFormFragment extends Fragment implements HttpResponseCallback, 
         menuFragParentLL = rotView.findViewById(R.id.menuFragParentLL);
         fragMenuItemSV = rotView.findViewById(R.id.fragMenuItemSV);
 
-
+        Log.d("onCreateActv" , "MenuFormsFragment");
 
         return rotView;
     }
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

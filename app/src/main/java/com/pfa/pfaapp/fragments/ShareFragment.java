@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,6 +100,8 @@ public class ShareFragment extends Fragment implements View.OnClickListener {
 //        TextView endDateLblTV = rootView.findViewById(R.id.endDateLblTV);
         endDateET = rootView.findViewById(R.id.endDateET);
         yesbtn = rootView.findViewById(R.id.yesbtn);
+
+        Log.d("onCreateActv" , "ShareFragment");
 
         return rootView;
     }
