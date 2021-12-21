@@ -7,12 +7,14 @@ import java.util.Map;
 
 public class PFAMenuInfo implements Serializable {
     private String menuType;
+    private String menuTypeLink;
     private String menuItemName;
     private String menuItemNameUrdu;
     private int menuItemID;
     private int menuItemOrder;
     private String menuItemImg;
     private String API_URL;
+    private String Back_API_URL;
     private String Deseize_ALL_API_URL;
     private String bg_color;
     private String slug;
@@ -44,6 +46,13 @@ public class PFAMenuInfo implements Serializable {
 
     }
 
+    public String getMenuTypeLink() {
+        return menuTypeLink;
+    }
+
+    public void setMenuTypeLink(String menuTypeLink) {
+        this.menuTypeLink = menuTypeLink;
+    }
 
     public String getMax_draft_limit() {
         return max_draft_limit;
@@ -62,8 +71,13 @@ public class PFAMenuInfo implements Serializable {
     }
 
 
+    public String getBack_API_URL() {
+        return Back_API_URL;
+    }
 
-
+    public void setBack_API_URL(String back_API_URL) {
+        Back_API_URL = back_API_URL;
+    }
 
     public String getMenuItemName() {
         return menuItemName;

@@ -4,6 +4,7 @@
 
 package com.pfa.pfaapp.httputils;
 
+import android.util.Log;
 import android.widget.LinearLayout;
 
 import com.pfa.pfaapp.BaseActivity;
@@ -159,10 +160,14 @@ public class PFAFormSubmitUtil extends PFAViewsUtils {
             init(menuFragParentLL, AllValues);
             boolean allRequiredFields = isAllReqFieldsDone(showError);
 
+            Log.d("formDataValid" , "allRequiredFields = " + allRequiredFields);
+
             if (isValid && (!allRequiredFields)) {
                 isValid = false;
             }
         }
+
+        Log.d("formDataValid" , "isValid = " + isValid);
         return isValid;
     }
 }

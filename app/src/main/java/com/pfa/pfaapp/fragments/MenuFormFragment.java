@@ -1,6 +1,7 @@
 package com.pfa.pfaapp.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -59,6 +60,7 @@ import static com.pfa.pfaapp.utils.AppConst.EXTRA_BIZ_FORM_DATA;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_DETAIL_MENU;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_JSON_STR_RESPONSE;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_URL_TO_CALL;
+import static com.pfa.pfaapp.utils.AppConst.OTHER_FILES;
 import static com.pfa.pfaapp.utils.AppConst.RC_DROPDOWN;
 import static com.pfa.pfaapp.utils.AppConst.RECORD_VIDEO;
 import static com.pfa.pfaapp.utils.AppConst.SP_LOGIN_TYPE;
@@ -69,6 +71,7 @@ import static com.pfa.pfaapp.utils.AppConst.codeVerified;
  * Use the {@link MenuFormFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class MenuFormFragment extends Fragment implements HttpResponseCallback, PFAViewsCallbacks, DDSelectedCallback {
 
     @SuppressLint("StaticFieldLeak")
@@ -102,6 +105,7 @@ public class MenuFormFragment extends Fragment implements HttpResponseCallback, 
      * @param pfaMenuInfo Parameter 1.
      * @return A new instance of fragment MenuFormFragment.
      */
+
     public static MenuFormFragment newInstance(PFAMenuInfo pfaMenuInfo, JSONObject data) {
         MenuFormFragment fragment = new MenuFormFragment();
         Bundle args = new Bundle();
@@ -130,6 +134,7 @@ public class MenuFormFragment extends Fragment implements HttpResponseCallback, 
         fragMenuItemSV = rotView.findViewById(R.id.fragMenuItemSV);
 
         Log.d("onCreateActv" , "MenuFormsFragment");
+        initFragment();
 
         return rotView;
     }
@@ -137,7 +142,7 @@ public class MenuFormFragment extends Fragment implements HttpResponseCallback, 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        initFragment();
+
     }
 
     private void initFragment() {
@@ -145,17 +150,22 @@ public class MenuFormFragment extends Fragment implements HttpResponseCallback, 
         pfaDetailMenu = new PFADetailMenu(getContext());
 
         if (getArguments() != null) {
-            if (getArguments().containsKey(EXTRA_URL_TO_CALL))
+            Log.d("menuFormFragData" , "getArguments != null");
+            if (getArguments().containsKey(EXTRA_URL_TO_CALL)) {
+                Log.d("menuFormFragData" , "EXTRA_URL_TO_CALL");
                 urlToCall = getArguments().getString(EXTRA_URL_TO_CALL);
+            }
 
             if (getArguments().containsKey(EXTRA_JSON_STR_RESPONSE)) {
                 try {
                     onCompleteHttpResponse(new JSONObject(getArguments().getString(EXTRA_JSON_STR_RESPONSE)), urlToCall);
+                    Log.d("menuFormFragData" , "EXTRA_JSON_STR_RESPONE");
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             } else if (getArguments().containsKey(EXTRA_BIZ_FORM_DATA)) {
                 try {
+                    Log.d("menuFormFragData" , "EXTRA_BIZ_FORM_DATA");
                     JSONObject dataJsonObject = new JSONObject(getArguments().getString(EXTRA_BIZ_FORM_DATA));
                     JSONArray formJSONArray = dataJsonObject.getJSONArray("fields");
                     populateFieldsData(formJSONArray);
@@ -164,9 +174,11 @@ public class MenuFormFragment extends Fragment implements HttpResponseCallback, 
                 }
 
             } else {
+                Log.d("menuFormFragData" , "refreshData");
                 refreshData();
             }
-        }
+        } /*else
+            refreshData();*/
     }
 
     private void populateFieldsData(JSONArray formJSONArray) {
@@ -191,8 +203,9 @@ public class MenuFormFragment extends Fragment implements HttpResponseCallback, 
                     baseActivity.setTitle(baseActivity.sharedPrefUtils.isEnglishLang()?response.optString("title"):response.optString("titleUrdu"), true);
                 }
                 JSONObject dataJsonObject = response.getJSONObject("data");
-                if (dataJsonObject.has("form")) {
 
+                if (dataJsonObject.has("form")) {
+                    Log.d("enfrocementData" , "data = " + response);
                     JSONArray formJSONArray = dataJsonObject.getJSONArray("form");
                     formSectionInfos = new GsonBuilder().create().fromJson(formJSONArray.toString(), type);
 
@@ -219,26 +232,33 @@ public class MenuFormFragment extends Fragment implements HttpResponseCallback, 
         Log.d("imagePath" , "onActivityResult = " + "MenuFormFragment");
 
         if (resultCode != RESULT_OK) {
-            customViewCreate.clearFocusOfAllViews(menuFragParentLL);
+            if (customViewCreate!=null)
+                customViewCreate.clearFocusOfAllViews(menuFragParentLL);
             return;
         }
 
-        switch (requestCode) {
-            case CAPTURE_PHOTO:
-                Log.d("imagePath" , "menu form fragment");
-                imageSelectionUtils.chooseFromCameraImgPath(data, null);
-                break;
+//        if(data != null) {
+            switch (requestCode) {
+                case CAPTURE_PHOTO:
+                    Log.d("imagePath", "menu form fragment");
+                    imageSelectionUtils.chooseFromCameraImgPath(data, null);
+                    break;
 
-            case CHOOSE_FROM_GALLERY:
+                case CHOOSE_FROM_GALLERY:
 
-            case RECORD_VIDEO:
-                imageSelectionUtils.chooseFromGalleryImgPath(data, null);
-                break;
+                case RECORD_VIDEO:
+                    imageSelectionUtils.chooseFromGalleryImgPath(data, null);
+                    break;
 
-            case RC_DROPDOWN:
-                customViewCreate.updateDropdownViewsData(data.getExtras(), menuFragParentLL, sectionRequired);
-                break;
-        }
+                case RC_DROPDOWN:
+                    customViewCreate.updateDropdownViewsData(data.getExtras(), menuFragParentLL, sectionRequired);
+                    break;
+
+                case OTHER_FILES:
+                    imageSelectionUtils.chooseFromFilePath(data, null);
+                    break;
+            }
+//        }
     }
 
     private void populateData() {
@@ -257,6 +277,13 @@ public class MenuFormFragment extends Fragment implements HttpResponseCallback, 
     }
 
     @Override
+    public void showFilePickerDialog(CustomNetworkImageView view) {
+        Log.d("imagePath" , "image selection utils menu form fragment");
+        imageSelectionUtils = new ImageSelectionUtils(baseActivity, view);
+        imageSelectionUtils.showFilePickerDialog(null, false, false);
+    }
+
+    @Override
     public void onLabelViewClicked(PFASectionTV pfaSectionTV) {
         baseActivity.sharedPrefUtils.showToast(pfaSectionTV.getText().toString());
     }
@@ -265,7 +292,7 @@ public class MenuFormFragment extends Fragment implements HttpResponseCallback, 
     public void onButtonCLicked(View view) {
         switch (view.getTag().toString()) {
             case "get_code_button":
-                onClickGetCodeBtn(view, null);
+                onClickGetCodeBtn(view, null );
 
                 break;
             case "submit":
@@ -284,16 +311,28 @@ public class MenuFormFragment extends Fragment implements HttpResponseCallback, 
                                 List<PFAMenuInfo> pfaMenuInfos = new GsonBuilder().create().fromJson(menusJsonArray.toString(), type);
 
                                 if (pfaMenuInfos != null && pfaMenuInfos.size() == 1) {
-                                    final Bundle bundle = new Bundle();
-                                    bundle.putString(EXTRA_URL_TO_CALL, pfaMenuInfos.get(0).getAPI_URL());
+                                    if (pfaMenuInfos.get(0).getAPI_URL().contains("fbo_product_detail")){
+                                        baseActivity.getSharedPreferences("appPrefs" , Context.MODE_PRIVATE).edit().putBoolean("CheckListUpdated" , true).apply();
+                                    } else
+                                        baseActivity.getSharedPreferences("appPrefs" , Context.MODE_PRIVATE).edit().putBoolean("CheckListUpdated" , false).apply();
+//                                    if (pfaMenuInfos.get(0).getBack_API_URL().contains("fbo_product_listings")){
+//                                        baseActivity.getSharedPreferences("appPrefs" , Context.MODE_PRIVATE).edit().putString("BackUrl" , pfaMenuInfos.get(0).getBack_API_URL()).apply();
+//                                    }
+//                                    else {
 
-                                    baseActivity.httpService.getListsData(pfaMenuInfos.get(0).getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
-                                        @Override
-                                        public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                                            bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
-                                            baseActivity.sharedPrefUtils.startNewActivity(PFADetailActivity.class, bundle, true);
-                                        }
-                                    }, false);
+                                        final Bundle bundle = new Bundle();
+                                        bundle.putString(EXTRA_URL_TO_CALL, pfaMenuInfos.get(0).getAPI_URL());
+
+                                        baseActivity.httpService.getListsData(pfaMenuInfos.get(0).getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
+                                            @Override
+                                            public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+                                                if (response != null)
+                                                    bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                                                Log.d("submitCheckList" , "here");
+                                                baseActivity.sharedPrefUtils.startNewActivity(PFADetailActivity.class, bundle, true);
+                                            }
+                                        }, false);
+//                                    }
                                 } else {
                                     Bundle bundle = new Bundle();
                                     bundle.putString(EXTRA_DETAIL_MENU, response.toString());
@@ -340,11 +379,12 @@ public class MenuFormFragment extends Fragment implements HttpResponseCallback, 
     }
 
     @Override
-    public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout) {
+    public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout ) {
         PFAViewsUtils pfaViewsUtils = new PFAViewsUtils(baseActivity);
 
         PFAButton get_code_button = (PFAButton) view;
         pfaViewsUtils.getVerificationCode(menuFragParentLL, get_code_button.getButtonUrl(), view, verifyFBOLayout);
+        Log.d("onCreateActv" , "MenuFormsFragment" + "onClickGetCodeBtn123");
     }
 
     @Override

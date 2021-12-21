@@ -189,14 +189,16 @@ public class PFAChatLayout extends LinearLayout implements HttpResponseCallback,
                     httpService.formSubmit(reqParams, null, chat_sectionJsonObject.optString("API_URL"), new HttpResponseCallback() {
                         @Override
                         public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                            if (response.optBoolean("status")) {
-                                if ((!("" + (selectedFormDataMap.get("forwarded_to") == null ? "" : selectedFormDataMap.get("forwarded_to").getValue())).equalsIgnoreCase("Operations"))) {
+                            if (response != null) {
+                                if (response.optBoolean("status")) {
+                                    if ((!("" + (selectedFormDataMap.get("forwarded_to") == null ? "" : selectedFormDataMap.get("forwarded_to").getValue())).equalsIgnoreCase("Operations"))) {
 
-                                    ((Activity) getContext()).finish();
-                                    return;
+                                        ((Activity) getContext()).finish();
+                                        return;
+                                    }
+                                    msgET.setText("");
+                                    callChatUrl();
                                 }
-                                msgET.setText("");
-                                callChatUrl();
                             }
                         }
                     }, true, null);
@@ -275,6 +277,9 @@ public class PFAChatLayout extends LinearLayout implements HttpResponseCallback,
                 @Override
                 public void showImagePickerDialog(CustomNetworkImageView view) {
                 }
+                @Override
+                public void showFilePickerDialog(CustomNetworkImageView view) {
+                }
 
                 @Override
                 public void onLabelViewClicked(PFASectionTV pfaSectionTV) {
@@ -285,7 +290,7 @@ public class PFAChatLayout extends LinearLayout implements HttpResponseCallback,
                 }
 
                 @Override
-                public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout) {
+                public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout ) {
                 }
 
                 @Override

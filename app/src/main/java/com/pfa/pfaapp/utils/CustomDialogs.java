@@ -248,6 +248,8 @@ public class CustomDialogs {
                 BaseActivity baseActivity = (BaseActivity) mContext;
                 baseActivity.stopLocation();
                 baseActivity.finish();
+                baseActivity.finishAffinity();
+//                baseActivity.onBackPressed();
                 exitDialog = null;
 
             }
@@ -574,7 +576,8 @@ public class CustomDialogs {
                             httpService.getListsData(insInfo.get(position).getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
                                 @Override
                                 public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                                    bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                                    if (response != null)
+                                        bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
                                     httpService.startNewActivity(LocalFormsActivity.class, bundle, true);
                                 }
                             }, true);

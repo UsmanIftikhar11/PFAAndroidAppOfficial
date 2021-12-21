@@ -25,7 +25,7 @@ public class ImageCompressionAsyncTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected String doInBackground(Void... params) {
-        File localFile = new File(Environment.getExternalStorageDirectory()+"/pfaTemp");
+        File localFile = new File(Environment.getExternalStorageDirectory()+"/DCIM");
         return SiliCompressor.with(mContext).compress(imageFile.getAbsolutePath(), localFile);
     }
 

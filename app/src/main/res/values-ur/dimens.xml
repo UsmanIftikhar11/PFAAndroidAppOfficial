@@ -2,7 +2,7 @@
 <resources>
 
     <dimen name="sp_20">27sp</dimen>
-    <dimen name="sp_17">19sp</dimen>
+    <dimen name="sp_17">@dimen/_14sdp</dimen>
     <dimen name="sp_15">18sp</dimen>
     <dimen name="sp_13">15sp</dimen>
     <dimen name="sp_10">13sp</dimen>

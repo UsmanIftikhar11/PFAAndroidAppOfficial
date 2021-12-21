@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.util.Log;
 
 class FilePathUtils {
     /**
@@ -39,7 +40,7 @@ class FilePathUtils {
 
                     final String id = DocumentsContract.getDocumentId(uri);
                     final Uri contentUri = ContentUris.withAppendedId(
-                            Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
+                            Uri.parse("content://downloads/public_downloads"), Long.parseLong(id));
 
                     return getDataColumn(context, contentUri, null, null);
                 }
@@ -48,6 +49,7 @@ class FilePathUtils {
                     final String docId = DocumentsContract.getDocumentId(uri);
                     final String[] split = docId.split(":");
                     final String type = split[0];
+                    Log.d("fileType" , "type = " + type);
 
                     Uri contentUri = null;
                     if ("image".equals(type)) {
@@ -55,6 +57,8 @@ class FilePathUtils {
                     } else if ("video".equals(type)) {
                         contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
                     } else if ("audio".equals(type)) {
+                        contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+                    } else if ("document".equals(type)) {
                         contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
                     }
 

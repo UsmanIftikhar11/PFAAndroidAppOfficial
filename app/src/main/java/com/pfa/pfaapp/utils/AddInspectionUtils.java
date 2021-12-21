@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -17,9 +19,11 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.pfa.pfaapp.BaseActivity;
+import com.pfa.pfaapp.PFADetailActivity;
 import com.pfa.pfaapp.R;
 import com.pfa.pfaapp.customviews.LocalFormLL;
 import com.pfa.pfaapp.customviews.LocalGridLL;
@@ -47,6 +51,8 @@ import java.util.List;
 import static com.pfa.pfaapp.dbutils.DBQueriesUtil.TABLE_LOCAL_INSPECTIONS;
 import static com.pfa.pfaapp.utils.AppConst.CANCEL;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_INSPECTION_DATA;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_JSON_STR_RESPONSE;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_URL_TO_CALL;
 import static com.pfa.pfaapp.utils.AppConst.SP_FCM_ID;
 import static com.pfa.pfaapp.utils.AppConst.SP_STAFF_ID;
 
@@ -78,9 +84,9 @@ public class AddInspectionUtils {
     public boolean isDraft;
     public static boolean IS_FAKE = false;
     public static boolean IS_FINE = false;
-     boolean conducted_inspection;
-
-
+    boolean conducted_inspection;
+    String addProduct = "Do you want to submit Inspection?";
+    String addProductBackPressed = "Inspection is Incomplete. Do you want to:";
 
     public AddInspectionUtils(BaseActivity baseActivity, RBClickCallback rbClickCallback, DDSelectedCallback ddSelectedCallback, View rootView) {
         this.baseActivity = baseActivity;
@@ -126,6 +132,17 @@ public class AddInspectionUtils {
     public void populateDraftInspection(Bundle bundle) {
 
         inspectionInfo = (InspectionInfo) bundle.getSerializable(EXTRA_INSPECTION_DATA);
+
+
+//        SharedPreferences mPrefs = baseActivity.getSharedPreferences("inspec", baseActivity.MODE_PRIVATE);
+//        Gson gson = new Gson();
+//        String json = mPrefs.getString("myJson", "");
+//
+//
+//            Type type = new TypeToken<List<InspectionInfo>>() {
+//            }.getType();
+//            inspectionInfo = gson.fromJson(json, type);
+
 
         if (inspectionInfo != null) {
             inspection_id = inspectionInfo.getInspectionID();
@@ -192,18 +209,44 @@ public class AddInspectionUtils {
             new LocalFormHttpUtils(baseActivity.httpService, pfaMenuInfos, API_URL, inspection_id, baseActivity.sharedPrefUtils.getSharedPrefValue(SP_STAFF_ID, "")).sendInspectionToServer(new HttpResponseCallback() {
                 @Override
                 public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+
+                    String apiUrl = null;
+
 //                    {"status":true,"message_code":"REQUEST COMPLETED SUCCESSFULLY","localMenu":"Only Checklist is updated."}
                     if (response != null && response.optBoolean("status")) {
 
+                        JSONObject localMenuObject = response.optJSONObject("detailMenu");
+                        if (localMenuObject != null) {
+                            try {
+                                JSONArray menus = localMenuObject.getJSONArray("menus");
+                                apiUrl = menus.getJSONObject(0).optString("API_URL");
+                                Log.d("productReg", "api url = " + menus.getJSONObject(0).optString("API_URL"));
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                            Log.d("productReg", "message = " + response.optString("message_code"));
+                        }
+
+                        String finalApiUrl = apiUrl;
                         baseActivity.sharedPrefUtils.showMsgDialog(response.optString("message_code"), new SendMessageCallback() {
                             @Override
                             public void sendMsg(String message) {
-                                baseActivity.dbQueriesUtil.deleteTableRow(TABLE_LOCAL_INSPECTIONS, "inspectionID", inspection_id);
-                                if (baseActivity.isTaskRoot()) {
-                                    baseActivity.onBackPressed();
-                                } else {
-                                    AppConst.DO_REFRESH = true;
-                                    baseActivity.finish();
+
+                                if ( finalApiUrl!=null /*&& !finalApiUrl.isEmpty()*/){
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString(EXTRA_URL_TO_CALL, finalApiUrl);
+                                    baseActivity.sharedPrefUtils.startNewActivity(PFADetailActivity.class, bundle, true);
+                                }
+                                else {
+                                    baseActivity.dbQueriesUtil.deleteTableRow(TABLE_LOCAL_INSPECTIONS, "inspectionID", inspection_id);
+                                    if (baseActivity.isTaskRoot()) {
+                                        baseActivity.onBackPressed();
+                                    } else {
+                                        AppConst.DO_REFRESH = true;
+                                        baseActivity.finish();
+                                    }
                                 }
                             }
                         });
@@ -238,13 +281,12 @@ public class AddInspectionUtils {
 
         } else {
             // Do API call to send local form data to server
-            baseActivity.sharedPrefUtils.showThreeBtnsMsgDialog("Do you want to submit inspection?", new SendMessageCallback() {
-                @Override
-                public void sendMsg(String message) {
-                    performInspAction(message, false);
-                }
-            }, String.valueOf(AppUtils.INSPECTION_ACTION.Complete), (downloadLocalImgBtn.getVisibility() != View.VISIBLE && !isDraft));
-
+                baseActivity.sharedPrefUtils.showThreeBtnsMsgDialog( addProduct , new SendMessageCallback() {
+                    @Override
+                    public void sendMsg(String message) {
+                        performInspAction(message, false);
+                    }
+                }, String.valueOf(AppUtils.INSPECTION_ACTION.Complete), (downloadLocalImgBtn.getVisibility() != View.VISIBLE && !isDraft));
         }
     }
 
@@ -255,7 +297,7 @@ public class AddInspectionUtils {
         } else {
             if (inspectionInfo.getInspectionID() != null && (!inspectionInfo.getInspectionID().isEmpty())) {
 
-                baseActivity.sharedPrefUtils.showThreeBtnsMsgDialog("Inspection is Incomplete. Do you want to:", new SendMessageCallback() {
+                baseActivity.sharedPrefUtils.showThreeBtnsMsgDialog(addProductBackPressed, new SendMessageCallback() {
                     @Override
                     public void sendMsg(String message) {
                         performInspAction(message, true);
@@ -275,7 +317,8 @@ public class AddInspectionUtils {
             }
 
             @Override
-            public void downloadInspection(String downloadUrl, int position) {}
+            public void downloadInspection(String downloadUrl, int position) {
+            }
 
             @Override
             public void deleteRecordAPICall(String deleteUrl, int position) {
@@ -307,17 +350,44 @@ public class AddInspectionUtils {
     }
 
     public void onCompleteHttpResponse(JSONObject response) {
+        Log.d("onCreateActv" , "add inscpection util = onCompleteHttpResponse" );
+
         if (response != null && response.optBoolean("status")) {
             try {
 
-                 conducted_inspection = response.optBoolean("conducted_inspection");
+                conducted_inspection = response.optBoolean("conducted_inspection");
 
                 PFATableInfo pfaTableInfo = new PFATableInfo();
 
                 JSONObject localMenuObject = response.optJSONObject("localMenu");
+
+                try {
+                    if (localMenuObject !=null && localMenuObject.has("before_submit_alert")) {
+                        addProduct = localMenuObject.getString("before_submit_alert");
+                        Log.d("isAddProduct" , "isAddProduct = " + localMenuObject.getString("before_submit_alert"));
+                    }
+                    else {
+                        addProduct = "Do you want to submit Inspection?";
+                        Log.d("isAddProduct" , "isAddProduct = " + addProduct);
+                    }
+
+                    if (localMenuObject !=null && localMenuObject.has("back_press_alert")) {
+                        addProductBackPressed = localMenuObject.getString("back_press_alert");
+                        Log.d("isAddProduct" , "isAddProductBack = " + localMenuObject.getString("back_press_alert"));
+                    }
+                    else {
+                        addProductBackPressed = "Inspection is Incomplete. Do you want to:";
+                        Log.d("isAddProduct" , "isAddProductBack = " + addProductBackPressed);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
                 assert localMenuObject != null;
                 API_URL = localMenuObject.optString("API_URL");
-                inspection_id = localMenuObject.getString("inspection_id");
+                Log.d("onCreateActv" , "add inscpection util = " + API_URL);
+//                if (localMenuObject.has("inspection_id"))
+                    inspection_id = localMenuObject.getString("inspection_id");
 
                 if (localMenuObject.has("download_url")) {
                     downloadUrl = localMenuObject.optString("download_url");
@@ -410,7 +480,7 @@ public class AddInspectionUtils {
                 switch (pfaMenuInfo.getMenuType()) {
 
                     case "list":
-                        localFormsLL.addView(new LocalListLL(pfaMenuInfo,conducted_inspection, baseActivity));
+                        localFormsLL.addView(new LocalListLL(pfaMenuInfo, conducted_inspection, baseActivity));
                         break;
 
                     case "dashboard":
@@ -476,39 +546,43 @@ public class AddInspectionUtils {
 
     public void onDDDataSelected(FormDataInfo formDataInfo) {
         if (formDataInfo != null && formDataInfo.getAPI_URL() != null && (!formDataInfo.getAPI_URL().isEmpty())) {
+            Log.d("createViewDropdown" , "AddInspectionUtils = " + formDataInfo.getAPI_URL());
+            Log.d("createViewDropdown" , "AddInspectionUtils = " + formDataInfo);
 
             baseActivity.httpService.fetchConfigData(formDataInfo.getAPI_URL(), new HttpResponseCallback() {
                 @Override
                 public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                  baseActivity.sharedPrefUtils.printLog("response==:>", "" + response.toString());
-                    if (response.optBoolean("status")) {
-                        try {
-                            if (response.has("detailMenu")) {
-                                Type type = new TypeToken<List<PFAMenuInfo>>() {
-                                }.getType();
-                                JSONArray menusJsonArray = response.getJSONObject("detailMenu").getJSONArray("menus");
-                                List<PFAMenuInfo> testPFMenuInfos = new GsonBuilder().create().fromJson(menusJsonArray.toString(), type);
+                    if (response != null) {
+                        baseActivity.sharedPrefUtils.printLog("response==:>", "" + response.toString());
+                        if (response.optBoolean("status")) {
+                            try {
+                                if (response.has("detailMenu")) {
+                                    Type type = new TypeToken<List<PFAMenuInfo>>() {
+                                    }.getType();
+                                    JSONArray menusJsonArray = response.getJSONObject("detailMenu").getJSONArray("menus");
+                                    List<PFAMenuInfo> testPFMenuInfos = new GsonBuilder().create().fromJson(menusJsonArray.toString(), type);
 
-                                if (testPFMenuInfos != null && testPFMenuInfos.size() > 0) {
-                                    if (pfaMenuInfos != null && pfaMenuInfos.size() > 0) {
-                                        for (int i = 0; i < pfaMenuInfos.size(); i++) {
-                                            if (pfaMenuInfos.get(i).getSlug().equalsIgnoreCase(testPFMenuInfos.get(0).getSlug())) {
-                                                pfaMenuInfos.set(i, testPFMenuInfos.get(0));
+                                    if (testPFMenuInfos != null && testPFMenuInfos.size() > 0) {
+                                        if (pfaMenuInfos != null && pfaMenuInfos.size() > 0) {
+                                            for (int i = 0; i < pfaMenuInfos.size(); i++) {
+                                                if (pfaMenuInfos.get(i).getSlug().equalsIgnoreCase(testPFMenuInfos.get(0).getSlug())) {
+                                                    pfaMenuInfos.set(i, testPFMenuInfos.get(0));
 
-                                                View view = localFormsLL.getChildAt(i);
+                                                    View view = localFormsLL.getChildAt(i);
 
-                                                if (view instanceof LocalFormLL) {
-                                                    ((LocalFormLL) localFormsLL.getChildAt(i)).updateLayout(pfaMenuInfos.get(i));
+                                                    if (view instanceof LocalFormLL) {
+                                                        ((LocalFormLL) localFormsLL.getChildAt(i)).updateLayout(pfaMenuInfos.get(i));
+                                                    }
+                                                    break;
                                                 }
-                                                break;
                                             }
                                         }
                                     }
                                 }
-                            }
 
-                        } catch (JSONException e) {
-                            baseActivity.sharedPrefUtils.printStackTrace(e);
+                            } catch (JSONException e) {
+                                baseActivity.sharedPrefUtils.printStackTrace(e);
+                            }
                         }
                     }
                 }

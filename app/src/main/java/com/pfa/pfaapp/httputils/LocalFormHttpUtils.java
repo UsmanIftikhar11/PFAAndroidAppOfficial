@@ -64,6 +64,7 @@ public class LocalFormHttpUtils {
         this.API_URL = API_URL;
         this.inspectionID = inspectionID;
         this.staffID = staffID;
+        Log.d("svaeInspection" , "url = " + API_URL);
     }
 
     public void sendInspectionToServer(final HttpResponseCallback httpResponseCallback, String action) {

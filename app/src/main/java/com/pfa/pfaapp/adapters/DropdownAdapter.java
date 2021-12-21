@@ -16,10 +16,10 @@ import java.util.Locale;
 
 public class DropdownAdapter extends ArrayAdapter<String> {
 
-    private LayoutInflater inflater;
-    private List<String> originalData;
-    private Context mContext;
-    private AppUtils appUtils;
+    private final LayoutInflater inflater;
+    private final List<String> originalData;
+    private final Context mContext;
+    private final AppUtils appUtils;
 
     /*************
      * CustomAdapter Constructor

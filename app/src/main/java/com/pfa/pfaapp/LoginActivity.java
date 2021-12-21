@@ -1,6 +1,7 @@
 package com.pfa.pfaapp;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ import static com.pfa.pfaapp.utils.AppConst.SP_IS_LOGED_IN;
 import static com.pfa.pfaapp.utils.AppConst.SP_LOGIN_TYPE;
 import static com.pfa.pfaapp.utils.AppConst.SP_NEW_PIN_SMS_CODE;
 import static com.pfa.pfaapp.utils.AppConst.SP_PHONE_NUM;
+import static com.pfa.pfaapp.utils.AppConst.SP_PIN_CODE_MESSAGE;
 import static com.pfa.pfaapp.utils.AppConst.SP_SECURITY_CODE;
 import static com.pfa.pfaapp.utils.AppConst.SP_STAFF_ID;
 
@@ -286,6 +288,7 @@ public class LoginActivity extends BaseActivity implements HttpResponseCallback 
                 bundle.putString(AppConst.SP_CNIC, cnicET.getText().toString());
                 bundle.putString(AppConst.SP_PHONE_NUM, phoneNumET.getText().toString());
                 bundle.putBoolean("isLogin", true);
+                bundle.putString(SP_PIN_CODE_MESSAGE, dataObject.optString(SP_PIN_CODE_MESSAGE));
                 bundle.putBoolean(EXTRA_SINGLE_TOP, true);
                 sharedPrefUtils.saveSharedPrefValue(SP_AUTH_TOKEN, dataObject.optString(SP_AUTH_TOKEN));
 
@@ -339,6 +342,7 @@ public class LoginActivity extends BaseActivity implements HttpResponseCallback 
             }
 
         } else {
+            Log.d("loginResp" , "response = null" );
             sharedPrefUtils.showMsgDialog("No data received from server", null);
         }
     }

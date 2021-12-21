@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.text.Html;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -151,6 +152,24 @@ public class PFADDACTV extends androidx.appcompat.widget.AppCompatAutoCompleteTe
         }
     }
 
+    public void showHideDropDown(boolean show){
+        if (show)
+            textInputLayout.setVisibility(VISIBLE);
+        else
+            textInputLayout.setVisibility(GONE);
+    }
+
+    public void setRequired(boolean required){
+        if (required) {
+            formFieldInfo.setRequired(true);
+//            formFieldInfo.setInvisible(true);
+        }
+        else {
+            formFieldInfo.setRequired(false);
+//            formFieldInfo.setInvisible(false);
+        }
+    }
+
     public void setDropdownSelection(int position, PFAViewsCallbacks pfaViewsCallbacks) {
         selectedValues = new ArrayList<>();
 
@@ -261,8 +280,10 @@ public class PFADDACTV extends androidx.appcompat.widget.AppCompatAutoCompleteTe
                 }
             }
 
-        if (showConfirmMsg && DDCallback != null)
+        if (showConfirmMsg && DDCallback != null) {
+            Log.d("createViewDropdown" , "PFADDACTV = not null");
             DDCallback.onDDDataSelected(filterDataInfo);
+        }
         clearFocus();
     }
 

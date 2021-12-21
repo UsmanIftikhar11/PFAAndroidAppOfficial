@@ -142,6 +142,7 @@ public class PullAndLoadListView extends ListView implements AbsListView.OnScrol
     /**
      * initialization
      */
+
     @SuppressLint("InflateParams")
     private void init(Context context, AttributeSet attrs) {
         //Get Property

@@ -11,6 +11,7 @@ import android.text.InputFilter;
 import android.text.InputType;
 import android.text.method.KeyListener;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -104,6 +105,7 @@ public class PFAEditText extends ClearableEditText {
         setCompoundDrawablePadding(appUtils.convertDpToPixel(7));
         setTag(formFieldInfo.getField_name());
         setHint(appUtils.isEnglishLang() ? formFieldInfo.getValue() : formFieldInfo.getValueUrdu());
+
         if (formFieldInfo.getField_type().contains("cnic")) {
             setMaxEms(15);
             setFilters(new InputFilter[]{new InputFilter.LengthFilter(15), new EmojiExcludeFilter()});
@@ -168,8 +170,10 @@ public class PFAEditText extends ClearableEditText {
                         textInputLayout.setError(null);
                 } else {
                     setHint(appUtils.isEnglishLang() ? formFieldInfo.getValue() : formFieldInfo.getValueUrdu());
-                    if (getText().toString().length() > 0)
+                    if (getText().toString().length() > 0) {
                         showInvalidFormError(true);
+                        Log.d("edittextError", "showError 3= " );
+                    }
                 }
             }
         });
@@ -204,6 +208,24 @@ public class PFAEditText extends ClearableEditText {
         }
     }
 
+    public void showHideDropDown(boolean show){
+        if (show)
+            textInputLayout.setVisibility(VISIBLE);
+        else
+            textInputLayout.setVisibility(GONE);
+    }
+
+    public void setRequired(boolean required){
+        if (required) {
+            formFieldInfo.setRequired(true);
+//            formFieldInfo.setInvisible(true);
+        }
+        else {
+            formFieldInfo.setRequired(false);
+//            formFieldInfo.setInvisible(false);
+        }
+    }
+
 
     public FormDataInfo getETData(boolean showError) {
 
@@ -225,6 +247,7 @@ public class PFAEditText extends ClearableEditText {
             formDataInfo.setKey(formDataInfo.getKey().replaceAll("-", ""));
         }
         showInvalidFormError(showError);
+        Log.d("edittextError" , "showError 1= " + showError);
 
         return formDataInfo;
     }
@@ -278,6 +301,7 @@ public class PFAEditText extends ClearableEditText {
     }
 
     private void showInvalidFormError(boolean showError) {
+        Log.d("edittextError" , "showError1 = " + showError);
         if (formFieldInfo != null && formFieldInfo.isRequired()) {
             showError(showError);
         } else if (!getText().toString().isEmpty()) {

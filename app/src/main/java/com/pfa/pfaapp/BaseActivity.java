@@ -363,23 +363,23 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.R)
-    public void checkManageStorage(){
-        if (!Environment.isExternalStorageManager())
-        {
-            Intent permissionIntent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION );
-            startActivity(permissionIntent);
-        }
-    }
+//    @RequiresApi(api = Build.VERSION_CODES.R)
+//    public void checkManageStorage(){
+//        if (!Environment.isExternalStorageManager())
+//        {
+//            Intent permissionIntent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION );
+//            startActivity(permissionIntent);
+//        }
+//    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (requestCode == 123 && grantResults.length>0){
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                checkManageStorage();
-            }
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//                checkManageStorage();
+//            }
         }
     }
 
@@ -459,7 +459,8 @@ public class BaseActivity extends AppCompatActivity {
                     @Override
                     public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
 
-                        bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                        if (response != null)
+                            bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
                         bundle.putBoolean("extraFetchConfig", true);
                         //////////// Fetch User Information
                         if (sharedPrefUtils.getSharedPrefValue(SP_USER_INFO, "") == null) {

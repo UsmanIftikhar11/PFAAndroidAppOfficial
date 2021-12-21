@@ -1,5 +1,6 @@
 package com.pfa.pfaapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -76,6 +77,8 @@ public class MapsActivity extends BaseActivity implements HttpResponseCallback, 
         tapAnywhereMsgTV = findViewById(R.id.tapAnywhereMsgTV);
         mapListRL = findViewById(R.id.mapListRL);
 
+        Log.d("onCreateActv" , "MapsActivity");
+
         sharedPrefUtils.applyStyle(String.valueOf(AppUtils.FONT_STYLE.medium), String.valueOf(AppUtils.FONT_SIZE.l), getResources().getString(R.string.text_light_grey), headingTV);
         sharedPrefUtils.applyFont(setBizLocaBtn, AppUtils.FONTS.HelveticaNeueMedium);
 
@@ -96,9 +99,11 @@ public class MapsActivity extends BaseActivity implements HttpResponseCallback, 
         ArrayList<String> latLng = new ArrayList<>();
         if (getIntent().getExtras().containsKey(EXTRA_URL_TO_CALL)) {
 
+            Log.d("onCreateActvvv" , "MapsActivity1");
             urlToCall = bundle.getString(EXTRA_URL_TO_CALL);
 
             if (bundle.containsKey(BUSINESS_LOCATION_FIELD)) {
+                Log.d("onCreateActvvv" , "MapsActivity2");
                 sharedPrefUtils.printLog("BUSINESS_LOCATION_FIELD", "" + bundle.getString(BUSINESS_LOCATION_FIELD));
 
                 latLng.add(bundle.getString(BUSINESS_LOCATION_FIELD));
@@ -107,12 +112,14 @@ public class MapsActivity extends BaseActivity implements HttpResponseCallback, 
                 setBizLocaBtn.setVisibility(View.VISIBLE);
                 tapAnywhereMsgTV.setVisibility(View.VISIBLE);
             } else {
+                Log.d("onCreateActvvv" , "MapsActivity3");
                 doAPICall();
             }
 
         } else {
 
             if (bundle.containsKey(EXTRA_PFA_MENU_ITEM)) {
+                Log.d("onCreateActvvv" , "MapsActivity4");
 
                 isMap = false;
                 pfaMenuInfo = (PFAMenuInfo) bundle.getSerializable(EXTRA_PFA_MENU_ITEM);
@@ -121,6 +128,7 @@ public class MapsActivity extends BaseActivity implements HttpResponseCallback, 
             }
 
             if (bundle.containsKey(EXTRA_LATLNG_STR)) {
+                Log.d("onCreateActvvv" , "MapsActivity5");
                 sharedPrefUtils.printLog("EXTRA_LATLNG_STR", bundle.getString(EXTRA_LATLNG_STR));
 
                 mapListLV.setVisibility(View.GONE);
@@ -201,7 +209,13 @@ public class MapsActivity extends BaseActivity implements HttpResponseCallback, 
 
     @Override
     public void onBackPressed() {
-        finish();
+        boolean checkListUpdated = getSharedPreferences("appPrefs" , Context.MODE_PRIVATE).getBoolean("CheckListUpdated" , false);
+        if (checkListUpdated) {
+            getSharedPreferences("appPrefs" , Context.MODE_PRIVATE).edit().putBoolean("CheckListUpdated" , false).apply();
+            sharedPrefUtils.startNewActivity(FBOMainGridActivity.class, null, true);
+        }
+        else
+            finish();
     }
 
     @Override

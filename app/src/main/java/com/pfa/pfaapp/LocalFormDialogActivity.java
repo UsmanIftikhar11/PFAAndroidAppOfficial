@@ -1,11 +1,8 @@
 package com.pfa.pfaapp;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.pfa.pfaapp.customviews.CustomNetworkImageView;
 import com.pfa.pfaapp.customviews.CustomViewCreate;
@@ -33,6 +29,7 @@ import java.util.List;
 import static com.pfa.pfaapp.utils.AppConst.CAPTURE_PHOTO;
 import static com.pfa.pfaapp.utils.AppConst.CHOOSE_FROM_GALLERY;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_DIALOG_ADD_ITEM_FORM_SECTION;
+import static com.pfa.pfaapp.utils.AppConst.OTHER_FILES;
 import static com.pfa.pfaapp.utils.AppConst.RC_DROPDOWN;
 import static com.pfa.pfaapp.utils.AppConst.RECORD_VIDEO;
 
@@ -63,6 +60,9 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
 
         formSectionInfo = (FormSectionInfo) getIntent().getSerializableExtra(EXTRA_DIALOG_ADD_ITEM_FORM_SECTION);
         formSectionInfos.add(formSectionInfo);
+
+        Log.d("sampleData" , "data = " + formSectionInfo);
+
         setTitle(formSectionInfo.getSection_name(), true);
 
 //                SharedPreferences sharedPreferences = PreferenceManager
@@ -80,6 +80,13 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
             }
 
             @Override
+            public void showFilePickerDialog(CustomNetworkImageView view) {
+                Log.d("imagePath" , "image selection utils menu form fragment");
+                imageSelectionUtils = new ImageSelectionUtils(LocalFormDialogActivity.this, view);
+                imageSelectionUtils.showFilePickerDialog(null, false, false);
+            }
+
+            @Override
             public void onLabelViewClicked(PFASectionTV pfaSectionTV) {
 
             }
@@ -90,7 +97,7 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
             }
 
             @Override
-            public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout) {
+            public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout ) {
 
             }
 
@@ -145,8 +152,11 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
                         formSectionInfo.getFields().addAll(formSectionInfos.get(1).getFields());
                     }
                     if (pfaFormSubmitUtil.isFormDataValid(sectionRequired, menuFragParentLL, true)) {
+                        Log.d("yesButton" , "yes btn1");
                         if (formSectionInfo != null && formSectionInfo.getFields() != null && formSectionInfo.getFields().size() > 0) {
+                            Log.d("yesButton" , "yes btn2");
                             for (int j = 0; j < formSectionInfo.getFields().size(); j++) {
+                                Log.d("yesButton" , "yes btn3");
 
                                 if (formViewsData.containsKey(formSectionInfo.getFields().get(j).getField_name())) {
                                     if (formSectionInfo.getFields().get(j).getField_type().equalsIgnoreCase(String.valueOf(AppUtils.FIELD_TYPE.dropdown))) {
@@ -193,6 +203,11 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
     }
 
     @Override
+    public void showFilePickerDialog(CustomNetworkImageView view) {
+
+    }
+
+    @Override
     public void onLabelViewClicked(PFASectionTV pfaSectionTV) {
 
     }
@@ -203,7 +218,7 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
     }
 
     @Override
-    public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout) {
+    public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout ) {
 
     }
 
@@ -247,7 +262,12 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
                 break;
 
             case RC_DROPDOWN:
-                updateDropdownViewsData(data.getExtras());
+                if(data!=null )
+                    updateDropdownViewsData(data.getExtras());
+                break;
+
+            case OTHER_FILES:
+                imageSelectionUtils.chooseFromFilePath(data, null);
                 break;
         }
 

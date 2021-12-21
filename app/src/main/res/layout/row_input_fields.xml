@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/formImgFL"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="MissingDefaultResource"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+
+
+    <com.pfa.pfaapp.customviews.PFAEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"/>
+
+    <ImageButton
+        android:id="@+id/deleteImgBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="right|end"
+        android:background="@color/transparent"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"
+        android:src="@mipmap/download_cancel"
+        android:visibility="gone"
+        tools:ignore="RtlHardcoded" />
+
+    <include
+        layout="@layout/pfa_dropdown_actv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"/>
+
+</LinearLayout>

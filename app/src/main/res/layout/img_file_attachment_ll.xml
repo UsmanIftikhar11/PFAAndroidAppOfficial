@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/applicantCNICLL"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:paddingBottom="2dp">
+
+    <FrameLayout
+        android:id="@+id/selectImgLblFL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<!--
+        <TextView
+            android:id="@+id/selectImgTV"
+            style="@style/grey_8_sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:text="@string/select_image" />-->
+
+        <ImageButton
+            android:id="@+id/addMoreImgBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="right|end"
+            android:background="@color/transparent"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/plus_add"
+            android:visibility="gone"
+            tools:ignore="RtlHardcoded" />
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/attachmentLblTV"
+        style="@style/inner_tv_10_sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/text_bg"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:text="@string/applicant_cnic_image" />
+    <!--android:drawableEnd="@mipmap/attachment_link"-->
+    <!--android:drawableRight="@mipmap/attachment_link"-->
+
+    <include
+        layout="@layout/form_img_fl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"/>
+
+</LinearLayout>

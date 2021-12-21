@@ -17,6 +17,7 @@ public class FormFieldInfo implements Serializable {
     private String value;//":"Designation",
     private String valueUrdu;
     private String default_value;//":"Owner",
+    private boolean bottom_hr_line = true;//":"heading bottom line",
     private boolean clickable;
     private boolean horizontal;
     private List<FormDataInfo> data;
@@ -118,6 +119,14 @@ public class FormFieldInfo implements Serializable {
 
     public void setDefault_value(String default_value) {
         this.default_value = default_value;
+    }
+
+    public boolean isBottom_hr_line() {
+        return bottom_hr_line;
+    }
+
+    public void setBottom_hr_line(boolean bottom_hr_line) {
+        this.bottom_hr_line = bottom_hr_line;
     }
 
     public List<FormDataInfo> getData() {

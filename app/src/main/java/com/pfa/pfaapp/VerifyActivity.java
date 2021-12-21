@@ -38,6 +38,8 @@ public class VerifyActivity extends BaseActivity implements HttpResponseCallback
     boolean isLoginActivity = true;
     HashMap<String, String> reqParams;
     private String resendUrl;
+    private String PinCodeMessage;
+    private TextView tempPinTV;
 
 
     String securityCode;
@@ -52,6 +54,7 @@ public class VerifyActivity extends BaseActivity implements HttpResponseCallback
         sharedPrefUtils.applyFont(findViewById(R.id.tempPinTV), AppUtils.FONTS.HelveticaNeue);
 
         timerTv = findViewById(R.id.timerTv);
+        tempPinTV = findViewById(R.id.tempPinTV);
         sharedPrefUtils.applyFont(timerTv, AppUtils.FONTS.HelveticaNeueMedium);
 
         sharedPrefUtils.applyFont(findViewById(R.id.changeNumBtn), AppUtils.FONTS.HelveticaNeueMedium);
@@ -90,7 +93,6 @@ public class VerifyActivity extends BaseActivity implements HttpResponseCallback
         pinCodeET5.addTextChangedListener(textWatcher);
         pinCodeET6.addTextChangedListener(textWatcher);
 
-
     }
 
     @Override
@@ -120,6 +122,10 @@ public class VerifyActivity extends BaseActivity implements HttpResponseCallback
                 reqParams = (HashMap<String, String>) bundle.getSerializable(SIGNUP_REQ_PARAMS);
             }
 
+            if (bundle.containsKey(SP_PIN_CODE_MESSAGE)) {
+                PinCodeMessage = bundle.getString(SP_PIN_CODE_MESSAGE);
+            }
+
             if (bundle.containsKey(EXTRA_PFA_MENU_ITEM))
                 pfaMenuInfo = (PFAMenuInfo) bundle.getSerializable(EXTRA_PFA_MENU_ITEM);
 
@@ -127,6 +133,11 @@ public class VerifyActivity extends BaseActivity implements HttpResponseCallback
                 isLoginActivity = true;
             }
         }
+
+        if (!PinCodeMessage.isEmpty())
+            tempPinTV.setText(PinCodeMessage);
+        else
+            tempPinTV.setText(getResources().getString(R.string.enter_passcode));
 
 
         populateSecurityCode();
@@ -136,10 +147,10 @@ public class VerifyActivity extends BaseActivity implements HttpResponseCallback
 
 
         if (securityCode.length() == 6) {
-            if (!String.valueOf(AppUtils.USER_LOGIN_TYPE.fbo).equalsIgnoreCase((bundle.getString(SP_LOGIN_TYPE)))) {
+//            if (!String.valueOf(AppUtils.USER_LOGIN_TYPE.fbo).equalsIgnoreCase((bundle.getString(SP_LOGIN_TYPE)))) {
                 if (sharedPrefUtils.getSharedPrefValue(SP_NEW_PIN_SMS_CODE, "") == null)
                     forgotPinTV.setVisibility(View.VISIBLE);
-            }
+//            }
 
             startTimer();
         }

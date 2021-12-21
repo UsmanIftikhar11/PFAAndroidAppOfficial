@@ -17,6 +17,7 @@ public class AppConst {
     public static final int CHOOSE_FROM_GALLERY = 1;
     public static final int RECORD_VIDEO = 2;
     static final int MULTIPLE_IMAGES = 3;
+    public static final int OTHER_FILES = 4;
 
     public static final int REQ_CODE_ADD_ITEM = 10;//  EXTRA_DIALOG_ADD_ITEM_FORM_SECTION
 
@@ -57,6 +58,7 @@ public class AppConst {
     public static final String SP_USER_INFO = "SP_USER_INFO";
     public static final String SP_LAST_FETCH_TIME = "SP_LAST_FETCH_TIME";
     public static final String SP_VERIFICATION_CODE = "SP_VERIFICATION_CODE";
+    public static final String SP_PIN_CODE_MESSAGE = "PinCodeMessage";
     public static final String SP_LOGIN_TYPE = "loginType";
     public static final String MTO_WEB_URL="MTO_WEB_URL";
     public static final String SP_FCM_ID = "fcmId";

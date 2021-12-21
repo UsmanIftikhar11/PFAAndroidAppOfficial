@@ -179,11 +179,13 @@ public class ShareFragment extends Fragment implements View.OnClickListener {
                 @Override
                 public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
 
-                    if (response.optBoolean("status")) {
-                        baseActivity.sharedPrefUtils.shareOnWhatsApp(response.optString("shareHtmlStr"));
+                    if (response != null){
+                        if (response.optBoolean("status")) {
+                            baseActivity.sharedPrefUtils.shareOnWhatsApp(response.optString("shareHtmlStr"));
 
-                    } else {
-                        baseActivity.sharedPrefUtils.showMsgDialog(response.optString("message_code"), null);
+                        } else {
+                            baseActivity.sharedPrefUtils.showMsgDialog(response.optString("message_code"), null);
+                        }
                     }
                 }
             }, true);

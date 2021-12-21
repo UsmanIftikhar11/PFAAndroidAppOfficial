@@ -1,8 +1,12 @@
 package com.pfa.pfaapp.adapters;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.gson.Gson;
 import com.pfa.pfaapp.BaseActivity;
 import com.pfa.pfaapp.LocalFormsActivity;
 import com.pfa.pfaapp.MapsActivity;
@@ -24,18 +29,19 @@ import java.util.List;
 import java.util.Locale;
 
 import static com.pfa.pfaapp.utils.AppConst.CANCEL;
-import static com.pfa.pfaapp.utils.AppConst.EXTRA_INSPECTION_DATA;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_LATLNG_STR;
 
 public class InspectionAdapter extends BaseAdapter {
-    private List<InspectionInfo> inspectionInfos;
 
-    private BaseActivity baseActivity;
-    private List<List<PFATableInfo>> suggestions;
-    private PFAListItem pfaListItem;
-    private List<String> columnTags = new ArrayList<>();
-    private SendMessageCallback deleteCallback;
+    private final List<InspectionInfo> inspectionInfos;
+
+    private final BaseActivity baseActivity;
+    private final List<List<PFATableInfo>> suggestions;
+    private final PFAListItem pfaListItem;
+    private final List<String> columnTags = new ArrayList<>();
+    private final SendMessageCallback deleteCallback;
     private boolean isClicked = false;
+    private final ProgressDialog progressDialog;
 
     public InspectionAdapter(BaseActivity context, List<InspectionInfo> inspectionInfos, List<List<PFATableInfo>> data, SendMessageCallback deleteCallback) {
         this.deleteCallback = deleteCallback;
@@ -43,6 +49,9 @@ public class InspectionAdapter extends BaseAdapter {
         this.inspectionInfos = inspectionInfos;
         this.suggestions = data;
         pfaListItem = new PFAListItem(context);
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("Loading Draft");
+        progressDialog.setMessage("Please wait... ");
 
     }
 
@@ -88,16 +97,12 @@ public class InspectionAdapter extends BaseAdapter {
 
                     if (columnsData.get(i).getLat_lng() != null && (!columnsData.get(i).getLat_lng().isEmpty())) {
                         final PFATableInfo temPfaTableInfo = columnsData.get(i);
-                        customNetworkImageView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Bundle bundle = new Bundle();
-                                bundle.putString(EXTRA_LATLNG_STR, temPfaTableInfo.getLat_lng());
-                                baseActivity.sharedPrefUtils.startNewActivity(MapsActivity.class, bundle, false);
-                            }
+                        customNetworkImageView.setOnClickListener(v -> {
+                            Bundle bundle = new Bundle();
+                            bundle.putString(EXTRA_LATLNG_STR, temPfaTableInfo.getLat_lng());
+                            baseActivity.sharedPrefUtils.startNewActivity(MapsActivity.class, bundle, false);
                         });
                     }
-
 
                 } else {
                     TextView textView = (TextView) view;
@@ -115,47 +120,49 @@ public class InspectionAdapter extends BaseAdapter {
                         } else {
                             textView.setText(Html.fromHtml("" + (baseActivity.sharedPrefUtils.isEnglishLang()?columnsData.get(i).getData():columnsData.get(i).getDataUrdu())));
                         }
+
                     }
                 }
             }
         }
 
-        convertView.findViewById(R.id.downloadImgBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                baseActivity.sharedPrefUtils.showTwoBtnsMsgDialog("Are you sure you want to delete draft inspection?", new SendMessageCallback() {
-                    @Override
-                    public void sendMsg(String message) {
-                        if (message.equalsIgnoreCase(CANCEL))
-                            return;
+        convertView.findViewById(R.id.downloadImgBtn).setOnClickListener(v -> baseActivity.sharedPrefUtils.
+                showTwoBtnsMsgDialog("Are you sure you want to delete draft inspection?", message -> {
+            if (message.equalsIgnoreCase(CANCEL))
+                return;
+            deleteCallback.sendMsg("" + position);
+        }));
 
-                        deleteCallback.sendMsg("" + position);
-                    }
-                });
+        convertView.setOnClickListener(v -> {
+            if (isClicked) {
+                return;
             }
-        });
 
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isClicked) {
-                    return;
-                }
+            isClicked = true;
 
-                isClicked = true;
+            (new Handler()).postDelayed(() -> isClicked = false, 100);
 
-                (new Handler()).postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        isClicked = false;
-                    }
-                }, 100);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(EXTRA_INSPECTION_DATA, inspectionInfos.get(position));
-                bundle.putBoolean("isDraft",true);
-                baseActivity.sharedPrefUtils.startNewActivity(LocalFormsActivity.class, bundle, false);
 
-            }
+            progressDialog.show();
+
+//                Bundle bundle = new Bundle();
+//                bundle.putSerializable(EXTRA_INSPECTION_DATA, inspectionInfos.get(position));
+//                bundle.putBoolean("isDraft",true);
+
+            SharedPreferences appSharedPrefs = baseActivity.getSharedPreferences("AppPref" , Context.MODE_PRIVATE);
+            SharedPreferences.Editor prefsEditor = appSharedPrefs.edit();
+            Gson gson = new Gson();
+            String json = gson.toJson(inspectionInfos);
+            prefsEditor.putString("inspec", json);
+            prefsEditor.apply();
+            baseActivity.getSharedPreferences("appPrefs" , Context.MODE_PRIVATE).edit().putBoolean("isDraft" , true).apply();
+            baseActivity.getSharedPreferences("appPrefs" , Context.MODE_PRIVATE).edit().putInt("inspecPos" , position).apply();
+
+            Log.d("BundleData" , "data1 = " + inspectionInfos.get(position).getMenuData());
+
+            baseActivity.sharedPrefUtils.startNewActivity1(LocalFormsActivity.class, true ,false);
+
+            new Handler().postDelayed(progressDialog::dismiss, 2000);
         });
 
         return convertView;

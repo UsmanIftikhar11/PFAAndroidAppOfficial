@@ -5,12 +5,19 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.ParseError;
 import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.pfa.pfaapp.AppController;
 import com.pfa.pfaapp.R;
@@ -47,9 +54,11 @@ import static com.pfa.pfaapp.utils.AppConst.SP_STAFF_ID;
 class HttpUtils extends ScalingUtilities implements X509TrustManager {
     private static final X509Certificate[] _AcceptedIssuers = new X509Certificate[]{};
      ProgressDialog progressDialog;
+     Context context;
 
     HttpUtils(Context mContext) {
         super(mContext);
+        context = mContext;
     }
 
     public boolean isNetworkDisconnected() {
@@ -119,7 +128,7 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
         }
 
         printLog("Request Url=>", "" + url.toString());
-//        HttpsTrustManager.allowAllSSL();
+        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest = new StringRequest(Method.GET, url.toString().replaceAll(" ", "%20"), new Response.Listener<String>() {
 
             @Override
@@ -155,9 +164,41 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
                 printStackTrace(volleyError);
                 hideProgressDialog();
 
+                if (volleyError instanceof TimeoutError) {
+                    Log.d("volleyErrorMsg" , "msg 1= " + "TimeoutError");
+//                    DecodeError(context , volleyError);
+                    //For example your timeout is 3 seconds but the operation takes longer
+                }
+
+                else if (volleyError instanceof ServerError) {
+                    //error in server
+                    Log.d("volleyErrorMsg" , "msg 1= " + "ServerError" + volleyError);
+                    volleyError.printStackTrace();
+//                    DecodeError(context , volleyError);
+                }
+
+                else if (volleyError instanceof NetworkError) {
+                    Log.d("volleyErrorMsg" , "msg 1= " + "NetworkError");
+//                    DecodeError(context , volleyError);
+                    //network is disconnect
+                }
+
+                else if (volleyError instanceof ParseError) {
+                    //for cant convert data
+                    Log.d("volleyErrorMsg" , "msg 1= " + "ParseError");
+//                    DecodeError(context , volleyError);
+                }
+
+                else {
+                    Log.d("volleyErrorMsg" , "msg 1= " + "Other");
+//                    DecodeError(context , volleyError);
+                    //other error
+                }
+
+
                 ////////
                 if (volleyError.networkResponse != null) {
-                    showMsgDialog("Some Error Occurred, Please Try Again!1", null);
+                    showMsgDialog("Some Error Occurred, Please Try Again!1" + "\n" + url.toString(), null);
                 } else {
                     showMsgDialog("Please Check Your Internet Connection and Try Again!1", null);
                 }
@@ -235,12 +276,16 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
         printLog("Request URL:=> ", "" + requestUrl);
 
 // waiting response msg
-        progressDialog = new ProgressDialog(mContext);
-        progressDialog.setMessage("Submitting please wait...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
+//        if(!((Activity) context).isFinishing()) {
+            //show dialog
+            progressDialog = new ProgressDialog(mContext);
+            progressDialog.setMessage("Submitting please wait...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+//        }
 
-//        HttpsTrustManager.allowAllSSL();
+
+        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest = new StringRequest(Method.POST, requestUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -272,6 +317,35 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
             public void onErrorResponse(VolleyError volleyError) {
 
                 printStackTrace(volleyError);
+//                Log.d("volleyErrorMsg" , "msg = " + volleyError.getMessage().toString());
+
+                if (volleyError instanceof TimeoutError) {
+                    Log.d("volleyErrorMsg" , "msg = " + "TimeoutError");
+                    //For example your timeout is 3 seconds but the operation takes longer
+                }
+
+                else if (volleyError instanceof ServerError) {
+                    //error in server
+                    Log.d("volleyErrorMsg" , "msg = " + "ServerError" + volleyError);
+                    volleyError.printStackTrace();
+//                    DecodeError(context , volleyError);
+                }
+
+                else if (volleyError instanceof NetworkError) {
+                    Log.d("volleyErrorMsg" , "msg = " + "NetworkError");
+                    //network is disconnect
+                }
+
+                else if (volleyError instanceof ParseError) {
+                    //for cant convert data
+                    Log.d("volleyErrorMsg" , "msg = " + "ParseError");
+                }
+
+                else {
+                    Log.d("volleyErrorMsg" , "msg = " + "Other");
+                    //other error
+                }
+
                 if (showProgress)
                     hideProgressDialog();
 
@@ -294,7 +368,7 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
             @Override
             public Map<String, String> getHeaders() {
                 Map<String, String> headers = new HashMap<>();
-                headers.put("Content-Type", "application/x-www-form-urlencoded");
+                headers.put("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
                 if (getSharedPrefValue(SP_STAFF_ID, "") != null && getSharedPrefValue(APP_LATITUDE, "") != null) {
 
                     headers.put("HTTP-CURRENT-LAT", getSharedPrefValue(APP_LATITUDE, ""));
@@ -365,10 +439,13 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
 //        if (showProgress)
 //            showProgressDialog(false);
 
-        progressDialog = new ProgressDialog(mContext);
-        progressDialog.setMessage("Submitting please wait...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
+//        if(!((Activity) context).isFinishing()) {
+            //show dialog
+            progressDialog = new ProgressDialog(mContext);
+            progressDialog.setMessage("Submitting please wait...");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+//        }
 
         MultipartRequest multipartRequest = new MultipartRequest(requestUrl, new Response.ErrorListener() {
 
@@ -379,6 +456,33 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
 
                 printStackTrace(volleyError);
                 hideProgressDialog();
+
+                if (volleyError instanceof TimeoutError) {
+                    Log.d("volleyErrorMsg3" , "msg = " + "TimeoutError");
+                    //For example your timeout is 3 seconds but the operation takes longer
+                }
+
+                else if (volleyError instanceof ServerError) {
+                    //error in server
+                    Log.d("volleyErrorMsg3" , "msg = " + "ServerError" + volleyError);
+                    volleyError.printStackTrace();
+//                    DecodeError(context , volleyError);
+                }
+
+                else if (volleyError instanceof NetworkError) {
+                    Log.d("volleyErrorMsg3" , "msg = " + "NetworkError");
+                    //network is disconnect
+                }
+
+                else if (volleyError instanceof ParseError) {
+                    //for cant convert data
+                    Log.d("volleyErrorMsg3" , "msg = " + "ParseError");
+                }
+
+                else {
+                    Log.d("volleyErrorMsg3" , "msg = " + "Other");
+                    //other error
+                }
 
                 if (volleyError.networkResponse != null) {
                     showMsgDialog("Some Error Occurred, Please Try Again!3", null);
@@ -412,6 +516,7 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
             @Override
             public Map<String, String> getHeaders() {
                 Map<String, String> headers = new HashMap<>();
+                headers.put("Accept", "multipart/form-data; charset=UTF-8");
                 if (getSharedPrefValue(SP_STAFF_ID, "") != null && getSharedPrefValue(APP_LATITUDE, "") != null) {
 
                     headers.put("HTTP-CURRENT-LAT", getSharedPrefValue(APP_LATITUDE, ""));
@@ -429,7 +534,7 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
                         headers.put("AUTH-TOKEN", getSharedPrefValue(SP_AUTH_TOKEN, ""));
                     }
                 }
-                headers.put("Content-Type", "multipart/form-data; charset=UTF-8");
+
                 return headers;
             }
 
@@ -486,6 +591,30 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
 
             }
         });
+    }
+
+    private static void DecodeError(Context context, VolleyError error) {
+        Log.d("volleyErrorMsg" , "DecodeError = ");
+        NetworkResponse response = error.networkResponse;
+        try {
+            Log.d("volleyErrorMsg" , "try = ");
+            String res = null;
+            if (response !=null)
+            res = new String(response.data, HttpHeaderParser.parseCharset(response.headers, "utf-8"));
+            // Now you can use any deserializer to make sense of data
+//            JSONObject obj = new JSONObject(res);
+//            Toast.makeText(context, obj.getString("message"), Toast.LENGTH_LONG).show();
+//            Log.d("volleyErrorMsg" , "msg = " + obj.getString("message"));
+            Log.d("volleyErrorMsg" , "res = " + res);
+
+        } catch (UnsupportedEncodingException e1) {
+            Log.d("volleyErrorMsg" , "UnsupportedEncodingException = ");
+            // Couldn't properly decode data to string
+            e1.printStackTrace();
+        } /*catch (JSONException e2) {
+            Log.d("volleyErrorMsg" , "JSONException = ");
+            e2.printStackTrace();
+        }*/
     }
 
 }

@@ -1,10 +1,12 @@
 package com.pfa.pfaapp.adapters;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -22,6 +24,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.pfa.pfaapp.BaseActivity;
 import com.pfa.pfaapp.ImageGalleryActivity;
@@ -58,6 +61,7 @@ import java.util.TimerTask;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import static android.graphics.Color.parseColor;
 import static android.view.View.GONE;
@@ -71,26 +75,26 @@ import static com.pfa.pfaapp.utils.AppConst.RC_REFRESH_LIST;
 
 public class PFATableAdapter extends BaseAdapter implements Filterable {
 
-    private PFAListItem pfaListItem;
+    private final PFAListItem pfaListItem;
 
-    private List<String> columnTags = new ArrayList<>();
-    private List<List<PFATableInfo>> suggestions = new ArrayList<>();
+    private final List<String> columnTags = new ArrayList<>();
+    private final List<List<PFATableInfo>> suggestions = new ArrayList<>();
     private List<List<PFATableInfo>> originalList;
-    private Filter filter = new CustomFilter();
-    private BaseActivity baseActivity;
+    private final Filter filter = new CustomFilter();
+    private final BaseActivity baseActivity;
     private boolean showDeleteIcon;
-    private WhichItemClicked whichItemClicked;
+    private final WhichItemClicked whichItemClicked;
     private boolean showDeseize;
     boolean conducted_inspection;
     String print_data;
     ImageView printB;
     String section_name;
     String print, share;
-    int j =1;
+    int j = 1;
 
     private boolean isClicked = false;
 
-    public PFATableAdapter(BaseActivity context,String print_data,ImageView printbutton,String sec_name,boolean conducted_inspection, List<List<PFATableInfo>> data, boolean showDeleteIcon, WhichItemClicked whichItemClicked) {
+    public PFATableAdapter(BaseActivity context, String print_data, ImageView printbutton, String sec_name, boolean conducted_inspection, List<List<PFATableInfo>> data, boolean showDeleteIcon, WhichItemClicked whichItemClicked) {
         this.baseActivity = context;
         if (data == null)
             data = new ArrayList<>();
@@ -103,6 +107,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
         this.print_data = print_data;
         suggestions.addAll(originalList);
         pfaListItem = new PFAListItem(context);
+        Log.d("viewCreated", "PFATableAdapter");
 
     }
 
@@ -162,8 +167,6 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
             convertView = pfaListItem.createViews(suggestions.get(0), columnTags, false);
 
 
-
-
             if (showDeleteIcon) {
                 convertView.findViewById(R.id.deleteImgBtn).setVisibility(View.VISIBLE);
             }
@@ -171,9 +174,8 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
                 convertView.findViewById(R.id.deseizeBtn).setVisibility(View.VISIBLE);
             }
 
-            if(suggestions.get(0).get(0).getDelete_url()!=null && (!suggestions.get(0).get(0).getDelete_url().isEmpty()))
-            {
-                ((ImageButton)convertView.findViewById(R.id.deleteImgBtn)).setImageResource(R.mipmap.download_cancel);
+            if (suggestions.get(0).get(0).getDelete_url() != null && (!suggestions.get(0).get(0).getDelete_url().isEmpty())) {
+                ((ImageButton) convertView.findViewById(R.id.deleteImgBtn)).setImageResource(R.mipmap.download_cancel);
                 convertView.findViewById(R.id.deleteImgBtn).setVisibility(View.VISIBLE);
             }
             convertView.setBackground(baseActivity.getResources().getDrawable(R.drawable.list_item_selector));
@@ -202,24 +204,18 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
 
                 if (columnsData.get(i).getLat_lng() != null && (!columnsData.get(i).getLat_lng().isEmpty())) {
                     final PFATableInfo temPfaTableInfo = columnsData.get(i);
-                    customNetworkImageView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Bundle bundle = new Bundle();
-                            bundle.putString(EXTRA_ACTIVITY_TITLE, baseActivity.sharedPrefUtils.isEnglishLang() ? suggestions.get(position).get(0).getValue() : suggestions.get(position).get(0).getValueUrdu());
-                            bundle.putString(EXTRA_LATLNG_STR, temPfaTableInfo.getLat_lng());
-                            baseActivity.sharedPrefUtils.startNewActivity(MapsActivity.class, bundle, false);
-                        }
+                    customNetworkImageView.setOnClickListener(v -> {
+                        Bundle bundle = new Bundle();
+                        bundle.putString(EXTRA_ACTIVITY_TITLE, baseActivity.sharedPrefUtils.isEnglishLang() ? suggestions.get(position).get(0).getValue() : suggestions.get(position).get(0).getValueUrdu());
+                        bundle.putString(EXTRA_LATLNG_STR, temPfaTableInfo.getLat_lng());
+                        baseActivity.sharedPrefUtils.startNewActivity(MapsActivity.class, bundle, false);
                     });
                 } else {
                     final int finalI = i;
-                    customNetworkImageView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Bundle bundle = new Bundle();
-                            bundle.putString(EXTRA_DOWNLOAD_URL, columnsData.get(finalI).getIcon());
-                            baseActivity.sharedPrefUtils.startNewActivity(ImageGalleryActivity.class, bundle, false);
-                        }
+                    customNetworkImageView.setOnClickListener(v -> {
+                        Bundle bundle = new Bundle();
+                        bundle.putString(EXTRA_DOWNLOAD_URL, columnsData.get(finalI).getIcon());
+                        baseActivity.sharedPrefUtils.startNewActivity(ImageGalleryActivity.class, bundle, false);
                     });
                 }
             } else {
@@ -238,8 +234,9 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
 
                             textView.setOnClickListener(new View.OnClickListener() {
                                 @Override
-                                public void onClick(View v) {
+                                public void onClick(View view) {
                                     pfaListItem.doPhoneCall(columnsData.get(finalI1).getData());
+                                    Log.d("viewCreated", "pfaTableAdapter text Click");
                                 }
                             });
                         }
@@ -352,20 +349,15 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
                         if (columnsData.get(i).getField_name() != null && columnsData.get(i).getField_name().equalsIgnoreCase("business_visit")) {
                             if (columnsData.get(i).getAPI_URL() != null && (!columnsData.get(i).getAPI_URL().isEmpty())) {
 
-                                textView.setOnClickListener(new View.OnClickListener() {
+                                textView.setOnClickListener(v -> baseActivity.httpService.getListsData(columnsData.get(finalI1).getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
                                     @Override
-                                    public void onClick(View v) {
-                                        baseActivity.httpService.getListsData(columnsData.get(finalI1).getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
-                                            @Override
-                                            public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                                                if (response != null) {
-                                                    LocalFormDialog localFormDialog = new LocalFormDialog(baseActivity);
-                                                    localFormDialog.addBusinessVisitDialog(response);
-                                                }
-                                            }
-                                        }, true);
+                                    public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+                                        if (response != null) {
+                                            LocalFormDialog localFormDialog = new LocalFormDialog(baseActivity);
+                                            localFormDialog.addBusinessVisitDialog(response);
+                                        }
                                     }
-                                });
+                                }, true));
                             }
                         } else if (columnsData.get(i).getField_name() != null && columnsData.get(i).getField_name().equalsIgnoreCase(String.valueOf(AppUtils.FIELD_TYPE.local_add_newUrl))) {
                             if (columnsData.get(i).getLocal_add_newUrl() != null && (!columnsData.get(i).getLocal_add_newUrl().isEmpty())) {
@@ -374,6 +366,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
                                 textView.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
+                                        Log.d("viewCreated", "pfaTableAdapter text Click 1");
 
                                         final Bundle bundle = new Bundle();
                                         bundle.putString(EXTRA_URL_TO_CALL, columnsData.get(finalI2).getLocal_add_newUrl());
@@ -381,7 +374,9 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
                                         baseActivity.httpService.getListsData(columnsData.get(finalI2).getLocal_add_newUrl(), new HashMap<String, String>(), new HttpResponseCallback() {
                                             @Override
                                             public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                                                bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                                                if (response != null)
+                                                    bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+
                                                 baseActivity.sharedPrefUtils.startActivityForResult(baseActivity, LocalFormsActivity.class, bundle, RC_REFRESH_LIST);
                                             }
                                         }, true);
@@ -445,7 +440,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
                         dialog.show();
                     }
                 });
-            }else if (print != null) {
+            } else if (print != null) {
                 convertView.findViewById(R.id.shareImgBtn).setVisibility(View.VISIBLE);
 
                 convertView.findViewById(R.id.shareImgBtn).setOnClickListener(new View.OnClickListener() {
@@ -457,7 +452,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
 
                     }
                 });
-            }else if (share != null) {
+            } else if (share != null) {
                 convertView.findViewById(R.id.shareImgBtn).setVisibility(View.VISIBLE);
 
                 convertView.findViewById(R.id.shareImgBtn).setOnClickListener(new View.OnClickListener() {
@@ -466,7 +461,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
                         baseActivity.sharedPrefUtils.shareOnWhatsApp(share);
                     }
                 });
-            } else{
+            } else {
                 convertView.findViewById(R.id.shareImgBtn).setVisibility(GONE);
             }
         }
@@ -480,7 +475,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
             });
         }
 
-        if (suggestions.get(position).get(0).getDelete_url() != null && (!suggestions.get(position).get(0).getDelete_url().isEmpty()) ) {
+        if (suggestions.get(position).get(0).getDelete_url() != null && (!suggestions.get(position).get(0).getDelete_url().isEmpty())) {
             convertView.findViewById(R.id.deleteImgBtn).setVisibility(View.VISIBLE);
             convertView.findViewById(R.id.deleteImgBtn).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -508,6 +503,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
             View.OnClickListener onClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Log.d("viewCreated", "pfaTableAdapter text Click2");
                     if (isClicked) {
                         return;
                     }
@@ -521,39 +517,53 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
                         }
                     }, 100);
 
-                    if (suggestions.get(position).get(0).getLocal_add_newUrl() == null || suggestions.get(position).get(0).getLocal_add_newUrl().isEmpty()) {
-
-                        if (suggestions.get(position).get(0).getAPI_URL() == null || suggestions.get(position).get(0).getAPI_URL().isEmpty()) {
-                            return;
+                    if (suggestions.get(position).get(0).getField_link() != null) {
+                        if (baseActivity.checkSelfPermission(Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED){
+                            Intent intent = new Intent(Intent.ACTION_CALL);
+                            intent.setData(Uri.parse("tel:" + suggestions.get(position).get(0).getField_link()));
+                            baseActivity.startActivity(intent);
+                        } else {
+                            baseActivity.sharedPrefUtils.showMsgDialog("Permission to make phone call denied" + "\n" + "phone # " + suggestions.get(position).get(0).getField_link(), null);
                         }
 
-                        final Bundle bundle = new Bundle();
-                        bundle.putString(EXTRA_URL_TO_CALL, suggestions.get(position).get(0).getAPI_URL());
-                        bundle.putString(EXTRA_ACTIVITY_TITLE, baseActivity.sharedPrefUtils.isEnglishLang() ? suggestions.get(position).get(0).getValue() : suggestions.get(position).get(0).getValueUrdu());
-                        baseActivity.httpService.getListsData(suggestions.get(position).get(0).getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
-                            @Override
-                            public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-
-                                bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
-                                baseActivity.sharedPrefUtils.startNewActivity(PFADetailActivity.class, bundle, false);
-                            }
-                        }, true);
-
                     } else {
-                        final Bundle bundle = new Bundle();
-                        bundle.putString(EXTRA_URL_TO_CALL, suggestions.get(position).get(0).getLocal_add_newUrl());
-                        bundle.putString(EXTRA_DOWNLOAD_URL, suggestions.get(position).get(0).getDownload_url());
-                        baseActivity.httpService.getListsData(suggestions.get(position).get(0).getLocal_add_newUrl(), new HashMap<String, String>(), new HttpResponseCallback() {
-                            @Override
-                            public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                                if (response != null) {
-                                    bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
-                                    baseActivity.sharedPrefUtils.startActivityForResult(baseActivity, LocalFormsActivity.class, bundle, RC_REFRESH_LIST);
-                                } else {
-                                    baseActivity.sharedPrefUtils.showMsgDialog(baseActivity.getResources().getString(R.string.server_error), null);
-                                }
+
+                        if (suggestions.get(position).get(0).getLocal_add_newUrl() == null || suggestions.get(position).get(0).getLocal_add_newUrl().isEmpty()) {
+
+                            if (suggestions.get(position).get(0).getAPI_URL() == null || suggestions.get(position).get(0).getAPI_URL().isEmpty()) {
+                                return;
                             }
-                        }, true);
+
+                            final Bundle bundle = new Bundle();
+                            bundle.putString(EXTRA_URL_TO_CALL, suggestions.get(position).get(0).getAPI_URL());
+                            bundle.putString(EXTRA_ACTIVITY_TITLE, baseActivity.sharedPrefUtils.isEnglishLang() ? suggestions.get(position).get(0).getValue() : suggestions.get(position).get(0).getValueUrdu());
+                            baseActivity.httpService.getListsData(suggestions.get(position).get(0).getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
+                                @Override
+                                public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+
+                                    if (response != null)
+                                        bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                                    baseActivity.sharedPrefUtils.startNewActivity(PFADetailActivity.class, bundle, false);
+                                }
+                            }, true);
+
+                        } else {
+                            final Bundle bundle = new Bundle();
+                            bundle.putString(EXTRA_URL_TO_CALL, suggestions.get(position).get(0).getLocal_add_newUrl());
+                            bundle.putString(EXTRA_DOWNLOAD_URL, suggestions.get(position).get(0).getDownload_url());
+                            baseActivity.httpService.getListsData(suggestions.get(position).get(0).getLocal_add_newUrl(), new HashMap<String, String>(), new HttpResponseCallback() {
+                                @Override
+                                public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+                                    if (response != null) {
+                                        bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                                        baseActivity.sharedPrefUtils.startActivityForResult(baseActivity, LocalFormsActivity.class, bundle, RC_REFRESH_LIST);
+                                    } else {
+                                        baseActivity.sharedPrefUtils.showMsgDialog(baseActivity.getResources().getString(R.string.server_error), null);
+                                    }
+                                }
+                            }, true);
+                        }
+
                     }
                 }
             };
@@ -578,8 +588,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
                     });
                 }
             });
-        }
-        else {
+        } else {
             convertView.findViewById(R.id.downloadImgBtn).setVisibility(GONE);
         }
 
@@ -630,13 +639,11 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
 //        }
 
 
-
-
         ///////  share icons show end
 
 
         ///////////////////hhh
-        if (suggestions.get(position).get(0).getShareHtmlStr() != null  && suggestions.get(position).get(0).getPrintHtmlStr() != null) {
+        if (suggestions.get(position).get(0).getShareHtmlStr() != null && suggestions.get(position).get(0).getPrintHtmlStr() != null) {
             convertView.findViewById(R.id.shareImgBtn).setVisibility(View.VISIBLE);
 
             convertView.findViewById(R.id.shareImgBtn).setOnClickListener(new View.OnClickListener() {
@@ -665,7 +672,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
                     dialog.show();
                 }
             });
-        }else if (suggestions.get(position).get(0).getPrintHtmlStr()  != null) {
+        } else if (suggestions.get(position).get(0).getPrintHtmlStr() != null) {
             convertView.findViewById(R.id.shareImgBtn).setVisibility(View.VISIBLE);
 
             convertView.findViewById(R.id.shareImgBtn).setOnClickListener(new View.OnClickListener() {
@@ -677,7 +684,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
 
                 }
             });
-        }else if (suggestions.get(position).get(0).getShareHtmlStr()  != null) {
+        } else if (suggestions.get(position).get(0).getShareHtmlStr() != null) {
             convertView.findViewById(R.id.shareImgBtn).setVisibility(View.VISIBLE);
 
             convertView.findViewById(R.id.shareImgBtn).setOnClickListener(new View.OnClickListener() {
@@ -686,7 +693,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
                     baseActivity.sharedPrefUtils.shareOnWhatsApp(suggestions.get(position).get(0).getShareHtmlStr());
                 }
             });
-        } else{
+        } else {
             convertView.findViewById(R.id.shareImgBtn).setVisibility(GONE);
         }
 ///////////////////jjj
@@ -703,8 +710,6 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
     private void methodCall() {
 
     }
-
-
 
 
     @Override

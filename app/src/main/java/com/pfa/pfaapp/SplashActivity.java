@@ -1,21 +1,38 @@
 package com.pfa.pfaapp;
 
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.InstallState;
+import com.google.android.play.core.install.InstallStateUpdatedListener;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.InstallStatus;
+import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.pfa.pfaapp.interfaces.HttpResponseCallback;
 import com.pfa.pfaapp.interfaces.SendMessageCallback;
 import com.pfa.pfaapp.utils.AppUtils;
+import com.rey.material.widget.SnackBar;
 
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;
+
+import eu.dkaratzas.android.inapp.update.Constants;
+import eu.dkaratzas.android.inapp.update.InAppUpdateManager;
+import eu.dkaratzas.android.inapp.update.InAppUpdateStatus;
 
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_FP_ACTION;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_JSON_STR_RESPONSE;
@@ -26,6 +43,8 @@ import static com.pfa.pfaapp.utils.AppConst.SP_LOGIN_TYPE;
 
 public class SplashActivity extends BaseActivity {
     private String currentVersion;
+    private AppUpdateManager appUpdateManager;
+    private boolean updateAvailable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,34 +54,125 @@ public class SplashActivity extends BaseActivity {
 
         try {
             currentVersion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
-
         } catch (PackageManager.NameNotFoundException e) {
             sharedPrefUtils.printStackTrace(e);
         }
 
         sharedPrefUtils.applyFont(findViewById(R.id.logoTV), AppUtils.FONTS.HelveticaNeueMedium);
 
-        // if open from whatsapp/or any other source link
-        if (getIntent().getData() != null) {
-            Uri uri = getIntent().getData();// this is the url
-            List<String> segments = uri.getPathSegments();// this is the url segments
-            sharedPrefUtils.printLog("uri 1=>", uri.toString());
-            startLoginScreen(segments);
-        } else {
-            startMain();
+        appUpdateManager = AppUpdateManagerFactory.create(SplashActivity.this);
+
+        appUpdateManager.getAppUpdateInfo().addOnSuccessListener(appUpdateInfo -> {
+            Log.d("onCreateActv" , "fbo here 16 ");
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+                updateAvailable = true;
+                Log.d("onCreateActv" , "fbo here 17 ");
+                try {
+                    appUpdateManager.startUpdateFlowForResult(appUpdateInfo, AppUpdateType.IMMEDIATE, this, 1001);
+                } catch (IntentSender.SendIntentException e) {
+                    e.printStackTrace();
+                }
+            }
+            else {
+                Log.d("onCreateActv" , "fbo here 15 ");
+                updateAvailable = false;
+                if (getIntent().getData() != null) {
+                    Log.d("onCreateActv" , "fbo here 5 ");
+                    Uri uri = getIntent().getData();// this is the url
+                    List<String> segments = uri.getPathSegments();// this is the url segments
+                    sharedPrefUtils.printLog("uri 1=>", uri.toString());
+                    startLoginScreen(segments);
+                } else {
+
+                    startMain();
+
+                }
+            }
+        });
+
+//        appUpdateManager.registerListener(installStateUpdatedListener);
+
+        if(!updateAvailable) {
+            if (getIntent().getData() != null) {
+                Log.d("onCreateActv", "fbo here 4 ");
+                Uri uri = getIntent().getData();// this is the url
+                List<String> segments = uri.getPathSegments();// this is the url segments
+                sharedPrefUtils.printLog("uri 1=>", uri.toString());
+                startLoginScreen(segments);
+            } else {
+                startMain();
+            }
         }
+
 //        updateLocale();
+    }
+
+    private InstallStateUpdatedListener installStateUpdatedListener = new InstallStateUpdatedListener() {
+        @Override
+        public void onStateUpdate(InstallState state) {
+            if (state.installStatus() == InstallStatus.DOWNLOADED)
+                showCompletedUpdate();
+        }
+    };
+
+    private void showCompletedUpdate(){
+        Toast.makeText(this, "Update Completed", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1001) {
+            if (resultCode != RESULT_OK) {
+                Log.d("","Update flow failed! Result code: " + resultCode);
+                finish();
+                // If the update is cancelled or fails,
+                // you can request to start the update again.
+            }
+            if (resultCode == RESULT_OK)
+                startMain();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        appUpdateManager.getAppUpdateInfo().addOnSuccessListener(appUpdateInfo -> {
+//            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+//                updateAvailable = true;
+//                try {
+//                    appUpdateManager.startUpdateFlowForResult(appUpdateInfo, AppUpdateType.IMMEDIATE, this, 1001);
+//                } catch (IntentSender.SendIntentException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//            else {
+////                Toast.makeText(this, "on Resume", Toast.LENGTH_SHORT).show();
+//                if (getIntent().getData() != null) {
+//                    Log.d("onCreateActv" , "fbo here 3 ");
+//                    Uri uri = getIntent().getData();// this is the url
+//                    List<String> segments = uri.getPathSegments();// this is the url segments
+//                    sharedPrefUtils.printLog("uri 1=>", uri.toString());
+//                    startLoginScreen(segments);
+//                } else {
+//                    startMain();
+//                }
+//            }
+//        });
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        if (intent.getData() != null) {
-            Uri uri = intent.getData();
-            List<String> segments = uri.getPathSegments();
+        if (!updateAvailable) {
+            if (intent.getData() != null) {
+                Log.d("onCreateActv" , "fbo here 2 ");
+                Uri uri = intent.getData();
+                List<String> segments = uri.getPathSegments();
 
-            sharedPrefUtils.printLog("uri 2=>", uri.toString());
-            startLoginScreen(segments);
+                sharedPrefUtils.printLog("uri 2=>", uri.toString());
+                startLoginScreen(segments);
+            }
         }
     }
 
@@ -100,12 +210,17 @@ public class SplashActivity extends BaseActivity {
                         Log.d("currentApiVersion" , "version from api= " + dataObject.optString("api_version"));
                         Log.d("currentApiVersion" , "version from playstore= " + currentVersion);
 
-                        if (currentVersion != null && (currentVersion.equals(dataObject.optString("api_version")))) {
-                            startLoginScreen(null);
-                        } else {
+                        startLoginScreen(null);
 
-                            sharedPrefUtils.showUpdateAppDialog(getPackageName());
-                        }
+
+                        /*if (currentVersion != null && (currentVersion.equals(dataObject.optString("api_version")))) {
+                            startLoginScreen(null);
+                        }*/
+//                        if (web_update()) {
+//                            startLoginScreen(null);
+//                        } else {
+//                            sharedPrefUtils.showUpdateAppDialog(getPackageName());
+//                        }
 
                     } else {
                         sharedPrefUtils.showMsgDialog(response.optString("message_code"), null);
@@ -128,8 +243,10 @@ public class SplashActivity extends BaseActivity {
 
         if (sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") == null) {
             sharedPrefUtils.startHomeActivity(FBOMainGridActivity.class, null);
+            Log.d("onCreateActv" , "fbo here");
 
         } else {
+            Log.d("onCreateActv" , "fbo here 1");
             (new Handler()).postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -155,7 +272,8 @@ public class SplashActivity extends BaseActivity {
                                 httpService.getListsData(url, new HashMap<String, String>(), new HttpResponseCallback() {
                                     @Override
                                     public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                                        bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                                        if (response != null)
+                                            bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
                                         sharedPrefUtils.startNewActivity(LocalFormsActivity.class, bundle, true);
                                     }
                                 }, false);

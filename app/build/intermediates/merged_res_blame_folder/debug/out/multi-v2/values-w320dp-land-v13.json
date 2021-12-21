@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w320dp-land-v13\\values-w320dp-land-v13.xml",
+            "outputFile": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w320dp-land-v13\\values-w320dp-land-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Hp\\.gradle\\caches\\transforms-2\\files-2.1\\ba80b7e1e9bb46ed9d7c5de07dcbc79d\\material-1.4.0\\res\\values-w320dp-land-v13\\values-w320dp-land-v13.xml",
+                    "source": "C:\\Users\\HP\\.gradle\\caches\\transforms-2\\files-2.1\\15e4d754fcea9d29c98cc4d8126a1192\\material-1.4.0\\res\\values-w320dp-land-v13\\values-w320dp-land-v13.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

@@ -81,7 +81,6 @@ public class DraftsFragment extends Fragment {
 
         sendMessageCallback1 = sendMessageCallback;
 
-
         DraftsFragment fragment = new DraftsFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_PARAM1, pfaMenuInfo);
@@ -127,7 +126,8 @@ public class DraftsFragment extends Fragment {
                         baseActivity.httpService.getListsData(pfaMenuInfo.getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
                             @Override
                             public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                                bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                                if (response != null)
+                                    bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
                                 baseActivity.sharedPrefUtils.startNewActivity(LocalFormsActivity.class, bundle, false);
 
                                 addNewBtn.setEnabled(true);

@@ -22,7 +22,9 @@
     <color name="button_light_grey">#cecccd</color>
     <color name="dark_grey">#3a393e</color>
     <color name="inner_text_color">#1c233f</color>
+    <color name="inner_text_color_pending">#1A2961</color>
     <color name="maroon">#FF0000</color>
+    <color name="maroon1">#CA0000</color>
 
     <color name="circle_green">#8ee5a1</color>
     <color name="btn_light_green">#89c798</color>

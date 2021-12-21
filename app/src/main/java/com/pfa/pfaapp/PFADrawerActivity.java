@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -126,11 +127,14 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             fetchUserInfo(new HttpResponseCallback() {
                 @Override
                 public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                    PFADrawerActivity.this.onCompleteHttpResponse(response, requestUrl);
+                    Log.d("SideDrawerMenu" , "SP_USER_INFO_null");
+                    if (response != null)
+                        PFADrawerActivity.this.onCompleteHttpResponse(response, requestUrl);
                 }
             }, false);
             updateConfigData();
         } else {
+            Log.d("SideDrawerMenu" , "SP_USER_INFO_not_null");
             getSideMenu();
         }
 
@@ -176,9 +180,11 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             if (checkSelfPermission(Manifest.permission.CAMERA) ==
                     PackageManager.PERMISSION_DENIED ||
                     checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                            PackageManager.PERMISSION_DENIED||
+                    checkSelfPermission(Manifest.permission.CALL_PHONE) ==
                             PackageManager.PERMISSION_DENIED) {
                 //permission not enabled, request it
-                String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE};
                 //show popup to request permissions
                 requestPermissions(permission, 11);
             }
@@ -189,21 +195,23 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
                     PackageManager.PERMISSION_DENIED ||
                     checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                            PackageManager.PERMISSION_DENIED||
+                    checkSelfPermission(Manifest.permission.CALL_PHONE) ==
                             PackageManager.PERMISSION_DENIED) {
                 //permission not enabled, request it
-                String[] permission = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                String[] permission = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE};
                 //show popup to request permissions
                 requestPermissions(permission, 10);
             }
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            if (!Environment.isExternalStorageManager())
-            {
-                Intent permissionIntent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION );
-                startActivity(permissionIntent);
-            }
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//            if (!Environment.isExternalStorageManager())
+//            {
+//                Intent permissionIntent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION );
+//                startActivity(permissionIntent);
+//            }
+//        }
 
 
     }
@@ -228,9 +236,8 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             } else {
                 Toast.makeText(this, "gallery permission denied", Toast.LENGTH_LONG).show();
             }
-        } else {
+        }    else {
             Toast.makeText(this, "Error in permissions", Toast.LENGTH_LONG).show();
-
         }
     }
 
@@ -253,7 +260,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                 {
                     try {
                         String status = response.getString("status");
-                        if (status == "false"){
+                        if (status == "false") {
                             if (sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") != null) {
                                 sharedPrefUtils.logoutFromApp(httpService);
                                 Toast.makeText(PFADrawerActivity.this, "Unauthentic User", Toast.LENGTH_SHORT).show();
@@ -307,7 +314,6 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             }
         });
 
-
     }
 
     private void backPressedAction() {
@@ -346,6 +352,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
     }
 
     private void getSideMenu() {
+        Log.d("SideDrawerMenu" , "getSideMenu");
         userInfo = sharedPrefUtils.getUserInfo();
         if (userInfo != null) {
             String fullNameStr = String.format(Locale.getDefault(), "%s %s", userInfo.getFirstname(), userInfo.getLastname());
@@ -372,12 +379,14 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             userAddressTV.setText(addressStr.toString());
         }
 
-
-
-        if (sharedPrefUtils.getDrawerMenu() == null)
+        if (sharedPrefUtils.getDrawerMenu() == null) {
+            Log.d("SideDrawerMenu" , "getDrawerMenu_null");
             httpService.getSideMenu("" + sharedPrefUtils.getSharedPrefValue(SP_STAFF_ID, ""), sharedPrefUtils.getSharedPrefValue(SP_LOGIN_TYPE, ""), this);
-        else
+        }
+        else {
+            Log.d("SideDrawerMenu" , "populateSideMenu");
             populateSideMenu();
+        }
     }
 
     @Override
@@ -430,6 +439,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                     sharedPrefUtils.saveSharedPrefValue(SP_USER_INFO, response.optJSONObject("data").toString());
 
                     getSideMenu();
+                    Log.d("SideDrawerMenu" , "getSideMenu requestUrl.contains users");
 
                 } else if (requestUrl.contains("/api/menu/")) {
                     try {
@@ -438,8 +448,8 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                         JSONArray formJSONArray = jsonObject.getJSONArray("menus");
 
                         sharedPrefUtils.saveSharedPrefValue(SP_DRAWER_MENU, formJSONArray.toString());
+                        Log.d("SideDrawerMenu" , "populateSideMenu requestUrl.contains api");
                         populateSideMenu();
-
 
                     } catch (JSONException e) {
                         sharedPrefUtils.printStackTrace(e);
@@ -459,7 +469,6 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
 
                 Fragment menuItemFragment;
 
-
                 switch (pfaMenuInfo.getMenuType()) {
                     case "list":
                         menuItemFragment = MenuListFragment.newInstance(pfaMenuInfo, true, true, true, null);
@@ -469,24 +478,31 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                                 hideShowFilters();
                             }
                         });
+                        Log.d("SideMenuType" , "MenuListFragment");
                         break;
                     case "menu":
                         menuItemFragment = TabbedFragment.newInstance(pfaMenuInfo, true);
+                        Log.d("SideMenuType" , "TabbedFragment");
                         break;
                     case "ci_menu":
                         menuItemFragment = CiTabbedFragment.newInstance(pfaMenuInfo, true);
+                        Log.d("SideMenuType" , "CiTabbedFragment");
                         break;
                     case "localMenu":
                         menuItemFragment = LocalTabbedFragment.newInstance(pfaMenuInfo, true);
+                        Log.d("SideMenuType" , "LocalTabbedFragment");
                         break;
                     case "googlemap":
                         menuItemFragment = MenuMapFragment.newInstance(pfaMenuInfo, null);
+                        Log.d("SideMenuType" , "MenuMapFragment");
                         break;
                     case "dashboard":
                     case "grid":
                         menuItemFragment = MenuGridFragment.newInstance(pfaMenuInfo);
+                        Log.d("SideMenuType" , "MenuGridFragment");
                         break;
                     case "logout":
+                        Log.d("SideMenuType" , "MenuListFragmentlohouyu");
 //                        AlertDialog.Builder builder = new AlertDialog.Builder(PFADrawerActivity.this);
 //                        builder.setTitle("Log out");
 //
@@ -520,9 +536,11 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
 
                     case "fingerPrint":
                         menuItemFragment = new Fragment();
+                        Log.d("SideMenuType" , "ndew MenuListFragment");
                         break;
                     case "share":
                         menuItemFragment = ShareFragment.newInstance(pfaMenuInfo);
+                        Log.d("SideMenuType" , "ShareFragment");
                         break;
 
                     case "draft":
@@ -531,9 +549,11 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                             public void sendMsg(String message) {
                             }
                         });
+                        Log.d("SideMenuType" , "DraftsFragment");
                         break;
                     default:
                         menuItemFragment = MenuFormFragment.newInstance(pfaMenuInfo, null);
+                        Log.d("SideMenuType" , "MenuFormFragment");
                         break;
                 }
 
@@ -548,6 +568,9 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
 
     @Override
     public void onClickRB(View view) {
+
+        Log.d("NavDrawerClick" , "PFASideMenuRB after click");
+
 
         if (view.getTag().toString().equalsIgnoreCase("logout")) {
 //            sharedPrefUtils.logoutFromApp(httpService);
@@ -594,6 +617,18 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
 
         int id = view.getId();
 
+//        if (view.getTag().toString().equalsIgnoreCase("Contact Support")) {
+//            drawer.closeDrawer(GravityCompat.START);
+//
+//            String phone = pfaMenuInfos.get(id).getMenuTypeLink();
+//
+//            Intent intent = new Intent(Intent.ACTION_DIAL);
+//            intent.setData(Uri.parse("tel:"+phone));
+//            startActivity(intent);
+//
+//            return;
+//        }
+
 
 
         if (lastClicked == id) {
@@ -602,6 +637,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
         }
 
         addFragment(menuItemFragments.get(id), id == 0, pfaMenuInfos.get(id).getMenuItemName());
+        Log.d("NavDrawerClick" , "PFASideMenuRB item name = " + pfaMenuInfos.get(id).getMenuItemName());
         if (drawer != null)
             drawer.closeDrawer(GravityCompat.START);
 
@@ -650,30 +686,32 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
 
     public void addFragment(Fragment frag, boolean isHome, String fragmentTitleStr) {
 
-        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
-            actionOnViewChange();
-        }
+//        if (menuItemFragments.get(lastClicked) == frag) {
+            if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+                actionOnViewChange();
+            }
 
-        if (mySaveInstanceState == null) {
-            if (isHome) {
-                currentTab = fragmentTitleStr;
-                if (isHomeAlreadyAdded)
-                    return;
-                else {
-                    isHomeAlreadyAdded = true;
+            if (mySaveInstanceState == null) {
+                if (isHome) {
+                    currentTab = fragmentTitleStr;
+                    if (isHomeAlreadyAdded)
+                        return;
+                    else {
+                        isHomeAlreadyAdded = true;
+                    }
+                }
+
+                if (isHome || (!fragmentTitleStr.equals(currentTab))) {
+                    currentTab = fragmentTitleStr;
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.setReorderingAllowed(true);
+                    transaction.add(getFrameLayoutId(isHome), frag);
+                    transaction.addToBackStack(getSupportFragmentManager().getBackStackEntryCount() == 0 ? KEY_FRAG_FIRST : currentTab).commit();
                 }
             }
 
-            if (isHome || (!fragmentTitleStr.equals(currentTab))) {
-                currentTab = fragmentTitleStr;
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.setReorderingAllowed(true);
-                transaction.add(getFrameLayoutId(isHome), frag);
-                transaction.addToBackStack(getSupportFragmentManager().getBackStackEntryCount() == 0 ? KEY_FRAG_FIRST : currentTab).commit();
-            }
-        }
-
-        setTitle(currentTab, false);
+            setTitle(currentTab, false);
+//        }
     }
 
     public int getFrameLayoutId(boolean isHomeScreen) {

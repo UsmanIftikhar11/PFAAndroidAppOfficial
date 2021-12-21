@@ -1,6 +1,8 @@
 package com.pfa.pfaapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -17,6 +19,7 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
+import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.pfa.pfaapp.customviews.PFAChatLayout;
@@ -25,6 +28,7 @@ import com.pfa.pfaapp.customviews.PFASideMenuRB;
 import com.pfa.pfaapp.fragments.*;
 import com.pfa.pfaapp.interfaces.HttpResponseCallback;
 import com.pfa.pfaapp.interfaces.RBClickCallback;
+import com.pfa.pfaapp.localdbmodels.InspectionInfo;
 import com.pfa.pfaapp.models.PFAMenuInfo;
 import com.pfa.pfaapp.models.PFATableInfo;
 import com.pfa.pfaapp.utils.AppConst;
@@ -101,6 +105,8 @@ public class PFADetailActivity extends BaseActivity implements HttpResponseCallb
         Bundle bundle = getIntent().getExtras();
         if (bundle != null && bundle.containsKey(EXTRA_URL_TO_CALL)) {
             urlToCall = getIntent().getStringExtra(EXTRA_URL_TO_CALL);
+            Log.d("enfrocementData" , "urltocall = " + urlToCall);
+            Log.d("enfrocementData2312" , "urltocall = " + urlToCall);
 
             if (urlToCall != null) {
                 if (getIntent().hasExtra(EXTRA_JSON_STR_RESPONSE)) {
@@ -113,6 +119,7 @@ public class PFADetailActivity extends BaseActivity implements HttpResponseCallb
                     }
                 } else {
                     httpService.getListsData(urlToCall, new HashMap<String, String>(), this, true);
+
                 }
 
             }
@@ -149,18 +156,58 @@ public class PFADetailActivity extends BaseActivity implements HttpResponseCallb
     public void onBackPressed() {
 
 
+        Log.d("submitCheckList" , "here1");
         if (isTaskRoot()) {
             if (sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") == null)
                 finish();
             else {
                 if (String.valueOf(AppUtils.USER_LOGIN_TYPE.fbo).equalsIgnoreCase((sharedPrefUtils.getSharedPrefValue(SP_LOGIN_TYPE, "")))) {
                     sharedPrefUtils.startNewActivity(FBOMainGridActivity.class, null, true);
+                    Log.d("submitCheckList" , "here2");
                 } else {
+                    Log.d("submitCheckList" , "here3");
                     sharedPrefUtils.startNewActivity(PFADrawerActivity.class, null, true);
                 }
             }
         } else {
-            finish();
+            Log.d("submitCheckList" , "here4");
+            boolean checkListUpdated = getSharedPreferences("appPrefs" , Context.MODE_PRIVATE).getBoolean("CheckListUpdated" , false);
+//            String BackUrl = getSharedPreferences("appPrefs" , Context.MODE_PRIVATE).getString("BackUrl" , null);
+
+            if (checkListUpdated) {
+                Bundle bundle = null;
+                final List<PFAMenuInfo> pfaMenuInfos;
+                int inspecPos = getSharedPreferences("appPrefs1", Context.MODE_PRIVATE).getInt("inspecPos1", 0);
+                String title = getSharedPreferences("appPrefs1", Context.MODE_PRIVATE).getString("EXTRA_ACTIVITY_TITLE", "");
+
+                SharedPreferences appSharedPrefs = getSharedPreferences("AppPref1", Context.MODE_PRIVATE);
+                Gson gson = new Gson();
+                String json = appSharedPrefs.getString("inspec1", "");
+                Type type = new TypeToken<List<PFAMenuInfo>>() {
+                }.getType();
+//        inspectionInfo = new GsonBuilder().create().fromJson(json, type);
+                pfaMenuInfos = gson.fromJson(json, type);
+
+                Log.d("BundleData", "inspecPos = " + inspecPos);
+
+                bundle = new Bundle();
+                if (pfaMenuInfos != null) {
+                    bundle.putSerializable(EXTRA_PFA_MENU_ITEM, pfaMenuInfos.get(inspecPos));
+                    bundle.putString(EXTRA_ACTIVITY_TITLE, title);
+                }
+                    sharedPrefUtils.startNewActivity(MapsActivity.class, bundle, false);
+
+//                getSharedPreferences("appPrefs" , Context.MODE_PRIVATE).edit().putBoolean("CheckListUpdated" , false).apply();
+            }
+            else
+                finish();
+//            if (String.valueOf(AppUtils.USER_LOGIN_TYPE.fbo).equalsIgnoreCase((sharedPrefUtils.getSharedPrefValue(SP_LOGIN_TYPE, "")))) {
+//                sharedPrefUtils.startNewActivity(FBOMainGridActivity.class, null, true);
+//                Log.d("submitCheckList" , "here2");
+//            } else {
+//                Log.d("submitCheckList" , "here3");
+//                sharedPrefUtils.startNewActivity(PFADrawerActivity.class, null, true);
+//            }
         }
     }
 
@@ -173,6 +220,7 @@ public class PFADetailActivity extends BaseActivity implements HttpResponseCallb
                 }.getType();
 
                 if (response.has("data")) {
+                    Log.d("enfrocementData" , "dada = " + response);
                     JSONArray formJSONArray = response.getJSONArray("data");
 
                     tableData = new GsonBuilder().create().fromJson(formJSONArray.toString(), type);
@@ -190,6 +238,7 @@ public class PFADetailActivity extends BaseActivity implements HttpResponseCallb
                     type = new TypeToken<List<PFAMenuInfo>>() {
                     }.getType();
                     JSONArray menusJsonArray = response.getJSONObject("detailMenu").getJSONArray("menus");
+                    Log.d("enfrocementData" , "menus = " + response.getJSONObject("detailMenu").getJSONArray("menus"));
                     pfaMenuInfos = new GsonBuilder().create().fromJson(menusJsonArray.toString(), type);
 
                     if (pfaMenuInfos != null && pfaMenuInfos.size() > 0) {
@@ -254,9 +303,13 @@ public class PFADetailActivity extends BaseActivity implements HttpResponseCallb
                 PFAMenuInfo pfaMenuInfo = pfaMenuInfos.get(i);
                 Fragment menuItemFragment;
 
+                Log.d("enfrocementData" , "type = " + pfaMenuInfo.getMenuType());
+
 //            "form", "list", "googlemap", "profile","search"
                 switch (pfaMenuInfo.getMenuType()) {
                     case "form":
+
+                        Log.d("enfrocementData" , "type = form");
 
                         if (menusJsonArray.optJSONObject(i).has("data")) {
                             menuItemFragment = MenuFormFragment.newInstance(pfaMenuInfo, menusJsonArray.optJSONObject(i).optJSONObject("data"));
@@ -275,10 +328,13 @@ public class PFADetailActivity extends BaseActivity implements HttpResponseCallb
 //                            } catch (JSONException e) {
 //                                e.printStackTrace();
 //                            }
+                            Log.d("checkListUpdated" , "pfaDetailActv = MenuListFragment1");
                             menuItemFragment = MenuListFragment.newInstance(pfaMenuInfo, false, false, false, menusJsonArray.optJSONObject(i).optJSONObject("table"));
                         } else if (menusJsonArray.optJSONObject(i).has("table")) {
+                            Log.d("checkListUpdated" , "pfaDetailActv = MenuListFragment2");
                             menuItemFragment = MenuListFragment.newInstance(pfaMenuInfo, false, false, false, menusJsonArray.optJSONObject(i).optJSONObject("table"));
                         } else {
+                            Log.d("checkListUpdated" , "pfaDetailActv = MenuListFragment3");
                             menuItemFragment = MenuListFragment.newInstance(pfaMenuInfo, false, false, false, null);
                         }
 
@@ -292,6 +348,7 @@ public class PFADetailActivity extends BaseActivity implements HttpResponseCallb
                         break;
 
                     default:
+                        Log.d("enfrocementData" , "type = other");
                         menuItemFragment = MenuFormFragment.newInstance(pfaMenuInfo, null);
                         break;
                 }

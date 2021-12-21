@@ -1,18 +1,29 @@
 package com.pfa.pfaapp.customviews;
 
 import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.StrictMode;
 import android.text.Html;
 import android.text.InputType;
 import android.text.method.DigitsKeyListener;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
+import android.webkit.URLUtil;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -23,7 +34,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.pfa.pfaapp.AppController;
@@ -57,16 +68,25 @@ import com.pfa.pfaapp.models.PFASearchInfo;
 import com.pfa.pfaapp.utils.AppConst;
 import com.pfa.pfaapp.utils.AppUtils;
 import com.pfa.pfaapp.utils.CustomDateUtils;
+import com.pfa.pfaapp.utils.DownloadFileManager;
 import com.pfa.pfaapp.utils.SharedPrefUtils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Type;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 
@@ -99,6 +119,7 @@ import static com.pfa.pfaapp.utils.AppConst.TOWN_TAG;
  * This is the class to create all the views based on form data received.
  * It also validates
  */
+
 public class CustomViewCreate extends SearchBizData implements BizLocCallback {
     private PFAViewsCallbacks pfaViewsCallbacks;
     private HashMap<String, List<FormDataInfo>> formFilteredData;
@@ -108,9 +129,12 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
     private List<DistrictInfo> districtInfos = null;
     private List<TownInfo> townInfos = null;
     private List<SubTownInfo> subTownInfos = null;
+    private String dropDownId = "0";
+    private String localBusinessDropDownUrl = "";
+
 
     SharedPreferences sharedPreferences;
-    String  defaultValue = null;
+    String defaultValue = null;
 
     private boolean setLocationListener;
     private DDSelectedCallback DDCallback;
@@ -122,13 +146,25 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
     private List<FormSectionInfo> foodLabSections;
 
     private FormFieldsHideShow formFieldsHideShow;
+    PFAViewsUtils pfaViewsUtils;
+    private SharedPrefUtils sharedPrefUtils;
+    private FormSectionInfo formSectionInfo;
+    private ArrayList<LinearLayout> linerList = new ArrayList<LinearLayout>();
+    ArrayList<String> fieldTypesList = new ArrayList<>();
+    ArrayList<PFATextInputLayout> textInputLayoutList = new ArrayList<>();
+    private ArrayList<TextView> inputTextList = new ArrayList<>();
+    private PFATextInputLayout sampleBrandName;
+    private FrameLayout sampleBrandNameDD;
+    ;
 
     /**
      * @param mContext          {@link Context}
      * @param pfaViewsCallbacks PFAViewsCallbacks interface
      */
+
     public CustomViewCreate(Context mContext, PFAViewsCallbacks pfaViewsCallbacks) {
         this(mContext, pfaViewsCallbacks, null);
+        sharedPrefUtils = new SharedPrefUtils(mContext);
     }
 
     /**
@@ -141,8 +177,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
         this.pfaViewsCallbacks = pfaViewsCallbacks;
         this.formFilteredData = formFilteredData;
 
+        pfaViewsUtils = new PFAViewsUtils(mContext);
+
 
         formFieldsHideShow = new FormFieldsHideShow(mContext);
+        sharedPrefUtils = new SharedPrefUtils(mContext);
     }
 
     /**
@@ -161,6 +200,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
         if (pfaViewsCallbacks2 != null)
             this.pfaViewsCallbacks = pfaViewsCallbacks2;
         final LayoutInflater inflater = LayoutInflater.from(mContext);
+        this.formSectionInfo = formSectionInfo;
 
         if (!formSectionInfo.getSection_name().equals("")) {
             PFASectionTV pfaSectionTV = new PFASectionTV(mContext, null, isEnglishLang() ? formSectionInfo.getSection_name() : formSectionInfo.getSection_nameUrdu());
@@ -186,7 +226,6 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                 return AppUtils.compareInts(order1, order2);
             }
         });
-
 
         final LinearLayout addDynamicSubItem = new LinearLayout(mContext);
         LinearLayout.LayoutParams dynamicSubItemParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -248,22 +287,32 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
 //                get_code_button, text, textarea, numeric, cnic ,phone, email, dropdown , radiogroup, checkbox, label, date, imageView,  button,  autoSearch, location_fields
             switch (fieldInfo.getField_type()) {
                 case "heading":
+                    Log.d("viewCreated", "heading");
                     createViewHeading(parentView, inflater, fieldInfo);
                     break;
 
                 case "get_code_button":
+                    Log.d("viewCreated", "get_code_button");
                     createViewGetCodeButton(parentView, fieldInfo);
                     break;
 
+                case "get_business_details":
+                    Log.d("viewCreated", "get_business_details");
+                    createViewGetBusinessDetails(parentView, fieldInfo);
+                    break;
+
                 case "googlemap":
+                    Log.d("viewCreated", "googlemap");
                     createGoogleMap(parentView, inflater, fieldInfo);
                     break;
 
                 case "radiogroup":
+                    Log.d("viewCreated", "radiogroup");
                     createRadioGroup(pfaSectionTV, fieldInfo, parentView, fieldsReq);
                     break;
 
                 case "checkbox":
+                    Log.d("viewCreated", "checkbox");
                     parentView.addView(pfaSectionTV);
                     PFACheckboxGroup pfaCheckboxGroup = new PFACheckboxGroup(mContext, fieldInfo, formFilteredData);
                     parentView.addView(pfaCheckboxGroup.getCheckboxLL());
@@ -274,6 +323,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                     break;
 
                 case "label":
+                    Log.d("viewCreated", "label");
                     pfaSectionTV = new PFASectionTV(mContext, fieldInfo.getField_name(), isEnglishLang() ? fieldInfo.getValue() : fieldInfo.getValueUrdu());
                     pfaSectionTV.setSmallTextStyle();
                     parentView.addView(pfaSectionTV);
@@ -294,18 +344,33 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                     break;
 
                 case "imageView":
+                    Log.d("viewCreated", "imageView");
                     createViewImageView(parentView, inflater, formSectionInfo, fieldInfo, imageLayout, fields, sectionRequired, pfaViewsCallbacks2, fieldCount);
                     break;
 
+
+                case "fileView":
+                    Log.d("viewCreated", "fileView");
+                    createViewFileView(parentView, inflater, formSectionInfo, fieldInfo, imageLayout, fields, sectionRequired, pfaViewsCallbacks2, fieldCount);
+                    break;
+
+/*
+                case "multipleInputFields":
+                    createMultipleInputFields(parentView, inflater, formSectionInfo, fieldInfo, imageLayout, fields, sectionRequired, pfaViewsCallbacks2, fieldCount);
+                    break;*/
+
                 case "button":
+                    Log.d("viewCreated", "button");
                     createGenButton(formSectionInfo, fieldInfo, parentView, imageLayout, addDynamicSubItem, sectionRequired, pfaViewsCallbacks2);
                     break;
 
                 case "autoSearch":
+                    Log.d("viewCreated", "autoSearch");
                     createAutoSearchView(parentView, inflater, fieldInfo);
                     break;
 
                 case "dropdown":
+                    Log.d("viewCreated", "dropDown");
                     createViewDropdown(fieldInfo, parentView, inflater);
 
                     if (fieldInfo.getField_name().equalsIgnoreCase(DD_FOOD_LAB_TEST)) {
@@ -325,22 +390,26 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                     break;
 
                 case "location_fields":
+                    Log.d("viewCreated", "location");
                     createViewLocationFields(fieldInfo, params, parentView, inflater, fieldsReq);
                     break;
 
                 case "abc":
+                    Log.d("viewCreated", "abc");
                     createViewABC(fieldInfo, parentView, inflater);
                     break;
 
                 default:
 //                    for all edittext fields this function creates views
+                    Log.d("viewCreated", "edittext");
                     createViewEditText(parentView, fieldInfo, textInputLayout);
                     break;
             }
         }
         sectionRequired.put(formSectionInfo.getSection_id(), fieldsReq);
     }
-//plus
+
+    //plus
     @SuppressLint("RtlHardcoded")
     private void createGenButton(final FormSectionInfo formSectionInfo, final FormFieldInfo fieldInfo, LinearLayout parentView, LinearLayout imageLayout, final LinearLayout addDynamicSubItem, final HashMap<String, HashMap<String, Boolean>> sectionRequired, final PFAViewsCallbacks pfaViewsCallbacks2) {
         if (fieldInfo.getField_name().equalsIgnoreCase("submit")) {
@@ -385,6 +454,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("enfrocementData2312", "button clicked = ");
+
                 if (pfaViewsCallbacks != null)
                     pfaViewsCallbacks.onButtonCLicked(view);
             }
@@ -535,12 +606,22 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
         pfa_detail_heading.setLayoutParams(rlLayoutParams);
 
         TextView headingLblTV = pfa_detail_heading.findViewById(R.id.lblTV);
+        TextView clickableTV = pfa_detail_heading.findViewById(R.id.clickableTV);
         headingLblTV.setText(Html.fromHtml(isEnglishLang() ? fieldInfo.getValue() : fieldInfo.getValueUrdu()));
         applyFont(headingLblTV, FONTS.HelveticaNeueBold);
 
+        if (!fieldInfo.isBottom_hr_line()) {
+            pfa_detail_heading.setBackgroundColor(mContext.getResources().getColor(R.color.white));
+            clickableTV.setVisibility(GONE);
+        } else {
+            pfa_detail_heading.setBackground(mContext.getResources().getDrawable(R.mipmap.text_bg));
+            clickableTV.setVisibility(VISIBLE);
+        }
+
 
         if (fieldInfo.getClickable_text() != null && (!fieldInfo.getClickable_text().isEmpty())) {
-            final TextView clickableTV = pfa_detail_heading.findViewById(R.id.clickableTV);
+
+
             clickableTV.setText(Html.fromHtml(isEnglishLang() ? fieldInfo.getClickable_text() : fieldInfo.getClickable_textUrdu()));
             applyStyle(fieldInfo.getFont_style(), "m", fieldInfo.getFont_color(), clickableTV);
             if (fieldInfo.getClickable_text().equalsIgnoreCase("Edit")) {
@@ -563,13 +644,10 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                         httpService.getListsData(fieldInfo.getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
                             @Override
                             public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                                if(response!=null)
-                                {
+                                if (response != null) {
                                     bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
                                     startNewActivity(PFADetailActivity.class, bundle, false);
-                                }
-                                else
-                                {
+                                } else {
                                     showMsgDialog("No data received from server", null);
                                 }
 
@@ -590,9 +668,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
 
     private void createViewGetCodeButton(final LinearLayout parentView, final FormFieldInfo fieldInfo) {
         AppConst.codeVerified = false;
+        Log.d("createViewGetCodeButton", "createViewGetCodeButton");
         final VerifyFBOLayout verifyFBOLayout = new VerifyFBOLayout(mContext, fieldInfo, pfaViewsCallbacks, new CheckUserCallback() {
             @Override
             public void getExistingUser(JSONArray jsonArray) {
+                Log.d("createViewGetCodeButton", "createViewGetCodeButton1");
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.optJSONObject(i);
 
@@ -609,6 +689,79 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
 
                         }
                     }
+                    if (parentView.findViewWithTag(jsonObject.optString("key")) != null && parentView.findViewWithTag(jsonObject.optString("key")) instanceof PFADDACTV) {
+                        PFADDACTV pfaddactv = parentView.findViewWithTag(jsonObject.optString("key"));
+                        pfaddactv.setText(Html.fromHtml(jsonObject.optString("value")));
+
+                        if (!jsonObject.optBoolean("is_editable")) {
+                            pfaddactv.setEnabled(false);
+                            pfaddactv.setClickable(false);
+                            pfaddactv.setFocusable(false);
+
+                            pfaddactv.setBackgroundColor(mContext.getResources().getColor(R.color.chat_list_footer_bg));
+
+                        }
+                    }
+                }
+
+                AppConst.codeVerified = true;
+            }
+
+            @Override
+            public void getExistingBusiness(JSONArray jsonArray) {
+
+            }
+        });
+        verifyFBOLayout.setTag(fieldInfo.getField_name());
+
+        parentView.addView(verifyFBOLayout);
+
+        if (fieldInfo.isInvisible()) {
+            verifyFBOLayout.setVisibility(GONE);
+        }
+
+    }
+
+
+    private void createViewGetBusinessDetails(final LinearLayout parentView, final FormFieldInfo fieldInfo) {
+        AppConst.codeVerified = false;
+        /*final VerifyFBOBusiness verifyFBOLayout = new VerifyFBOBusiness(mContext, fieldInfo, pfaViewsCallbacks, new CheckUserCallback() {
+            @Override
+            public void getExistingUser(JSONArray jsonArray) {
+
+            }
+
+            @Override
+            public void getExistingBusiness(JSONArray jsonArray) {
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject jsonObject = jsonArray.optJSONObject(i);
+
+                    if (parentView.findViewWithTag(jsonObject.optString("key")) != null && parentView.findViewWithTag(jsonObject.optString("key")) instanceof PFAEditText) {
+                        PFAEditText pfaEditText = parentView.findViewWithTag(jsonObject.optString("key"));
+                        pfaEditText.setText(Html.fromHtml(jsonObject.optString("value")));
+
+                        if (!jsonObject.optBoolean("is_editable")) {
+                            pfaEditText.setEnabled(false);
+                            pfaEditText.setClickable(false);
+                            pfaEditText.setFocusable(false);
+
+                            pfaEditText.setBackgroundColor(mContext.getResources().getColor(R.color.chat_list_footer_bg));
+
+                        }
+                    }
+                    if (parentView.findViewWithTag(jsonObject.optString("key")) != null && parentView.findViewWithTag(jsonObject.optString("key")) instanceof PFADDACTV) {
+                        PFADDACTV pfaddactv = parentView.findViewWithTag(jsonObject.optString("key"));
+                        pfaddactv.setText(Html.fromHtml(jsonObject.optString("value")));
+
+                        if (!jsonObject.optBoolean("is_editable")) {
+                            pfaddactv.setEnabled(false);
+                            pfaddactv.setClickable(false);
+                            pfaddactv.setFocusable(false);
+
+                            pfaddactv.setBackgroundColor(mContext.getResources().getColor(R.color.chat_list_footer_bg));
+
+                        }
+                    }
                 }
 
                 AppConst.codeVerified = true;
@@ -620,7 +773,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
 
         if (fieldInfo.isInvisible()) {
             verifyFBOLayout.setVisibility(GONE);
-        }
+        }*/
 
     }
 
@@ -641,6 +794,30 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
 
         textInputLayout.setTag(fieldInfo.getField_name() + "01");
 
+        fieldTypesList.add(fieldInfo.getField_type());
+        if (fieldInfo.getField_name().equals("applicant_name") || fieldInfo.getField_name().equals("cnic") || fieldInfo.getField_name().equals("designation_Position") ||
+                fieldInfo.getField_name().equals("food_business_name") || fieldInfo.getField_name().equals("office_address") || fieldInfo.getField_name().equals("manufacturing_unit_address") ||
+                fieldInfo.getField_name().equals("cell_number")) {
+
+//            textInputLayoutList.add(textInputLayout);
+
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.setMargins(convertDpToPixel(20), convertDpToPixel(8), 0, 0);
+
+            TextView textView = new TextView(mContext);
+            textView.setText("*required");
+            textView.setTextColor(mContext.getResources().getColor(R.color.maroon1));
+            textView.setLayoutParams(params);
+//                textView.setTextSize(mContext.getResources().getDimension(R.dimen._2sdp));
+            textView.setPadding(0, 0, 0, 0);
+            textView.setGravity(Gravity.CENTER_HORIZONTAL);
+//                textView.setTypeface(null, Typeface.BOLD);
+//            textView.setVisibility(View.INVISIBLE);
+
+            parentView.addView(textView);
+            inputTextList.add(textView);
+
+        }
         switch (fieldInfo.getField_type()) {
             case "text":
             case "searchkeytext":
@@ -649,8 +826,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                 PFAEditText pfaEditText = new PFAEditText(mContext, fieldInfo, formFilteredData);
                 pfaEditText.setRawInputType(InputType.TYPE_CLASS_TEXT);
 
+                Log.d("enfrocedData", "text");
                 textInputLayout.addView(pfaEditText);
                 parentView.addView(textInputLayout);
+                if (fieldInfo.getField_name().equals("name"))
+                    sampleBrandName = textInputLayout;
 
                 pfaEditText.addTextInputLayout(textInputLayout);
 
@@ -667,11 +847,14 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                 params.setMargins(0, convertDpToPixel(10), 0, 0);
                 textInputLayout.setLayoutParams(params);
 
+                Log.d("enfrocedData", "textArea");
+
                 final PFAEditText pfa1EditText = new PFAEditText(mContext, fieldInfo, formFilteredData);
                 pfa1EditText.setRawInputType(InputType.TYPE_CLASS_TEXT);
 
                 textInputLayout.addView(pfa1EditText);
                 parentView.addView(textInputLayout);
+//                textInputLayoutList.add(textInputLayout);
 
                 pfa1EditText.addTextInputLayout(textInputLayout);
 
@@ -689,8 +872,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                 pfaEditText2.setRawInputType(InputType.TYPE_CLASS_NUMBER);
                 pfaEditText2.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
 
+                Log.d("enfrocedData", "numeric");
+
                 textInputLayout.addView(pfaEditText2);
                 parentView.addView(textInputLayout);
+//                textInputLayoutList.add(textInputLayout);
 
                 pfaEditText2.addTextInputLayout(textInputLayout);
 
@@ -710,8 +896,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                 pfaEditText4.setRawInputType(InputType.TYPE_CLASS_PHONE);
                 pfaEditText4.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
 
+                Log.d("enfrocedData", "phone");
+
                 textInputLayout.addView(pfaEditText4);
                 parentView.addView(textInputLayout);
+//                textInputLayoutList.add(textInputLayout);
 
                 if (fieldInfo.isClickable()) {
                     pfaEditText4.setOnClickListener(new View.OnClickListener() {
@@ -734,8 +923,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                 PFAEditText pfaEditText5 = new PFAEditText(mContext, fieldInfo, formFilteredData);
                 pfaEditText5.setRawInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
+                Log.d("enfrocedData", "email");
+
                 textInputLayout.addView(pfaEditText5);
                 parentView.addView(textInputLayout);
+//                textInputLayoutList.add(textInputLayout);
 
                 pfaEditText5.addTextInputLayout(textInputLayout);
 
@@ -749,6 +941,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                 pfaDateET.setRawInputType(InputType.TYPE_CLASS_TEXT);
                 pfaDateET.setKeyListener(null);
                 pfaDateET.setFocusable(false);
+
+                Log.d("enfrocedData", "date");
 
                 final PFATextInputLayout finalTextInputLayout = textInputLayout;
                 pfaDateET.setOnClickListener(new View.OnClickListener() {
@@ -772,6 +966,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                 textInputLayout.addView(pfaDateET);
                 parentView.addView(textInputLayout);
 
+
                 pfaDateET.addTextInputLayout(textInputLayout);
 
                 if (fieldInfo.isInvisible()) {
@@ -781,6 +976,16 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                 setSearchOption(pfaDateET, parentView, isSearchFilter);
                 break;
         }
+
+//        if (fieldInfo.getField_name().equals("applicant_name") || fieldInfo.getField_name().equals("cnic") || fieldInfo.getField_name().equals("designation_Position") ||
+//                fieldInfo.getField_name().equals("food_business_name") || fieldInfo.getField_name().equals("office_address") || fieldInfo.getField_name().equals("manufacturing_unit_address") ||
+//                fieldInfo.getField_name().equals("landline_phone") || fieldInfo.getField_name().equals("cell_number") || fieldInfo.getField_name().equals("fax") ||
+//                fieldInfo.getField_name().equals("email")) {
+//
+//            textInputLayoutList.add(textInputLayout);
+//
+//        }
+
     }
 
     private void createAutoSearchView(final LinearLayout parentView, LayoutInflater inflater, final FormFieldInfo fieldInfo) {
@@ -1023,7 +1228,477 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
         }
     }
 
+    private void createViewFileView(final LinearLayout parentView, LayoutInflater inflater, final FormSectionInfo formSectionInfo, final FormFieldInfo fieldInfo, LinearLayout imageLayout, final List<FormFieldInfo> fields, final HashMap<String, HashMap<String, Boolean>> sectionRequired, final PFAViewsCallbacks pfaViewsCallbacks2, int fieldCount) {
+
+        @SuppressLint("InflateParams") final LinearLayout img_attachment_ll = (LinearLayout) inflater.inflate(R.layout.img_attachment_ll, null, false);
+
+        img_attachment_ll.setTag(fieldInfo.getField_name() + "_parent");
+
+        TextView attachmentLblTV = img_attachment_ll.findViewById(R.id.attachmentLblTV);
+        TextView selectImgTV = img_attachment_ll.findViewById(R.id.selectImgTV);
+
+        applyFont(attachmentLblTV, FONTS.HelveticaNeue);
+        applyFont(selectImgTV, FONTS.HelveticaNeue);
+
+        final CustomNetworkImageView attachmentCNIV = img_attachment_ll.findViewById(R.id.attachmentCNIV);
+        attachmentCNIV.setFormFieldInfo(fieldInfo);
+
+        ImageButton addMoreImgBtn = img_attachment_ll.findViewById(R.id.addMoreImgBtn);
+        final ImageButton deleteImgBtn = img_attachment_ll.findViewById(R.id.deleteImgBtn);
+        final ImageButton downloadImgBtn = img_attachment_ll.findViewById(R.id.downloadImgBtn);
+
+        if (fieldInfo.getField_name().equalsIgnoreCase("application_image") ||
+                fieldInfo.getField_name().equalsIgnoreCase("application_cnic_image") ||
+                fieldInfo.getField_name().equalsIgnoreCase("application_cnic_back_image") ||
+                fieldInfo.getField_name().equalsIgnoreCase("application_business_image")) {
+            LinearLayout.LayoutParams imgLLParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            imgLLParams.weight = 1;
+            img_attachment_ll.setLayoutParams(imgLLParams);
+
+            imageLayout.addView(img_attachment_ll);
+        } else {
+            parentView.addView(img_attachment_ll);
+        }
+
+
+        attachmentCNIV.setTag(fieldInfo.getField_name());
+
+        if (fieldInfo.isClickable()) {
+            if (fieldInfo.isRequired()) {
+                selectImgTV.setText(Html.fromHtml("<b><font color=\"#EB5757\">" + " *</font> </b> Select"));
+            } else {
+                selectImgTV.setText(mContext.getString(R.string.select_image));
+            }
+
+//            if ((fieldInfo.getIcon().startsWith("http")))
+//                attachmentLblTV.setText(Html.fromHtml(isEnglishLang() ? fieldInfo.getValue() : fieldInfo.getValueUrdu()));
+//            else
+//                attachmentLblTV.setText("Attachment");
+        } else {
+//            if ((fieldInfo.getIcon().startsWith("http")))
+//                attachmentLblTV.setText(Html.fromHtml(isEnglishLang() ? fieldInfo.getValue() : fieldInfo.getValueUrdu()));
+//            else
+//                attachmentLblTV.setText("Attachment");
+            img_attachment_ll.findViewById(R.id.selectImgLblFL).setVisibility(GONE);
+        }
+
+        if ((fieldInfo.getValue() != null))
+            attachmentLblTV.setText(Html.fromHtml(isEnglishLang() ? fieldInfo.getValue() : fieldInfo.getValueUrdu()));
+        else
+            attachmentLblTV.setText("Attachment");
+
+        if (fieldInfo.isNotEditable()) {
+            deleteImgBtn.setVisibility(GONE);
+        }
+
+//        if (fieldInfo.isClickable() && fieldInfo.getData() != null)
+//            deleteImgBtn.setVisibility(GONE);
+
+        if ((fieldInfo.getIcon().startsWith("http")) && fieldInfo.isClickable()) {
+
+            Log.d("iconVal", "icon = " + fieldInfo.getIcon());
+            if (fieldInfo.getIcon().endsWith("pdf"))
+                attachmentCNIV.setDrawable(R.drawable.ic_pdf);
+            else if (fieldInfo.getIcon().endsWith("docx"))
+                attachmentCNIV.setDrawable(R.drawable.ic_docx);
+            else
+                attachmentCNIV.setImageUrl(fieldInfo.getIcon(), AppController.getInstance().getImageLoader());
+            deleteImgBtn.setVisibility(VISIBLE);
+            downloadImgBtn.setVisibility(VISIBLE);
+
+        } else if ((fieldInfo.getIcon().startsWith("http")) && !fieldInfo.isClickable()) {
+            Log.d("iconVal", "icon = " + fieldInfo.getIcon());
+            if (fieldInfo.getIcon().endsWith("pdf"))
+                attachmentCNIV.setDrawable(R.drawable.ic_pdf);
+            else if (fieldInfo.getIcon().endsWith("docx"))
+                attachmentCNIV.setDrawable(R.drawable.ic_docx);
+            else
+                attachmentCNIV.setImageUrl(fieldInfo.getIcon(), AppController.getInstance().getImageLoader());
+            deleteImgBtn.setVisibility(GONE);
+            downloadImgBtn.setVisibility(VISIBLE);
+        }
+        /*if ((fieldInfo.getData() != null && fieldInfo.getData().size() > 0) && (!fieldInfo.getData().get(0).getValue().equals(""))) {
+            if (fieldInfo.getData().get(0).getValue().startsWith("http")) {
+                attachmentCNIV.setImageUrl(fieldInfo.getData().get(0).getValue(), AppController.getInstance().getImageLoader());
+            } else {
+                deleteImgBtn.setVisibility(VISIBLE);
+                attachmentCNIV.setFileBitmap(fieldInfo.getData().get(0).getValue());
+            }
+        }*/
+        else {
+            attachmentCNIV.setDrawable(R.mipmap.no_img);
+            deleteImgBtn.setVisibility(GONE);
+            downloadImgBtn.setVisibility(GONE);
+        }
+
+       /* if (fieldInfo.getIcon().endsWith("pdf") && fieldInfo.isClickable()){
+            Log.d("pdfFilePath" , "path = " + fieldInfo.getIcon());
+            attachmentCNIV.setDrawable(R.drawable.ic_pdf);
+            deleteImgBtn.setVisibility(VISIBLE);
+            downloadImgBtn.setVisibility(VISIBLE);
+        } else {
+            attachmentCNIV.setDrawable(R.drawable.ic_pdf);
+            deleteImgBtn.setVisibility(GONE);
+            downloadImgBtn.setVisibility(VISIBLE);
+        }*/
+
+       /* if (fieldInfo.getIcon().endsWith("docx") && !fieldInfo.isClickable()){
+            Log.d("pdfFilePath" , "path = " + fieldInfo.getIcon());
+            attachmentCNIV.setDrawable(R.drawable.ic_docx);
+            deleteImgBtn.setVisibility(VISIBLE);
+            downloadImgBtn.setVisibility(VISIBLE);
+        }
+        else {
+            attachmentCNIV.setDrawable(R.drawable.ic_docx);
+            deleteImgBtn.setVisibility(GONE);
+            downloadImgBtn.setVisibility(VISIBLE);
+        }*/
+
+        /* else if (fieldInfo.getIcon()!=null){
+            attachmentCNIV.setImageUrl(fieldInfo.getIcon() , AppController.getInstance().getImageLoader());
+        }*/
+
+        if (fieldInfo.isInvisible()) {
+            img_attachment_ll.setVisibility(GONE);
+        }
+
+        deleteImgBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                attachmentCNIV.setImageFile(null);
+                attachmentCNIV.setLocalImageBitmap(null);
+                attachmentCNIV.setDrawable(R.mipmap.no_img);
+                deleteImgBtn.setVisibility(GONE);
+                downloadImgBtn.setVisibility(GONE);
+            }
+        });
+
+        downloadImgBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (fieldInfo.getIcon().startsWith("http")) {
+//                    Toast.makeText(mContext, "Download started", Toast.LENGTH_SHORT).show();
+//                    downloadFile(fieldInfo.getIcon());
+                    downloadImgBtn.setVisibility(GONE);
+
+                    //         get the file name to be downloaded from url
+                    final String outputFile = URLUtil.guessFileName(fieldInfo.getIcon(), null, null);
+
+//        Create the folder for downloads
+                    String rootDir = Environment.getExternalStorageDirectory()
+                            + File.separator + "Download";
+//                + File.separator + "PFA_Mobile_Downloads";
+                    File rootFile = new File(rootDir);
+
+                    if (!rootFile.exists())
+                        rootFile.mkdir();
+
+//        End create folder
+
+                    if (sharedPrefUtils.isVideoFile(fieldInfo.getIcon())) {
+                        DownloadFileManager.downloadVideo(fieldInfo.getIcon(), new File(rootFile, outputFile), pbListener, mContext);
+                    } else {
+                        DownloadFileManager.downloadImage(fieldInfo.getIcon(), new File(rootFile, outputFile), pbListener, mContext);
+                    }
+
+                }
+            }
+        });
+
+        printLog("fieldInfo.isAdd_more", "" + (fieldInfo.isAdd_more()));
+        if (fieldInfo.isAdd_more()) {
+            addMoreImgBtn.setVisibility(VISIBLE);
+            addMoreImgBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    PFAViewsUtils pfaViewsUtils = new PFAViewsUtils(mContext);
+                    HashMap<String, List<FormDataInfo>> pfaViewsData = pfaViewsUtils.getViewsData(parentView, false);
+
+                    for (int x = 0; x < fields.size(); x++) {
+                        String fieldType = fields.get(x).getField_type();
+
+                        if (fieldType.equalsIgnoreCase("radioGroup") || fieldType.equalsIgnoreCase("dropdown")) {
+                            if (pfaViewsData.get(fields.get(x).getField_name()) != null && pfaViewsData.get(fields.get(x).getField_name()).size() > 0)
+                                fields.get(x).setDefault_value(pfaViewsData.get(fields.get(x).getField_name()).get(0).getKey());
+                        } else if (fieldType.equalsIgnoreCase("location_fields")) {
+
+                            fields.get(x).setData(pfaViewsData.get(fields.get(x).getField_name()));
+                            fields.get(x).setRequired(true);
+
+                        } else {
+                            fields.get(x).setData(pfaViewsData.get(fields.get(x).getField_name()));
+                        }
+                    }
+
+                    FormFieldInfo addMoreFieldInfo = copyFormFieldInfo(fieldInfo, fields.size());
+
+                    fields.add(addMoreFieldInfo);
+
+                    parentView.removeAllViews();
+                    formSectionInfo.setFields(fields);
+
+                    createViews(formSectionInfo, parentView, sectionRequired, pfaViewsCallbacks2, true, mainScrollView);
+
+                }
+            });
+        }
+
+        if (fieldInfo.isDeleteImg()) {
+            if (isEnglishLang()) {
+                attachmentLblTV.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.delete, 0);
+            } else {
+                attachmentLblTV.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.delete, 0, 0, 0);
+            }
+
+            final int finalFieldCount = fieldCount;
+            attachmentLblTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    PFAViewsUtils pfaViewsUtils = new PFAViewsUtils(mContext);
+                    HashMap<String, List<FormDataInfo>> pfaViewsData = pfaViewsUtils.getViewsData(parentView, false);
+                    for (int x = 0; x < fields.size(); x++) {
+                        String fieldType = fields.get(x).getField_type();
+
+                        if (fieldType.equalsIgnoreCase(String.valueOf(FIELD_TYPE.radiogroup)) || fieldType.equalsIgnoreCase(String.valueOf(FIELD_TYPE.dropdown))) {
+                            if (pfaViewsData.get(fields.get(x).getField_name()) != null && pfaViewsData.get(fields.get(x).getField_name()).size() > 0)
+                                fields.get(x).setDefault_value(pfaViewsData.get(fields.get(x).getField_name()).get(0).getKey());
+                        } else if (fieldType.equalsIgnoreCase(String.valueOf(FIELD_TYPE.location_fields))) {
+
+                            fields.get(x).setData(pfaViewsData.get(fields.get(x).getField_name()));
+                            fields.get(x).setRequired(true);
+
+                        } else {
+                            fields.get(x).setData(pfaViewsData.get(fields.get(x).getField_name()));
+                        }
+                    }
+
+                    fields.remove(finalFieldCount);
+
+                    List<FormFieldInfo> tempFields = new ArrayList<>(fields);
+                    parentView.removeAllViews();
+
+                    formSectionInfo.setFields(tempFields);
+                    createViews(formSectionInfo, parentView, sectionRequired, pfaViewsCallbacks2, true, mainScrollView);
+                }
+            });
+        }
+
+        if (fieldInfo.isClickable()) {
+            if (deleteImgBtn != null)
+                attachmentCNIV.setDeleteImgBtn(deleteImgBtn);
+            else
+                Log.d("deleteIMageBtn", "dlete button null");
+            attachmentCNIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (pfaViewsCallbacks != null)
+                        pfaViewsCallbacks.showFilePickerDialog(attachmentCNIV);
+                }
+            });
+        } else {
+            attachmentCNIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (fieldInfo.getIcon() != null && (!fieldInfo.getIcon().isEmpty())) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString(EXTRA_DOWNLOAD_URL, fieldInfo.getIcon());
+                        startNewActivity(ImageGalleryActivity.class, bundle, false);
+                    }
+                }
+            });
+
+        }
+    }
+
+/*
+
+    private void createMultipleInputFields(final LinearLayout parentView, LayoutInflater inflater, final FormSectionInfo formSectionInfo, final FormFieldInfo fieldInfo, LinearLayout imageLayout, final List<FormFieldInfo> fields, final HashMap<String, HashMap<String, Boolean>> sectionRequired, final PFAViewsCallbacks pfaViewsCallbacks2, int fieldCount) {
+
+
+        @SuppressLint("InflateParams") final LinearLayout img_attachment_ll = (LinearLayout) inflater.inflate(R.layout.img_attachment_ll, null, false);
+
+        img_attachment_ll.setTag(fieldInfo.getField_name() + "_parent");
+
+        TextView attachmentLblTV = img_attachment_ll.findViewById(R.id.attachmentLblTV);
+        TextView selectImgTV = img_attachment_ll.findViewById(R.id.selectImgTV);
+
+        applyFont(attachmentLblTV, FONTS.HelveticaNeue);
+        applyFont(selectImgTV, FONTS.HelveticaNeue);
+
+        final CustomNetworkImageView attachmentCNIV = img_attachment_ll.findViewById(R.id.attachmentCNIV);
+        attachmentCNIV.setFormFieldInfo(fieldInfo);
+
+        ImageButton addMoreImgBtn = img_attachment_ll.findViewById(R.id.addMoreImgBtn);
+        final ImageButton deleteImgBtn = img_attachment_ll.findViewById(R.id.deleteImgBtn);
+
+        if (fieldInfo.getField_name().equalsIgnoreCase("application_image") ||
+                fieldInfo.getField_name().equalsIgnoreCase("application_cnic_image") ||
+                fieldInfo.getField_name().equalsIgnoreCase("application_cnic_back_image") ||
+                fieldInfo.getField_name().equalsIgnoreCase("application_business_image")) {
+            LinearLayout.LayoutParams imgLLParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            imgLLParams.weight = 1;
+            img_attachment_ll.setLayoutParams(imgLLParams);
+
+            imageLayout.addView(img_attachment_ll);
+        } else {
+            parentView.addView(img_attachment_ll);
+        }
+
+
+        attachmentCNIV.setTag(fieldInfo.getField_name());
+
+        if (fieldInfo.isClickable()) {
+            if (fieldInfo.isRequired()) {
+                selectImgTV.setText(Html.fromHtml("<b><font color=\"#EB5757\">" + " *</font> </b> Select"));
+            } else {
+                selectImgTV.setText(mContext.getString(R.string.select_image));
+            }
+
+            attachmentLblTV.setText(Html.fromHtml(isEnglishLang() ? fieldInfo.getValue() : fieldInfo.getValueUrdu()));
+        } else {
+            attachmentLblTV.setText("Attachment");
+            img_attachment_ll.findViewById(R.id.selectImgLblFL).setVisibility(GONE);
+        }
+
+
+        if (fieldInfo.isNotEditable()) {
+            deleteImgBtn.setVisibility(GONE);
+        }
+        if ((fieldInfo.getData() != null && fieldInfo.getData().size() > 0) && (!fieldInfo.getData().get(0).getValue().equals(""))) {
+            if (fieldInfo.getData().get(0).getValue().startsWith("http")) {
+                attachmentCNIV.setImageUrl(fieldInfo.getData().get(0).getValue(), AppController.getInstance().getImageLoader());
+            } else {
+                deleteImgBtn.setVisibility(VISIBLE);
+                attachmentCNIV.setFileBitmap(fieldInfo.getData().get(0).getValue());
+            }
+        } else {
+            attachmentCNIV.setDrawable(R.mipmap.no_img);
+        }
+
+        if (fieldInfo.isInvisible()) {
+            img_attachment_ll.setVisibility(GONE);
+        }
+
+
+        deleteImgBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                attachmentCNIV.setImageFile(null);
+                attachmentCNIV.setLocalImageBitmap(null);
+            }
+        });
+
+
+        printLog("fieldInfo.isAdd_more", "" + (fieldInfo.isAdd_more()));
+        if (fieldInfo.isAdd_more()) {
+            addMoreImgBtn.setVisibility(VISIBLE);
+            addMoreImgBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    PFAViewsUtils pfaViewsUtils = new PFAViewsUtils(mContext);
+                    HashMap<String, List<FormDataInfo>> pfaViewsData = pfaViewsUtils.getViewsData(parentView, false);
+
+                    for (int x = 0; x < fields.size(); x++) {
+                        String fieldType = fields.get(x).getField_type();
+
+                        if (fieldType.equalsIgnoreCase("radioGroup") || fieldType.equalsIgnoreCase("dropdown")) {
+                            if (pfaViewsData.get(fields.get(x).getField_name()) != null && pfaViewsData.get(fields.get(x).getField_name()).size() > 0)
+                                fields.get(x).setDefault_value(pfaViewsData.get(fields.get(x).getField_name()).get(0).getKey());
+                        } else if (fieldType.equalsIgnoreCase("location_fields")) {
+
+                            fields.get(x).setData(pfaViewsData.get(fields.get(x).getField_name()));
+                            fields.get(x).setRequired(true);
+
+                        } else {
+                            fields.get(x).setData(pfaViewsData.get(fields.get(x).getField_name()));
+                        }
+                    }
+
+                    FormFieldInfo addMoreFieldInfo = copyFormFieldInfo(fieldInfo, fields.size());
+
+                    fields.add(addMoreFieldInfo);
+
+                    parentView.removeAllViews();
+                    formSectionInfo.setFields(fields);
+
+                    createViews(formSectionInfo, parentView, sectionRequired, pfaViewsCallbacks2, true, mainScrollView);
+
+                }
+            });
+        }
+
+        if (fieldInfo.isDeleteImg()) {
+            if (isEnglishLang()) {
+                attachmentLblTV.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.mipmap.delete, 0);
+            } else {
+                attachmentLblTV.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.delete, 0, 0, 0);
+            }
+
+            final int finalFieldCount = fieldCount;
+            attachmentLblTV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    PFAViewsUtils pfaViewsUtils = new PFAViewsUtils(mContext);
+                    HashMap<String, List<FormDataInfo>> pfaViewsData = pfaViewsUtils.getViewsData(parentView, false);
+                    for (int x = 0; x < fields.size(); x++) {
+                        String fieldType = fields.get(x).getField_type();
+
+                        if (fieldType.equalsIgnoreCase(String.valueOf(FIELD_TYPE.radiogroup)) || fieldType.equalsIgnoreCase(String.valueOf(FIELD_TYPE.dropdown))) {
+                            if (pfaViewsData.get(fields.get(x).getField_name()) != null && pfaViewsData.get(fields.get(x).getField_name()).size() > 0)
+                                fields.get(x).setDefault_value(pfaViewsData.get(fields.get(x).getField_name()).get(0).getKey());
+                        } else if (fieldType.equalsIgnoreCase(String.valueOf(FIELD_TYPE.location_fields))) {
+
+                            fields.get(x).setData(pfaViewsData.get(fields.get(x).getField_name()));
+                            fields.get(x).setRequired(true);
+
+                        } else {
+                            fields.get(x).setData(pfaViewsData.get(fields.get(x).getField_name()));
+                        }
+                    }
+
+                    fields.remove(finalFieldCount);
+
+                    List<FormFieldInfo> tempFields = new ArrayList<>(fields);
+                    parentView.removeAllViews();
+
+                    formSectionInfo.setFields(tempFields);
+                    createViews(formSectionInfo, parentView, sectionRequired, pfaViewsCallbacks2, true, mainScrollView);
+                }
+            });
+        }
+
+        if (fieldInfo.isClickable()) {
+            attachmentCNIV.setDeleteImgBtn(deleteImgBtn);
+            attachmentCNIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (pfaViewsCallbacks != null)
+                        pfaViewsCallbacks.showImagePickerDialog(attachmentCNIV);
+                }
+            });
+        } else {
+            attachmentCNIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (fieldInfo.getIcon() != null && (!fieldInfo.getIcon().isEmpty())) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString(EXTRA_DOWNLOAD_URL, fieldInfo.getIcon());
+                        startNewActivity(ImageGalleryActivity.class, bundle, false);
+                    }
+                }
+            });
+
+        }
+    }
+
+*/
+
     private void createViewDropdown(final FormFieldInfo fieldInfo, final LinearLayout parentView, LayoutInflater inflater) {
+        Log.d("checkDropDown", "drop down opened");
         if (fieldInfo.isMultiple()) {
             PFAMultiSpinner pfaMultiSpinner = new PFAMultiSpinner(mContext, fieldInfo, new MultiSpinnerListener() {
                 @Override
@@ -1051,26 +1726,655 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
 
             pfa_dd_actv.setHint(isEnglishLang() ? fieldInfo.getValue() : fieldInfo.getValueUrdu());
             pfa_dd_actv.setDDCallback(DDCallback);
-            pfa_dd_actv.setProperties(new WhichItemClicked() {
-                @Override
-                public void whichItemClicked(String id) {
-                    printLog("createViewDropdown", "whichItemClicked=>" + id);
-                }
 
-                @Override
-                public void downloadInspection(String downloadUrl, int position) {
-                    printLog("createViewDropdown", "downloadInspection  position=> " + downloadUrl + " position=> " + position);
+            if (fieldInfo.getField_name().equals("local_business"))
+                localBusinessDropDownUrl = fieldInfo.getAPI_URL();
 
-                }
+            if (fieldInfo.getField_name().equals("clientid")) {
 
-                @Override
-                public void deleteRecordAPICall(String deleteUrl, int position) {
+                pfa_dd_actv.setProperties(new WhichItemClicked() {
+                    @Override
+                    public void whichItemClicked(String id) {
+                        printLog("createViewDropdown", "whichItemClicked=>" + id);
+                        Log.d("createDropDoewn", "id = " + id);
 
-                }
-            }, fieldInfo, formFilteredData);
+//                        if (fieldInfo.getField_name().equals("clientid")) {
+                        if (id.equals("others")) {
+
+                            Log.d("createDropDoewn", "id = others");
+                            if (parentView.findViewWithTag("local_business") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("local_business");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(true);
+                            }
+
+                            if (parentView.findViewWithTag("business_name") instanceof PFAEditText) {
+
+                                for (int i = 0; i < linerList.size(); i++) {
+                                    LinearLayout linearLayout = linerList.get(i);
+                                    linearLayout.setVisibility(GONE);
+                                }
+//                                for (int i = 0; i < textInputLayoutList.size(); i++) {
+//                                    PFATextInputLayout pfaTextInputLayout = textInputLayoutList.get(i);
+//                                    parentView.addView(pfaTextInputLayout);
+//                                }
+                            }
+
+//                            if (parentView.findViewWithTag("applicant_name") instanceof PFAEditText) {
+//
+//
+//                            }
+
+                            if (parentView.findViewWithTag("applicant_name") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("applicant_name");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(true);
+                            }
+                            if (parentView.findViewWithTag("cnic") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("cnic");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(true);
+                            }
+                            if (parentView.findViewWithTag("designation_Position") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("designation_Position");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(true);
+                            }
+                            if (parentView.findViewWithTag("food_business_name") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("food_business_name");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(true);
+                            }
+                            if (parentView.findViewWithTag("provinces") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("provinces");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(true);
+                            }
+                            if (parentView.findViewWithTag("office_address") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("office_address");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(true);
+                            }
+                            if (parentView.findViewWithTag("manufacturing_unit_address") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("manufacturing_unit_address");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(true);
+                            }
+                            if (parentView.findViewWithTag("landline_phone") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("landline_phone");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(true);
+                            }
+                            if (parentView.findViewWithTag("cell_number") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("cell_number");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(true);
+                            }
+                            if (parentView.findViewWithTag("fax") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("fax");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(true);
+                            }
+                            if (parentView.findViewWithTag("email") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("email");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(true);
+                            }
+                            for (int i = 0; i < inputTextList.size(); i++) {
+                                TextView textView = inputTextList.get(i);
+                                textView.setVisibility(VISIBLE);
+                            }
+
+                        } else {
+
+                            Log.d("createDropDoewn", "id = else");
+                            if (parentView.findViewWithTag("local_business") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("local_business");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                                Log.d("createDropDoewn", "id = else 1");
+                            } else
+                                Log.d("createDropDoewn", "id = else else");
+
+                            if (parentView.findViewWithTag("business_name") instanceof PFAEditText) {
+
+                                for (int i = 0; i < linerList.size(); i++) {
+                                    LinearLayout linearLayout = linerList.get(i);
+                                    linearLayout.setVisibility(VISIBLE);
+                                }
+//                                for (int i = 0; i < textInputLayoutList.size(); i++) {
+//                                    PFATextInputLayout pfaTextInputLayout = textInputLayoutList.get(i);
+//                                    parentView.removeView(pfaTextInputLayout);
+//                                }
+                            }
+
+//                            if (parentView.findViewWithTag("applicant_name") instanceof PFAEditText) {
+
+
+//                            }
+
+                            if (parentView.findViewWithTag("applicant_name") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("applicant_name");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("cnic") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("cnic");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("designation_Position") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("designation_Position");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("food_business_name") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("food_business_name");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("provinces") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("provinces");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("office_address") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("office_address");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("manufacturing_unit_address") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("manufacturing_unit_address");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("landline_phone") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("landline_phone");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("cell_number") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("cell_number");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("fax") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("fax");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("email") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("email");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            for (int i = 0; i < inputTextList.size(); i++) {
+                                TextView textView = inputTextList.get(i);
+                                textView.setVisibility(GONE);
+                            }
+                        }
+//                        }
+
+                        final VerifyFBOBusiness verifyFBOLayout = new VerifyFBOBusiness(mContext, id, fieldInfo.getAPI_URL(), new CheckUserCallback() {
+                            @Override
+                            public void getExistingUser(JSONArray jsonArray) {
+
+                            }
+
+                            @Override
+                            public void getExistingBusiness(JSONArray jsonArray) {
+                                Log.d("createViewGetCodeButton", "createViewGetCodeButton1 dropDOwn");
+                                for (int i = 0; i < jsonArray.length(); i++) {
+
+                                    JSONObject jsonObject = jsonArray.optJSONObject(i);
+
+//                                    if (parentView.findViewWithTag(jsonObject.optString("key")) instanceof PFAEditText) {
+//                                        PFAEditText pfaEditText = parentView.findViewWithTag(jsonObject.optString("key"));
+//                                        pfaEditText.setText(null);
+//                                        Log.d("createViewGetCodeButton", "createViewGetCodeButton1 set text null");
+//                                    }
+
+
+                                    if (parentView.findViewWithTag(jsonObject.optString("key")) != null && parentView.findViewWithTag(jsonObject.optString("key")) instanceof PFAEditText) {
+                                        PFAEditText pfaEditText = parentView.findViewWithTag(jsonObject.optString("key"));
+                                        pfaEditText.setText(Html.fromHtml(jsonObject.optString("value")));
+
+                                        Log.d("createViewGetDDVal", "editext value = " + Html.fromHtml(jsonObject.optString("value")));
+                                        Log.d("createViewGetDDValues", "editext name = " + jsonObject.optString("key"));
+                                        Log.d("createViewGetDDValues", "editext value = " + Html.fromHtml(jsonObject.optString("value")));
+
+                                        if (!jsonObject.optBoolean("is_editable")) {
+                                            pfaEditText.setEnabled(false);
+                                            pfaEditText.setClickable(false);
+                                            pfaEditText.setFocusable(false);
+
+                                            pfaEditText.setBackgroundColor(mContext.getResources().getColor(R.color.chat_list_footer_bg));
+
+                                        } else {
+                                            pfaEditText.setFocusable(true);
+                                            pfaEditText.setFocusableInTouchMode(true);
+                                            pfaEditText.setEnabled(true);
+                                            pfaEditText.setClickable(true);
+
+                                            pfaEditText.setBackgroundColor(mContext.getResources().getColor(R.color.white));
+                                        }
+
+//                                        if (jsonObject.optBoolean("required")){
+//                                            pfaEditText.setRequired(true);
+//                                        } else
+//                                            pfaEditText.setRequired(false);
+                                    }
+
+                                }
+                            }
+                        });
+                        verifyFBOLayout.setTag(fieldInfo.getField_name());
+
+                        parentView.addView(verifyFBOLayout);
+
+                        if (fieldInfo.isInvisible()) {
+                            verifyFBOLayout.setVisibility(GONE);
+                        }
+
+                        printLog("createViewDropdown", "whichItemClicked=>" + fieldInfo.getAPI_URL());
+
+                    }
+
+                    @Override
+                    public void downloadInspection(String downloadUrl, int position) {
+                        printLog("createViewDropdown", "downloadInspection  position=> " + downloadUrl + " position=> " + position);
+
+                    }
+
+                    @Override
+                    public void deleteRecordAPICall(String deleteUrl, int position) {
+
+                    }
+                }, fieldInfo, formFilteredData);
+            }
+
+            /*else if (fieldInfo.getField_name().equals("local_business")) {
+
+                pfa_dd_actv.setProperties(new WhichItemClicked() {
+                    @Override
+                    public void whichItemClicked(String id) {
+                        printLog("createViewDropdown", "whichItemClicked=>" + id);
+                        Log.d("createDropDoewn", "API_URL() = " + fieldInfo.getAPI_URL());
+
+                        final VerifyFBOBusiness verifyFBOLayout = new VerifyFBOBusiness(mContext, id, fieldInfo.getAPI_URL(), new CheckUserCallback() {
+                            @Override
+                            public void getExistingUser(JSONArray jsonArray) {
+
+                            }
+
+                            @Override
+                            public void getExistingBusiness(JSONArray jsonArray) {
+                                Log.d("createViewGetCodeButton", "createViewGetCodeButton1 dropDOwn");
+                                for (int i = 0; i < jsonArray.length(); i++) {
+
+                                    JSONObject jsonObject = jsonArray.optJSONObject(i);
+
+                                    if (parentView.findViewWithTag(jsonObject.optString("key")) != null && parentView.findViewWithTag(jsonObject.optString("key")) instanceof PFAEditText) {
+                                        PFAEditText pfaEditText = parentView.findViewWithTag(jsonObject.optString("key"));
+                                        pfaEditText.setText(Html.fromHtml(jsonObject.optString("value")));
+
+                                        Log.d("createViewGetCodeButton", "createViewGetCodeButton1 set received text");
+
+                                        if (!jsonObject.optBoolean("is_editable")) {
+                                            pfaEditText.setEnabled(false);
+                                            pfaEditText.setClickable(false);
+                                            pfaEditText.setFocusable(false);
+
+                                            pfaEditText.setBackgroundColor(mContext.getResources().getColor(R.color.chat_list_footer_bg));
+
+                                        } else {
+                                            pfaEditText.setFocusable(true);
+                                            pfaEditText.setFocusableInTouchMode(true);
+                                            pfaEditText.setEnabled(true);
+                                            pfaEditText.setClickable(true);
+
+                                            pfaEditText.setBackgroundColor(mContext.getResources().getColor(R.color.white));
+                                        }
+                                    }
+
+                                }
+                            }
+                        });
+                        verifyFBOLayout.setTag(fieldInfo.getField_name());
+
+                        parentView.addView(verifyFBOLayout);
+
+                        if (fieldInfo.isInvisible()) {
+                            verifyFBOLayout.setVisibility(GONE);
+                        }
+
+                        printLog("createViewDropdown", "whichItemClicked=>" + fieldInfo.getAPI_URL());
+
+                    }
+
+                    @Override
+                    public void downloadInspection(String downloadUrl, int position) {
+                        printLog("createViewDropdown", "downloadInspection  position=> " + downloadUrl + " position=> " + position);
+
+                    }
+
+                    @Override
+                    public void deleteRecordAPICall(String deleteUrl, int position) {
+
+                    }
+                }, fieldInfo, formFilteredData);
+            }*/
+
+            else {
+                Log.d("checkDD", "id = not others");
+                new Handler().postDelayed(() -> {
+                    if (parentView.findViewWithTag("local_business") instanceof PFADDACTV) {
+                        PFADDACTV pfaddactv = parentView.findViewWithTag("local_business");
+                        pfaddactv.setVisibility(GONE);
+                        pfaddactv.showHideDropDown(false);
+                        Log.d("checkDD", "id = local_business");
+                    }
+
+//                    for (int i = 0; i < textInputLayoutList.size(); i++) {
+//                        PFATextInputLayout pfaTextInputLayout = textInputLayoutList.get(i);
+//                        parentView.removeView(pfaTextInputLayout);
+//                    }
+
+                    if (parentView.findViewWithTag("applicant_name") instanceof PFAEditText) {
+                        PFAEditText pfaddactv0 = parentView.findViewWithTag("applicant_name");
+                        pfaddactv0.setVisibility(GONE);
+                        pfaddactv0.showHideDropDown(false);
+                    }
+                    if (parentView.findViewWithTag("cnic") instanceof PFAEditText) {
+                        PFAEditText pfaddactv1 = parentView.findViewWithTag("cnic");
+                        pfaddactv1.setVisibility(GONE);
+                        pfaddactv1.showHideDropDown(false);
+                    }
+                    if (parentView.findViewWithTag("designation_Position") instanceof PFAEditText) {
+                        PFAEditText pfaddactv2 = parentView.findViewWithTag("designation_Position");
+                        pfaddactv2.setVisibility(GONE);
+                        pfaddactv2.showHideDropDown(false);
+                    }
+                    if (parentView.findViewWithTag("food_business_name") instanceof PFAEditText) {
+                        PFAEditText pfaddactv3 = parentView.findViewWithTag("food_business_name");
+                        pfaddactv3.setVisibility(GONE);
+                        pfaddactv3.showHideDropDown(false);
+                    }
+                    if (parentView.findViewWithTag("provinces") instanceof PFADDACTV) {
+                        PFADDACTV pfaddactv = parentView.findViewWithTag("provinces");
+                        pfaddactv.setVisibility(GONE);
+                        pfaddactv.showHideDropDown(false);
+                    }
+                    if (parentView.findViewWithTag("office_address") instanceof PFAEditText) {
+                        PFAEditText pfaddactv4 = parentView.findViewWithTag("office_address");
+                        pfaddactv4.setVisibility(GONE);
+                        pfaddactv4.showHideDropDown(false);
+                    }
+                    if (parentView.findViewWithTag("manufacturing_unit_address") instanceof PFAEditText) {
+                        PFAEditText pfaddactv4 = parentView.findViewWithTag("manufacturing_unit_address");
+                        pfaddactv4.setVisibility(GONE);
+                        pfaddactv4.showHideDropDown(false);
+                    }
+                    if (parentView.findViewWithTag("landline_phone") instanceof PFAEditText) {
+                        PFAEditText pfaddactv5 = parentView.findViewWithTag("landline_phone");
+                        pfaddactv5.setVisibility(GONE);
+                        pfaddactv5.showHideDropDown(false);
+                    }
+                    if (parentView.findViewWithTag("cell_number") instanceof PFAEditText) {
+                        PFAEditText pfaddactv6 = parentView.findViewWithTag("cell_number");
+                        pfaddactv6.setVisibility(GONE);
+                        pfaddactv6.showHideDropDown(false);
+                    }
+                    if (parentView.findViewWithTag("fax") instanceof PFAEditText) {
+                        PFAEditText pfaddactv7 = parentView.findViewWithTag("fax");
+                        pfaddactv7.setVisibility(GONE);
+                        pfaddactv7.showHideDropDown(false);
+                    }
+                    if (parentView.findViewWithTag("email") instanceof PFAEditText) {
+                        PFAEditText pfaddactv8 = parentView.findViewWithTag("email");
+                        pfaddactv8.setVisibility(GONE);
+                        pfaddactv8.showHideDropDown(false);
+                    }
+//                    if (inputTextList!=null)
+                    for (int i = 0; i < inputTextList.size(); i++) {
+                        TextView textView = inputTextList.get(i);
+                        textView.setVisibility(GONE);
+                    }
+
+
+                }, 300);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (fieldInfo.getField_name().equals("labs_branches")) {
+                            if (dropDownId.equals("11")) {
+
+                                if (parentView.findViewWithTag("product_name_dropdown") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("product_name_dropdown");
+                                    pfaddactv.setVisibility(VISIBLE);
+                                    pfaddactv.showHideDropDown(true);
+                                    pfaddactv.setRequired(true);
+                                }
+
+                                if (parentView.findViewWithTag("product_category") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("product_category");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                    pfaddactv.setRequired(false);
+                                }
+                                if (parentView.findViewWithTag("name") instanceof PFAEditText) {
+                                    PFAEditText pfaddactv = parentView.findViewWithTag("name");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                    pfaddactv.setRequired(false);
+                                }
+
+//                                parentView.removeView(sampleBrandName);
+
+                            } else {
+
+                                if (parentView.findViewWithTag("product_name_dropdown") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("product_name_dropdown");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                    pfaddactv.setRequired(false);
+                                }
+
+                                if (parentView.findViewWithTag("product_category") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("product_category");
+                                    pfaddactv.setVisibility(VISIBLE);
+                                    pfaddactv.showHideDropDown(true);
+                                    pfaddactv.setRequired(true);
+                                }
+                                if (parentView.findViewWithTag("name") instanceof PFAEditText) {
+                                    PFAEditText pfaddactv = parentView.findViewWithTag("name");
+                                    pfaddactv.setVisibility(VISIBLE);
+                                    pfaddactv.showHideDropDown(true);
+                                    pfaddactv.setRequired(true);
+                                }
+//                                parentView.removeView(sampleBrandNameDD);
+                            }
+                        }
+                    }
+                } , 300);
+
+                pfa_dd_actv.setProperties(new WhichItemClicked() {
+                    @Override
+                    public void whichItemClicked(String id) {
+                        printLog("createViewDropdown", "whichItemClicked123=>" + id);
+                        Log.d("createViewDropdown", "value 123 = " + fieldInfo.getField_name());
+
+                        dropDownId = id;
+
+                        if (fieldInfo.getField_name().equals("labs_branches")) {
+                            if (id.equals("11")) {
+
+                                if (parentView.findViewWithTag("product_name_dropdown") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("product_name_dropdown");
+                                    pfaddactv.setVisibility(VISIBLE);
+                                    pfaddactv.showHideDropDown(true);
+                                    pfaddactv.setRequired(true);
+                                }
+
+                                if (parentView.findViewWithTag("product_category") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("product_category");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                    pfaddactv.setRequired(false);
+                                }
+                                if (parentView.findViewWithTag("name") instanceof PFAEditText) {
+                                    PFAEditText pfaddactv = parentView.findViewWithTag("name");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                    pfaddactv.setRequired(false);
+                                }
+//                                parentView.removeView(sampleBrandName);
+//                                parentView.addView(sampleBrandNameDD , 2);
+
+                            } else {
+
+                                if (parentView.findViewWithTag("product_name_dropdown") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("product_name_dropdown");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                    pfaddactv.setRequired(false);
+                                }
+
+                                if (parentView.findViewWithTag("product_category") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("product_category");
+                                    pfaddactv.setVisibility(VISIBLE);
+                                    pfaddactv.showHideDropDown(true);
+                                    pfaddactv.setRequired(true);
+                                }
+                                if (parentView.findViewWithTag("name") instanceof PFAEditText) {
+                                    PFAEditText pfaddactv = parentView.findViewWithTag("name");
+                                    pfaddactv.setVisibility(VISIBLE);
+                                    pfaddactv.showHideDropDown(true);
+                                    pfaddactv.setRequired(true);
+                                }
+//                                parentView.removeView(sampleBrandNameDD);
+//                                parentView.addView(sampleBrandName , 2);
+
+                            }
+                        }
+                        else if (fieldInfo.getField_name().equals("product_name_dropdown")){
+                            if (id.equals("add_new")){
+                                if (parentView.findViewWithTag("product_category") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("product_category");
+                                    pfaddactv.setVisibility(VISIBLE);
+                                    pfaddactv.showHideDropDown(true);
+                                    pfaddactv.setRequired(true);
+                                }
+                                if (parentView.findViewWithTag("name") instanceof PFAEditText) {
+                                    PFAEditText pfaddactv = parentView.findViewWithTag("name");
+                                    pfaddactv.setVisibility(VISIBLE);
+                                    pfaddactv.showHideDropDown(true);
+                                    pfaddactv.setRequired(true);
+                                }
+                            } else {
+                                if (parentView.findViewWithTag("product_category") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("product_category");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                    pfaddactv.setRequired(false);
+                                }
+                                if (parentView.findViewWithTag("name") instanceof PFAEditText) {
+                                    PFAEditText pfaddactv = parentView.findViewWithTag("name");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                    pfaddactv.setRequired(false);
+                                }
+                            }
+                        }
+                        else if (fieldInfo.getField_name().equals("local_business")) {
+                            /*final VerifyFBOBusiness verifyFBOLayout =*/
+
+                            if (id.equals("add_new")){
+                                for (int i = 0; i < inputTextList.size(); i++) {
+                                    TextView textView = inputTextList.get(i);
+                                    textView.setVisibility(VISIBLE);
+                                }
+                            }
+                            else {
+                                for (int i = 0; i < inputTextList.size(); i++) {
+                                    TextView textView = inputTextList.get(i);
+                                    textView.setVisibility(GONE);
+                                }
+                            }
+
+                            new VerifyFBOBusiness(mContext, dropDownId, localBusinessDropDownUrl, new CheckUserCallback() {
+                                @Override
+                                public void getExistingUser(JSONArray jsonArray) {
+
+                                }
+
+                                @Override
+                                public void getExistingBusiness(JSONArray jsonArray) {
+                                    Log.d("createViewGetCodeButton", "localBusinessDropDownUrl = " + localBusinessDropDownUrl);
+                                    for (int i = 0; i < jsonArray.length(); i++) {
+
+                                        JSONObject jsonObject = jsonArray.optJSONObject(i);
+
+                                        if (parentView.findViewWithTag(jsonObject.optString("key")) != null && parentView.findViewWithTag(jsonObject.optString("key")) instanceof PFAEditText) {
+                                            PFAEditText pfaEditText = parentView.findViewWithTag(jsonObject.optString("key"));
+                                            pfaEditText.setText(Html.fromHtml(jsonObject.optString("value")));
+
+                                            Log.d("createViewGetCodeButton", "createViewGetCodeButton1 set received text");
+
+                                            if (!jsonObject.optBoolean("is_editable")) {
+                                                pfaEditText.setEnabled(false);
+                                                pfaEditText.setClickable(false);
+                                                pfaEditText.setFocusable(false);
+
+                                                pfaEditText.setBackgroundColor(mContext.getResources().getColor(R.color.chat_list_footer_bg));
+
+                                            } else {
+                                                pfaEditText.setFocusable(true);
+                                                pfaEditText.setFocusableInTouchMode(true);
+                                                pfaEditText.setEnabled(true);
+                                                pfaEditText.setClickable(true);
+
+                                                pfaEditText.setBackgroundColor(mContext.getResources().getColor(R.color.white));
+                                            }
+                                        }
+                                        if (parentView.findViewWithTag(jsonObject.optString("key")) != null && parentView.findViewWithTag(jsonObject.optString("key")) instanceof PFADDACTV) {
+                                            PFADDACTV pfaddactv = parentView.findViewWithTag(jsonObject.optString("key"));
+                                            pfaddactv.setText(Html.fromHtml(jsonObject.optString("value")));
+
+                                            if (!jsonObject.optBoolean("is_editable")) {
+                                                pfaddactv.setEnabled(false);
+                                                pfaddactv.setClickable(false);
+                                                pfaddactv.setFocusable(false);
+
+                                                pfaddactv.setBackgroundColor(mContext.getResources().getColor(R.color.chat_list_footer_bg));
+
+                                            }
+                                        }
+
+                                    }
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void downloadInspection(String downloadUrl, int position) {
+                        printLog("createViewDropdown", "downloadInspection  position=> " + downloadUrl + " position=> " + position);
+
+                    }
+
+                    @Override
+                    public void deleteRecordAPICall(String deleteUrl, int position) {
+
+                    }
+                }, fieldInfo, formFilteredData);
+            }
             pfa_dd_actv.setPfaddLL(pfaddLL);
 
             parentView.addView(pfaddLL);
+            if (fieldInfo.getField_name().equals("product_name_dropdown"))
+                sampleBrandNameDD = pfaddLL;
 
             pfa_dd_actv.populateData();
             setSpinnerFonts(fieldInfo, pfa_dd_actv, textInputLayout);
@@ -1086,6 +2390,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
 
                         if (!fieldInfo.isHide_clear())
                             clearImgBtn.setVisibility(VISIBLE);
+
                     }
 
                     pfa_dd_actv.clearFocus();
@@ -1132,7 +2437,9 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
 
     }
 
-    private void createViewLocationFields(FormFieldInfo fieldInfo, LinearLayout.LayoutParams params, final LinearLayout parentView, LayoutInflater inflater, HashMap<String, Boolean> fieldsReq) {
+    private void createViewLocationFields(FormFieldInfo fieldInfo, LinearLayout.LayoutParams
+            params, final LinearLayout parentView, LayoutInflater
+                                                  inflater, HashMap<String, Boolean> fieldsReq) {
         if (fieldInfo.getDefault_locations() != null) {
 
             regionInfos = getRegionsList();
@@ -1238,11 +2545,20 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
 
     }
 
-    private void createViewABC(final FormFieldInfo fieldInfo, final LinearLayout parentView, LayoutInflater inflater) {
+
+    private void createViewABC(final FormFieldInfo fieldInfo,
+                               final LinearLayout parentView, LayoutInflater inflater) {
         @SuppressLint("InflateParams")
         LinearLayout subviewLL = (LinearLayout) inflater.inflate(R.layout.pfa_form_edittext, null, false);
         LinearLayout.LayoutParams subViewLayoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         subviewLL.setLayoutParams(subViewLayoutParams);
+
+        Log.d("enfrocedData", "createViewABC");
+
+
+        linerList.add(subviewLL);
+
+        LinearLayout textView = subviewLL.findViewById(R.id.textView);
 
         LinearLayout imagView = subviewLL.findViewById(R.id.clearfix);
 //        SimpleDraweeView img1 = imagView.findViewById(R.id.rightS);
@@ -1290,7 +2606,9 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                     httpService.getListsData(fieldInfo.getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
                         @Override
                         public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                            bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                            if (response != null)
+                                bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+
                             startNewActivity(PFADetailActivity.class, bundle, false);
                         }
                     }, true);
@@ -1298,6 +2616,77 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
             });
 
         }
+    }
+
+    private LinearLayout createViewABC1(final FormFieldInfo fieldInfo,
+                                        final LinearLayout parentView, LayoutInflater inflater) {
+        @SuppressLint("InflateParams")
+        LinearLayout subviewLL = (LinearLayout) inflater.inflate(R.layout.pfa_form_edittext, null, false);
+        LinearLayout.LayoutParams subViewLayoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        subviewLL.setLayoutParams(subViewLayoutParams);
+
+        Log.d("enfrocedData", "createViewABC");
+
+        LinearLayout textView = subviewLL.findViewById(R.id.textView);
+
+
+        LinearLayout imagView = subviewLL.findViewById(R.id.clearfix);
+//        SimpleDraweeView img1 = imagView.findViewById(R.id.rightS);
+        imagView.setVisibility(GONE);
+
+        PFAEditText abcET = subviewLL.findViewById(R.id.abcET);  //new PFAEditText(mContext, fieldInfo, formFilteredData);
+        abcET.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        abcET.setData(mContext, fieldInfo, formFilteredData);
+
+        TextView lblTV = subviewLL.findViewById(R.id.lblTV);
+        lblTV.setText(Html.fromHtml(isEnglishLang() ? fieldInfo.getValue() : fieldInfo.getValueUrdu()));
+        parentView.addView(subviewLL);
+
+        if (fieldInfo.isInvisible()) {
+            subviewLL.setVisibility(GONE);
+        }
+
+        if (fieldInfo.isClickable() && fieldInfo.getField_name().contains("phonenumber")) {
+            abcET.setClickable(true);
+            abcET.setEnabled(true);
+            abcET.setFocusable(false);
+            abcET.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (fieldInfo.getData() != null && fieldInfo.getData().size() > 0)
+                        doPhoneCall(fieldInfo.getData().get(0).getValue());
+                }
+            });
+        } else if (fieldInfo.isClickable() && fieldInfo.getAPI_URL() != null && (!fieldInfo.getAPI_URL().isEmpty())) {
+
+            // open business detail
+
+            abcET.setClickable(true);
+            abcET.setEnabled(true);
+            abcET.setFocusable(false);
+            abcET.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Bundle bundle = new Bundle();
+                    bundle.putString(EXTRA_URL_TO_CALL, fieldInfo.getAPI_URL());
+                    bundle.putString(EXTRA_ACTIVITY_TITLE, isEnglishLang() ? fieldInfo.getValue() : fieldInfo.getValueUrdu());
+
+                    HttpService httpService = new HttpService(mContext);
+
+                    httpService.getListsData(fieldInfo.getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
+                        @Override
+                        public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+                            if (response != null)
+                                bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+
+                            startNewActivity(PFADetailActivity.class, bundle, false);
+                        }
+                    }, true);
+                }
+            });
+
+        }
+        return subviewLL;
     }
 
     private FormFieldInfo copyFormFieldInfo(FormFieldInfo fieldInfo, int size) {
@@ -1560,7 +2949,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
         subTownACTV.setSubTowns(subTownInfos);
     }
 
-    private void hideAndShowLocationViews(FormFieldInfo fieldInfo, HashMap<String, Boolean> fieldsReq) {
+    private void hideAndShowLocationViews(FormFieldInfo
+                                                  fieldInfo, HashMap<String, Boolean> fieldsReq) {
 
         if (fieldInfo.getDefault_locations() != null) {
 
@@ -1760,11 +3150,15 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
         isSearchFilter = searchFilter;
     }
 
-    public void updateDropdownViewsData(Bundle bundle, final LinearLayout parentView, HashMap<String, HashMap<String, Boolean>> sectionRequired) {
+    public void updateDropdownViewsData(Bundle bundle, final LinearLayout parentView, HashMap<
+            String, HashMap<String, Boolean>> sectionRequired) {
 
         if (bundle != null && bundle.containsKey(EXTRA_ACTV_TAG)) {
             String actvTag = bundle.getString(EXTRA_ACTV_TAG);
             int selectedPosition = bundle.getInt(SELECTED_POSITION, -1);
+
+            Log.d("formSectionName", "selectedPos=  " + selectedPosition);
+            Log.d("formSectionName", "EXTRA_ACTV_TAG=  " + EXTRA_ACTV_TAG);
 
             assert actvTag != null;
             switch (actvTag) {
@@ -1823,7 +3217,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                         pfaddBizSizeACTV = parentView.findViewWithTag(DD_BIZ_SIZE);  //business_size
 
                         SharedPrefUtils sharedPrefUtils = new SharedPrefUtils(mContext);
-                       defaultValue =  sharedPrefUtils.getAction();
+                        defaultValue = sharedPrefUtils.getAction();
 
                         if (pfaddactv1.formFieldInfo.getField_name() != null && (pfaddactv1.formFieldInfo.getField_name().equalsIgnoreCase(DD_STATUS))) {
                             IS_FINE = false;
@@ -1919,7 +3313,10 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
     }
 
 
-    private void setFoodLabViews(final LinearLayout menuFragParentLL, List<FormSectionInfo> formSectionInfos, final HashMap<String, HashMap<String, Boolean>> sectionRequired, final ScrollView fragMenuItemSV) {
+    private void setFoodLabViews(final LinearLayout menuFragParentLL, List<
+            FormSectionInfo> formSectionInfos,
+                                 final HashMap<String, HashMap<String, Boolean>> sectionRequired,
+                                 final ScrollView fragMenuItemSV) {
         if (menuFragParentLL.findViewWithTag(DD_FOOD_LAB_TEST + "LL") != null) {
             LinearLayout ddFoodLabTestLL = menuFragParentLL.findViewWithTag(DD_FOOD_LAB_TEST + "LL");
             ddFoodLabTestLL.removeAllViews();
@@ -1939,7 +3336,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
      * @param fragMenuItemSV   As the data can be long so it should be scrollable.. That;s why fragMenuItemSV[ScrollView] is parent scrollview
      * @param formSectionInfos in case of multiple form sections, the received new sections are appended in that list
      */
-    public void onDDSelectedAPIUrl(final FormDataInfo formDataInfo, final LinearLayout menuFragParentLL, final HashMap<String, HashMap<String, Boolean>> sectionRequired, final ScrollView fragMenuItemSV, final List<FormSectionInfo> formSectionInfos) {
+
+    public void onDDSelectedAPIUrl(final FormDataInfo formDataInfo,
+                                   final LinearLayout menuFragParentLL,
+                                   final HashMap<String, HashMap<String, Boolean>> sectionRequired,
+                                   final ScrollView fragMenuItemSV, final List<FormSectionInfo> formSectionInfos) {
 
         if (formDataInfo != null && formDataInfo.getAPI_URL() != null && (!formDataInfo.getAPI_URL().isEmpty())) {
             HttpService httpService = new HttpService(mContext);
@@ -1984,28 +3385,30 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                 httpService.fetchConfigData(formDataInfo.getAPI_URL(), new HttpResponseCallback() {
                     @Override
                     public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                        if (response.optBoolean("status")) {
-                            Type type = new TypeToken<List<FormDataInfo>>() {
-                            }.getType();
+                        if (response != null) {
+                            if (response.optBoolean("status")) {
+                                Type type = new TypeToken<List<FormDataInfo>>() {
+                                }.getType();
 
-                            List<FormDataInfo> formDataInfos = new GsonBuilder().create().fromJson(response.optJSONArray("data").toString(), type);
+                                List<FormDataInfo> formDataInfos = new GsonBuilder().create().fromJson(response.optJSONArray("data").toString(), type);
 
-                            if (formDataInfo.getAppend_to() != null && (!formDataInfo.getAppend_to().isEmpty())) {
-                                PFADDACTV pfaddactv = menuFragParentLL.findViewWithTag(formDataInfo.getAppend_to());
+                                if (formDataInfo.getAppend_to() != null && (!formDataInfo.getAppend_to().isEmpty())) {
+                                    PFADDACTV pfaddactv = menuFragParentLL.findViewWithTag(formDataInfo.getAppend_to());
 
-                                if (pfaddactv != null) {
-                                    if (pfaddactv.formFieldInfo != null) {
+                                    if (pfaddactv != null) {
+                                        if (pfaddactv.formFieldInfo != null) {
 
-                                        //// Remove Previous Data
-                                        if (pfaddactv.getSelectedValues() != null && pfaddactv.getSelectedValues().size() > 0) {
-                                            if (pfaddactv.formFieldInfo != null && pfaddactv.formFieldInfo.getData() != null)
-                                                pfaddactv.formFieldInfo.getData().clear();
-                                            pfaddactv.getSelectedValues().clear();
-                                            pfaddactv.setText("");
-                                            pfaddactv.setSelectedValues(null);
+                                            //// Remove Previous Data
+                                            if (pfaddactv.getSelectedValues() != null && pfaddactv.getSelectedValues().size() > 0) {
+                                                if (pfaddactv.formFieldInfo != null && pfaddactv.formFieldInfo.getData() != null)
+                                                    pfaddactv.formFieldInfo.getData().clear();
+                                                pfaddactv.getSelectedValues().clear();
+                                                pfaddactv.setText("");
+                                                pfaddactv.setSelectedValues(null);
+                                            }
+                                            pfaddactv.formFieldInfo.setData(formDataInfos);
+                                            pfaddactv.populateData();
                                         }
-                                        pfaddactv.formFieldInfo.setData(formDataInfos);
-                                        pfaddactv.populateData();
                                     }
                                 }
                             }
@@ -2016,4 +3419,118 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
             ////////////
         }
     }
+
+    public void downloadFile(String url) {
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        //your codes here
+        new Handler().post(() -> {
+            try {
+                String filename = url.substring(url.lastIndexOf('/') + 1);
+                String filePath = Environment.getExternalStorageDirectory() + "/" + "Download" + "/" + filename;
+                URL u = new URL(url);
+                InputStream is = u.openStream();
+
+                DataInputStream dis = new DataInputStream(is);
+
+                byte[] buffer = new byte[1024];
+                int length;
+
+                FileOutputStream fos = null;
+
+                if (url.endsWith("jpg"))
+                    fos = new FileOutputStream(new File(filePath));
+                else if (url.endsWith("jpeg"))
+                    fos = new FileOutputStream(new File(filePath));
+                else if (url.endsWith("png"))
+                    fos = new FileOutputStream(new File(filePath));
+                else if (url.endsWith("gif"))
+                    fos = new FileOutputStream(new File(filePath));
+                else if (url.endsWith("pdf"))
+                    fos = new FileOutputStream(new File(filePath));
+                else if (url.endsWith("docx"))
+                    fos = new FileOutputStream(new File(filePath));
+
+                while ((length = dis.read(buffer)) > 0) {
+                    fos.write(buffer, 0, length);
+                }
+
+                Toast.makeText(mContext, "File Downloaded Successfully..." + "\n" + filePath, Toast.LENGTH_LONG).show();
+//                viewFile(filePath);
+
+            } catch (MalformedURLException mue) {
+                Log.e("SYNC getUpdate", "malformed url error", mue);
+            } catch (IOException ioe) {
+                Log.e("SYNC getUpdate", "io error", ioe);
+            } catch (SecurityException se) {
+                Log.e("SYNC getUpdate", "security error", se);
+            }
+        });
+
+    }
+
+    public void viewFile(String path) {
+
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+        MimeTypeMap myMime = MimeTypeMap.getSingleton();
+        Intent newIntent = new Intent(Intent.ACTION_VIEW);
+        String mimeType = null;
+        if (path.endsWith("png"))
+            mimeType = "png";
+        if (path.endsWith("jpg"))
+            mimeType = "jpg";
+        if (path.endsWith("jpeg"))
+            mimeType = "jpeg";
+        if (path.endsWith("gif"))
+            mimeType = "gif";
+        if (path.endsWith("pdf"))
+            mimeType = "pdf";
+        if (path.endsWith("docx"))
+            mimeType = "docx";
+
+        newIntent.setDataAndType(Uri.fromFile(new File(path)), "*/*");
+        newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        try {
+            mContext.startActivity(newIntent);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(mContext, "No handler for this type of file.", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    DownloadFileManager.OnDownloadListener pbListener = new DownloadFileManager.OnDownloadListener() {
+        @Override
+        public void onStart() {
+
+            sharedPrefUtils.showProgressDialog(false);
+
+        }
+
+        @Override
+        public void onSetMax(int max) {
+
+        }
+
+        @Override
+        public void onProgress(int current) {
+
+        }
+
+        @Override
+        public void onFinishDownload() {
+            sharedPrefUtils.hideProgressDialog();
+        }
+
+        @Override
+        public void onResponse(boolean isSuccess, String path) {
+            sharedPrefUtils.hideProgressDialog();
+            if (isSuccess) {
+                sharedPrefUtils.showMsgDialog("File downloaded Successfully" + "\n" + path, null);
+//                Toast.makeText(ImageGalleryActivity.this, ""+path, Toast.LENGTH_LONG).show();
+            } else {
+                sharedPrefUtils.showMsgDialog("File downloading Failed!!", null);
+            }
+        }
+    };
 }

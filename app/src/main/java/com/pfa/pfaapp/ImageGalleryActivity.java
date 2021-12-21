@@ -9,6 +9,7 @@ import android.view.View;
 import android.webkit.URLUtil;
 import android.widget.ImageButton;
 import android.widget.MediaController;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.pfa.pfaapp.customviews.CustomNetworkImageView;
@@ -111,8 +112,8 @@ public class ImageGalleryActivity extends BaseActivity {
         final String outputFile = URLUtil.guessFileName(url, null, null);
 
 //        Create the folder for downloads
-        String rootDir = Environment.getExternalStorageDirectory()
-                + File.separator + "PFA_Mobile_Downloads";
+        String rootDir = Environment.getExternalStorageDirectory() + File.separator + "Download";
+//                + File.separator + "PFA_Mobile_Downloads";
         File rootFile = new File(rootDir);
 
         if (!rootFile.exists())
@@ -154,7 +155,8 @@ public class ImageGalleryActivity extends BaseActivity {
         public void onResponse(boolean isSuccess, String path) {
             sharedPrefUtils.hideProgressDialog();
             if (isSuccess) {
-                sharedPrefUtils.showMsgDialog("File downloaded Successfully", null);
+                sharedPrefUtils.showMsgDialog("File downloaded Successfully" + "\n" + path, null);
+//                Toast.makeText(ImageGalleryActivity.this, ""+path, Toast.LENGTH_LONG).show();
             } else {
                 sharedPrefUtils.showMsgDialog("File downloading Failed!!", null);
             }

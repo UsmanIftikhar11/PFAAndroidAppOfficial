@@ -43,6 +43,7 @@ import static com.pfa.pfaapp.utils.AddInspectionUtils.IS_FAKE;
 import static com.pfa.pfaapp.utils.AppConst.CAPTURE_PHOTO;
 import static com.pfa.pfaapp.utils.AppConst.CHOOSE_FROM_GALLERY;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_ACTV_TAG;
+import static com.pfa.pfaapp.utils.AppConst.OTHER_FILES;
 import static com.pfa.pfaapp.utils.AppConst.RC_DROPDOWN;
 import static com.pfa.pfaapp.utils.AppConst.RECORD_VIDEO;
 public class LocalFormLL extends LinearLayout implements PFAViewsCallbacks{
@@ -106,6 +107,13 @@ public class LocalFormLL extends LinearLayout implements PFAViewsCallbacks{
                     }
 
                     @Override
+                    public void showFilePickerDialog(CustomNetworkImageView view) {
+                        Log.d("imagePath" , "image selection utils menu form fragment");
+                        imageSelectionUtils = new ImageSelectionUtils(mContext, view);
+                        imageSelectionUtils.showFilePickerDialog(null, false, false);
+                    }
+
+                    @Override
                     public void onLabelViewClicked(PFASectionTV pfaSectionTV) {
 
                     }
@@ -116,7 +124,7 @@ public class LocalFormLL extends LinearLayout implements PFAViewsCallbacks{
                     }
 
                     @Override
-                    public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout) {
+                    public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout ) {
 
                     }
 
@@ -153,6 +161,11 @@ public class LocalFormLL extends LinearLayout implements PFAViewsCallbacks{
                 imageSelectionUtils.chooseFromCameraImgPath(data, null);
 //                Log.d("imagePath" , "local form LL URI = " + data.getData().getPath());
                 break;
+
+            case OTHER_FILES:
+                imageSelectionUtils.chooseFromFilePath(data, null);
+                break;
+
             case CHOOSE_FROM_GALLERY:
                 Log.d("imagePath" , "gallery requestCode = " + requestCode);
                 Log.d("imagePath" , "gallery local form LL");
@@ -333,6 +346,23 @@ public class LocalFormLL extends LinearLayout implements PFAViewsCallbacks{
     }
 
     @Override
+    public void showFilePickerDialog(CustomNetworkImageView view) {
+        Log.d("imagePath" , "image selection utils menu form fragment");
+        imageSelectionUtils = new ImageSelectionUtils(mContext, view);
+        imageSelectionUtils.showFilePickerDialog(new VideoFileCallback() {
+            @Override
+            public void onFileSelected(String files) {
+
+            }
+
+            @Override
+            public void videoSelected() {
+
+            }
+        }, false, false);
+    }
+
+    @Override
     public void onLabelViewClicked(PFASectionTV pfaSectionTV) {
 
     }
@@ -343,7 +373,7 @@ public class LocalFormLL extends LinearLayout implements PFAViewsCallbacks{
     }
 
     @Override
-    public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout) {
+    public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout ) {
 
     }
 

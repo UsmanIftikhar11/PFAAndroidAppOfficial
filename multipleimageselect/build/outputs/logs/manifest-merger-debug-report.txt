@@ -1,89 +1,89 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-39:12
-INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-39:12
-INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-39:12
-INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-39:12
-INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-39:12
-INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-39:12
-INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-39:12
+ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-39:12
 	package
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:3:5-44
-		INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
-		INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:3:5-44
+		INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-39:12
-		INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-39:12
+		INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-39:12
-		INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-39:12
+		INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:11-69
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:5:5-80
+ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:5:5-80
 	android:name
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:5:22-78
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:5:22-78
 uses-permission#android.permission.CAMERA
-ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:6:5-64
+ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:6:5-64
 	android:name
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:6:22-62
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:6:22-62
 uses-feature#android.hardware.camera.any
-ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:9:5-11:35
+ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:9:5-11:35
 	android:required
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:11:9-32
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:11:9-32
 	android:name
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:10:9-51
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:10:9-51
 uses-feature#android.hardware.camera.autofocus
-ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:12:5-14:36
+ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:12:5-14:36
 	android:required
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:14:9-33
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:14:9-33
 	android:name
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:13:9-57
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:13:9-57
 application
-ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:16:5-37:19
+ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:16:5-37:19
 	android:label
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:18:9-41
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:18:9-41
 	android:allowBackup
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:17:9-35
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:17:9-35
 activity#com.darsh.multipleimageselect.activities.AlbumSelectActivity
-ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:19:9-27:20
+ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:19:9-27:20
 	android:label
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:21:13-45
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:21:13-45
 	android:configChanges
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:23:13-59
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:23:13-59
 	android:theme
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:22:13-60
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:22:13-60
 	android:name
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:20:13-59
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:20:13-59
 intent-filter#category:name:android.intent.category.DEFAULT
-ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:24:13-26:29
+ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:24:13-26:29
 category#android.intent.category.DEFAULT
-ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:25:17-75
+ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:25:17-75
 	android:name
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:25:27-73
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:25:27-73
 activity#com.darsh.multipleimageselect.activities.ImageSelectActivity
-ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:28:9-36:20
+ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:28:9-36:20
 	android:label
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:30:13-45
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:30:13-45
 	android:configChanges
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:32:13-59
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:32:13-59
 	android:theme
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:31:13-60
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:31:13-60
 	android:name
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:29:13-59
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:29:13-59
 uses-sdk
-INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
-INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
-INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
-INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
-		INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
-		ADDED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
-		INJECTED from E:\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		ADDED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		INJECTED from D:\Usman\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml

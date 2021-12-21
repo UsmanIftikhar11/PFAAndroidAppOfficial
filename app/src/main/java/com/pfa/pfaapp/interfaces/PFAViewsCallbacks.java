@@ -8,10 +8,12 @@ import com.pfa.pfaapp.customviews.VerifyFBOLayout;
 import com.pfa.pfaapp.models.FormDataInfo;
 
 public interface PFAViewsCallbacks {
+
     void showImagePickerDialog(CustomNetworkImageView view);
+    void showFilePickerDialog(CustomNetworkImageView view);
     void onLabelViewClicked(PFASectionTV pfaSectionTV);
     void onButtonCLicked(View view);
-    void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout);
+    void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout );
     void onDropdownItemSelected(FormDataInfo formDataInfo, String dataName);
 
 }

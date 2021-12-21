@@ -275,14 +275,16 @@ public class DownloadFileManager {
      */
     private static void scanFile(String file, Context context) {
 
-        MediaScannerConnection.scanFile(context,
-                new String[]{file}, null,
-                new MediaScannerConnection.OnScanCompletedListener() {
-                    public void onScanCompleted(String path, Uri uri) {
-                        Log.i("ExternalStorage", "Scanned " + path + ":");
-                        Log.i("ExternalStorage", "-> uri=" + uri);
-                    }
-                });
+        if(file != null) {
+            MediaScannerConnection.scanFile(context,
+                    new String[]{file}, null,
+                    new MediaScannerConnection.OnScanCompletedListener() {
+                        public void onScanCompleted(String path, Uri uri) {
+                            Log.i("ExternalStorage", "Scanned " + path + ":");
+                            Log.i("ExternalStorage", "-> uri=" + uri);
+                        }
+                    });
+        }
 
 
     }

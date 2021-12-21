@@ -9,7 +9,6 @@
         <item name="android:windowSoftInputMode">stateHidden</item>
         <item name="android:configChanges">orientation|screenSize</item>
 
-
     </style>
 
     <!-- Base application theme. -->
@@ -41,6 +40,7 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:textColorHint">@color/transparent</item>
+
     </style>
 
     <style name="DrawerActivityTheme" parent="Theme.AppCompat.NoActionBar">
@@ -148,11 +148,13 @@
         <item name="android:textSize">@dimen/sp_17</item>
         <item name="android:textStyle">bold</item>
     </style>
+
     <style name="white_17_sp_bold">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/sp_17</item>
         <item name="android:textStyle">bold</item>
     </style>
+
     <style name="black_20_sp_bold">
         <item name="android:textColor">@color/inner_text_color</item>
         <item name="android:textSize">@dimen/sp_20</item>
@@ -165,6 +167,7 @@
         <item name="android:textSize">@dimen/sp_20</item>
         <item name="android:textStyle">bold</item>
     </style>
+
     <style name="black_35_sp_bold">
         <item name="android:textColor">@color/inner_text_color</item>
         <item name="android:textSize">@dimen/sp_32</item>
@@ -281,8 +284,8 @@
     </style>
 
     <!--<style name="light_green_28_sp">-->
-        <!--<item name="android:textColor">#c1f1cb</item>-->
-        <!--<item name="android:textSize">@dimen/sp_28</item>-->
+    <!--<item name="android:textColor">#c1f1cb</item>-->
+    <!--<item name="android:textSize">@dimen/sp_28</item>-->
     <!--</style>-->
 
     <style name="inner_tv_17_sp">
@@ -294,10 +297,12 @@
         <item name="android:textColor">@color/inner_text_color</item>
         <item name="android:textSize">@dimen/sp_15</item>
     </style>
+
     <style name="inner_tv_10_sp">
         <item name="android:textColor">@color/inner_text_color</item>
-        <item name="android:textSize">@dimen/sp_10</item>
+        <item name="android:textSize">@dimen/_9sdp</item>
     </style>
+
     <style name="inner_tv_17_sp_bold">
         <item name="android:textColor">@color/inner_text_color</item>
         <item name="android:textSize">@dimen/sp_17</item>
@@ -352,9 +357,9 @@
     </style>
 
 
-
     //For GifView Declaration
-    <style name="Widget.GifView" parent="@android:style/Widget"/>
+
+    <style name="Widget.GifView" parent="@android:style/Widget" />
 
 
     <style name="ButtonStyle">

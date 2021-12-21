@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.Toast;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -29,15 +28,12 @@ import com.pfa.pfaapp.utils.AppConst;
 import com.pfa.pfaapp.utils.ImageSelectionUtils;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import static com.pfa.pfaapp.utils.AppConst.DO_REFRESH;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_ACTIVITY_TITLE;
@@ -46,9 +42,6 @@ import static com.pfa.pfaapp.utils.AppConst.EXTRA_FORM_SECTION_LIST;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_ITEM_COUNT;
 import static com.pfa.pfaapp.utils.AppConst.RC_DROPDOWN;
 import static com.pfa.pfaapp.utils.AppConst.SEARCH_DATA;
-import static com.pfa.pfaapp.utils.AppConst.SP_IS_LOGED_IN;
-import static com.pfa.pfaapp.utils.AppConst.SP_SECURITY_CODE;
-import static com.pfa.pfaapp.utils.AppConst.SP_STAFF_ID;
 import static com.pfa.pfaapp.utils.AppConst.SUB_TOWN_TAG;
 import static com.pfa.pfaapp.utils.AppConst.TOWN_TAG;
 
@@ -151,6 +144,7 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
     }
 
     private void populateData() {
+
         if (filtersLL != null && filtersLL.getChildCount() > 0) {
             filtersLL.removeAllViews();
         }
@@ -169,6 +163,13 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
         Log.d("imagePath" , "image selection utils PFA filters activity");
         imageSelectionUtils = new ImageSelectionUtils(this, view);
         imageSelectionUtils.showImagePickerDialog(null, false, false);
+    }
+
+    @Override
+    public void showFilePickerDialog(CustomNetworkImageView view) {
+        Log.d("imagePath" , "file selection utils menu form fragment");
+        imageSelectionUtils = new ImageSelectionUtils(this, view);
+        imageSelectionUtils.showFilePickerDialog(null, false, false);
     }
 
     @Override
@@ -213,7 +214,7 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
     }
 
     @Override
-    public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout) {
+    public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout ) {
 
     }
 

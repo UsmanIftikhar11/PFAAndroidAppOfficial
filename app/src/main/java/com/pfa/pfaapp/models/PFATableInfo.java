@@ -9,6 +9,7 @@ import java.net.URL;
 
 public class PFATableInfo implements Serializable {
     private String field_name;
+    private String field_link;
     private String field_type;//": "text",
     private int order;//": 1,
     private String value;//": "",
@@ -49,6 +50,13 @@ public class PFATableInfo implements Serializable {
     private String max_draft_limit;
 
 
+    public String getField_link() {
+        return field_link;
+    }
+
+    public void setField_link(String field_link) {
+        this.field_link = field_link;
+    }
 
     public boolean getConducted_inspection() {
         return conducted_inspection;

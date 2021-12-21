@@ -55,25 +55,25 @@ public class FBOMainGridActivity extends BaseActivity implements HttpResponseCal
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
 //            checkManageStorage();
 //        }
-        Log.d("onCreateActv" , "FBOMAINGRIDActivity");
+        Log.d("onCreateActv", "FBOMAINGRIDActivity");
         initViews();
         setTitle("", false);
         (findViewById(R.id.ttl_bar)).setBackgroundColor(getResources().getColor(R.color.transparent));
 
         if (sharedPrefUtils.getMainMenu() == null) {
+            Log.d("onCreateActv", "FBOMAINGRIDActivity1");
             getMainMenu();
         } else {
+            Log.d("onCreateActv", "FBOMAINGRIDActivity2");
             populateGridData();
         }
-
-
     }
 
 
     private void initViews() {
 
-        sharedPrefUtils.applyFont(findViewById(R.id.englisRB),AppUtils.FONTS.HelveticaNeue);
-        sharedPrefUtils.applyFont(findViewById(R.id.urduRB),AppUtils.FONTS.HelveticaNeue);
+        sharedPrefUtils.applyFont(findViewById(R.id.englisRB), AppUtils.FONTS.HelveticaNeue);
+        sharedPrefUtils.applyFont(findViewById(R.id.urduRB), AppUtils.FONTS.HelveticaNeue);
 
         langRG = findViewById(R.id.langRG);
         fboMainGV = findViewById(R.id.fboMainGV);
@@ -82,12 +82,10 @@ public class FBOMainGridActivity extends BaseActivity implements HttpResponseCal
 
 
         if (sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") == null) {
-            logoutImgBtn.setImageResource(sharedPrefUtils.isEnglishLang()?R.mipmap.login:R.mipmap.ur_login);
-        }
-        else
-        {
+            logoutImgBtn.setImageResource(sharedPrefUtils.isEnglishLang() ? R.mipmap.login : R.mipmap.ur_login);
+        } else {
             registerScreenReceiver();
-            logoutImgBtn.setImageResource(sharedPrefUtils.isEnglishLang()?R.mipmap.logout:R.mipmap.ur_logout);
+            logoutImgBtn.setImageResource(sharedPrefUtils.isEnglishLang() ? R.mipmap.logout : R.mipmap.ur_logout);
         }
 
         if (sharedPrefUtils.isEnglishLang()) {
@@ -131,7 +129,6 @@ public class FBOMainGridActivity extends BaseActivity implements HttpResponseCal
     }
 
 
-
     @Override
     public void onBackPressed() {
         sharedPrefUtils.showExitDialog();
@@ -150,6 +147,7 @@ public class FBOMainGridActivity extends BaseActivity implements HttpResponseCal
                     sharedPrefUtils.saveSharedPrefValue(SP_MAIN_MENU, formJSONArray.toString());
 
                     populateGridData();
+                    Log.d("onCreateActv", "FBOMAINGRIDActivity3");
 
                 } catch (JSONException e) {
                     sharedPrefUtils.printStackTrace(e);
@@ -169,35 +167,60 @@ public class FBOMainGridActivity extends BaseActivity implements HttpResponseCal
             @Override
             public void onClick(View v) {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(FBOMainGridActivity.this);
-//                builder.setTitle("Log out");
+                if (sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") == null)
+                    sharedPrefUtils.startNewActivity(LoginActivity.class, null, false);
+                else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(FBOMainGridActivity.this);
 
-                String[] options = {"Log Out","Log Out from All Devices"};
-                builder.setItems(options, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        switch (which) {
-                            case 0:
-                                if (sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") != null) {
-                                    sharedPrefUtils.logoutFromApp(httpService);
-                                } else {
-                                    sharedPrefUtils.startNewActivity(LoginActivity.class, null, false);
-                                }
-                                break;
-                            case 1:
-
-                                if (sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") != null) {
-                                    sharedPrefUtils.logoutFromAllDevices(httpService);
-                                } else {
-                                    sharedPrefUtils.startNewActivity(LoginActivity.class, null, false);
-                                }
-                                break;
+                    String[] options = {"Log Out", "Log Out from All Devices"};
+                    builder.setItems(options, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            switch (which) {
+                                case 0:
+                                    if (sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") != null)
+                                        sharedPrefUtils.logoutFromApp(httpService);
+                                    break;
+                                case 1:
+                                    if (sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") != null)
+                                        sharedPrefUtils.logoutFromAllDevices(httpService);
+                                    break;
+                            }
                         }
-                    }
-                });
+                    });
 
-                AlertDialog dialog = builder.create();
-                dialog.show();
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+
+//                AlertDialog.Builder builder = new AlertDialog.Builder(FBOMainGridActivity.this);
+//
+//                String[] options = {"Log Out","Log Out from All Devices"};
+//                builder.setItems(options, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        switch (which) {
+//                            case 0:
+//                                if (sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") != null) {
+//                                    sharedPrefUtils.logoutFromApp(httpService);
+//                                } else {
+//                                    sharedPrefUtils.startNewActivity(LoginActivity.class, null, false);
+//                                }
+//                                break;
+//                            case 1:
+//
+//                                if (sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") != null) {
+//                                    sharedPrefUtils.logoutFromAllDevices(httpService);
+//                                } else {
+//                                    sharedPrefUtils.startNewActivity(LoginActivity.class, null, false);
+//                                }
+//                                break;
+//                        }
+//                    }
+//                });
+//
+//                AlertDialog dialog = builder.create();
+//                dialog.show();
 
 
             }

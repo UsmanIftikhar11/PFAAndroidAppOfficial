@@ -75,10 +75,12 @@ public class PFADetailMenu extends SharedPrefUtils {
 
             switch (fieldInfo.getField_type()) {
                 case "button":
+                    Log.d("viewCreated", "PFADetailMenu button");
                     final PFAButton button = new PFAButton(mContext, fieldInfo, R.style.white_15_sp);
                     button.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            Log.d("viewCreated", "PFADetailMenu buttonClick");
                             pfaViewsCallbacks.onButtonCLicked(view);
                         }
                     });
@@ -92,6 +94,7 @@ public class PFADetailMenu extends SharedPrefUtils {
                 case "heading":
                     @SuppressLint("InflateParams") RelativeLayout pfa_detail_heading = (RelativeLayout) inflater.inflate(R.layout.pfa_detail_heading, null, false);
 
+                    Log.d("viewCreated", "PFADetailMenu heading");
                     RelativeLayout.LayoutParams rlLayoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, convertDpToPixel(65));
                     pfa_detail_heading.setLayoutParams(rlLayoutParams);
 
@@ -112,6 +115,7 @@ public class PFADetailMenu extends SharedPrefUtils {
                         clickableTV.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                Log.d("viewCreated", "PFADetailMenu headingClick");
                                 final Bundle bundle = new Bundle();
                                 bundle.putString(EXTRA_URL_TO_CALL, "" + fieldInfo.getAPI_URL());
                                 bundle.putString(EXTRA_ACTIVITY_TITLE, isEnglishLang()?fieldInfo.getValue():fieldInfo.getValueUrdu());
@@ -123,7 +127,8 @@ public class PFADetailMenu extends SharedPrefUtils {
                                 httpService.getListsData(fieldInfo.getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
                                     @Override
                                     public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                                        bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                                        if (response != null)
+                                            bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
                                         startNewActivity(PFADetailActivity.class, bundle, false);
                                     }
                                 }, true);
@@ -141,6 +146,7 @@ public class PFADetailMenu extends SharedPrefUtils {
                 case "text":
                     @SuppressLint("InflateParams") LinearLayout subviewLL = (LinearLayout) inflater.inflate(R.layout.pfa_detail_subview, null, false);
 
+                    Log.d("viewCreated", "PFADetailMenu text");
                     LinearLayout.LayoutParams subViewLayoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     subviewLL.setMinimumHeight(convertDpToPixel(55));
                     subviewLL.setLayoutParams(subViewLayoutParams);
@@ -178,6 +184,7 @@ public class PFADetailMenu extends SharedPrefUtils {
                 case "phone":
                     @SuppressLint("InflateParams") LinearLayout subviewLL1 = (LinearLayout) inflater.inflate(R.layout.pfa_detail_subview, null, false);
 
+                    Log.d("viewCreated", "PFADetailMenu phone");
                     LinearLayout.LayoutParams subViewLayoutParams1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, convertDpToPixel(55));
                     subviewLL1.setLayoutParams(subViewLayoutParams1);
 
@@ -218,8 +225,7 @@ public class PFADetailMenu extends SharedPrefUtils {
 
                 case "imageView":
 
-
-
+                    Log.d("viewCreated", "PFADetailMenu imageView");
                     if (!fieldInfo.getData().equals("")) {
 
                         if (imagesLL == null) {
@@ -272,6 +278,7 @@ public class PFADetailMenu extends SharedPrefUtils {
                 case "googlemap":
                     @SuppressLint("InflateParams") RelativeLayout map_detail_ll = (RelativeLayout) inflater.inflate(R.layout.map_detail_ll, null, false);
 
+                    Log.d("viewCreated", "PFADetailMenu map");
                     LinearLayout.LayoutParams map_detail_llParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, convertDpToPixel(202));
                     map_detail_ll.setLayoutParams(map_detail_llParams);
 

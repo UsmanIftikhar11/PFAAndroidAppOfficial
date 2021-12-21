@@ -29,4 +29,16 @@
         android:visibility="gone"
         tools:ignore="RtlHardcoded" />
 
+    <ImageButton
+        android:id="@+id/downloadImgBtn"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="right|end|bottom"
+        android:background="@color/transparent"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_baseline_save_alt_24"
+        android:visibility="gone"
+        tools:ignore="RtlHardcoded" />
+
 </FrameLayout>

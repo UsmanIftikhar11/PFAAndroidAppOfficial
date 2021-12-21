@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\PFAAndroidAppLatest\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
+            "outputFile": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
             "map": [
                 {
-                    "source": "E:\\PFAAndroidAppLatest\\multipleimageselect\\build\\intermediates\\packaged_res\\debug\\values-w820dp-v13\\values-w820dp-v13.xml",
+                    "source": "D:\\Usman\\PFAAndroidAppLatest\\multipleimageselect\\build\\intermediates\\packaged_res\\debug\\values-w820dp-v13\\values-w820dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

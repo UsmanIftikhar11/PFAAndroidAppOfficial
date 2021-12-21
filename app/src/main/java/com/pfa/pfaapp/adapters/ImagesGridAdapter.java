@@ -13,7 +13,6 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.pfa.pfaapp.AppController;
 import com.pfa.pfaapp.BaseActivity;
 import com.pfa.pfaapp.ImageGalleryActivity;
@@ -27,8 +26,8 @@ import java.util.List;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_DOWNLOAD_URL;
 
 public class ImagesGridAdapter extends BaseAdapter {
-    private BaseActivity baseActivity;
-    private List<PFATableInfo>  imagesList;
+    private final BaseActivity baseActivity;
+    private final List<PFATableInfo>  imagesList;
 
     public ImagesGridAdapter(BaseActivity baseActivity, List<PFATableInfo>  imagesList) {
         this.baseActivity = baseActivity;
@@ -92,7 +91,7 @@ public class ImagesGridAdapter extends BaseAdapter {
         return convertView;
     }
 
-    class ViewHolder {
+    static class ViewHolder {
         CustomNetworkImageView mediaGridNIV;
         TextView fboMenuNameTV;
         RelativeLayout fbo_grid_ll;

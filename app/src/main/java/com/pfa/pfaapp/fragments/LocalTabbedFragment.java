@@ -43,6 +43,7 @@ public class LocalTabbedFragment extends Fragment implements HttpResponseCallbac
         Bundle args = new Bundle();
         if (pfaMenuInfo != null && pfaMenuInfo.getAPI_URL() != null) {
             args.putString(EXTRA_URL_TO_CALL, pfaMenuInfo.getAPI_URL());
+            Log.d("urlToCall" , "api url = " + pfaMenuInfo.getAPI_URL());
         }
         args.putBoolean("isDrawer", isDrawer);
         fragment.setArguments(args);
@@ -98,7 +99,8 @@ public class LocalTabbedFragment extends Fragment implements HttpResponseCallbac
 
     @Override
     public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-        baseActivity.addInspectionUtils.onCompleteHttpResponse(response);
+        if (response != null)
+            baseActivity.addInspectionUtils.onCompleteHttpResponse(response);
     }
 
     @Override

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -32,6 +33,8 @@ public class PFASideMenuRB {
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
 
+        Log.d("NavDrawerClick" , "PFASideMenuRB");
+
         boolean showMenuBar = false;
 
         for (int i = 0; i < pfaMenuInfos.size(); i++) {
@@ -40,12 +43,14 @@ public class PFASideMenuRB {
             if (isVertical) {
                 radioButton = (RadioButton) inflater.inflate(R.layout.pfa_sidemenu_rb, null);
                 params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) mContext.getResources().getDimension(R.dimen.form_text_field_height));
+                Log.d("NavDrawerClick" , "PFASideMenuRB vertical");
             } else {
                 radioButton = (RadioButton) inflater.inflate(R.layout.pfa_tab_rb, null);
                 params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, (int) mContext.getResources().getDimension(R.dimen.height_60_dp));
                 radioButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
                 radioButton.setAllCaps(true);
                 radioButton.setGravity(Gravity.CENTER);
+                Log.d("NavDrawerClick" , "PFASideMenuRB horizontal");
             }
             if (i > 0 && isVertical) {
                 params.setMargins(0, (int) mContext.getResources().getDimension(R.dimen.vertical_margin_1), 0, 0);
@@ -61,7 +66,6 @@ public class PFASideMenuRB {
             if (pfaMenuInfos.get(i).getBg_color() != null) {
                 radioButton.setBackgroundColor(appUtils.colorFromHexDecimal(pfaMenuInfos.get(i).getBg_color()));
             }
-
             if (i == 0)
                 radioButton.setChecked(true);
             else radioButton.setChecked(false);
@@ -85,6 +89,7 @@ public class PFASideMenuRB {
                 @Override
                 public void onClick(View view) {
                     callbacks.onClickRB(view);
+                    Log.d("NavDrawerClick" , "PFASideMenuRB click");
                 }
             });
             if (pfaMenuInfos.get(i).getMenuItemName() == null || pfaMenuInfos.get(i).getMenuItemName().isEmpty()) {

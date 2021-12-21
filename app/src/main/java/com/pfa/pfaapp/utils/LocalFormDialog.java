@@ -172,6 +172,11 @@ public class LocalFormDialog extends CustomDialogs implements PFAViewsCallbacks 
     }
 
     @Override
+    public void showFilePickerDialog(CustomNetworkImageView view) {
+
+    }
+
+    @Override
     public void onLabelViewClicked(PFASectionTV pfaSectionTV) {
 
     }
@@ -182,7 +187,7 @@ public class LocalFormDialog extends CustomDialogs implements PFAViewsCallbacks 
     }
 
     @Override
-    public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout) {
+    public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout ) {
 
     }
 
@@ -241,6 +246,13 @@ public class LocalFormDialog extends CustomDialogs implements PFAViewsCallbacks 
                         }
 
                         @Override
+                        public void showFilePickerDialog(CustomNetworkImageView view) {
+                            Log.d("imagePath" , "image selection utils menu form fragment");
+                            imageSelectionUtils = new ImageSelectionUtils(baseActivity, view);
+                            imageSelectionUtils.showFilePickerDialog(null, false, false);
+                        }
+
+                        @Override
                         public void onLabelViewClicked(PFASectionTV pfaSectionTV) {
 
                         }
@@ -259,7 +271,7 @@ public class LocalFormDialog extends CustomDialogs implements PFAViewsCallbacks 
                         }
 
                         @Override
-                        public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout) {
+                        public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout ) {
 
                         }
 

@@ -54,6 +54,7 @@ import static com.pfa.pfaapp.utils.AppConst.CHOOSE_FROM_GALLERY;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_DELETE_IMAGE;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_DIALOG_ADD_ITEM_FORM_SECTION;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_DOWNLOAD_URL;
+import static com.pfa.pfaapp.utils.AppConst.OTHER_FILES;
 import static com.pfa.pfaapp.utils.AppConst.RC_DELETE_IMAGE;
 import static com.pfa.pfaapp.utils.AppConst.RC_DROPDOWN;
 import static com.pfa.pfaapp.utils.AppConst.RECORD_VIDEO;
@@ -115,7 +116,6 @@ public class LocalListLL extends LinearLayout implements WhichItemClicked {
         inflate(getContext(), R.layout.local_form_list, this);
         setClickable(true);
 
-
         add_newUrl = pfaMenuInfo.getAPI_URL();
         addNewBtn = findViewById(R.id.addNewBtn);
 
@@ -156,8 +156,14 @@ public class LocalListLL extends LinearLayout implements WhichItemClicked {
         addNewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showLocalAddItemDialog();
+//                Toast.makeText(baseActivity, "add new button clicked!!!!!!!!!!!!", Toast.LENGTH_SHORT).show();
+                int sampleSize = baseActivity.getSharedPreferences("SAMPLE_PREF" , Context.MODE_PRIVATE).getInt("SampleSize" , 0);
+                Log.d("formSecNumber" , "currSize = " + sampleSize);
 
+//                if (sampleSize>= 24)
+//                    Toast.makeText(baseActivity, "Maximum limit reached! Please submit this inspection", Toast.LENGTH_LONG).show();
+//                else
+                    showLocalAddItemDialog();
             }
         });
 
@@ -166,6 +172,7 @@ public class LocalListLL extends LinearLayout implements WhichItemClicked {
             if (pfaMenuInfo.getLocalSectionJSONObject() != null) {
                 try {
                     localSectionJSONObject = new JSONObject(pfaMenuInfo.getLocalSectionJSONObject());
+                    Log.d("sampleData" , "data = " + localSectionJSONObject);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -264,12 +271,17 @@ public class LocalListLL extends LinearLayout implements WhichItemClicked {
 
             for (int secNum = 0; secNum < pfaMenuInfo.getData().getForm().size(); secNum++) {
 
-
                 FormSectionInfo formSectionInfo = pfaMenuInfo.getData().getForm().get(secNum);
+
+                Log.d("formSecNumber" , "sec no = " + secNum);
+                Log.d("formSecNumber" , "sec name = " + pfaMenuInfo.getMenuItemName());
+                Log.d("formSecNumber" , "URL = " + pfaMenuInfo.getAPI_URL());
+
+                baseActivity.getSharedPreferences("SAMPLE_PREF" , Context.MODE_PRIVATE).edit()
+                        .putInt("SampleSize" , secNum).apply();
+
                 List<PFATableInfo> tableInfos = new ArrayList<>();
                 if (formSectionInfo.getFields() != null && formSectionInfo.getFields().size() > 0) {
-
-
 
                     int fieldNum = -1;
                     for (FormFieldInfo formFieldInfo : formSectionInfo.getFields()) {
@@ -324,6 +336,7 @@ public class LocalListLL extends LinearLayout implements WhichItemClicked {
                     pfaTableInfos.add(tableInfos);
                 }
             }
+
             FormFieldInfo formFieldInfo = new FormFieldInfo();
 
             pfaMenuInfo.setPrintData(formFieldInfo.getPrintData());
@@ -410,13 +423,18 @@ public class LocalListLL extends LinearLayout implements WhichItemClicked {
         if (localSectionJSONObject != null) {
             tempFormSection = new Gson().fromJson(localSectionJSONObject.toString(), FormSectionInfo.class);
 
-            tempFormSection.setSection_id("" + pfaMenuInfo.getData().getForm().size());
 
-            if (tempFormSection.getFields().get(0).getData() != null && tempFormSection.getFields().get(0).getData().size() > 0) {
-                tempFormSection.getFields().get(0).getData().clear();
-            }
 
-            localFormDialog.addFormItem(tempFormSection);
+                tempFormSection.setSection_id("" + pfaMenuInfo.getData().getForm().size());
+
+                if (tempFormSection.getFields().get(0).getData() != null && tempFormSection.getFields().get(0).getData().size() > 0) {
+                    tempFormSection.getFields().get(0).getData().clear();
+                }
+
+                Log.d("formSectionName", "sec name = " + tempFormSection.getSection_name());
+                localFormDialog.addFormItem(tempFormSection);
+
+
         } else {
             baseActivity.sharedPrefUtils.showMsgDialog("Add Item form empty!", null);
         }
@@ -469,6 +487,16 @@ public class LocalListLL extends LinearLayout implements WhichItemClicked {
                 }
 
                 break;
+            case OTHER_FILES:
+                isImage = data.getData().toString().contains("image");;
+
+                if (localFormDialog != null && localFormDialog.imageSelectionUtils != null)
+                    localFormDialog.imageSelectionUtils.chooseFromFilePath(data, sendMessageCallback);
+                else if (imageSelectionUtils != null) {
+                    imageSelectionUtils.chooseFromFilePath(data, sendMessageCallback);
+                }
+
+                break;
             case RECORD_VIDEO:
                 isImage = false;
                 if (localFormDialog != null && localFormDialog.imageSelectionUtils != null)
@@ -486,6 +514,7 @@ public class LocalListLL extends LinearLayout implements WhichItemClicked {
                 break;
             case REQ_CODE_ADD_ITEM:
                 if (data != null && data.getExtras() != null && data.getExtras().size() > 0) {
+                    Log.d("imagePath" , "sample size = " + data.getExtras().size());
                     addFormSection((FormSectionInfo) data.getExtras().getSerializable(EXTRA_DIALOG_ADD_ITEM_FORM_SECTION));
                 } else {
                     baseActivity.sharedPrefUtils.printLog("EXTRA_DIALOG_ADD_ITEM_FORM_SECTION", "EXTRA_DIALOG_ADD_ITEM_FORM_SECTION Null");

@@ -4,16 +4,16 @@ package com.pfa.pfaapp.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -111,6 +111,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
      * @param pfaMenuInfo Parameter 1.
      * @return A new instance of fragment MenuListFragment.
      */
+
     public static MenuListFragment newInstance(PFAMenuInfo pfaMenuInfo, boolean showSearch, boolean isDrawer, boolean showProgressDialog, JSONObject data) {
 
         MenuListFragment fragment = new MenuListFragment();
@@ -174,11 +175,14 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
     public PullAndLoadListView.OnRefreshListener onRefreshListener = new PullAndLoadListView.OnRefreshListener() {
         @Override
         public void onRefresh() {
+            Log.d("onResfreshListener" , "refresh 1 ");
             clickableWrapperView.setVisibility(View.VISIBLE);
             if (fetchDataInProgress) {
+                Log.d("onResfreshListener" , "refresh 2 ");
                 endRefresh();
                 return;
             }
+            Log.d("onResfreshListener" , "refresh 3 ");
             lastScrolledPosition = 0;
             clickableWrapperView.setVisibility(View.VISIBLE);
 //            Log.e("On Refresh Called", "On refresh called");
@@ -263,7 +267,9 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
                     baseActivity.httpService.getListsData(add_newUrl, new HashMap<String, String>(), new HttpResponseCallback() {
                         @Override
                         public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                            bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                            if (response != null)
+                                bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                            Log.d("getListData" , "menuListFragment = 1" );
                             baseActivity.sharedPrefUtils.startActivityForResult(baseActivity, PFAAddNewActivity.class, bundle, RC_REFRESH_LIST);
 
                             addNewBtn.setEnabled(true);
@@ -278,9 +284,10 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
                     baseActivity.httpService.getListsData(local_add_newUrl, new HashMap<String, String>(), new HttpResponseCallback() {
                         @Override
                         public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                            bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                            if (response != null)
+                                bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                            Log.d("getListData" , "menuListFragment = 2" );
                             baseActivity.sharedPrefUtils.startActivityForResult(baseActivity, LocalFormsActivity.class, bundle, RC_REFRESH_LIST);
-
 
                             addNewBtn.setEnabled(true);
                             addNewBtn.setClickable(true);
@@ -301,12 +308,13 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
         });
     }
 
-
-
     private void createSearchFilterView() {
         customViewCreate = new CustomViewCreate(getActivity(), new PFAViewsCallbacks() {
             @Override
             public void showImagePickerDialog(CustomNetworkImageView view) {
+            }
+            @Override
+            public void showFilePickerDialog(CustomNetworkImageView view) {
             }
 
             @Override
@@ -318,7 +326,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
             }
 
             @Override
-            public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout) {
+            public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout ) {
             }
 
             @Override
@@ -334,6 +342,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
                         searchParams.put(formDataInfo.getName(), formDataInfo.getKey());
                     }
                     baseActivity.httpService.getListsData(formSectionInfos.get(0).getFields().get(0).getAPI_URL(), searchParams, MenuListFragment.this, true);
+                    Log.d("getListData" , "menuListFragment = 3" );
                 }
             }
         }, formFilteredData);
@@ -353,6 +362,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
     private void updateSearch() {
         fetchDataInProgress = true;
         baseActivity.httpService.getListsData(nextUrl, new HashMap<String, String>(), MenuListFragment.this, false);
+        Log.d("getListData" , "menuListFragment = 4" );
     }
 
     @Override
@@ -445,6 +455,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
                                     public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
                                         if (response != null && response.optBoolean("status")) {
 
+                                            Log.d("getListData" , "menuListFragment = 5" );
                                             baseActivity.sharedPrefUtils.showMsgDialog(response.optString("message_code"), new SendMessageCallback() {
                                                 @Override
                                                 public void sendMsg(String message) {
@@ -531,6 +542,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
 
     @Override
     public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+        Log.d("getListData" , "menuListFragment = 10" );
         fetchDataInProgress = false;
         endRefresh();
         sorry_iv.setVisibility(View.GONE);
@@ -567,6 +579,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
             sorry_iv.setVisibility(View.GONE);
 
             baseActivity.httpService.getListsData(urlToCall, new HashMap<String, String>(), MenuListFragment.this, showProgress);
+            Log.d("getListData" , "menuListFragment = 6" );
         }
     }
 
@@ -587,6 +600,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
                         public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
                             if (response != null && response.optBoolean("status")) {
 
+                                Log.d("getListData" , "menuListFragment = 7" );
                                 baseActivity.sharedPrefUtils.showMsgDialog(response.optString("message_code"), new SendMessageCallback() {
                                     @Override
                                     public void sendMsg(String message) {
@@ -631,6 +645,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
             public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
                 if (response != null && response.optBoolean("status")) {
 
+                    Log.d("getListData" , "menuListFragment = 8" );
                     baseActivity.sharedPrefUtils.showMsgDialog(response.optString("message_code"), new SendMessageCallback() {
                         @Override
                         public void sendMsg(String message) {

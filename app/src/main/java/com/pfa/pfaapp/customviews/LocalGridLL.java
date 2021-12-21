@@ -37,6 +37,7 @@ import java.util.Map;
 import static android.app.Activity.RESULT_OK;
 import static com.pfa.pfaapp.utils.AppConst.CAPTURE_PHOTO;
 import static com.pfa.pfaapp.utils.AppConst.CHOOSE_FROM_GALLERY;
+import static com.pfa.pfaapp.utils.AppConst.OTHER_FILES;
 import static com.pfa.pfaapp.utils.AppConst.RECORD_VIDEO;
 
 public class LocalGridLL extends LinearLayout implements WhichItemClicked {
@@ -254,6 +255,11 @@ public class LocalGridLL extends LinearLayout implements WhichItemClicked {
                 isImage = true;
                 imageSelectionUtils.chooseFromCameraImgPath(data, null);
                 break;
+
+            case OTHER_FILES:
+                imageSelectionUtils.chooseFromFilePath(data, null);
+                break;
+
             case CHOOSE_FROM_GALLERY:
 
                 if (data.getData() != null)

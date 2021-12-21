@@ -131,6 +131,18 @@ public class AppUtils extends CustomDialogs {
             ((Activity) mContext).finish();
     }
 
+    public void startNewActivity1(Class activityToStart, boolean addPref ,  boolean isFinish) {
+        Intent intent = new Intent(mContext, activityToStart);
+
+        intent.putExtra("addPref" , addPref);
+
+        mContext.startActivity(intent);
+        ((BaseActivity) mContext).overridePendingTransition(R.anim.slide_in_from_right, R.anim.fade_out);
+
+        if (isFinish)
+            ((Activity) mContext).finish();
+    }
+
     /**
      * startHomeActivity method removes all the activities from stack and only the called activity is comes in top
      *

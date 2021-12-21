@@ -109,39 +109,30 @@ com/pfa/pfaapp/customviews/ClearableEditText.java
  com.pfa.pfaapp.customviews.ClearableEditText$Location
 com/pfa/pfaapp/adapters/PFAGridAdapter.java
  com.pfa.pfaapp.adapters.PFAGridAdapter
- com.pfa.pfaapp.adapters.PFAGridAdapter$1
- com.pfa.pfaapp.adapters.PFAGridAdapter$1$1
- com.pfa.pfaapp.adapters.PFAGridAdapter$1$2
- com.pfa.pfaapp.adapters.PFAGridAdapter$1$3
- com.pfa.pfaapp.adapters.PFAGridAdapter$1$4
- com.pfa.pfaapp.adapters.PFAGridAdapter$2
  com.pfa.pfaapp.adapters.PFAGridAdapter$ViewHolder
 com/pfa/pfaapp/adapters/PFATableAdapter.java
  com.pfa.pfaapp.adapters.PFATableAdapter
  com.pfa.pfaapp.adapters.PFATableAdapter$1
  com.pfa.pfaapp.adapters.PFATableAdapter$10
  com.pfa.pfaapp.adapters.PFATableAdapter$10$1
+ com.pfa.pfaapp.adapters.PFATableAdapter$10$2
+ com.pfa.pfaapp.adapters.PFATableAdapter$10$3
  com.pfa.pfaapp.adapters.PFATableAdapter$11
+ com.pfa.pfaapp.adapters.PFATableAdapter$11$1
  com.pfa.pfaapp.adapters.PFATableAdapter$12
  com.pfa.pfaapp.adapters.PFATableAdapter$12$1
- com.pfa.pfaapp.adapters.PFATableAdapter$12$2
- com.pfa.pfaapp.adapters.PFATableAdapter$12$3
  com.pfa.pfaapp.adapters.PFATableAdapter$13
- com.pfa.pfaapp.adapters.PFATableAdapter$13$1
  com.pfa.pfaapp.adapters.PFATableAdapter$14
- com.pfa.pfaapp.adapters.PFATableAdapter$14$1
- com.pfa.pfaapp.adapters.PFATableAdapter$15
- com.pfa.pfaapp.adapters.PFATableAdapter$16
  com.pfa.pfaapp.adapters.PFATableAdapter$2
  com.pfa.pfaapp.adapters.PFATableAdapter$3
+ com.pfa.pfaapp.adapters.PFATableAdapter$3$1
  com.pfa.pfaapp.adapters.PFATableAdapter$4
  com.pfa.pfaapp.adapters.PFATableAdapter$4$1
  com.pfa.pfaapp.adapters.PFATableAdapter$5
- com.pfa.pfaapp.adapters.PFATableAdapter$5$1
  com.pfa.pfaapp.adapters.PFATableAdapter$6
- com.pfa.pfaapp.adapters.PFATableAdapter$6$1
  com.pfa.pfaapp.adapters.PFATableAdapter$7
  com.pfa.pfaapp.adapters.PFATableAdapter$8
+ com.pfa.pfaapp.adapters.PFATableAdapter$8$1
  com.pfa.pfaapp.adapters.PFATableAdapter$9
  com.pfa.pfaapp.adapters.PFATableAdapter$CustomFilter
 com/pfa/pfaapp/httputils/HttpService.java
@@ -217,6 +208,7 @@ com/pfa/pfaapp/PFADetailActivity.java
  com.pfa.pfaapp.PFADetailActivity
  com.pfa.pfaapp.PFADetailActivity$1
  com.pfa.pfaapp.PFADetailActivity$2
+ com.pfa.pfaapp.PFADetailActivity$3
 com/pfa/pfaapp/models/FormSectionInfo.java
  com.pfa.pfaapp.models.FormSectionInfo
 com/pfa/pfaapp/BTDeviceList.java
@@ -247,6 +239,8 @@ com/pfa/pfaapp/utils/ImageSelectionUtils.java
  com.pfa.pfaapp.utils.ImageSelectionUtils$1$1
  com.pfa.pfaapp.utils.ImageSelectionUtils$2
  com.pfa.pfaapp.utils.ImageSelectionUtils$3
+ com.pfa.pfaapp.utils.ImageSelectionUtils$4
+ com.pfa.pfaapp.utils.ImageSelectionUtils$5
 com/pfa/pfaapp/PFAFiltersActivity.java
  com.pfa.pfaapp.PFAFiltersActivity
  com.pfa.pfaapp.PFAFiltersActivity$1
@@ -308,16 +302,16 @@ com/pfa/pfaapp/pinchzoom/OnSingleFlingListener.java
 com/pfa/pfaapp/interfaces/TextWatcherAdapter.java
  com.pfa.pfaapp.interfaces.TextWatcherAdapter
  com.pfa.pfaapp.interfaces.TextWatcherAdapter$TextWatcherListener
-com/pfa/pfaapp/customviews/PFALocationACTV.java
- com.pfa.pfaapp.customviews.PFALocationACTV
- com.pfa.pfaapp.customviews.PFALocationACTV$1
- com.pfa.pfaapp.customviews.PFALocationACTV$2
- com.pfa.pfaapp.customviews.PFALocationACTV$3
 com/pfa/pfaapp/customviews/PFAViewsUtils.java
  com.pfa.pfaapp.customviews.PFAViewsUtils
  com.pfa.pfaapp.customviews.PFAViewsUtils$1
  com.pfa.pfaapp.customviews.PFAViewsUtils$1$1
  com.pfa.pfaapp.customviews.PFAViewsUtils$2
+com/pfa/pfaapp/customviews/PFALocationACTV.java
+ com.pfa.pfaapp.customviews.PFALocationACTV
+ com.pfa.pfaapp.customviews.PFALocationACTV$1
+ com.pfa.pfaapp.customviews.PFALocationACTV$2
+ com.pfa.pfaapp.customviews.PFALocationACTV$3
 com/pfa/pfaapp/ForgotPinActivity.java
  com.pfa.pfaapp.ForgotPinActivity
  com.pfa.pfaapp.ForgotPinActivity$1
@@ -434,9 +428,6 @@ com/pfa/pfaapp/fragments/CiTabbedFragment.java
  com.pfa.pfaapp.fragments.CiTabbedFragment$4
 com/pfa/pfaapp/adapters/LocalGridAdapter.java
  com.pfa.pfaapp.adapters.LocalGridAdapter
- com.pfa.pfaapp.adapters.LocalGridAdapter$1
- com.pfa.pfaapp.adapters.LocalGridAdapter$2
- com.pfa.pfaapp.adapters.LocalGridAdapter$2$1
  com.pfa.pfaapp.adapters.LocalGridAdapter$ViewHolder
 com/pfa/pfaapp/localdbmodels/DivisionInfo.java
  com.pfa.pfaapp.localdbmodels.DivisionInfo
@@ -475,9 +466,10 @@ com/pfa/pfaapp/customviews/custominputlayout/CustomViewUtils.java
 com/pfa/pfaapp/SplashActivity.java
  com.pfa.pfaapp.SplashActivity
  com.pfa.pfaapp.SplashActivity$1
- com.pfa.pfaapp.SplashActivity$1$1
  com.pfa.pfaapp.SplashActivity$2
  com.pfa.pfaapp.SplashActivity$2$1
+ com.pfa.pfaapp.SplashActivity$3
+ com.pfa.pfaapp.SplashActivity$3$1
 com/pfa/pfaapp/localdbmodels/InspectionInfo.java
  com.pfa.pfaapp.localdbmodels.InspectionInfo
 com/pfa/pfaapp/PinSuccessActivity.java
@@ -569,6 +561,7 @@ com/pfa/pfaapp/customviews/LocalFormLL.java
  com.pfa.pfaapp.customviews.LocalFormLL
  com.pfa.pfaapp.customviews.LocalFormLL$1
  com.pfa.pfaapp.customviews.LocalFormLL$2
+ com.pfa.pfaapp.customviews.LocalFormLL$3
 com/pfa/pfaapp/emergency/ScreenReceiver.java
  com.pfa.pfaapp.emergency.ScreenReceiver
  com.pfa.pfaapp.emergency.ScreenReceiver$1
@@ -580,6 +573,7 @@ com/pfa/pfaapp/LocalFormsActivity.java
  com.pfa.pfaapp.LocalFormsActivity
  com.pfa.pfaapp.LocalFormsActivity$1
  com.pfa.pfaapp.LocalFormsActivity$2
+ com.pfa.pfaapp.LocalFormsActivity$3
 com/pfa/pfaapp/utils/CustomDateUtils.java
  com.pfa.pfaapp.utils.CustomDateUtils
 com/pfa/pfaapp/httputils/ConfigHttpUtils.java
@@ -588,6 +582,9 @@ com/pfa/pfaapp/pinchzoom/OnOutsidePhotoTapListener.java
  com.pfa.pfaapp.pinchzoom.OnOutsidePhotoTapListener
 com/pfa/pfaapp/utils/FilePathUtils.java
  com.pfa.pfaapp.utils.FilePathUtils
+com/pfa/pfaapp/customviews/VerifyFBOBusiness.java
+ com.pfa.pfaapp.customviews.VerifyFBOBusiness
+ com.pfa.pfaapp.customviews.VerifyFBOBusiness$1
 com/pfa/pfaapp/VerifyActivity.java
  com.pfa.pfaapp.VerifyActivity
  com.pfa.pfaapp.VerifyActivity$1
@@ -652,11 +649,6 @@ com/pfa/pfaapp/PFASearchActivity.java
  com.pfa.pfaapp.PFASearchActivity$5$1$1
 com/pfa/pfaapp/adapters/InspectionAdapter.java
  com.pfa.pfaapp.adapters.InspectionAdapter
- com.pfa.pfaapp.adapters.InspectionAdapter$1
- com.pfa.pfaapp.adapters.InspectionAdapter$2
- com.pfa.pfaapp.adapters.InspectionAdapter$2$1
- com.pfa.pfaapp.adapters.InspectionAdapter$3
- com.pfa.pfaapp.adapters.InspectionAdapter$3$1
 com/pfa/pfaapp/adapters/ImagesGridAdapter.java
  com.pfa.pfaapp.adapters.ImagesGridAdapter
  com.pfa.pfaapp.adapters.ImagesGridAdapter$ViewHolder
@@ -775,20 +767,34 @@ com/pfa/pfaapp/customviews/CustomViewCreate.java
  com.pfa.pfaapp.customviews.CustomViewCreate$23
  com.pfa.pfaapp.customviews.CustomViewCreate$24
  com.pfa.pfaapp.customviews.CustomViewCreate$25
- com.pfa.pfaapp.customviews.CustomViewCreate$25$1
  com.pfa.pfaapp.customviews.CustomViewCreate$26
  com.pfa.pfaapp.customviews.CustomViewCreate$27
+ com.pfa.pfaapp.customviews.CustomViewCreate$27$1
  com.pfa.pfaapp.customviews.CustomViewCreate$28
  com.pfa.pfaapp.customviews.CustomViewCreate$29
+ com.pfa.pfaapp.customviews.CustomViewCreate$29$1
  com.pfa.pfaapp.customviews.CustomViewCreate$3
  com.pfa.pfaapp.customviews.CustomViewCreate$30
  com.pfa.pfaapp.customviews.CustomViewCreate$31
  com.pfa.pfaapp.customviews.CustomViewCreate$32
- com.pfa.pfaapp.customviews.CustomViewCreate$32$1
  com.pfa.pfaapp.customviews.CustomViewCreate$33
  com.pfa.pfaapp.customviews.CustomViewCreate$33$1
+ com.pfa.pfaapp.customviews.CustomViewCreate$34
+ com.pfa.pfaapp.customviews.CustomViewCreate$35
+ com.pfa.pfaapp.customviews.CustomViewCreate$35$1
+ com.pfa.pfaapp.customviews.CustomViewCreate$36
+ com.pfa.pfaapp.customviews.CustomViewCreate$37
+ com.pfa.pfaapp.customviews.CustomViewCreate$38
+ com.pfa.pfaapp.customviews.CustomViewCreate$39
  com.pfa.pfaapp.customviews.CustomViewCreate$4
  com.pfa.pfaapp.customviews.CustomViewCreate$4$1
+ com.pfa.pfaapp.customviews.CustomViewCreate$40
+ com.pfa.pfaapp.customviews.CustomViewCreate$41
+ com.pfa.pfaapp.customviews.CustomViewCreate$42
+ com.pfa.pfaapp.customviews.CustomViewCreate$42$1
+ com.pfa.pfaapp.customviews.CustomViewCreate$43
+ com.pfa.pfaapp.customviews.CustomViewCreate$43$1
+ com.pfa.pfaapp.customviews.CustomViewCreate$44
  com.pfa.pfaapp.customviews.CustomViewCreate$5
  com.pfa.pfaapp.customviews.CustomViewCreate$6
  com.pfa.pfaapp.customviews.CustomViewCreate$7

@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -168,7 +169,7 @@ public class PFAViewsUtils extends SharedPrefUtils {
         for (View view : viewList) {
 
             if (view.getTag() != null) {
-                  String tagf =view.getTag().toString();
+                String tagf = view.getTag().toString();
 
                 if (reqViews.containsKey(view.getTag().toString()) && reqViews.get(view.getTag().toString())) {
                     if (view instanceof CheckBox) {
@@ -177,6 +178,7 @@ public class PFAViewsUtils extends SharedPrefUtils {
 
                     } else if (view instanceof PFADDACTV) {
                         PFADDACTV pfaddactv = (PFADDACTV) view;
+                        Log.d("checkViewName" , "name = " + viewGroup.findViewWithTag(""));
                         if (pfaddactv.getSelectedValues() == null || pfaddactv.getSelectedValues().size() == 0) {
                             allFieldsValid = false;
                             if (showError)
@@ -222,16 +224,27 @@ public class PFAViewsUtils extends SharedPrefUtils {
 //                        boolean Fake = sharedPreferencesG.getBoolean("IsNotRequired", false);
 //                        if (Fake) {
 
-                            SharedPrefUtils sharedPrefUtils = new SharedPrefUtils(mContext);
-                            if (sharedPrefUtils.getRLF("RequiredFalseField") != null) {
+                        Log.d("formDataValid", "instance of edittext created = ");
 
-                                if (sharedPrefUtils.getRLF("RequiredFalseField").contains(view.getTag().toString())) {
+                        SharedPrefUtils sharedPrefUtils = new SharedPrefUtils(mContext);
+                        if (sharedPrefUtils.getRLF("RequiredFalseField") != null) {
 
-                                    validateEditText(false, view, showError);
-                                } else if (validateEditText(true, view, showError)) {
-                                    allFieldsValid = false;
-                                }
+                            Log.d("formDataValid", "RequiredFalseField = " + "not null");
+
+                            if (sharedPrefUtils.getRLF("RequiredFalseField").contains(view.getTag().toString())) {
+
+                                validateEditText(false, view, showError);
+                                Log.d("formDataValid", "RequiredFalseField = " + "here");
+                            } else if (validateEditText(true, view, showError)) {
+                                allFieldsValid = false;
+                                Log.d("formDataValid", "RequiredFalseField = " + "here 1 ");
                             }
+                        }
+
+                        if (validateEditText(true, view, showError)) {
+                            allFieldsValid = false;
+                        }
+
 
                     } else if (view instanceof TextView) {
                         TextView editText = (TextView) view;
@@ -264,7 +277,7 @@ public class PFAViewsUtils extends SharedPrefUtils {
                         SharedPrefUtils sharedPrefUtils = new SharedPrefUtils(mContext);
 
 
-                        if (Fake && sharedPrefUtils.getRLF("RequiredFalseField").contains(sharedPrefUtils.getSharedPrefValue("SLUG",""))) {
+                        if (Fake && sharedPrefUtils.getRLF("RequiredFalseField").contains(sharedPrefUtils.getSharedPrefValue("SLUG", ""))) {
 //                             if (Fake){
 
                             PFARadioGroup pfaRadioGroup = (PFARadioGroup) view;
@@ -273,7 +286,7 @@ public class PFAViewsUtils extends SharedPrefUtils {
                             pfaRadioGroup.setPadding(convertDpToPixel(10), convertDpToPixel(20), convertDpToPixel(10), convertDpToPixel(20));
 
 
-                            } else {
+                        } else {
 //                        SharedPreferences sharedPreferencesf = PreferenceManager
 //                                .getDefaultSharedPreferences(mContext);
 //                        boolean Fake = sharedPreferencesf.getBoolean("IsNotRequired", false);
@@ -287,48 +300,48 @@ public class PFAViewsUtils extends SharedPrefUtils {
 //                            pfaRadioGroup.setPadding(convertDpToPixel(10), convertDpToPixel(20), convertDpToPixel(10), convertDpToPixel(20));
 //
 //                        }else {
-                              SharedPreferences sharedPreferences = PreferenceManager
-                                      .getDefaultSharedPreferences(mContext);
-                              boolean SR = sharedPreferences.getBoolean("singleRequiredKey", false);
+                            SharedPreferences sharedPreferences = PreferenceManager
+                                    .getDefaultSharedPreferences(mContext);
+                            boolean SR = sharedPreferences.getBoolean("singleRequiredKey", false);
 
-                              if (SR) {
+                            if (SR) {
 
-                                  PFARadioGroup pfaRadioGroup = (PFARadioGroup) view;
-                                  if (values == null) {
+                                PFARadioGroup pfaRadioGroup = (PFARadioGroup) view;
+                                if (values == null) {
 
-                                      allFieldsValid = false;
-                                      pfaRadioGroup.setBackgroundColor(mContext.getResources().getColor(R.color.checklist_error_color));
-                                  } else {
-                                      int i = 0;
+                                    allFieldsValid = false;
+                                    pfaRadioGroup.setBackgroundColor(mContext.getResources().getColor(R.color.checklist_error_color));
+                                } else {
+                                    int i = 0;
 
-                                      if (i < values.size()) {
-                                          if (!values.get(i).getValue().equalsIgnoreCase("Not Applicable")) {
-                                              pfaRadioGroup.setBackgroundResource(R.mipmap.text_bg);
+                                    if (i < values.size()) {
+                                        if (!values.get(i).getValue().equalsIgnoreCase("Not Applicable")) {
+                                            pfaRadioGroup.setBackgroundResource(R.mipmap.text_bg);
 
-                                          }
-                                          allFieldsValid = false;
-                                          pfaRadioGroup.setBackgroundColor(mContext.getResources().getColor(R.color.checklist_error_color));
-                                      }
+                                        }
+                                        allFieldsValid = false;
+                                        pfaRadioGroup.setBackgroundColor(mContext.getResources().getColor(R.color.checklist_error_color));
+                                    }
 //                               Toast.makeText(mContext, "D O N E", Toast.LENGTH_SHORT).show();
-                                  }
-                                  pfaRadioGroup.setPadding(convertDpToPixel(10), convertDpToPixel(20), convertDpToPixel(10), convertDpToPixel(20));
+                                }
+                                pfaRadioGroup.setPadding(convertDpToPixel(10), convertDpToPixel(20), convertDpToPixel(10), convertDpToPixel(20));
 
-                              } else if (!SR) {
+                            } else if (!SR) {
 
-                                  PFARadioGroup pfaRadioGroup = (PFARadioGroup) view;
-                                  if (pfaRadioGroup.getSelectedRB() == null) {
-                                      allFieldsValid = false;
-                                      pfaRadioGroup.setBackgroundColor(mContext.getResources().getColor(R.color.checklist_error_color));
+                                PFARadioGroup pfaRadioGroup = (PFARadioGroup) view;
+                                if (pfaRadioGroup.getSelectedRB() == null) {
+                                    allFieldsValid = false;
+                                    pfaRadioGroup.setBackgroundColor(mContext.getResources().getColor(R.color.checklist_error_color));
 
-                                  } else {
-                                      pfaRadioGroup.setBackgroundResource(R.mipmap.text_bg);
-                                  }
-                                  pfaRadioGroup.setPadding(convertDpToPixel(10), convertDpToPixel(20), convertDpToPixel(10), convertDpToPixel(20));
+                                } else {
+                                    pfaRadioGroup.setBackgroundResource(R.mipmap.text_bg);
+                                }
+                                pfaRadioGroup.setPadding(convertDpToPixel(10), convertDpToPixel(20), convertDpToPixel(10), convertDpToPixel(20));
 
-                              } else {
+                            } else {
 
-                              }
-                          }
+                            }
+                        }
                     }
                 } else {
                     if (view instanceof PFAEditText) {
@@ -354,7 +367,6 @@ public class PFAViewsUtils extends SharedPrefUtils {
         boolean Fake = sharedPreferencesG.getBoolean("IsNotRequired", false);
 
 
-
         if (pfaEditText.getText().toString().isEmpty()) {
             if (isFieldReq)
                 allFieldsValid = false;
@@ -362,7 +374,8 @@ public class PFAViewsUtils extends SharedPrefUtils {
             if (showError) {
                 if (pfaEditText.textInputLayout != null && isFieldReq) {
 
-                        pfaEditText.textInputLayout.setError(mContext.getString(R.string.required_field));
+                    Log.d("requiredFields", "required = " + true);
+                    pfaEditText.textInputLayout.setError(mContext.getString(R.string.required_field));
 
                 }
             }
@@ -529,7 +542,6 @@ public class PFAViewsUtils extends SharedPrefUtils {
                         formViewsData.put(editText.getTag().toString(), list);
                 }
 
-
             } else if (view instanceof PFASectionTV) {
                 PFASectionTV editText = (PFASectionTV) view;
                 if (!editText.getText().toString().isEmpty()) {
@@ -567,26 +579,24 @@ public class PFAViewsUtils extends SharedPrefUtils {
                     boolean SR = sharedPreferences.getBoolean("singleRequiredKey", false);
 
 
-                    if (SR && radioGroup.getSelectedRB().getFormDataInfo().getValue().equals("Not Applicable") ) {
+                    if (SR && radioGroup.getSelectedRB().getFormDataInfo().getValue().equals("Not Applicable")) {
 
                         if (count == 0) {
                             allFieldsValid = false;
                             radioGroup.setBackgroundColor(mContext.getResources().getColor(R.color.checklist_error_color));
-                        }else
-                        {
+                        } else {
                             allFieldsValid = true;
                             radioGroup.setBackgroundResource(R.mipmap.text_bg);
                             radioGroup.setPadding(convertDpToPixel(10), convertDpToPixel(20), convertDpToPixel(10), convertDpToPixel(20));
 
                         }
-                    }
-                    else if (SR && !radioGroup.getSelectedRB().getFormDataInfo().getValue().equals("Not Applicable")){
+                    } else if (SR && !radioGroup.getSelectedRB().getFormDataInfo().getValue().equals("Not Applicable")) {
                         count++;
                         allFieldsValid = true;
                         radioGroup.setBackgroundResource(R.mipmap.text_bg);
                         radioGroup.setPadding(convertDpToPixel(10), convertDpToPixel(20), convertDpToPixel(10), convertDpToPixel(20));
 
-                }else {
+                    } else {
 
                     }
 // It was commented

@@ -311,7 +311,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:text="@string/cancel"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"/>
 
             <Button
                 android:id="@+id/setPinBtn"

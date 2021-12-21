@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="sp_20">25sp</dimen>
-    <dimen name="sp_17">17sp</dimen>
+
+    <dimen name="sp_17">@dimen/_13sdp</dimen>
+
     <dimen name="sp_15">16sp</dimen>
     <dimen name="sp_13">13sp</dimen>
     <dimen name="sp_10">11sp</dimen>

@@ -1,6 +1,7 @@
 package com.pfa.pfaapp.httputils;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.pfa.pfaapp.interfaces.HttpResponseCallback;
 
@@ -14,14 +15,17 @@ import static com.pfa.pfaapp.utils.AppConst.SP_LOGIN_TYPE;
 /**
  * HttpService->HttpUtils->SharedPrefUtils->AppUtils->CustomDialogs
  */
+
 public class HttpService extends HttpUtils {
     //    Dev API
 //    private static final String BASE_URL = "https://cell.pfa.gop.pk/dev/api/";
-//    private static final String BASE_URL = "http://172.16.7.104/pfa/api/";
+//    private static final String BASE_URL = "http://192.168.1.129/api/";
 //    private static final String BASE_URL = "http://182.176.112.99/pfa/api/";
+//    private static final String BASE_URL = "https://cell.pfa.gop.pk/dev/api/";
+    private static final String BASE_URL = "http://182.176.112.99:8087/api/";
 
     //    Live APIhttps:
-    private static final String BASE_URL = "https://cell.pfa.gop.pk/api/";
+//    private static final String BASE_URL = "https://cell.pfa.gop.pk/api/";
 //    private static final String BASE_URL = "https://cellpfa.chimpstudio.co.uk/api/";
 
 //    private static final String BASE_URL = "http://54.39.33.105/api/";
@@ -37,6 +41,7 @@ public class HttpService extends HttpUtils {
 
     public void authenticateUser(HashMap<String, String> httpParams, String type, HttpResponseCallback callback) {
         httpPost(BASE_URL + "account/login/" + type, httpParams, callback, true);
+        Log.d("loginResp" , "url = " + BASE_URL + "account/login/" + type);
     }
 
     public void registerUser(HashMap<String, String> reqParams, boolean isUserVerified, HttpResponseCallback callback) {
@@ -75,6 +80,7 @@ public class HttpService extends HttpUtils {
 
     public void getListsData(String suffix, HashMap<String, String> params, HttpResponseCallback callback, boolean showProgress) {
         httpGet(BASE_URL + suffix, params, callback, showProgress);
+        Log.d("getListData" , "suffix = " + suffix);
     }
 
     public void formSubmit(HashMap<String, String> httpParams, Map<String, File> fileParams, String suffix, HttpResponseCallback callback, boolean showProgress, String actionType) {
@@ -112,6 +118,10 @@ public class HttpService extends HttpUtils {
 
     public void checkExistingUser(HashMap<String, String> params, HttpResponseCallback callback, boolean showProgress) {
         httpGet(BASE_URL + "account/check_existing_user", params, callback, showProgress);
+    }
+
+    public void checkExistingBusiness(String suffix , HashMap<String, String> params, HttpResponseCallback callback, boolean showProgress) {
+        httpGet(BASE_URL + suffix, params, callback, showProgress);
     }
 
     public void setPinCode(HashMap<String, String> httpParams, String type, HttpResponseCallback callback) {

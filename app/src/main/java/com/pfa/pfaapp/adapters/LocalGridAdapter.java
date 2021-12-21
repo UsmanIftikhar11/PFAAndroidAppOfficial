@@ -7,6 +7,7 @@ package com.pfa.pfaapp.adapters;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,6 @@ import com.pfa.pfaapp.BaseActivity;
 import com.pfa.pfaapp.ImageGalleryActivity;
 import com.pfa.pfaapp.R;
 import com.pfa.pfaapp.customviews.CustomNetworkImageView;
-import com.pfa.pfaapp.interfaces.SendMessageCallback;
 import com.pfa.pfaapp.interfaces.WhichItemClicked;
 import com.pfa.pfaapp.models.FormSectionInfo;
 import com.pfa.pfaapp.utils.AppUtils;
@@ -33,16 +33,17 @@ import java.util.List;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_DOWNLOAD_URL;
 
 public class LocalGridAdapter extends BaseAdapter {
-    private BaseActivity baseActivity;
+    private final BaseActivity baseActivity;
 
     private List<FormSectionInfo> formSectionInfos;
 
-    private WhichItemClicked whichItemClicked;
+    private final WhichItemClicked whichItemClicked;
 
     public LocalGridAdapter(BaseActivity baseActivity, List<FormSectionInfo> formSectionInfos, WhichItemClicked whichItemClicked) {
         this.baseActivity = baseActivity;
         this.whichItemClicked = whichItemClicked;
         this.formSectionInfos = formSectionInfos;
+        Log.d("viewCreated", "LocalGridAdapter");
     }
 
     public void updateAdapter(List<FormSectionInfo> formSectionInfos) {
@@ -104,9 +105,9 @@ public class LocalGridAdapter extends BaseAdapter {
                 if (filePath.startsWith("http")) {
                     holder.mediaGridNIV.setImageUrl(filePath, AppController.getInstance().getImageLoader());
                 } else {
-                    File imgFile = new  File(filePath);
+                    File imgFile = new File(filePath);
 
-                    if(imgFile.exists()) {
+                    if (imgFile.exists()) {
 
                         Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
 
@@ -118,14 +119,11 @@ public class LocalGridAdapter extends BaseAdapter {
                 Glide.with(baseActivity).load(filePath).into(holder.mediaGridNIV);
             }
 
-            holder.mediaGridNIV.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Bundle bundle = new Bundle();
-                    bundle.putString(EXTRA_DOWNLOAD_URL, formSectionInfos.get(position).getFields().get(0).getData().get(0).getValue());
-                    baseActivity.sharedPrefUtils.startNewActivity(ImageGalleryActivity.class, bundle, false);
+            holder.mediaGridNIV.setOnClickListener(v -> {
+                Bundle bundle = new Bundle();
+                bundle.putString(EXTRA_DOWNLOAD_URL, formSectionInfos.get(position).getFields().get(0).getData().get(0).getValue());
+                baseActivity.sharedPrefUtils.startNewActivity(ImageGalleryActivity.class, bundle, false);
 
-                }
             });
         } catch (Exception e) {
             e.printStackTrace();
@@ -135,25 +133,18 @@ public class LocalGridAdapter extends BaseAdapter {
             holder.deleteImgBtn.setVisibility(View.GONE);
         }
 
-        holder.deleteImgBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                baseActivity.sharedPrefUtils.showTwoBtnsMsgDialog("Are you sure you want to delete?", new SendMessageCallback() {
-                    @Override
-                    public void sendMsg(String message) {
-                        if (message != null && message.isEmpty()) {
-                            baseActivity.sharedPrefUtils.printLog("Grid Image Url: ", "" + (formSectionInfos.get(position).getSection_name()));// .getFields().get(0).getData().get(0).getValue()));
-                            whichItemClicked.whichItemClicked("" + position);
-                        }
+        holder.deleteImgBtn.setOnClickListener(view -> baseActivity.sharedPrefUtils.
+                showTwoBtnsMsgDialog("Are you sure you want to delete?", message -> {
+                    if (message != null && message.isEmpty()) {
+                        baseActivity.sharedPrefUtils.printLog("Grid Image Url: ", "" + (formSectionInfos.get(position).getSection_name()));// .getFields().get(0).getData().get(0).getValue()));
+                        whichItemClicked.whichItemClicked("" + position);
                     }
-                });
-            }
-        });
+                }));
 
         return convertView;
     }
 
-    class ViewHolder {
+    static class ViewHolder {
         CustomNetworkImageView mediaGridNIV;
         TextView fboMenuNameTV;
         RelativeLayout fbo_grid_ll;

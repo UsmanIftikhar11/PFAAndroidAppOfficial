@@ -51,6 +51,7 @@ import static com.pfa.pfaapp.utils.AppConst.EXTRA_URL_TO_CALL;
  * Use the {@link CiTabbedFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class CiTabbedFragment extends Fragment implements HttpResponseCallback, RBClickCallback {
     private int lastClicked = -1;
 
@@ -138,20 +139,22 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
 
     @Override
     public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-        if (response != null && response.optBoolean("status")) {
-            try {
-                if (response.has("data")) {
-                    JSONObject dataJsonObject = response.optJSONObject("data");
-                    if (dataJsonObject.has("detailMenu")) {
-                        setMenus(dataJsonObject.getJSONObject("detailMenu").getJSONArray("menus"));
+        if (response != null) {
+            if (response.optBoolean("status")) {
+                try {
+                    if (response.has("data")) {
+                        JSONObject dataJsonObject = response.optJSONObject("data");
+                        if (dataJsonObject.has("detailMenu")) {
+                            setMenus(dataJsonObject.getJSONObject("detailMenu").getJSONArray("menus"));
 
-                    } else if (dataJsonObject.has("menus")) {
-                        setMenus(dataJsonObject.getJSONArray("menus"));
+                        } else if (dataJsonObject.has("menus")) {
+                            setMenus(dataJsonObject.getJSONArray("menus"));
+                        }
                     }
-                }
 
-            } catch (JSONException e) {
-                baseActivity.sharedPrefUtils.printStackTrace(e);
+                } catch (JSONException e) {
+                    baseActivity.sharedPrefUtils.printStackTrace(e);
+                }
             }
         }
     }
@@ -174,19 +177,27 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
     @Override
     public void onClickRB(View targetView) {
         lastClicked = targetView.getId();
-        replaceFragment();
+        try {
+            replaceFragment();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         topbarRG.clearCheck();
         ((RadioButton) targetView).setChecked(true);
 
-        if (getCurrentFragment() instanceof MenuListFragment) {
-            if (((MenuListFragment) getCurrentFragment()).isResetData()) {
-                baseActivity.removeFilter();
+        try {
+            if (getCurrentFragment() instanceof MenuListFragment) {
+                if (((MenuListFragment) getCurrentFragment()).isResetData()) {
+                    baseActivity.removeFilter();
 
-                ((MenuListFragment) getCurrentFragment()).doAPICall();
+                    ((MenuListFragment) getCurrentFragment()).doAPICall();
+                }
+
+            } else if (getCurrentFragment() instanceof DraftsFragment) {
+                ((DraftsFragment) (getCurrentFragment())).populateData();
             }
-
-        } else if (getCurrentFragment() instanceof DraftsFragment) {
-            ((DraftsFragment) (getCurrentFragment())).populateData();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         hideShowFilters();

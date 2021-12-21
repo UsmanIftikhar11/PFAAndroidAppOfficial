@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.ImageButton;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -18,6 +19,7 @@ import java.io.File;
  * Custom NetworkImageView (volley library): By default it only accepts the url to download and set the image but its modified here to accept:
  * bitmap, drawable, File and  url to download remote image as well
  */
+
 public class CustomNetworkImageView extends NetworkImageView {
 
     private Bitmap mLocalBitmap;
@@ -73,12 +75,22 @@ public class CustomNetworkImageView extends NetworkImageView {
 
     public void setLocalImageBitmap(Bitmap unscaledBitmap) {
         if (unscaledBitmap != null) {
+            Log.d("unscaledBitmap" , "bitmap not null");
             mShowLocal = true;
-            if (deleteImgBtn != null)
+            if (deleteImgBtn != null) {
+                Log.d("unscaledBitmap" , "delete not null");
                 deleteImgBtn.setVisibility(VISIBLE);
+            }
+            else
+                Log.d("unscaledBitmap" , "delete null");
         } else {
-            if (deleteImgBtn != null)
-                deleteImgBtn.setVisibility(GONE);
+            Log.d("unscaledBitmap" , "bitmap null");
+            if (deleteImgBtn != null) {
+                Log.d("unscaledBitmap" , "delete not null");
+                deleteImgBtn.setVisibility(VISIBLE);
+            }
+            else
+                Log.d("unscaledBitmap" , "delete null");
         }
 
 //        // Part 2: Scale image

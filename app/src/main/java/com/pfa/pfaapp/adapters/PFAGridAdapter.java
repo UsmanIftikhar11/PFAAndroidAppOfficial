@@ -4,9 +4,11 @@
 
 package com.pfa.pfaapp.adapters;
 
-import android.content.DialogInterface;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +16,10 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.google.gson.Gson;
 import com.pfa.pfaapp.BaseActivity;
 import com.pfa.pfaapp.FBOMainGridActivity;
 import com.pfa.pfaapp.LoginActivity;
@@ -23,16 +28,11 @@ import com.pfa.pfaapp.PFAAddNewActivity;
 import com.pfa.pfaapp.PFADetailActivity;
 import com.pfa.pfaapp.R;
 import com.pfa.pfaapp.SignupActivity;
-import com.pfa.pfaapp.interfaces.HttpResponseCallback;
 import com.pfa.pfaapp.models.PFAMenuInfo;
 import com.pfa.pfaapp.utils.AppUtils;
 
-import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.List;
-
-import androidx.appcompat.app.AlertDialog;
 
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_ACTIVITY_TITLE;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_JSON_STR_RESPONSE;
@@ -45,15 +45,16 @@ import static com.pfa.pfaapp.utils.AppConst.SP_MAIN_MENU;
 import static com.pfa.pfaapp.utils.AppConst.SP_STAFF_ID;
 
 public class PFAGridAdapter extends BaseAdapter {
-    private BaseActivity baseActivity;
-    private List<PFAMenuInfo> pfaMenuInfos;
+    private final BaseActivity baseActivity;
+    private final List<PFAMenuInfo> pfaMenuInfos;
     private boolean isClicked = false;
-    private boolean isEnglish;
+    private final boolean isEnglish;
 
     public PFAGridAdapter(BaseActivity baseActivity, List<PFAMenuInfo> pfaMenuInfos) {
         this.baseActivity = baseActivity;
         this.pfaMenuInfos = pfaMenuInfos;
 
+        Log.d("viewCreated", "PFAGridAdapter");
         isEnglish = baseActivity.sharedPrefUtils.isEnglishLang();
     }
 
@@ -104,142 +105,144 @@ public class PFAGridAdapter extends BaseAdapter {
 
         convertView.setBackgroundColor(baseActivity.sharedPrefUtils.colorFromHexDecimal(pfaMenuInfos.get(position).getBg_color()));
 
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (isClicked) {
-                    return;
-                }
+        convertView.setOnClickListener(view -> {
+            if (isClicked) {
+                return;
+            }
 
-                isClicked = true;
+            isClicked = true;
 
-                (new Handler()).postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        isClicked = false;
-                    }
-                }, 100);
+            (new Handler()).postDelayed(() -> isClicked = false, 100);
 
-                switch (pfaMenuInfos.get(position).getMenuType()) {
-                    case "login":
-                    case "user_login":
-                    case "signup":
-                        signupLoginActivity(position, pfaMenuInfos.get(position).getMenuType());
-                        break;
+            switch (pfaMenuInfos.get(position).getMenuType()) {
+                case "login":
+                case "user_login":
+                case "signup":
+                    signupLoginActivity(position, pfaMenuInfos.get(position).getMenuType());
+                    break;
 
-                    case "logout":
+                case "logout":
 //                        baseActivity.sharedPrefUtils.logoutFromApp(baseActivity.httpService);
-                        AlertDialog.Builder builder = new AlertDialog.Builder(baseActivity);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(baseActivity);
 //                builder.setTitle("Log out");
 
-                        String[] options = {"Log Out","Log Out from All Devices"};
-                        builder.setItems(options, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                switch (which) {
-                                    case 0:
-                                        if (baseActivity.sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") != null) {
-                                            baseActivity.sharedPrefUtils.logoutFromApp(baseActivity.httpService);
-                                        } else {
-                                            baseActivity.sharedPrefUtils.startNewActivity(LoginActivity.class, null, false);
-                                        }
-                                        break;
-                                    case 1:
-
-                                        if (baseActivity.sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") != null) {
-                                            baseActivity.sharedPrefUtils.logoutFromAllDevices(baseActivity.httpService);
-                                        } else {
-                                            baseActivity.sharedPrefUtils.startNewActivity(LoginActivity.class, null, false);
-                                        }
-                                        break;
+                    String[] options = {"Log Out", "Log Out from All Devices"};
+                    builder.setItems(options, (dialog, which) -> {
+                        switch (which) {
+                            case 0:
+                                if (baseActivity.sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") != null) {
+                                    baseActivity.sharedPrefUtils.logoutFromApp(baseActivity.httpService);
+                                } else {
+                                    baseActivity.sharedPrefUtils.startNewActivity(LoginActivity.class, null, false);
                                 }
-                            }
-                        });
+                                break;
+                            case 1:
 
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
-                        break;
-
-                    case "form":
-
-                        if (pfaMenuInfos.get(position) != null && pfaMenuInfos.get(position).getAPI_URL() != null && (!pfaMenuInfos.get(position).getAPI_URL().isEmpty())) {
-
-                            String userId = "";
-                            if (baseActivity.sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") != null) {
-                                userId = baseActivity.sharedPrefUtils.getSharedPrefValue(SP_STAFF_ID, "");
-                                userId = "/" + userId;
-                            }
-
-                            baseActivity.httpService.getListsData(pfaMenuInfos.get(position).getAPI_URL() + userId, new HashMap<String, String>(), new HttpResponseCallback() {
-                                @Override
-                                public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                                    Bundle bundle = new Bundle();
-
-                                    if (baseActivity.sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") == null) {
-                                        baseActivity.sharedPrefUtils.removeSharedPrefValue(SP_MAIN_MENU);
-                                    }
-
-                                    bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
-                                    baseActivity.sharedPrefUtils.startNewActivity(PFAAddNewActivity.class, bundle, false);
-
+                                if (baseActivity.sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") != null) {
+                                    baseActivity.sharedPrefUtils.logoutFromAllDevices(baseActivity.httpService);
+                                } else {
+                                    baseActivity.sharedPrefUtils.startNewActivity(LoginActivity.class, null, false);
                                 }
-                            }, true);
+                                break;
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                    break;
+
+                case "form":
+
+                    Log.d("menuItemName" , "name = " + pfaMenuInfos.get(position).getMenuItemName());
+                    if (pfaMenuInfos.get(position) != null && pfaMenuInfos.get(position).getAPI_URL() != null && (!pfaMenuInfos.get(position).getAPI_URL().isEmpty())) {
+
+                        String userId = "";
+                        if (baseActivity.sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") != null) {
+                            userId = baseActivity.sharedPrefUtils.getSharedPrefValue(SP_STAFF_ID, "");
+                            userId = "/" + userId;
                         }
 
-                        break;
+                        baseActivity.httpService.getListsData(pfaMenuInfos.get(position).getAPI_URL() + userId, new HashMap<>(), (response, requestUrl) -> {
+                            Bundle bundle = new Bundle();
 
-                    case "map_list":
-                        if (pfaMenuInfos.get(position).getAPI_URL() == null || pfaMenuInfos.get(position).getAPI_URL().isEmpty()) {
-                            return;
-                        }
-
-                        Bundle bundle = new Bundle();
-                        bundle.putString(EXTRA_URL_TO_CALL, pfaMenuInfos.get(position).getAPI_URL());
-                        bundle.putString(EXTRA_ACTIVITY_TITLE, isEnglish ? pfaMenuInfos.get(position).getMenuItemName() : pfaMenuInfos.get(position).getMenuItemNameUrdu());
-
-                        baseActivity.sharedPrefUtils.startNewActivity(MapsActivity.class, bundle, false);
-                        break;
-
-                    case "menu":  // for form
-                        final Bundle formBundle = new Bundle();
-                        formBundle.putString(EXTRA_URL_TO_CALL, pfaMenuInfos.get(position).getAPI_URL());
-                        formBundle.putString(EXTRA_ACTIVITY_TITLE, isEnglish ? pfaMenuInfos.get(position).getMenuItemName() : pfaMenuInfos.get(position).getMenuItemNameUrdu());
-
-                        baseActivity.httpService.getListsData(pfaMenuInfos.get(position).getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
-                            @Override
-                            public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                                formBundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
-                                baseActivity.sharedPrefUtils.startNewActivity(PFADetailActivity.class, formBundle, false);
-
+                            if (baseActivity.sharedPrefUtils.getSharedPrefValue(SP_IS_LOGED_IN, "") == null) {
+                                baseActivity.sharedPrefUtils.removeSharedPrefValue(SP_MAIN_MENU);
                             }
+
+                            if (response != null)
+                                bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+//                            if (pfaMenuInfos.get(position).getMenuItemName().equals("Product Registration"))
+//                                baseActivity.sharedPrefUtils.startNewActivity1(ProductRegistrationActivity.class, false);
+//                            else
+                                baseActivity.sharedPrefUtils.startNewActivity(PFAAddNewActivity.class, bundle, false);
+                            Log.d("pfaGridAdapter" , "form");
+
                         }, true);
+                    }
 
-                        break;
-                    case "list":
-                        if (pfaMenuInfos.get(position).getAPI_URL() == null || pfaMenuInfos.get(position).getAPI_URL().isEmpty()) {
-                            return;
-                        }
+                    break;
 
-                        Bundle listBundle = new Bundle();
-                        listBundle.putSerializable(EXTRA_PFA_MENU_ITEM, pfaMenuInfos.get(position));
-                        if (isEnglish) {
-                            listBundle.putString(EXTRA_ACTIVITY_TITLE, pfaMenuInfos.get(position).getMenuItemName());
-                        } else {
-                            listBundle.putString(EXTRA_ACTIVITY_TITLE, pfaMenuInfos.get(position).getMenuItemNameUrdu());
-                        }
-                        baseActivity.sharedPrefUtils.startNewActivity(MapsActivity.class, listBundle, false);
-                        break;
-                    case "webView":
+                case "map_list":
+                    if (pfaMenuInfos.get(position).getAPI_URL() == null || pfaMenuInfos.get(position).getAPI_URL().isEmpty()) {
+                        return;
+                    }
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString(EXTRA_URL_TO_CALL, pfaMenuInfos.get(position).getAPI_URL());
+                    bundle.putString(EXTRA_ACTIVITY_TITLE, isEnglish ? pfaMenuInfos.get(position).getMenuItemName() : pfaMenuInfos.get(position).getMenuItemNameUrdu());
+
+                    baseActivity.sharedPrefUtils.startNewActivity(MapsActivity.class, bundle, false);
+                    break;
+
+                case "menu":  // for form
+                    final Bundle formBundle = new Bundle();
+                    formBundle.putString(EXTRA_URL_TO_CALL, pfaMenuInfos.get(position).getAPI_URL());
+                    formBundle.putString(EXTRA_ACTIVITY_TITLE, isEnglish ? pfaMenuInfos.get(position).getMenuItemName() : pfaMenuInfos.get(position).getMenuItemNameUrdu());
+
+                    baseActivity.httpService.getListsData(pfaMenuInfos.get(position).getAPI_URL(), new HashMap<>(), (response, requestUrl) -> {
+                        if (response != null)
+                            formBundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                        baseActivity.sharedPrefUtils.startNewActivity(PFADetailActivity.class, formBundle, false);
+
+                    }, true);
+
+                    break;
+                case "list":
+                    if (pfaMenuInfos.get(position).getAPI_URL() == null || pfaMenuInfos.get(position).getAPI_URL().isEmpty()) {
+                        return;
+                    }
+
+                    SharedPreferences appSharedPrefs = baseActivity.getSharedPreferences("AppPref1" , Context.MODE_PRIVATE);
+                    SharedPreferences.Editor prefsEditor = appSharedPrefs.edit();
+                    Gson gson = new Gson();
+                    String json = gson.toJson(pfaMenuInfos);
+                    prefsEditor.putString("inspec1", json);
+                    prefsEditor.apply();
+                    baseActivity.getSharedPreferences("appPrefs1" , Context.MODE_PRIVATE).edit().putInt("inspecPos1" , position).apply();
+                    if (isEnglish)
+                        baseActivity.getSharedPreferences("appPrefs1" , Context.MODE_PRIVATE).edit().putString("EXTRA_ACTIVITY_TITLE" , pfaMenuInfos.get(position).getMenuItemName()).apply();
+                    else
+                        baseActivity.getSharedPreferences("appPrefs1" , Context.MODE_PRIVATE).edit().putString("EXTRA_ACTIVITY_TITLE" , pfaMenuInfos.get(position).getMenuItemNameUrdu()).apply();
+
+                    Bundle listBundle = new Bundle();
+                    listBundle.putSerializable(EXTRA_PFA_MENU_ITEM, pfaMenuInfos.get(position));
+                    if (isEnglish) {
+                        listBundle.putString(EXTRA_ACTIVITY_TITLE, pfaMenuInfos.get(position).getMenuItemName());
+                    } else {
+                        listBundle.putString(EXTRA_ACTIVITY_TITLE, pfaMenuInfos.get(position).getMenuItemNameUrdu());
+                    }
+                    baseActivity.sharedPrefUtils.startNewActivity(MapsActivity.class, listBundle, false);
+                    break;
+                case "webView":
 //                        baseActivity.sharedPrefUtils.startHomeActivity(WebAppActivity.class, null);
-                        break;
-                }
+                    break;
             }
         });
 
         return convertView;
     }
 
-    class ViewHolder {
+    static class ViewHolder {
         SimpleDraweeView menuCNIV;
         TextView fboMenuNameTV;
         LinearLayout fbo_grid_ll;
@@ -255,16 +258,13 @@ public class PFAGridAdapter extends BaseAdapter {
 
             if (menuType.equalsIgnoreCase(String.valueOf(AppUtils.MENU_TYPE.login)) || menuType.equalsIgnoreCase(String.valueOf(AppUtils.MENU_TYPE.user_login))) {
 
-                baseActivity.httpService.getLoginSettings(new HttpResponseCallback() {
-                    @Override
-                    public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                        if (response != null && response.optBoolean("status")) {
-                            bundle.putString("type", response.optString("type"));
-                            baseActivity.sharedPrefUtils.startNewActivity(LoginActivity.class, bundle, false);
-                        } else {
-                            assert response != null;
-                            baseActivity.sharedPrefUtils.showMsgDialog("" + response.optString("message_code"), null);
-                        }
+                baseActivity.httpService.getLoginSettings((response, requestUrl) -> {
+                    if (response != null && response.optBoolean("status")) {
+                        bundle.putString("type", response.optString("type"));
+                        baseActivity.sharedPrefUtils.startNewActivity(LoginActivity.class, bundle, false);
+                    } else {
+                        assert response != null;
+                        baseActivity.sharedPrefUtils.showMsgDialog("" + response.optString("message_code"), null);
                     }
                 });
 
