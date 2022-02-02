@@ -144,7 +144,14 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
 //        register broadcast receiver for showing the help activity [on locked screen]
         registerScreenReceiver();
 
-
+//        MenuListFragment menuListFragment = null;
+//        if (menuItemFragments.get(lastClicked) instanceof MenuListFragment) {
+//            menuListFragment = (MenuListFragment) menuItemFragments.get(lastClicked);
+//        }
+//        if (menuListFragment!=null) {
+//            filterCountTV.setText(menuListFragment.formFilteredData.size());
+//            filterCountTV.setVisibility(View.VISIBLE);
+//        }
 
 //        Timer timer = new Timer();
 //        timer.schedule(new TimerTask() {
@@ -159,7 +166,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
 //            }
 //        }, 1500);
 
-        final Handler handler = new Handler();
+        /*final Handler handler = new Handler();
         Timer timer = new Timer();
         TimerTask doAsynchronousTask = new TimerTask() {
             @Override
@@ -174,7 +181,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                 });
             }
         };
-        timer.schedule(doAsynchronousTask, 0, 60000);
+        timer.schedule(doAsynchronousTask, 0, 60000);*/
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.CAMERA) ==

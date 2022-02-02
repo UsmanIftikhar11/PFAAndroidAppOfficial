@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/transparent"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
 
     <!--<com.pfa.pfaapp.customviews.GifImageView-->
     <!--android:id="@+id/loaderIV"-->
@@ -13,13 +14,29 @@
     <!--android:contentDescription="@string/app_name"-->
     <!--custom:gif="@drawable/pfa_loader" />-->
 
-    <com.wang.avi.AVLoadingIndicatorView
+    <!--<com.wang.avi.AVLoadingIndicatorView
         android:id="@+id/avi"
         style="@style/AVLoadingIndicatorView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="visible"
         app:indicatorColor="@color/green_btn_color"
-        app:indicatorName="BallClipRotatePulseIndicator" />
+        app:indicatorName="BallClipRotatePulseIndicator" />-->
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_70sdp"
+        app:lottie_rawRes="@raw/imageloader"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:text="Loading please wait..."
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/black"/>
 
 </LinearLayout>

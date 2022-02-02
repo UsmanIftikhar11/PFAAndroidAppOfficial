@@ -30,6 +30,7 @@ import com.pfa.pfaapp.BaseActivity;
 import com.pfa.pfaapp.ImageGalleryActivity;
 import com.pfa.pfaapp.LocalFormsActivity;
 import com.pfa.pfaapp.MapsActivity;
+import com.pfa.pfaapp.PFAAddNewActivity;
 import com.pfa.pfaapp.PFADetailActivity;
 import com.pfa.pfaapp.R;
 import com.pfa.pfaapp.customviews.LocalListLL;
@@ -377,7 +378,34 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
                                                 if (response != null)
                                                     bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
 
+                                                Log.d("viewCreated" , "pfa table adapter new activity 2");
                                                 baseActivity.sharedPrefUtils.startActivityForResult(baseActivity, LocalFormsActivity.class, bundle, RC_REFRESH_LIST);
+                                            }
+                                        }, true);
+
+                                    }
+                                });
+                            }
+                        } else if (columnsData.get(i).getField_name() != null && columnsData.get(i).getField_name().equalsIgnoreCase(String.valueOf(AppUtils.FIELD_TYPE.submit_category_button))) {
+                            if (columnsData.get(i).getSubmit_category_button() != null && (!columnsData.get(i).getSubmit_category_button().isEmpty())) {
+
+                                final int finalI2 = i;
+                                textView.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Log.d("viewCreated", "pfaTableAdapter text Click 3");
+
+                                        final Bundle bundle = new Bundle();
+                                        bundle.putString(EXTRA_URL_TO_CALL, columnsData.get(finalI2).getSubmit_category_button());
+
+                                        baseActivity.httpService.getListsData(columnsData.get(finalI2).getSubmit_category_button(), new HashMap<String, String>(), new HttpResponseCallback() {
+                                            @Override
+                                            public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+                                                if (response != null)
+                                                    bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+
+                                                Log.d("viewCreated" , "pfa table adapter new activity 3");
+                                                baseActivity.sharedPrefUtils.startActivityForResult(baseActivity, PFAAddNewActivity.class, bundle, RC_REFRESH_LIST);
                                             }
                                         }, true);
 
@@ -555,6 +583,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
                                 @Override
                                 public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
                                     if (response != null) {
+                                        Log.d("viewCreated" , "pfa table adapter new activity");
                                         bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
                                         baseActivity.sharedPrefUtils.startActivityForResult(baseActivity, LocalFormsActivity.class, bundle, RC_REFRESH_LIST);
                                     } else {

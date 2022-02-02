@@ -169,6 +169,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
 //                This is used to stop listView clicks while refreshing
             }
         });
+
         return rootView;
     }
 
@@ -197,6 +198,8 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
         super.onActivityCreated(savedInstanceState);
 
         baseActivity = (BaseActivity) getActivity();
+//        baseActivity.filterCountTV.setText(String.format(Locale.getDefault(), "%d", formFilteredData.size())+"1");
+//        baseActivity.filterCountTV.setVisibility(View.VISIBLE);
         populateListMain();
     }
 
@@ -740,6 +743,12 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
 
                     JSONArray formSectionJArray = search_filtersObject.getJSONArray("form");
                     formSectionInfos = new GsonBuilder().create().fromJson(formSectionJArray.toString(), formSectionInfosType);
+
+//                    if (!itemCount.isEmpty()){
+//                        baseActivity.searchFilterFL.setVisibility(View.VISIBLE);
+//                        baseActivity.filterCountTV.setText("1");
+//                        baseActivity.filterCountTV.setVisibility(View.VISIBLE);
+//                    }
 
                     if (formSectionInfos != null && formSectionInfos.size() > 0) {
                         showFilter = true;

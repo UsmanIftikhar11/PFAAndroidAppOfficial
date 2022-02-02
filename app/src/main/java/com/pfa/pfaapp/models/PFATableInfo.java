@@ -27,6 +27,7 @@ public class PFATableInfo implements Serializable {
     private String margin_top;
     private String lat_lng;
     private String local_add_newUrl;
+    private String submit_category_button_URL;
     private String download_url;
     private boolean show_download_btn;
     private String clickable_text;
@@ -206,6 +207,14 @@ public class PFATableInfo implements Serializable {
 
     public void setLocal_add_newUrl(String local_add_newUrl) {
         this.local_add_newUrl = local_add_newUrl;
+    }
+
+    public String getSubmit_category_button() {
+        return submit_category_button_URL;
+    }
+
+    public void setSubmit_category_button(String submit_category_button_URL) {
+        this.submit_category_button_URL = submit_category_button_URL;
     }
 
     public String getClickable_text() {

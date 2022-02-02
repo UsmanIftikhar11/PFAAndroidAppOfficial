@@ -9,6 +9,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.pfa.pfaapp.SplashActivity.BaseUrl;
 import static com.pfa.pfaapp.httputils.ConfigHttpUtils.MAIN_MENU_POSTFIX;
 import static com.pfa.pfaapp.utils.AppConst.SP_LOGIN_TYPE;
 
@@ -21,10 +22,12 @@ public class HttpService extends HttpUtils {
 //    private static final String BASE_URL = "https://cell.pfa.gop.pk/dev/api/";
 //    private static final String BASE_URL = "http://192.168.1.129/api/";
 //    private static final String BASE_URL = "http://182.176.112.99/pfa/api/";
-//    private static final String BASE_URL = "https://cell.pfa.gop.pk/dev/api/";
-    private static final String BASE_URL = "http://182.176.112.99:8087/api/";
+    private static final String BASE_URL = "https://cell.pfa.gop.pk/dev/api/";
+//    private static final String BASE_URL = "https://test.pfa.gop.pk/api/";
+//    private static final String BASE_URL = "http://182.176.112.99:8087/api/";
 
     //    Live APIhttps:
+//    private static final String BASE_URL = BaseUrl;
 //    private static final String BASE_URL = "https://cell.pfa.gop.pk/api/";
 //    private static final String BASE_URL = "https://cellpfa.chimpstudio.co.uk/api/";
 
@@ -80,6 +83,11 @@ public class HttpService extends HttpUtils {
 
     public void getListsData(String suffix, HashMap<String, String> params, HttpResponseCallback callback, boolean showProgress) {
         httpGet(BASE_URL + suffix, params, callback, showProgress);
+        Log.d("getListData" , "suffix = " + suffix);
+    }
+
+    public void getListsData1(String suffix, HashMap<String, String> params, HttpResponseCallback callback, boolean showProgress) {
+        httpGet( suffix, params, callback, showProgress);
         Log.d("getListData" , "suffix = " + suffix);
     }
 

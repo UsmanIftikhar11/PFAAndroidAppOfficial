@@ -38,6 +38,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\HP\\.gradle\\caches\\transforms-2\\files-2.1\\839635b98eb5396056263dbd77a701ad\\jetified-zxing-android-embedded-3.2.0\\res\\values-hi\\values-hi.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,112,163,329",
+                        "endColumns": "56,50,165,102",
+                        "endOffsets": "107,158,324,427"
+                    },
+                    "to": {
+                        "startLines": "108,109,110,111",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "10265,10322,10373,10539",
+                        "endColumns": "56,50,165,102",
+                        "endOffsets": "10317,10368,10534,10637"
+                    }
+                },
+                {
                     "source": "C:\\Users\\HP\\.gradle\\caches\\transforms-2\\files-2.1\\9d752171cb6868ea9a95f7ef94e6bcc2\\jetified-play-services-basement-17.5.0\\res\\values-hi\\values.xml",
                     "from": {
                         "startLines": "4",
@@ -88,23 +105,6 @@
                         "endLines": "5,33,34,35,36,55,56,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105",
                         "endColumns": "12,80,106,131,82,64,93,68,58,84,62,57,64,60,60,105,57,59,58,69,115,78,79,103,74,75,96,66,65,69,76,85,67,75,80,77,85,86,96,98,73,69,103,53,66,89,91,61,63,62,104,107,100,108,78",
                         "endOffsets": "259,3022,3129,3261,3344,6129,6223,6365,6424,6509,6572,6630,6695,6756,6817,6923,6981,7041,7100,7170,7286,7365,7445,7549,7624,7700,7797,7864,7930,8000,8077,8163,8231,8307,8388,8466,8552,8639,8736,8835,8909,8979,9083,9137,9204,9294,9386,9448,9512,9575,9680,9788,9889,9998,10077"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\HP\\.gradle\\caches\\transforms-2\\files-2.1\\57c0b454a7db7afcbfc1c4f9788779e6\\jetified-zxing-android-embedded-3.2.0\\res\\values-hi\\values-hi.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,112,163,329",
-                        "endColumns": "56,50,165,102",
-                        "endOffsets": "107,158,324,427"
-                    },
-                    "to": {
-                        "startLines": "108,109,110,111",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "10265,10322,10373,10539",
-                        "endColumns": "56,50,165,102",
-                        "endOffsets": "10317,10368,10534,10637"
                     }
                 },
                 {

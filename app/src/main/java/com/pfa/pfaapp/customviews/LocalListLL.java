@@ -423,8 +423,6 @@ public class LocalListLL extends LinearLayout implements WhichItemClicked {
         if (localSectionJSONObject != null) {
             tempFormSection = new Gson().fromJson(localSectionJSONObject.toString(), FormSectionInfo.class);
 
-
-
                 tempFormSection.setSection_id("" + pfaMenuInfo.getData().getForm().size());
 
                 if (tempFormSection.getFields().get(0).getData() != null && tempFormSection.getFields().get(0).getData().size() > 0) {

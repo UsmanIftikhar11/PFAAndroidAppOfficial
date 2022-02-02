@@ -3,9 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/drawable/count_round_bg.xml" value="0.21574074074074073" />
+        <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/drawable/green_border_round_corners.xml" value="0.21574074074074073" />
+        <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/drawable/name_circle.xml" value="0.21574074074074073" />
+        <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/layout/activity_fbomain_grid.xml" value="0.20416666666666666" />
         <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/layout/activity_local_form_dialog.xml" value="0.20108695652173914" />
+        <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/layout/activity_pfaadd_new.xml" value="0.22" />
+        <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/layout/activity_pfadetail.xml" value="0.20416666666666666" />
+        <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/layout/activity_pfadrawer.xml" value="0.20416666666666666" />
+        <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/layout/activity_splash.xml" value="0.19972826086956522" />
+        <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/layout/app_bar_nav_drawer.xml" value="0.20416666666666666" />
+        <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/layout/content_nav_drawer.xml" value="0.20416666666666666" />
+        <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/layout/dialog_with_one_option.xml" value="0.1875" />
+        <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/layout/fragment_menu_map.xml" value="0.18342391304347827" />
+        <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/layout/fragment_menu_table.xml" value="0.20416666666666666" />
+        <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/layout/map_detail_ll.xml" value="0.18342391304347827" />
+        <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/layout/pfa_dropdown_actv.xml" value="0.1" />
         <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/layout/pfa_list_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/layout/pfa_location_include.xml" value="0.20416666666666666" />
+        <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/layout/progress_dialog_layout.xml" value="0.19202898550724637" />
+        <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/layout/pull_list_view_head.xml" value="0.20416666666666666" />
+        <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/layout/ttl_bar.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>

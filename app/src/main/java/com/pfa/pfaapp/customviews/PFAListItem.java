@@ -128,14 +128,25 @@ public class PFAListItem extends SharedPrefUtils {
                     }
                 }
 
-                if (fieldInfo.getField_name().equalsIgnoreCase("business_visit")||fieldInfo.getField_name().equalsIgnoreCase(String.valueOf(FIELD_TYPE.local_add_newUrl))) {
+                if (fieldInfo.getField_name().equalsIgnoreCase("business_visit")||
+                        fieldInfo.getField_name().equalsIgnoreCase(String.valueOf(FIELD_TYPE.local_add_newUrl))) {
 
                     params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                    params.setMargins(convertDpToPixel(7), 0, 0, convertDpToPixel(0));
+                    params.setMargins(convertDpToPixel(7), convertDpToPixel(10), 0, convertDpToPixel(0));
                     subviewLL.setPadding(0, convertDpToPixel(3), 0, convertDpToPixel(3));
                     subviewLL.setLayoutParams(params);
 
                     subviewLL.setBackgroundResource(R.color.green_btn_color);
+                    subviewTV.setTextColor(mContext.getResources().getColor(R.color.white));
+                }
+
+                if (fieldInfo.getField_name().equalsIgnoreCase(String.valueOf(FIELD_TYPE.submit_category_button))){
+                    params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    params.setMargins(convertDpToPixel(7), convertDpToPixel(10), 0, convertDpToPixel(0));
+                    subviewLL.setLayoutParams(params);
+                    subviewLL.setBackgroundResource(R.color.green_btn_color);
+
+                    subviewTV.setPadding(0, convertDpToPixel(10), 0, convertDpToPixel(10));
                     subviewTV.setTextColor(mContext.getResources().getColor(R.color.white));
                 }
 

@@ -228,7 +228,7 @@ public class PullAndLoadListView extends ListView implements AbsListView.OnScrol
 //                    Log.v(TAG, "Record the initial position at the start of the slide");
                     isStartRecorded = true;
                 }
-                float deltaY = tempY - startY;
+                float deltaY = tempY - startY-200;
                 float realDeltaY = deltaY / RATIO;
 
                 // The initial state

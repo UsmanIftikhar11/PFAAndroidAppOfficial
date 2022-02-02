@@ -198,7 +198,7 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
 
                 ////////
                 if (volleyError.networkResponse != null) {
-                    showMsgDialog("Some Error Occurred, Please Try Again!1" + "\n" + url.toString(), null);
+                    showMsgDialog("Some Error Occurred, Please Try Again!1" /*+ "\n" + url.toString()*/, null);
                 } else {
                     showMsgDialog("Please Check Your Internet Connection and Try Again!1", null);
                 }
@@ -419,7 +419,6 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
     public X509Certificate[] getAcceptedIssuers() {
         return _AcceptedIssuers;
     }
-
 
     void httpMultipartAPICall(final String requestUrl, Map<String, String> params, Map<String, File> fileParams,
                               final HttpResponseCallback callback, boolean showProgress) {

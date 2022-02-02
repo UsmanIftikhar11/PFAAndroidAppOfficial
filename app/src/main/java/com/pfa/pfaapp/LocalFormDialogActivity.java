@@ -1,5 +1,6 @@
 package com.pfa.pfaapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -57,6 +58,7 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
         pfaFormSubmitUtil = new PFAFormSubmitUtil(this);
 
         Log.d("onCreateActv" , "LocalFormDialogActivity");
+        getSharedPreferences("appPrefs" , Context.MODE_PRIVATE).edit().putBoolean("InputVisible" , false).apply();
 
         formSectionInfo = (FormSectionInfo) getIntent().getSerializableExtra(EXTRA_DIALOG_ADD_ITEM_FORM_SECTION);
         formSectionInfos.add(formSectionInfo);
@@ -121,22 +123,22 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
         saveProgressDialog.setVisibility(View.GONE);
         txtProgress.setVisibility(View.GONE);
 
-        yesbtn.setOnClickListener(new View.OnClickListener() {
+        yesbtn.setOnClickListener(v -> {
 
-            @Override
-            public void onClick(View v) {
+            Log.d("yesButton" , "yes button clicked!!!");
 
-                Log.d("yesButton" , "yes button clicked!!!");
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        yesbtn.setEnabled(true);
-                        yesbtn.setClickable(true);
-                        saveProgressDialog.setVisibility(View.GONE);
-                        txtProgress.setVisibility(View.GONE);
-                    }
-                } , 2000);
+            boolean inputVisible = getSharedPreferences("appPrefs" , Context.MODE_PRIVATE).getBoolean("InputVisible" , true);
+//            String inputTextAdded = getSharedPreferences("appPrefs" , Context.MODE_PRIVATE).getString("InputTextAdded" , null);
+            String inputTextAdded = customViewCreate.getEditTextName();
+            String inputTextDDAdded = customViewCreate.getProduct_categoryDD();
+            if (!inputVisible) {
+                Log.d("yesButton" , " not inputVisible");
+                new Handler().postDelayed(() -> {
+                    yesbtn.setEnabled(true);
+                    yesbtn.setClickable(true);
+                    saveProgressDialog.setVisibility(View.GONE);
+                    txtProgress.setVisibility(View.GONE);
+                }, 2000);
 
                 yesbtn.setEnabled(false);
                 yesbtn.setClickable(true);
@@ -174,26 +176,75 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
                             intent.putExtra(EXTRA_DIALOG_ADD_ITEM_FORM_SECTION, formSectionInfo);
                             setResult(RESULT_OK, intent);
                             finish();
+                            getSharedPreferences("appPrefs" , Context.MODE_PRIVATE).edit().putBoolean("InputVisible" , false).apply();
                         }
                     }
                 }
+            } else if (inputTextAdded != null && !inputTextAdded.isEmpty() && inputTextDDAdded !=null && !inputTextDDAdded.isEmpty()){
+                Log.d("yesButton" , " inputVisible = " + inputTextAdded);
+                new Handler().postDelayed(() -> {
+                    yesbtn.setEnabled(true);
+                    yesbtn.setClickable(true);
+                    saveProgressDialog.setVisibility(View.GONE);
+                    txtProgress.setVisibility(View.GONE);
+                }, 2000);
 
+                yesbtn.setEnabled(false);
+                yesbtn.setClickable(true);
+                saveProgressDialog.setVisibility(View.VISIBLE);
+                txtProgress.setVisibility(View.VISIBLE);
 
+                HashMap<String, List<FormDataInfo>> formViewsData = pfaFormSubmitUtil.getViewsData(menuFragParentLL, true);
+
+                if (formSectionInfos != null && formSectionInfos.size() > 0) {
+
+//                    If challan Items are added then all fields of Challan item Section are added to top Section received
+                    if (formSectionInfos.size() > 1) {
+                        formSectionInfo.getFields().addAll(formSectionInfos.get(1).getFields());
+                    }
+                    if (pfaFormSubmitUtil.isFormDataValid(sectionRequired, menuFragParentLL, true)) {
+                        Log.d("yesButton" , "yes btn1");
+                        if (formSectionInfo != null && formSectionInfo.getFields() != null && formSectionInfo.getFields().size() > 0) {
+                            Log.d("yesButton" , "yes btn2");
+                            for (int j = 0; j < formSectionInfo.getFields().size(); j++) {
+                                Log.d("yesButton" , "yes btn3");
+
+                                if (formViewsData.containsKey(formSectionInfo.getFields().get(j).getField_name())) {
+                                    if (formSectionInfo.getFields().get(j).getField_type().equalsIgnoreCase(String.valueOf(AppUtils.FIELD_TYPE.dropdown))) {
+                                        formSectionInfo.getFields().get(j).setDefault_value(formViewsData.get(formSectionInfo.getFields().get(j).getField_name()).get(0).getKey());
+                                    } else if (formSectionInfo.getFields().get(j).getField_type().equalsIgnoreCase(String.valueOf(AppUtils.FIELD_TYPE.radiogroup))) {
+                                        formSectionInfo.getFields().get(j).setDefault_value(formViewsData.get(formSectionInfo.getFields().get(j).getField_name()).get(0).getKey());
+                                    } else {
+
+                                        formSectionInfo.getFields().get(j).setData(formViewsData.get(formSectionInfo.getFields().get(j).getField_name()));
+                                    }
+                                }
+                            }
+
+                            Intent intent = new Intent();
+                            intent.putExtra(EXTRA_DIALOG_ADD_ITEM_FORM_SECTION, formSectionInfo);
+                            setResult(RESULT_OK, intent);
+                            finish();
+                            getSharedPreferences("appPrefs" , Context.MODE_PRIVATE).edit().putBoolean("InputVisible" , false).apply();
+                        }
+                    }
+                }
             }
+            else {
+                sharedPrefUtils.showMsgDialog("please add product name and product type!", null);
+                Log.d("yesButton" , " inputVisible else = " + inputVisible);
+                Log.d("yesButton" , " inputVisible else = " + inputTextAdded);
+            }
+
         });
 
         Button noBtn = findViewById(R.id.noBtn);
 
-        noBtn.setOnClickListener(new View.OnClickListener() {
+        noBtn.setOnClickListener(v -> {
 
-            @Override
-            public void onClick(View v) {
-
-                hideKeyBoard();
-                finish();
-            }
+            hideKeyBoard();
+            finish();
         });
-
 
     }
 

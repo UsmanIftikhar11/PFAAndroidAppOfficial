@@ -25,6 +25,7 @@ import com.pfa.pfaapp.interfaces.SendMessageCallback;
 import com.pfa.pfaapp.utils.AppUtils;
 import com.rey.material.widget.SnackBar;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -45,6 +46,7 @@ public class SplashActivity extends BaseActivity {
     private String currentVersion;
     private AppUpdateManager appUpdateManager;
     private boolean updateAvailable;
+    public static String BaseUrl = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -197,45 +199,57 @@ public class SplashActivity extends BaseActivity {
             return;
         }
 
-        httpService.getListsData("menu/api_version", new HashMap<String, String>(), new HttpResponseCallback() {
+        startLoginScreen(null);
+/*
+        httpService.getListsData1("https://app.pfa.gop.pk/api/BaseURL/GetBaseURL?applicationName=cellpfagop", new HashMap<String, String>(), new HttpResponseCallback() {
             @Override
             public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
                 //"account/api_version?type=softwareVersion"
 
                 if (response != null) {
 
-                    if (response.optBoolean("status")) {
-                        JSONObject dataObject = response.optJSONObject("data");
-
-                        Log.d("currentApiVersion" , "version from api= " + dataObject.optString("api_version"));
-                        Log.d("currentApiVersion" , "version from playstore= " + currentVersion);
-
-                        startLoginScreen(null);
+                    try {
+                        if (response.getString("Message").equals("success")) {
+                            JSONObject dataObject = response.optJSONObject("Result");
 
 
-                        /*if (currentVersion != null && (currentVersion.equals(dataObject.optString("api_version")))) {
-                            startLoginScreen(null);
-                        }*/
-//                        if (web_update()) {
+                            Log.d("currentApiVersion" , "version from playstore= " + currentVersion);
+
+//                            assert dataObject != null;
+                                BaseUrl = dataObject.optString("Data");
+
+
+                            Log.d("currentApiVersion" , "version from api= " + BaseUrl);
 //                            startLoginScreen(null);
-//                        } else {
-//                            sharedPrefUtils.showUpdateAppDialog(getPackageName());
-//                        }
+//
+//
+                            if (!BaseUrl.isEmpty()) {
+                                startLoginScreen(null);
+                            }
+    //                        if (web_update()) {
+    //                            startLoginScreen(null);
+    //                        } else {
+    //                            sharedPrefUtils.showUpdateAppDialog(getPackageName());
+    //                        }
 
-                    } else {
-                        sharedPrefUtils.showMsgDialog(response.optString("message_code"), null);
+                        } else {
+                            sharedPrefUtils.showMsgDialog("No Base Url Found", null);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
 
                 } else {
                     sharedPrefUtils.showMsgDialog("No data received from server", new SendMessageCallback() {
                         @Override
                         public void sendMsg(String message) {
-                            startMain();
+//                            startMain();
                         }
                     });
                 }
             }
         }, false);
+    */
     }
 
 

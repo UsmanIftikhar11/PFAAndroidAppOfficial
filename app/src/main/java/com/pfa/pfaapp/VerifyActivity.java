@@ -41,7 +41,6 @@ public class VerifyActivity extends BaseActivity implements HttpResponseCallback
     private String PinCodeMessage;
     private TextView tempPinTV;
 
-
     String securityCode;
 
     @Override

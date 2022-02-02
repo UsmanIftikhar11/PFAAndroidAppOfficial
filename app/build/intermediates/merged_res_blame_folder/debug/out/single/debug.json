@@ -372,6 +372,10 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_pfadetail.xml"
     },
     {
+        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\raw_imageloader.json.flat",
+        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\raw\\imageloader.json"
+    },
+    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rb_checked.xml.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\rb_checked.xml"
     },

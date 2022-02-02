@@ -41,6 +41,18 @@
             tools:ignore="RtlSymmetry,UnusedAttribute" />
     </com.pfa.pfaapp.customviews.PFATextInputLayout>
 
+    <TextView
+        android:id="@+id/txtPopulateLicense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Populate License"
+        android:layout_marginEnd="7dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:visibility="gone"/>
+
     <ImageButton
         android:id="@+id/clearImgBtn"
         android:layout_width="40dp"

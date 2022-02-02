@@ -123,7 +123,6 @@ public class PFAEditText extends ClearableEditText {
                 setFilters(new InputFilter[]{new InputFilter.LengthFilter(formFieldInfo.getMax_limit()), new EmojiExcludeFilter()});
             } else
                 setFilters(new InputFilter[]{new EmojiExcludeFilter()});
-
         }
 
         appUtils.applyFont(this, AppUtils.FONTS.HelveticaNeueMedium);
@@ -260,6 +259,7 @@ public class PFAEditText extends ClearableEditText {
         if (formFieldInfo != null && formFieldInfo.getData() != null && formFieldInfo.getData().size() >= 1) {
             setText(formFieldInfo.getData().get(0).getValue());
         }
+
     }
 
     private void setEmeSizeAndDrawable() {

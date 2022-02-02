@@ -51,6 +51,9 @@
         <package android:name="com.android.gallery" />
     </queries>
 
+
+
+
     <application
         android:name=".AppController"
         android:allowBackup="true"

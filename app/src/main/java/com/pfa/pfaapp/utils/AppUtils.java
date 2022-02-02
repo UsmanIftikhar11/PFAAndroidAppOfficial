@@ -54,7 +54,7 @@ public class AppUtils extends CustomDialogs {
 
     public enum FONTS {HelveticaNeue, HelveticaNeueMedium, HelveticaNeueBold}
 
-    public enum FIELD_TYPE {mediaFormField, get_code_button, text, searchkeytext, textarea, numeric, cnic, phone, email, dropdown, radiogroup, checkbox, label, date, imageView, button, autoSearch, location_fields, abc, local_add_newUrl}
+    public enum FIELD_TYPE {mediaFormField, get_code_button, text, searchkeytext, textarea, numeric, cnic, phone, email, dropdown, radiogroup, checkbox, label, date, imageView, button, autoSearch, location_fields, abc, local_add_newUrl, local_add_newUrl1 , submit_category_button}
 
     public enum MENU_TYPE {form, list, menu, googlemap, profile, search, dashboard, grid, draft, login, user_login, logout}
 

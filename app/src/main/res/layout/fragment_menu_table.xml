@@ -38,7 +38,8 @@
             android:layout_height="match_parent"
             android:cacheColorHint="@color/transparent"
             android:divider="@mipmap/horizontal_line"
-            android:paddingBottom="7dp" />
+            android:paddingBottom="7dp"
+            android:background="@color/light_grey1"/>
 
         <View
             android:id="@+id/clickableWrapperView"
@@ -49,7 +50,8 @@
             android:divider="@mipmap/horizontal_line"
             android:focusable="true"
             android:paddingBottom="7dp"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:background="@color/light_grey1"/>
 
         <LinearLayout
             android:id="@+id/sorry_iv12"

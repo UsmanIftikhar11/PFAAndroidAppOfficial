@@ -149,6 +149,7 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
 
                         } else if (dataJsonObject.has("menus")) {
                             setMenus(dataJsonObject.getJSONArray("menus"));
+                            Log.d(":cittabbed" , "enforcement menu");
                         }
                     }
 
@@ -216,7 +217,10 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
     }
 
     public Fragment getCurrentFragment() {
-        return menuItemFragments.get(lastClicked);
+//        if (lastClicked < menuItemFragments.size() && menuItemFragments.get(lastClicked) != null)
+            return menuItemFragments.get(lastClicked);
+//        else
+//            return menuItemFragments.get(lastClicked-1);
     }
 
 
@@ -253,7 +257,7 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
 
         for (int i = 0; i < menuItemFragments.size(); i++) {
             try {
-                assert fragmentManager != null;
+//                assert fragmentManager != null;
                 fragmentManager.beginTransaction().hide(menuItemFragments.get(i)).commit();
 
             } catch (Exception e) {
