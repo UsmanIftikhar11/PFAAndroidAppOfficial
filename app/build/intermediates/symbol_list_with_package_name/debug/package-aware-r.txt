@@ -2505,6 +2505,7 @@ dimen activity_vertical_margin
 dimen appcompat_dialog_background_inset
 dimen browser_actions_context_menu_max_width
 dimen browser_actions_context_menu_min_padding
+dimen business_dialog_text_size
 dimen cardview_compat_inset_shadow
 dimen cardview_default_elevation
 dimen cardview_default_radius
@@ -4382,6 +4383,7 @@ string fields_fill_firstly
 string fill_atleast_one_field
 string fill_passcode
 string fill_required_fields
+string firebase_database_url
 string first_amp_last_name
 string forgotPin
 string forgot_password

@@ -82,7 +82,6 @@ public class ImageSelectionUtils extends ScalingUtilities {
 
                         } else if (i == CHOOSE_FROM_GALLERY) {
                             pickImageFromGallery(showVideoBtns);
-
                         } else if (i == MULTIPLE_IMAGES) {
                             pickMultipleImages();
                         } else if (i == RECORD_VIDEO) {
@@ -115,8 +114,8 @@ public class ImageSelectionUtils extends ScalingUtilities {
         filePathOfCamera = f.getAbsolutePath();
 
 //        Uri mImageCaptureUri = FileProvider.getUriForFile(activity, BuildConfig.APPLICATION_ID + ".provider", f);
-        Uri mImageCaptureUri = FileProvider.getUriForFile(activity, "com.pfaofficial.test.provider", f);
-//        Uri mImageCaptureUri = FileProvider.getUriForFile(activity, "com.pfaofficial.provider", f);
+//        Uri mImageCaptureUri = FileProvider.getUriForFile(activity, "com.pfaofficial.test.provider", f);
+        Uri mImageCaptureUri = FileProvider.getUriForFile(activity, "com.pfaofficial.provider", f);
 
         Intent photoCaptureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         photoCaptureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -167,7 +166,7 @@ public class ImageSelectionUtils extends ScalingUtilities {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void pickMultipleImages() {
         Intent intent = new Intent(activity, AlbumSelectActivity.class);
-        intent.putExtra(Constants.INTENT_EXTRA_LIMIT, 100);
+        intent.putExtra(Constants.INTENT_EXTRA_LIMIT, 15);
         activity.startActivityForResult(intent, Constants.REQUEST_CODE);
 
     }
@@ -188,6 +187,8 @@ public class ImageSelectionUtils extends ScalingUtilities {
 
             if (filePathOfCamera != null) {
                 imagePath = filePathOfCamera;
+                mContext.getSharedPreferences("appPrefs", Context.MODE_PRIVATE).edit().putString("cameraFilePath", imagePath).apply();
+                Log.d("imagePath5465", "path5465zs = " + imagePath);
 
             } else if (data != null && data.getExtras() != null && data.getExtras().containsKey("data")) {
                 isNotImage = false;
@@ -203,7 +204,8 @@ public class ImageSelectionUtils extends ScalingUtilities {
                 stream.close();
 
                 imagePath = f.getAbsolutePath();
-                Log.d("imagePath", "path = " + imagePath);
+                mContext.getSharedPreferences("appPrefs", Context.MODE_PRIVATE).edit().putString("cameraFilePath", imagePath).apply();
+                Log.d("imagePath5465", "path = " + imagePath);
             }
 
             setImageInNIV(callback);
@@ -249,11 +251,13 @@ public class ImageSelectionUtils extends ScalingUtilities {
 
         if (filePathOfCamera != null) {
             imagePath = filePathOfCamera;
+            mContext.getSharedPreferences("appPrefs", Context.MODE_PRIVATE).edit().putString("galleryFilePath", imagePath).apply();
         } else {
             if (data != null && data.getData() != null) {
                 isNotImage = false;
                 mImageCaptureUri = data.getData();
                 imagePath = FilePathUtils.getPath(activity, mImageCaptureUri);
+                mContext.getSharedPreferences("appPrefs", Context.MODE_PRIVATE).edit().putString("galleryFilePath", imagePath).apply();
             }
         }
 

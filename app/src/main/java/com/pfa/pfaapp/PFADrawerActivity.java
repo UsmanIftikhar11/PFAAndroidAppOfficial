@@ -1,8 +1,10 @@
 package com.pfa.pfaapp;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -28,6 +30,15 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.pfa.pfaapp.customviews.PFASideMenuRB;
 import com.pfa.pfaapp.fragments.CiTabbedFragment;
 import com.pfa.pfaapp.fragments.DraftsFragment;
@@ -57,6 +68,7 @@ import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static com.pfa.pfaapp.AppController.TAG;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_ACTIVITY_TITLE;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_FILTERS_DATA;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_FORM_SECTION_LIST;
@@ -749,4 +761,6 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
     public void onClickNotifMsgTV(View view) {
         sharedPrefUtils.startNewActivity(NotificationActivity.class, null, false);
     }
+
+
 }

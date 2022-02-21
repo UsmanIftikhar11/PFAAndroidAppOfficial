@@ -274,8 +274,9 @@ public class ImageSelectActivity extends HelperActivity {
             Toast.makeText(
                     getApplicationContext(),
                     String.format(getString(R.string.limit_exceeded), Constants.limit),
-                    Toast.LENGTH_SHORT)
+                    Toast.LENGTH_LONG)
                     .show();
+            Toast.makeText(getApplicationContext(), "You can upload remaining images from conducted inspection tab within 24 hours.", Toast.LENGTH_LONG).show();
             return;
         }
 

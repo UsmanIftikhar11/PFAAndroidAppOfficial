@@ -4,23 +4,6 @@
             "outputFile": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-nl\\values-nl.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\HP\\.gradle\\caches\\transforms-2\\files-2.1\\839635b98eb5396056263dbd77a701ad\\jetified-zxing-android-embedded-3.2.0\\res\\values-nl\\values-nl.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,114,161,312",
-                        "endColumns": "58,46,150,111",
-                        "endOffsets": "109,156,307,419"
-                    },
-                    "to": {
-                        "startLines": "108,109,110,111",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "10423,10482,10529,10680",
-                        "endColumns": "58,46,150,111",
-                        "endOffsets": "10477,10524,10675,10787"
-                    }
-                },
-                {
                     "source": "C:\\Users\\HP\\.gradle\\caches\\transforms-2\\files-2.1\\924c80ba2daa9714d459fcf1efa71769\\jetified-firebase-messaging-22.0.0\\res\\values-nl\\values.xml",
                     "from": {
                         "startLines": "4",
@@ -52,6 +35,23 @@
                         "startOffsets": "274,392,497,604,689,797,917,995,1071,1163,1257,1352,1446,1546,1640,1736,1831,1923,2015,2097,2208,2311,2410,2525,2639,2742,2897,10239",
                         "endColumns": "117,104,106,84,107,119,77,75,91,93,94,93,99,93,95,94,91,91,81,110,102,98,114,113,102,154,102,82",
                         "endOffsets": "387,492,599,684,792,912,990,1066,1158,1252,1347,1441,1541,1635,1731,1826,1918,2010,2092,2203,2306,2405,2520,2634,2737,2892,2995,10317"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\HP\\.gradle\\caches\\transforms-2\\files-2.1\\f0486f21058be3698ad40570d7c292ae\\jetified-zxing-android-embedded-3.2.0\\res\\values-nl\\values-nl.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,114,161,312",
+                        "endColumns": "58,46,150,111",
+                        "endOffsets": "109,156,307,419"
+                    },
+                    "to": {
+                        "startLines": "108,109,110,111",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "10423,10482,10529,10680",
+                        "endColumns": "58,46,150,111",
+                        "endOffsets": "10477,10524,10675,10787"
                     }
                 },
                 {

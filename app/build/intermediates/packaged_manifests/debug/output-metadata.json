@@ -4,14 +4,14 @@
     "type": "PACKAGED_MANIFESTS",
     "kind": "Directory"
   },
-  "applicationId": "com.pfaofficial.test",
+  "applicationId": "com.pfaofficial",
   "variantName": "debug",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 60,
-      "versionName": "1.60",
+      "versionCode": 63,
+      "versionName": "1.63",
       "outputFile": "AndroidManifest.xml"
     }
   ]

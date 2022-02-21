@@ -36,7 +36,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_7sdp"
         android:text="Loading please wait..."
-        android:textSize="@dimen/_12sdp"
-        android:textColor="@color/black"/>
+        android:textSize="@dimen/_14sdp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
 </LinearLayout>

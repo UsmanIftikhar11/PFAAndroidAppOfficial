@@ -4,14 +4,14 @@
     "type": "PROCESSED_RES",
     "kind": "Directory"
   },
-  "applicationId": "com.pfaofficial.test",
+  "applicationId": "com.pfaofficial",
   "variantName": "processDebugResources",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 60,
-      "versionName": "1.60",
+      "versionCode": 63,
+      "versionName": "1.63",
       "outputFile": "resources-debug.ap_"
     }
   ]

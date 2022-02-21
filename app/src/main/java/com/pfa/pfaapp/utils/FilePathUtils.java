@@ -10,7 +10,7 @@ import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
 
-class FilePathUtils {
+public class FilePathUtils {
     /**
      * Get a file path from a Uri. This will get the the path for Storage Access
      * Framework Documents, as well as the _data field for the MediaStore and
@@ -19,7 +19,7 @@ class FilePathUtils {
      * @param context The context.
      * @param uri     The Uri to query.
      */
-    static String getPath(final Context context, final Uri uri) {
+    public static String getPath(final Context context, final Uri uri) {
 
 
         // DocumentProvider

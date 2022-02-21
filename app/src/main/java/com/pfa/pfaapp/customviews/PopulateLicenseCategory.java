@@ -27,16 +27,19 @@ public class PopulateLicenseCategory extends LinearLayout implements HttpRespons
     Context mContext;
     ArrayList<String> retailer_val = new ArrayList<>();
     ArrayList<String> retailer_val_key = new ArrayList<>();
+    String revisedLicesneUrl;
 
 
-    public PopulateLicenseCategory(Context mContext, ArrayList<String> retailer_val , ArrayList<String> retailer_val_key , String parent_license_type , String parent_license_type_key , CheckUserCallback checkUserCallback ) {
+    public PopulateLicenseCategory(Context mContext, String revisedLicesneUrl , ArrayList<String> retailer_val , ArrayList<String> retailer_val_key , String parent_license_type , String parent_license_type_key , CheckUserCallback checkUserCallback ) {
         super(mContext);
         this.checkUserCallback = checkUserCallback;
+        this.revisedLicesneUrl = revisedLicesneUrl;
         this.parent_license_type = parent_license_type;
         this.parent_license_type_key = parent_license_type_key;
         this.retailer_val = retailer_val;
         this.retailer_val_key = retailer_val_key;
-        this.suffix = "Client/get_license_type/";
+//        this.suffix = "Client/get_license_type/";
+        this.suffix = revisedLicesneUrl;
 
         this.mContext = mContext;
         init();
@@ -114,7 +117,7 @@ public class PopulateLicenseCategory extends LinearLayout implements HttpRespons
                         sharedPrefUtils.showMsgDialog("Error Getting Data from the Server", null);
                     } else {
                         Log.d("revisedLicense" , "not null liscenese  " + jsonArray);
-                        checkUserCallback.getExistingBusiness(jsonArray);
+                        checkUserCallback.getExistingBusiness(jsonArray , response.optString("confirmMsg"));
                     }
                 } else
                     sharedPrefUtils.showMsgDialog("No Data Received from the Server", null);

@@ -1,11 +1,11 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.pfaofficial.test"
-4    android:versionCode="60"
-5    android:versionName="1.60" >
+3    package="com.pfaofficial"
+4    android:versionCode="63"
+5    android:versionName="1.63" >
 6
 7    <uses-sdk
-8        android:minSdkVersion="17"
+8        android:minSdkVersion="25"
 8-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="30" />
 9-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml
@@ -127,65 +127,64 @@
 66        android:required="true" /> <!-- Don't require camera, as this requires a rear camera. This allows it to work on the Nexus 7 -->
 66-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\e91644f6e9d06e3ba66ceab2492cb438\jetified-play-services-maps-17.0.1\AndroidManifest.xml:28:9-32
 67    <uses-feature
-67-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:24:5-26:36
+67-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:24:5-26:36
 68        android:name="android.hardware.camera"
-68-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:25:9-47
+68-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:25:9-47
 69        android:required="false" />
-69-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:26:9-33
+69-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:26:9-33
 70    <uses-feature
-70-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:27:5-29:36
+70-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:27:5-29:36
 71        android:name="android.hardware.camera.front"
-71-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:28:9-53
+71-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:28:9-53
 72        android:required="false" />
-72-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:29:9-33
+72-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:29:9-33
 73    <uses-feature
-73-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:35:5-37:36
+73-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:35:5-37:36
 74        android:name="android.hardware.camera.flash"
-74-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:36:9-53
+74-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:36:9-53
 75        android:required="false" />
-75-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:37:9-33
+75-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:37:9-33
 76    <uses-feature
-76-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:38:5-40:36
+76-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:38:5-40:36
 77        android:name="android.hardware.screen.landscape"
-77-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:39:9-57
+77-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:39:9-57
 78        android:required="false" />
-78-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:40:9-33
+78-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:40:9-33
 79    <uses-feature
-79-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:41:5-43:36
+79-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:41:5-43:36
 80        android:name="android.hardware.wifi"
-80-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:42:9-45
+80-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:42:9-45
 81        android:required="false" /> <!-- Permission will be merged into the manifest of the hosting app. -->
-81-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:43:9-33
+81-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:43:9-33
 82    <!-- Is required to launch foreground extraction service for targetSdkVersion 28+. -->
 83    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 83-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:13:5-77
 83-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:13:22-74
-84    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+84    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" /> <!-- android:networkSecurityConfig="@xml/network_security_config" -->
 84-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:26:5-110
 84-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:26:22-107
-85
+85    <!-- android:usesCleartextTraffic="true" -->
 86    <application
-86-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:57:5-314:19
+86-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:58:5-314:19
 87        android:name="com.pfa.pfaapp.AppController"
-87-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:58:9-38
+87-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:59:9-38
 88        android:allowBackup="true"
-88-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:59:9-35
+88-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:60:9-35
 89        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 89-->[androidx.core:core:1.5.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\fbc8fd6bd68871229e022e5c96d6f121\core-1.5.0\AndroidManifest.xml:24:18-86
 90        android:debuggable="true"
-90-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:60:9-35
-91        android:fullBackupContent="true"
-91-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:61:9-41
-92        android:hardwareAccelerated="true"
-92-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:62:9-43
-93        android:icon="@mipmap/pfalogo"
-93-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:63:9-39
-94        android:label="@string/app_name"
-94-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:64:9-41
-95        android:largeHeap="true"
-95-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:65:9-33
-96        android:networkSecurityConfig="@xml/network_security_config"
-96-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:66:9-69
+90-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:61:9-35
+91        android:extractNativeLibs="false"
+92        android:fullBackupContent="true"
+92-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:62:9-41
+93        android:hardwareAccelerated="true"
+93-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:63:9-43
+94        android:icon="@mipmap/pfalogo"
+94-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:64:9-39
+95        android:label="@string/app_name"
+95-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:65:9-41
+96        android:largeHeap="true"
+96-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:66:9-33
 97        android:requestLegacyExternalStorage="true"
 97-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:68:9-52
 98        android:roundIcon="@mipmap/pfalogo"
@@ -193,817 +192,815 @@
 99        android:supportsRtl="true"
 99-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:70:9-35
 100        android:testOnly="true"
-101        android:theme="@style/AppTheme"
+101        android:theme="@style/AppTheme" >
 101-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:71:9-40
-102        android:usesCleartextTraffic="true" >
-102-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:67:9-44
-103        <activity android:name="com.pfa.pfaapp.printing.PrinterActivity" />
-103-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:75:9-62
-103-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:75:19-59
-104        <activity android:name="com.pfa.pfaapp.BTDeviceList" />
-104-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:76:9-50
-104-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:76:19-47
-105        <activity android:name="com.pfa.pfaapp.WebAppActivity" />
-105-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:77:9-52
-105-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:77:19-49
-106        <activity
-106-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:78:9-99:20
-107            android:name="com.pfa.pfaapp.SplashActivity"
-107-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:79:13-43
-108            android:screenOrientation="portrait"
-108-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:80:13-49
-109            android:theme="@style/DrawerActivityTheme" >
-109-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:81:13-55
-110            <intent-filter>
-110-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:82:13-86:29
-111                <action android:name="android.intent.action.MAIN" />
-111-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:83:17-69
-111-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:83:25-66
-112
-113                <category android:name="android.intent.category.LAUNCHER" />
-113-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:85:17-77
-113-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:85:27-74
-114            </intent-filter>
-115            <intent-filter android:autoVerify="true" >
-115-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:87:13-98:29
-115-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:88:17-42
-116                <action android:name="android.intent.action.VIEW" />
-116-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:90:17-69
-116-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:90:25-66
-117
-118                <category android:name="android.intent.category.DEFAULT" />
-118-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:17-76
-118-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:27-73
-119                <category android:name="android.intent.category.BROWSABLE" />
-119-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:93:17-78
-119-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:93:27-75
-120
-121                <data
-121-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:95:17-97:46
-122                    android:host="cell.pfa.gop.pk"
-122-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:96:21-51
-123                    android:scheme="https" />
-123-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:97:21-43
-124            </intent-filter>
-125        </activity>
-126        <activity
-126-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:100:9-102:52
-127            android:name="com.pfa.pfaapp.BaseActivity"
-127-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:101:13-41
-128            android:screenOrientation="portrait" />
-128-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:102:13-49
-129        <activity
-129-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:103:9-106:58
-130            android:name="com.pfa.pfaapp.LoginActivity"
-130-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:104:13-42
-131            android:screenOrientation="portrait"
-131-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:105:13-49
-132            android:theme="@style/DrawerActivityTheme" />
-132-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:106:13-55
-133        <!--
-134             Set color used with incoming notification messages. This is used when no color is set for the incoming
-135             notification message. See README(https://goo.gl/6BKBk7) for more.
-136        -->
-137        <activity
-137-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:111:9-115:58
-138            android:name="com.pfa.pfaapp.VerifyActivity"
-138-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:112:13-43
-139            android:launchMode="singleInstance"
-139-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:113:13-48
-140            android:screenOrientation="portrait"
-140-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:114:13-49
-141            android:theme="@style/DrawerActivityTheme" /> <!-- [END fcm_default_icon] -->
-141-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:115:13-55
-142        <!-- [START fcm_default_channel] -->
-143        <activity
-143-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:117:9-121:58
-144            android:name="com.pfa.pfaapp.PFADrawerActivity"
-144-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:118:13-46
-145            android:configChanges="orientation|screenSize"
-145-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:119:13-59
-146            android:screenOrientation="portrait"
-146-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:120:13-49
-147            android:theme="@style/DrawerActivityTheme" /> <!-- [END fcm_default_channel] -->
-147-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:121:13-55
-148        <!--
-149                  The API key for Google Maps-based APIs is defined as a string resource.
-150                  (See the file "res/values/google_maps_api.xml").
-151                  Note that the API key is linked to the encryption key used to sign the APK.
-152                  You need a different API key for each encryption key, including the release key that is used to
-153                  sign the APK for publishing.
-154                  You can define the keys for the debug and release targets in src/debug/ and src/release/.
-155        -->
-156        <activity
-156-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:130:9-133:58
-157            android:name="com.pfa.pfaapp.PFAFiltersActivity"
-157-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:131:13-47
-158            android:screenOrientation="portrait"
-158-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:132:13-49
-159            android:theme="@style/DrawerActivityTheme" />
-159-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:133:13-55
-160        <activity
-160-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:134:9-139:67
-161            android:name="com.pfa.pfaapp.PFADetailActivity"
-161-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:135:13-46
-162            android:configChanges="orientation|screenSize"
-162-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:136:13-59
-163            android:screenOrientation="portrait"
-163-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:137:13-49
-164            android:theme="@style/DrawerActivityTheme"
-164-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:138:13-55
-165            android:windowSoftInputMode="stateHidden|adjustPan" />
-165-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:139:13-64
-166        <activity
-166-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:140:9-144:58
-167            android:name="com.pfa.pfaapp.PFAAddNewActivity"
-167-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:141:13-46
-168            android:configChanges="orientation|screenSize"
-168-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:142:13-59
-169            android:screenOrientation="portrait"
-169-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:143:13-49
-170            android:theme="@style/DrawerActivityTheme" />
-170-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:144:13-55
-171        <activity
-171-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:145:9-149:58
-172            android:name="com.pfa.pfaapp.SignupActivity"
-172-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:146:13-43
-173            android:configChanges="orientation|screenSize"
-173-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:147:13-59
-174            android:screenOrientation="portrait"
-174-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:148:13-49
-175            android:theme="@style/DrawerActivityTheme" />
-175-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:149:13-55
-176        <activity
-176-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:150:9-154:58
-177            android:name="com.pfa.pfaapp.FBOMainGridActivity"
-177-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:151:13-48
-178            android:configChanges="orientation|screenSize"
-178-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:152:13-59
-179            android:screenOrientation="portrait"
-179-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:153:13-49
-180            android:theme="@style/DrawerActivityTheme" />
-180-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:154:13-55
-181        <activity
-181-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:155:9-159:58
-182            android:name="com.pfa.pfaapp.LocalFormsActivity"
-182-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:156:13-47
-183            android:configChanges="orientation|screenSize"
-183-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:157:13-59
-184            android:screenOrientation="portrait"
-184-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:158:13-49
-185            android:theme="@style/DrawerActivityTheme" />
-185-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:159:13-55
-186        <activity
-186-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:160:9-164:58
-187            android:name="com.pfa.pfaapp.MapsActivity"
-187-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:161:13-41
-188            android:configChanges="orientation|screenSize"
-188-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:162:13-59
-189            android:screenOrientation="portrait"
-189-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:163:13-49
-190            android:theme="@style/DrawerActivityTheme" /> <!-- [START firebase_service] -->
-190-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:164:13-55
-191        <activity
-191-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:165:9-169:58
-192            android:name="com.pfa.pfaapp.DropdownActivity"
-192-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:166:13-45
-193            android:configChanges="orientation|screenSize"
-193-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:167:13-59
-194            android:screenOrientation="portrait"
-194-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:168:13-49
-195            android:theme="@style/DrawerActivityTheme" /> <!-- [END firebase_service] -->
-195-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:169:13-55
-196        <!-- [START firebase_iid_service] -->
-197        <!-- [END firebase_iid_service] -->
-198        <activity
-198-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:172:9-175:58
-199            android:name="com.pfa.pfaapp.ImageGalleryActivity"
-199-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:173:13-49
-200            android:configChanges="orientation|screenSize"
-200-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:174:13-59
-201            android:theme="@style/DrawerActivityTheme" />
-201-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:175:13-55
-202        <activity
-202-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:176:9-179:58
-203            android:name="com.pfa.pfaapp.ForgotPinActivity"
-203-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:177:13-46
-204            android:screenOrientation="portrait"
-204-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:178:13-49
-205            android:theme="@style/DrawerActivityTheme" />
-205-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:179:13-55
-206        <activity
-206-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:180:9-184:58
-207            android:name="com.pfa.pfaapp.PFASearchActivity"
-207-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:181:13-46
-208            android:configChanges="orientation|screenSize"
-208-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:182:13-59
-209            android:screenOrientation="portrait"
-209-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:183:13-49
-210            android:theme="@style/DrawerActivityTheme" />
-210-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:184:13-55
-211        <activity
-211-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:185:9-189:58
-212            android:name="com.pfa.pfaapp.FPrintActivity"
-212-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:186:13-43
-213            android:configChanges="orientation|screenSize"
-213-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:187:13-59
-214            android:screenOrientation="portrait"
-214-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:188:13-49
-215            android:theme="@style/DrawerActivityTheme" />
-215-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:189:13-55
-216        <activity
-216-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:190:9-194:58
-217            android:name="com.pfa.pfaapp.LocalFormDialogActivity"
-217-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:191:13-52
-218            android:configChanges="orientation|screenSize"
-218-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:192:13-59
-219            android:screenOrientation="portrait"
-219-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:193:13-49
-220            android:theme="@style/DrawerActivityTheme" />
-220-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:194:13-55
-221        <activity
-221-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:195:9-199:58
-222            android:name="com.pfa.pfaapp.SetPinActivity"
-222-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:196:13-43
-223            android:configChanges="orientation|screenSize"
-223-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:197:13-59
-224            android:screenOrientation="portrait"
-224-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:198:13-49
-225            android:theme="@style/DrawerActivityTheme" />
-225-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:199:13-55
-226        <activity
-226-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:200:9-204:58
-227            android:name="com.pfa.pfaapp.PinSuccessActivity"
-227-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:201:13-47
-228            android:configChanges="orientation|screenSize"
-228-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:202:13-59
-229            android:screenOrientation="portrait"
-229-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:203:13-49
-230            android:theme="@style/DrawerActivityTheme" />
-230-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:204:13-55
-231        <activity
-231-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:205:9-209:58
-232            android:name="com.pfa.pfaapp.VerifySMSActivity"
-232-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:206:13-46
-233            android:configChanges="orientation|screenSize"
-233-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:207:13-59
-234            android:screenOrientation="portrait"
-234-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:208:13-49
-235            android:theme="@style/DrawerActivityTheme" /> <!-- android:launchMode="singleInstance" -->
-235-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:209:13-55
-236        <activity
-236-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:210:9-214:58
-237            android:name="com.pfa.pfaapp.NotificationActivity"
-237-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:211:13-49
-238            android:configChanges="orientation|screenSize"
-238-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:212:13-59
-239            android:screenOrientation="portrait"
-239-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:213:13-49
-240            android:theme="@style/DrawerActivityTheme" />
-240-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:214:13-55
-241        <activity
-241-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:215:9-220:63
-242            android:name="com.pfa.pfaapp.emergency.LockHelpActivity"
-242-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:216:13-55
-243            android:configChanges="keyboardHidden|orientation"
-243-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:217:13-63
-244            android:label="@string/app_name"
-244-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:218:13-45
-245            android:launchMode="singleInstance"
-245-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:219:13-48
-246            android:theme="@style/Theme_Dialog_Translucent" />
-246-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:220:13-60
-247
-248        <meta-data
-248-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:222:9-224:50
-249            android:name="com.google.firebase.messaging.default_notification_icon"
-249-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:223:13-83
-250            android:resource="@mipmap/pfalogo" />
-250-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:224:13-47
-251        <meta-data
-251-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:225:9-227:53
-252            android:name="com.google.firebase.messaging.default_notification_color"
-252-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:226:13-84
-253            android:resource="@color/colorAccent" />
-253-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:227:13-50
-254        <meta-data
-254-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:228:9-230:71
-255            android:name="com.google.firebase.messaging.default_notification_channel_id"
-255-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:229:13-89
-256            android:value="@string/default_notification_channel_id" /> <!-- <activity -->
-256-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:230:13-68
-257        <!-- android:name=".VideoRecordActivity" -->
-258        <!-- android:screenOrientation="portrait" -->
-259        <!-- android:theme="@style/DrawerActivityTheme" /> -->
-260        <!-- <activity -->
-261        <!-- android:name=".WebAppActivity" -->
-262        <!-- android:screenOrientation="portrait" -->
-263        <!-- android:theme="@style/WebViewTheme"> -->
-264        <!-- <intent-filter -->
-265        <!-- android:autoVerify="true" -->
-266        <!-- tools:targetApi="m"> -->
-267        <!-- <action android:name="android.intent.action.VIEW" /> -->
-268        <!-- <category android:name="android.intent.category.DEFAULT" /> -->
-269        <!-- <category android:name="android.intent.category.BROWSABLE" /> -->
-270        <!-- <data -->
-271        <!-- android:host="cell.pfa.gop.pk" -->
-272        <!-- android:scheme="https" /> -->
-273        <!-- </intent-filter> -->
-274        <!-- </activity> -->
-275        <meta-data
-275-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:249:9-251:55
-276            android:name="com.google.android.geo.API_KEY"
-276-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:250:13-58
-277            android:value="@string/google_maps_key" />
-277-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:251:13-52
-278        <meta-data
-278-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:252:9-254:69
-279            android:name="com.google.android.gms.version"
-279-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:253:13-58
-280            android:value="@integer/google_play_services_version" />
-280-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:254:13-66
-281
-282        <provider
-283            android:name="androidx.core.content.FileProvider"
-283-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:257:13-62
-284            android:authorities="com.pfaofficial.test.provider"
-284-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:258:13-60
-285            android:exported="false"
-285-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:259:13-37
-286            android:grantUriPermissions="true" >
-286-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:260:13-47
-287            <meta-data
-287-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:261:13-263:58
-288                android:name="android.support.FILE_PROVIDER_PATHS"
-288-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:262:17-67
-289                android:resource="@xml/provider_paths" />
-289-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:263:17-55
-290        </provider>
-291
-292        <receiver android:name="com.pfa.pfaapp.receivers.BootBroadcast" >
-292-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:266:9-270:20
-292-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:266:19-58
-293            <intent-filter>
-293-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:267:13-269:29
-294                <action android:name="android.intent.action.BOOT_COMPLETED" />
-294-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:268:17-79
-294-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:268:25-76
-295            </intent-filter>
-296        </receiver>
-297        <receiver
-297-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:271:9-279:20
-298            android:name="com.pfa.pfaapp.emergency.ScreenReceiver"
-298-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:272:13-53
-299            android:enabled="true"
-299-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:273:13-35
-300            android:exported="false"
-300-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:274:13-37
-301            android:label="RegisterReceiverService" >
-301-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:275:13-52
-302            <intent-filter>
-302-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:267:13-269:29
-303                <action android:name="android.intent.action.BOOT_COMPLETED" />
-303-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:268:17-79
-303-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:268:25-76
-304            </intent-filter>
-305        </receiver>
-306
-307        <service
-307-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:281:9-291:19
-308            android:name="com.pfa.pfaapp.locationutils.LocationUpdatesService"
-308-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:282:13-65
-309            android:enabled="true"
-309-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:283:13-35
-310            android:exported="false"
-310-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:284:13-37
-311            android:stopWithTask="true" >
-311-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:285:13-40
-312            <intent-filter android:priority="1000" >
-312-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:286:13-290:29
-312-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:286:28-51
-313                <action android:name="android.location.PROVIDERS_CHANGED" />
-313-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:287:17-77
-313-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:287:25-74
-314
-315                <category android:name="android.intent.category.DEFAULT" />
-315-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:17-76
-315-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:27-73
-316            </intent-filter>
-317        </service>
-318        <service
-318-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:292:9-298:19
-319            android:name="com.pfa.pfaapp.notifications.MyFirebaseMessagingService"
-319-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:293:13-69
-320            android:exported="true" >
-320-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:294:13-36
-321            <intent-filter>
-321-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:295:13-297:29
-322                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-322-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:296:17-78
-322-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:296:25-75
-323            </intent-filter>
-324        </service> <!-- Emergency Contact -->
-325        <service
-325-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:299:9-305:19
-326            android:name="com.pfa.pfaapp.notifications.MyJobService"
-326-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:300:13-55
-327            android:exported="false" >
-327-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:301:13-37
-328            <intent-filter>
-328-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:302:13-304:29
-329                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
-329-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:303:17-84
-329-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:303:25-81
-330            </intent-filter>
-331        </service>
-332        <service
-332-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:306:9-309:40
-333            android:name="com.pfa.pfaapp.emergency.RegisterReceiverService"
-333-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:307:13-62
-334            android:enabled="true"
-334-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:308:13-35
-335            android:exported="false" />
-335-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:309:13-37
-336
-337        <uses-library
-337-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:311:9-313:40
-338            android:name="org.apache.http.legacy"
-338-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:312:13-50
-339            android:required="false" />
-339-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:313:13-37
-340
-341        <activity
-341-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:24:9-32:20
-342            android:name="com.darsh.multipleimageselect.activities.AlbumSelectActivity"
-342-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:25:13-88
-343            android:configChanges="orientation|screenSize"
-343-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:26:13-59
-344            android:label="@string/app_name"
-344-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:27:13-45
-345            android:theme="@style/MultipleImageSelectTheme" >
-345-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:28:13-60
-346            <intent-filter>
-346-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:29:13-31:29
-347                <category android:name="android.intent.category.DEFAULT" />
-347-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:17-76
-347-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:27-73
-348            </intent-filter>
-349        </activity>
-350        <activity
-350-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:33:9-41:20
-351            android:name="com.darsh.multipleimageselect.activities.ImageSelectActivity"
-351-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:34:13-88
-352            android:configChanges="orientation|screenSize"
-352-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:35:13-59
-353            android:label="@string/app_name"
-353-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:36:13-45
-354            android:theme="@style/MultipleImageSelectTheme" >
-354-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:37:13-60
-355            <intent-filter>
-355-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:29:13-31:29
-356                <category android:name="android.intent.category.DEFAULT" />
-356-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:17-76
-356-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:27-73
-357            </intent-filter>
-358        </activity>
-359
-360        <service
-360-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\1992463a43f7f6400b2c2134388c8635\jetified-firebase-iid-21.1.0\AndroidManifest.xml:29:9-35:19
-361            android:name="com.google.firebase.components.ComponentDiscoveryService"
-361-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\1992463a43f7f6400b2c2134388c8635\jetified-firebase-iid-21.1.0\AndroidManifest.xml:30:13-84
-362            android:directBootAware="true"
-362-->[com.google.firebase:firebase-common:20.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\588f17dde35b5ebb8b81a063535c3b0c\jetified-firebase-common-20.0.0\AndroidManifest.xml:35:13-43
-363            android:exported="false" >
-363-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\1992463a43f7f6400b2c2134388c8635\jetified-firebase-iid-21.1.0\AndroidManifest.xml:31:13-37
-364            <meta-data
-364-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\1992463a43f7f6400b2c2134388c8635\jetified-firebase-iid-21.1.0\AndroidManifest.xml:32:13-34:85
-365                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
-365-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\1992463a43f7f6400b2c2134388c8635\jetified-firebase-iid-21.1.0\AndroidManifest.xml:33:17-96
-366                android:value="com.google.firebase.components.ComponentRegistrar" />
-366-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\1992463a43f7f6400b2c2134388c8635\jetified-firebase-iid-21.1.0\AndroidManifest.xml:34:17-82
-367            <meta-data
-367-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:52:13-54:85
-368                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-368-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:53:17-119
-369                android:value="com.google.firebase.components.ComponentRegistrar" />
-369-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:54:17-82
-370            <meta-data
-370-->[com.google.firebase:firebase-database:20.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b521acf4dbcd5b0f4926145dd68162da\jetified-firebase-database-20.0.2\AndroidManifest.xml:32:13-34:85
-371                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
-371-->[com.google.firebase:firebase-database:20.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b521acf4dbcd5b0f4926145dd68162da\jetified-firebase-database-20.0.2\AndroidManifest.xml:33:17-109
-372                android:value="com.google.firebase.components.ComponentRegistrar" />
-372-->[com.google.firebase:firebase-database:20.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b521acf4dbcd5b0f4926145dd68162da\jetified-firebase-database-20.0.2\AndroidManifest.xml:34:17-82
-373            <meta-data
-373-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:77:13-79:85
-374                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-374-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:78:17-109
-375                android:value="com.google.firebase.components.ComponentRegistrar" />
-375-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:79:17-82
-376            <meta-data
-376-->[com.google.android.gms:play-services-measurement-api:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\8f7c75bf864a1c4e6b1bbcc8dd897692\jetified-play-services-measurement-api-19.0.2\AndroidManifest.xml:30:13-32:85
-377                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-377-->[com.google.android.gms:play-services-measurement-api:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\8f7c75bf864a1c4e6b1bbcc8dd897692\jetified-play-services-measurement-api-19.0.2\AndroidManifest.xml:31:17-139
-378                android:value="com.google.firebase.components.ComponentRegistrar" />
-378-->[com.google.android.gms:play-services-measurement-api:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\8f7c75bf864a1c4e6b1bbcc8dd897692\jetified-play-services-measurement-api-19.0.2\AndroidManifest.xml:32:17-82
-379            <meta-data
-379-->[com.google.firebase:firebase-installations:17.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f091b073cef3de8eebfeaa5a28213f77\jetified-firebase-installations-17.0.0\AndroidManifest.xml:18:13-20:85
-380                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-380-->[com.google.firebase:firebase-installations:17.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f091b073cef3de8eebfeaa5a28213f77\jetified-firebase-installations-17.0.0\AndroidManifest.xml:19:17-127
-381                android:value="com.google.firebase.components.ComponentRegistrar" />
-381-->[com.google.firebase:firebase-installations:17.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f091b073cef3de8eebfeaa5a28213f77\jetified-firebase-installations-17.0.0\AndroidManifest.xml:20:17-82
-382            <meta-data
-382-->[com.google.firebase:firebase-datatransport:18.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\fbab4d2099995596e2a97eca0fd3946f\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:28:13-30:85
-383                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
-383-->[com.google.firebase:firebase-datatransport:18.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\fbab4d2099995596e2a97eca0fd3946f\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:29:17-115
-384                android:value="com.google.firebase.components.ComponentRegistrar" />
-384-->[com.google.firebase:firebase-datatransport:18.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\fbab4d2099995596e2a97eca0fd3946f\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:30:17-82
-385        </service>
-386
-387        <receiver
-387-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:28:9-35:20
-388            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-388-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:29:13-78
-389            android:exported="true"
-389-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:30:13-36
-390            android:permission="com.google.android.c2dm.permission.SEND" >
-390-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:31:13-73
-391            <intent-filter>
-391-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:32:13-34:29
-392                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-392-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:33:17-81
-392-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:33:25-78
-393            </intent-filter>
-394        </receiver>
-395        <!--
-396             FirebaseMessagingService performs security checks at runtime,
-397             but set to not exported to explicitly avoid allowing another app to call it.
-398        -->
-399        <service
-399-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:41:9-48:19
-400            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-400-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:42:13-82
-401            android:directBootAware="true"
-401-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:43:13-43
-402            android:exported="false" >
-402-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:44:13-37
-403            <intent-filter android:priority="-500" >
-403-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:295:13-297:29
-404                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-404-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:296:17-78
-404-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:296:25-75
-405            </intent-filter>
-406        </service>
-407        <!--
-408             Receives GooglePlay execution requests and forwards them to the
-409             appropriate internal service.
-410        -->
-411        <service
-411-->[com.firebase:firebase-jobdispatcher:0.8.5] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b791d5ebb043e859e33dc208b8af877f\jetified-firebase-jobdispatcher-0.8.5\AndroidManifest.xml:32:9-39:19
-412            android:name="com.firebase.jobdispatcher.GooglePlayReceiver"
-412-->[com.firebase:firebase-jobdispatcher:0.8.5] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b791d5ebb043e859e33dc208b8af877f\jetified-firebase-jobdispatcher-0.8.5\AndroidManifest.xml:33:13-73
-413            android:exported="true"
-413-->[com.firebase:firebase-jobdispatcher:0.8.5] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b791d5ebb043e859e33dc208b8af877f\jetified-firebase-jobdispatcher-0.8.5\AndroidManifest.xml:34:13-36
-414            android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE" >
-414-->[com.firebase:firebase-jobdispatcher:0.8.5] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b791d5ebb043e859e33dc208b8af877f\jetified-firebase-jobdispatcher-0.8.5\AndroidManifest.xml:35:13-93
-415            <intent-filter>
-415-->[com.firebase:firebase-jobdispatcher:0.8.5] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b791d5ebb043e859e33dc208b8af877f\jetified-firebase-jobdispatcher-0.8.5\AndroidManifest.xml:36:13-38:29
-416                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />
-416-->[com.firebase:firebase-jobdispatcher:0.8.5] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b791d5ebb043e859e33dc208b8af877f\jetified-firebase-jobdispatcher-0.8.5\AndroidManifest.xml:37:17-87
-416-->[com.firebase:firebase-jobdispatcher:0.8.5] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b791d5ebb043e859e33dc208b8af877f\jetified-firebase-jobdispatcher-0.8.5\AndroidManifest.xml:37:25-84
-417            </intent-filter>
-418        </service>
-419
-420        <activity
-420-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:27:9-44:20
-421            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-421-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:28:13-80
-422            android:excludeFromRecents="true"
-422-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:29:13-46
-423            android:exported="true"
-423-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:30:13-36
-424            android:launchMode="singleTask"
-424-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:31:13-44
-425            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-425-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:32:13-72
-426            <intent-filter>
-426-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:33:13-43:29
-427                <action android:name="android.intent.action.VIEW" />
-427-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:90:17-69
-427-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:90:25-66
-428
-429                <category android:name="android.intent.category.DEFAULT" />
-429-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:17-76
-429-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:27-73
-430                <category android:name="android.intent.category.BROWSABLE" />
-430-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:93:17-78
-430-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:93:27-75
-431
-432                <data
-432-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:95:17-97:46
-433                    android:host="firebase.auth"
-433-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:96:21-51
-434                    android:path="/"
-435                    android:scheme="genericidp" />
-435-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:97:21-43
-436            </intent-filter>
-437        </activity>
-438        <activity
-438-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:45:9-62:20
-439            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-439-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:46:13-79
-440            android:excludeFromRecents="true"
-440-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:47:13-46
-441            android:exported="true"
-441-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:48:13-36
-442            android:launchMode="singleTask"
-442-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:49:13-44
-443            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-443-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:50:13-72
-444            <intent-filter>
-444-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:51:13-61:29
-445                <action android:name="android.intent.action.VIEW" />
-445-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:90:17-69
-445-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:90:25-66
-446
-447                <category android:name="android.intent.category.DEFAULT" />
-447-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:17-76
-447-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:27-73
-448                <category android:name="android.intent.category.BROWSABLE" />
-448-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:93:17-78
-448-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:93:27-75
-449
-450                <data
-450-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:95:17-97:46
-451                    android:host="firebase.auth"
-451-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:96:21-51
-452                    android:path="/"
-453                    android:scheme="recaptcha" />
-453-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:97:21-43
-454            </intent-filter>
-455        </activity>
-456
-457        <service
-457-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:64:9-73:19
-458            android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService"
-458-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:65:13-101
-459            android:enabled="true"
-459-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:66:13-35
-460            android:exported="false" >
-460-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:67:13-37
-461            <intent-filter>
-461-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:68:13-72:29
-462                <action android:name="com.google.firebase.auth.api.gms.service.START" />
-462-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:69:17-89
-462-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:69:25-86
-463
-464                <category android:name="android.intent.category.DEFAULT" />
-464-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:17-76
-464-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:27-73
-465            </intent-filter>
-466        </service>
-467
-468        <activity
-468-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:46:9-52:63
-469            android:name="com.journeyapps.barcodescanner.CaptureActivity"
-469-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:47:13-74
-470            android:clearTaskOnLaunch="true"
-470-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:48:13-45
-471            android:screenOrientation="sensorLandscape"
-471-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:49:13-56
-472            android:stateNotNeeded="true"
-472-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:50:13-42
-473            android:theme="@style/zxing_CaptureTheme"
-473-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:51:13-54
-474            android:windowSoftInputMode="stateAlwaysHidden" /> <!-- The activities will be merged into the manifest of the hosting app. -->
-474-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\839635b98eb5396056263dbd77a701ad\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:52:13-60
-475        <activity
-475-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:18:9-24:45
-476            android:name="com.google.android.play.core.missingsplits.PlayCoreMissingSplitsActivity"
-476-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:19:13-100
-477            android:enabled="false"
-477-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:20:13-36
-478            android:exported="false"
-478-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:21:13-37
-479            android:launchMode="singleInstance"
-479-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:22:13-48
-480            android:process=":playcore_missing_splits_activity"
-480-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:23:13-64
-481            android:stateNotNeeded="true" />
-481-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:24:13-42
-482        <activity
-482-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:25:9-29:65
-483            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
-483-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:26:13-93
-484            android:exported="false"
-484-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:27:13-37
-485            android:stateNotNeeded="true"
-485-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:28:13-42
-486            android:theme="@style/Theme.PlayCore.Transparent" /> <!-- The services will be merged into the manifest of the hosting app. -->
-486-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:29:13-62
-487        <service
-487-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:32:9-39:19
-488            android:name="com.google.android.play.core.assetpacks.AssetPackExtractionService"
-488-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:33:13-94
-489            android:enabled="false"
-489-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:34:13-36
-490            android:exported="true" >
-490-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:35:13-36
-491            <meta-data
-491-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:36:13-38:41
-492                android:name="com.google.android.play.core.assetpacks.versionCode"
-492-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:37:17-83
-493                android:value="11002" />
-493-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:38:17-38
-494        </service>
-495        <service
-495-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:40:9-43:40
-496            android:name="com.google.android.play.core.assetpacks.ExtractionForegroundService"
-496-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:41:13-95
-497            android:enabled="false"
-497-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:42:13-36
-498            android:exported="false" />
-498-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:43:13-37
-499
-500        <receiver
-500-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:29:9-33:20
-501            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-501-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:30:13-85
-502            android:enabled="true"
-502-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:31:13-35
-503            android:exported="false" >
-503-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:32:13-37
-504        </receiver>
-505
-506        <service
-506-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:35:9-38:40
-507            android:name="com.google.android.gms.measurement.AppMeasurementService"
-507-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:36:13-84
-508            android:enabled="true"
-508-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:37:13-35
-509            android:exported="false" />
-509-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:38:13-37
-510        <service
-510-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:39:9-43:72
-511            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-511-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:40:13-87
-512            android:enabled="true"
-512-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:41:13-35
-513            android:exported="false"
-513-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:42:13-37
-514            android:permission="android.permission.BIND_JOB_SERVICE" />
-514-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:43:13-69
-515
-516        <activity
-516-->[com.google.android.gms:play-services-base:17.5.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5d823f263c4afcfa92e673b1cf5744fe\jetified-play-services-base-17.5.0\AndroidManifest.xml:23:9-26:75
-517            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-517-->[com.google.android.gms:play-services-base:17.5.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5d823f263c4afcfa92e673b1cf5744fe\jetified-play-services-base-17.5.0\AndroidManifest.xml:24:13-79
-518            android:exported="false"
-518-->[com.google.android.gms:play-services-base:17.5.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5d823f263c4afcfa92e673b1cf5744fe\jetified-play-services-base-17.5.0\AndroidManifest.xml:25:13-37
-519            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-519-->[com.google.android.gms:play-services-base:17.5.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5d823f263c4afcfa92e673b1cf5744fe\jetified-play-services-base-17.5.0\AndroidManifest.xml:26:13-72
-520
-521        <provider
-521-->[com.google.firebase:firebase-common:20.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\588f17dde35b5ebb8b81a063535c3b0c\jetified-firebase-common-20.0.0\AndroidManifest.xml:26:9-31:39
-522            android:name="com.google.firebase.provider.FirebaseInitProvider"
-522-->[com.google.firebase:firebase-common:20.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\588f17dde35b5ebb8b81a063535c3b0c\jetified-firebase-common-20.0.0\AndroidManifest.xml:27:13-77
-523            android:authorities="com.pfaofficial.test.firebaseinitprovider"
-523-->[com.google.firebase:firebase-common:20.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\588f17dde35b5ebb8b81a063535c3b0c\jetified-firebase-common-20.0.0\AndroidManifest.xml:28:13-72
-524            android:directBootAware="true"
-524-->[com.google.firebase:firebase-common:20.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\588f17dde35b5ebb8b81a063535c3b0c\jetified-firebase-common-20.0.0\AndroidManifest.xml:29:13-43
-525            android:exported="false"
-525-->[com.google.firebase:firebase-common:20.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\588f17dde35b5ebb8b81a063535c3b0c\jetified-firebase-common-20.0.0\AndroidManifest.xml:30:13-37
-526            android:initOrder="100" />
-526-->[com.google.firebase:firebase-common:20.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\588f17dde35b5ebb8b81a063535c3b0c\jetified-firebase-common-20.0.0\AndroidManifest.xml:31:13-36
-527
-528        <service
-528-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\a06994068ed0e601e6e09b7df203be5a\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:29:9-35:19
-529            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-529-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\a06994068ed0e601e6e09b7df203be5a\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:30:13-103
-530            android:exported="false" >
-530-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\a06994068ed0e601e6e09b7df203be5a\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:31:13-37
-531            <meta-data
-531-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\a06994068ed0e601e6e09b7df203be5a\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:32:13-34:39
-532                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-532-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\a06994068ed0e601e6e09b7df203be5a\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:33:17-94
-533                android:value="cct" />
-533-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\a06994068ed0e601e6e09b7df203be5a\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:34:17-36
-534        </service>
-535        <service
-535-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5b090c409d2b09f81d765be193c3d1be\jetified-transport-runtime-3.0.0\AndroidManifest.xml:26:9-30:19
-536            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-536-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5b090c409d2b09f81d765be193c3d1be\jetified-transport-runtime-3.0.0\AndroidManifest.xml:27:13-117
-537            android:exported="false"
-537-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5b090c409d2b09f81d765be193c3d1be\jetified-transport-runtime-3.0.0\AndroidManifest.xml:28:13-37
-538            android:permission="android.permission.BIND_JOB_SERVICE" >
-538-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5b090c409d2b09f81d765be193c3d1be\jetified-transport-runtime-3.0.0\AndroidManifest.xml:29:13-69
-539        </service>
-540
-541        <receiver
-541-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5b090c409d2b09f81d765be193c3d1be\jetified-transport-runtime-3.0.0\AndroidManifest.xml:32:9-34:40
-542            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-542-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5b090c409d2b09f81d765be193c3d1be\jetified-transport-runtime-3.0.0\AndroidManifest.xml:33:13-132
-543            android:exported="false" />
-543-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5b090c409d2b09f81d765be193c3d1be\jetified-transport-runtime-3.0.0\AndroidManifest.xml:34:13-37
-544    </application>
-545
-546</manifest>
+102        <activity android:name="com.pfa.pfaapp.printing.PrinterActivity" />
+102-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:75:9-62
+102-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:75:19-59
+103        <activity android:name="com.pfa.pfaapp.BTDeviceList" />
+103-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:76:9-50
+103-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:76:19-47
+104        <activity android:name="com.pfa.pfaapp.WebAppActivity" />
+104-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:77:9-52
+104-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:77:19-49
+105        <activity
+105-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:78:9-99:20
+106            android:name="com.pfa.pfaapp.SplashActivity"
+106-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:79:13-43
+107            android:screenOrientation="portrait"
+107-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:80:13-49
+108            android:theme="@style/DrawerActivityTheme" >
+108-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:81:13-55
+109            <intent-filter>
+109-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:82:13-86:29
+110                <action android:name="android.intent.action.MAIN" />
+110-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:83:17-69
+110-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:83:25-66
+111
+112                <category android:name="android.intent.category.LAUNCHER" />
+112-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:85:17-77
+112-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:85:27-74
+113            </intent-filter>
+114            <intent-filter android:autoVerify="true" >
+114-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:87:13-98:29
+114-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:88:17-42
+115                <action android:name="android.intent.action.VIEW" />
+115-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:90:17-69
+115-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:90:25-66
+116
+117                <category android:name="android.intent.category.DEFAULT" />
+117-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:17-76
+117-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:27-73
+118                <category android:name="android.intent.category.BROWSABLE" />
+118-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:93:17-78
+118-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:93:27-75
+119
+120                <data
+120-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:95:17-97:46
+121                    android:host="cell.pfa.gop.pk"
+121-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:96:21-51
+122                    android:scheme="https" />
+122-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:97:21-43
+123            </intent-filter>
+124        </activity>
+125        <activity
+125-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:100:9-102:52
+126            android:name="com.pfa.pfaapp.BaseActivity"
+126-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:101:13-41
+127            android:screenOrientation="portrait" />
+127-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:102:13-49
+128        <activity
+128-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:103:9-106:58
+129            android:name="com.pfa.pfaapp.LoginActivity"
+129-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:104:13-42
+130            android:screenOrientation="portrait"
+130-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:105:13-49
+131            android:theme="@style/DrawerActivityTheme" />
+131-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:106:13-55
+132        <!--
+133             Set color used with incoming notification messages. This is used when no color is set for the incoming
+134             notification message. See README(https://goo.gl/6BKBk7) for more.
+135        -->
+136        <activity
+136-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:111:9-115:58
+137            android:name="com.pfa.pfaapp.VerifyActivity"
+137-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:112:13-43
+138            android:launchMode="singleInstance"
+138-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:113:13-48
+139            android:screenOrientation="portrait"
+139-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:114:13-49
+140            android:theme="@style/DrawerActivityTheme" /> <!-- [END fcm_default_icon] -->
+140-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:115:13-55
+141        <!-- [START fcm_default_channel] -->
+142        <activity
+142-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:117:9-121:58
+143            android:name="com.pfa.pfaapp.PFADrawerActivity"
+143-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:118:13-46
+144            android:configChanges="orientation|screenSize"
+144-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:119:13-59
+145            android:screenOrientation="portrait"
+145-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:120:13-49
+146            android:theme="@style/DrawerActivityTheme" /> <!-- [END fcm_default_channel] -->
+146-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:121:13-55
+147        <!--
+148                  The API key for Google Maps-based APIs is defined as a string resource.
+149                  (See the file "res/values/google_maps_api.xml").
+150                  Note that the API key is linked to the encryption key used to sign the APK.
+151                  You need a different API key for each encryption key, including the release key that is used to
+152                  sign the APK for publishing.
+153                  You can define the keys for the debug and release targets in src/debug/ and src/release/.
+154        -->
+155        <activity
+155-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:130:9-133:58
+156            android:name="com.pfa.pfaapp.PFAFiltersActivity"
+156-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:131:13-47
+157            android:screenOrientation="portrait"
+157-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:132:13-49
+158            android:theme="@style/DrawerActivityTheme" />
+158-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:133:13-55
+159        <activity
+159-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:134:9-139:67
+160            android:name="com.pfa.pfaapp.PFADetailActivity"
+160-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:135:13-46
+161            android:configChanges="orientation|screenSize"
+161-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:136:13-59
+162            android:screenOrientation="portrait"
+162-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:137:13-49
+163            android:theme="@style/DrawerActivityTheme"
+163-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:138:13-55
+164            android:windowSoftInputMode="stateHidden|adjustPan" />
+164-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:139:13-64
+165        <activity
+165-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:140:9-144:58
+166            android:name="com.pfa.pfaapp.PFAAddNewActivity"
+166-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:141:13-46
+167            android:configChanges="orientation|screenSize"
+167-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:142:13-59
+168            android:screenOrientation="portrait"
+168-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:143:13-49
+169            android:theme="@style/DrawerActivityTheme" />
+169-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:144:13-55
+170        <activity
+170-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:145:9-149:58
+171            android:name="com.pfa.pfaapp.SignupActivity"
+171-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:146:13-43
+172            android:configChanges="orientation|screenSize"
+172-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:147:13-59
+173            android:screenOrientation="portrait"
+173-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:148:13-49
+174            android:theme="@style/DrawerActivityTheme" />
+174-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:149:13-55
+175        <activity
+175-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:150:9-154:58
+176            android:name="com.pfa.pfaapp.FBOMainGridActivity"
+176-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:151:13-48
+177            android:configChanges="orientation|screenSize"
+177-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:152:13-59
+178            android:screenOrientation="portrait"
+178-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:153:13-49
+179            android:theme="@style/DrawerActivityTheme" />
+179-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:154:13-55
+180        <activity
+180-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:155:9-159:58
+181            android:name="com.pfa.pfaapp.LocalFormsActivity"
+181-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:156:13-47
+182            android:configChanges="orientation|screenSize"
+182-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:157:13-59
+183            android:screenOrientation="portrait"
+183-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:158:13-49
+184            android:theme="@style/DrawerActivityTheme" />
+184-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:159:13-55
+185        <activity
+185-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:160:9-164:58
+186            android:name="com.pfa.pfaapp.MapsActivity"
+186-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:161:13-41
+187            android:configChanges="orientation|screenSize"
+187-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:162:13-59
+188            android:screenOrientation="portrait"
+188-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:163:13-49
+189            android:theme="@style/DrawerActivityTheme" /> <!-- [START firebase_service] -->
+189-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:164:13-55
+190        <activity
+190-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:165:9-169:58
+191            android:name="com.pfa.pfaapp.DropdownActivity"
+191-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:166:13-45
+192            android:configChanges="orientation|screenSize"
+192-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:167:13-59
+193            android:screenOrientation="portrait"
+193-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:168:13-49
+194            android:theme="@style/DrawerActivityTheme" /> <!-- [END firebase_service] -->
+194-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:169:13-55
+195        <!-- [START firebase_iid_service] -->
+196        <!-- [END firebase_iid_service] -->
+197        <activity
+197-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:172:9-175:58
+198            android:name="com.pfa.pfaapp.ImageGalleryActivity"
+198-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:173:13-49
+199            android:configChanges="orientation|screenSize"
+199-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:174:13-59
+200            android:theme="@style/DrawerActivityTheme" />
+200-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:175:13-55
+201        <activity
+201-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:176:9-179:58
+202            android:name="com.pfa.pfaapp.ForgotPinActivity"
+202-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:177:13-46
+203            android:screenOrientation="portrait"
+203-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:178:13-49
+204            android:theme="@style/DrawerActivityTheme" />
+204-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:179:13-55
+205        <activity
+205-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:180:9-184:58
+206            android:name="com.pfa.pfaapp.PFASearchActivity"
+206-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:181:13-46
+207            android:configChanges="orientation|screenSize"
+207-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:182:13-59
+208            android:screenOrientation="portrait"
+208-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:183:13-49
+209            android:theme="@style/DrawerActivityTheme" />
+209-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:184:13-55
+210        <activity
+210-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:185:9-189:58
+211            android:name="com.pfa.pfaapp.FPrintActivity"
+211-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:186:13-43
+212            android:configChanges="orientation|screenSize"
+212-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:187:13-59
+213            android:screenOrientation="portrait"
+213-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:188:13-49
+214            android:theme="@style/DrawerActivityTheme" />
+214-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:189:13-55
+215        <activity
+215-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:190:9-194:58
+216            android:name="com.pfa.pfaapp.LocalFormDialogActivity"
+216-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:191:13-52
+217            android:configChanges="orientation|screenSize"
+217-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:192:13-59
+218            android:screenOrientation="portrait"
+218-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:193:13-49
+219            android:theme="@style/DrawerActivityTheme" />
+219-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:194:13-55
+220        <activity
+220-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:195:9-199:58
+221            android:name="com.pfa.pfaapp.SetPinActivity"
+221-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:196:13-43
+222            android:configChanges="orientation|screenSize"
+222-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:197:13-59
+223            android:screenOrientation="portrait"
+223-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:198:13-49
+224            android:theme="@style/DrawerActivityTheme" />
+224-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:199:13-55
+225        <activity
+225-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:200:9-204:58
+226            android:name="com.pfa.pfaapp.PinSuccessActivity"
+226-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:201:13-47
+227            android:configChanges="orientation|screenSize"
+227-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:202:13-59
+228            android:screenOrientation="portrait"
+228-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:203:13-49
+229            android:theme="@style/DrawerActivityTheme" />
+229-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:204:13-55
+230        <activity
+230-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:205:9-209:58
+231            android:name="com.pfa.pfaapp.VerifySMSActivity"
+231-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:206:13-46
+232            android:configChanges="orientation|screenSize"
+232-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:207:13-59
+233            android:screenOrientation="portrait"
+233-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:208:13-49
+234            android:theme="@style/DrawerActivityTheme" /> <!-- android:launchMode="singleInstance" -->
+234-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:209:13-55
+235        <activity
+235-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:210:9-214:58
+236            android:name="com.pfa.pfaapp.NotificationActivity"
+236-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:211:13-49
+237            android:configChanges="orientation|screenSize"
+237-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:212:13-59
+238            android:screenOrientation="portrait"
+238-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:213:13-49
+239            android:theme="@style/DrawerActivityTheme" />
+239-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:214:13-55
+240        <activity
+240-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:215:9-220:63
+241            android:name="com.pfa.pfaapp.emergency.LockHelpActivity"
+241-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:216:13-55
+242            android:configChanges="keyboardHidden|orientation"
+242-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:217:13-63
+243            android:label="@string/app_name"
+243-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:218:13-45
+244            android:launchMode="singleInstance"
+244-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:219:13-48
+245            android:theme="@style/Theme_Dialog_Translucent" />
+245-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:220:13-60
+246
+247        <meta-data
+247-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:222:9-224:50
+248            android:name="com.google.firebase.messaging.default_notification_icon"
+248-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:223:13-83
+249            android:resource="@mipmap/pfalogo" />
+249-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:224:13-47
+250        <meta-data
+250-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:225:9-227:53
+251            android:name="com.google.firebase.messaging.default_notification_color"
+251-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:226:13-84
+252            android:resource="@color/colorAccent" />
+252-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:227:13-50
+253        <meta-data
+253-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:228:9-230:71
+254            android:name="com.google.firebase.messaging.default_notification_channel_id"
+254-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:229:13-89
+255            android:value="@string/default_notification_channel_id" /> <!-- <activity -->
+255-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:230:13-68
+256        <!-- android:name=".VideoRecordActivity" -->
+257        <!-- android:screenOrientation="portrait" -->
+258        <!-- android:theme="@style/DrawerActivityTheme" /> -->
+259        <!-- <activity -->
+260        <!-- android:name=".WebAppActivity" -->
+261        <!-- android:screenOrientation="portrait" -->
+262        <!-- android:theme="@style/WebViewTheme"> -->
+263        <!-- <intent-filter -->
+264        <!-- android:autoVerify="true" -->
+265        <!-- tools:targetApi="m"> -->
+266        <!-- <action android:name="android.intent.action.VIEW" /> -->
+267        <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+268        <!-- <category android:name="android.intent.category.BROWSABLE" /> -->
+269        <!-- <data -->
+270        <!-- android:host="cell.pfa.gop.pk" -->
+271        <!-- android:scheme="https" /> -->
+272        <!-- </intent-filter> -->
+273        <!-- </activity> -->
+274        <meta-data
+274-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:249:9-251:55
+275            android:name="com.google.android.geo.API_KEY"
+275-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:250:13-58
+276            android:value="@string/google_maps_key" />
+276-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:251:13-52
+277        <meta-data
+277-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:252:9-254:69
+278            android:name="com.google.android.gms.version"
+278-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:253:13-58
+279            android:value="@integer/google_play_services_version" />
+279-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:254:13-66
+280
+281        <provider
+282            android:name="androidx.core.content.FileProvider"
+282-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:257:13-62
+283            android:authorities="com.pfaofficial.provider"
+283-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:258:13-60
+284            android:exported="false"
+284-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:259:13-37
+285            android:grantUriPermissions="true" >
+285-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:260:13-47
+286            <meta-data
+286-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:261:13-263:58
+287                android:name="android.support.FILE_PROVIDER_PATHS"
+287-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:262:17-67
+288                android:resource="@xml/provider_paths" />
+288-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:263:17-55
+289        </provider>
+290
+291        <receiver android:name="com.pfa.pfaapp.receivers.BootBroadcast" >
+291-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:266:9-270:20
+291-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:266:19-58
+292            <intent-filter>
+292-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:267:13-269:29
+293                <action android:name="android.intent.action.BOOT_COMPLETED" />
+293-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:268:17-79
+293-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:268:25-76
+294            </intent-filter>
+295        </receiver>
+296        <receiver
+296-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:271:9-279:20
+297            android:name="com.pfa.pfaapp.emergency.ScreenReceiver"
+297-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:272:13-53
+298            android:enabled="true"
+298-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:273:13-35
+299            android:exported="false"
+299-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:274:13-37
+300            android:label="RegisterReceiverService" >
+300-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:275:13-52
+301            <intent-filter>
+301-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:267:13-269:29
+302                <action android:name="android.intent.action.BOOT_COMPLETED" />
+302-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:268:17-79
+302-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:268:25-76
+303            </intent-filter>
+304        </receiver>
+305
+306        <service
+306-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:281:9-291:19
+307            android:name="com.pfa.pfaapp.locationutils.LocationUpdatesService"
+307-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:282:13-65
+308            android:enabled="true"
+308-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:283:13-35
+309            android:exported="false"
+309-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:284:13-37
+310            android:stopWithTask="true" >
+310-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:285:13-40
+311            <intent-filter android:priority="1000" >
+311-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:286:13-290:29
+311-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:286:28-51
+312                <action android:name="android.location.PROVIDERS_CHANGED" />
+312-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:287:17-77
+312-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:287:25-74
+313
+314                <category android:name="android.intent.category.DEFAULT" />
+314-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:17-76
+314-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:27-73
+315            </intent-filter>
+316        </service>
+317        <service
+317-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:292:9-298:19
+318            android:name="com.pfa.pfaapp.notifications.MyFirebaseMessagingService"
+318-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:293:13-69
+319            android:exported="true" >
+319-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:294:13-36
+320            <intent-filter>
+320-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:295:13-297:29
+321                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+321-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:296:17-78
+321-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:296:25-75
+322            </intent-filter>
+323        </service> <!-- Emergency Contact -->
+324        <service
+324-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:299:9-305:19
+325            android:name="com.pfa.pfaapp.notifications.MyJobService"
+325-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:300:13-55
+326            android:exported="false" >
+326-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:301:13-37
+327            <intent-filter>
+327-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:302:13-304:29
+328                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
+328-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:303:17-84
+328-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:303:25-81
+329            </intent-filter>
+330        </service>
+331        <service
+331-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:306:9-309:40
+332            android:name="com.pfa.pfaapp.emergency.RegisterReceiverService"
+332-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:307:13-62
+333            android:enabled="true"
+333-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:308:13-35
+334            android:exported="false" />
+334-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:309:13-37
+335
+336        <uses-library
+336-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:311:9-313:40
+337            android:name="org.apache.http.legacy"
+337-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:312:13-50
+338            android:required="false" />
+338-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:313:13-37
+339
+340        <activity
+340-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:24:9-32:20
+341            android:name="com.darsh.multipleimageselect.activities.AlbumSelectActivity"
+341-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:25:13-88
+342            android:configChanges="orientation|screenSize"
+342-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:26:13-59
+343            android:label="@string/app_name"
+343-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:27:13-45
+344            android:theme="@style/MultipleImageSelectTheme" >
+344-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:28:13-60
+345            <intent-filter>
+345-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:29:13-31:29
+346                <category android:name="android.intent.category.DEFAULT" />
+346-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:17-76
+346-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:27-73
+347            </intent-filter>
+348        </activity>
+349        <activity
+349-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:33:9-41:20
+350            android:name="com.darsh.multipleimageselect.activities.ImageSelectActivity"
+350-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:34:13-88
+351            android:configChanges="orientation|screenSize"
+351-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:35:13-59
+352            android:label="@string/app_name"
+352-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:36:13-45
+353            android:theme="@style/MultipleImageSelectTheme" >
+353-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:37:13-60
+354            <intent-filter>
+354-->[:multipleimageselect] D:\Usman\PFAAndroidAppLatest\multipleimageselect\build\intermediates\library_manifest\debug\AndroidManifest.xml:29:13-31:29
+355                <category android:name="android.intent.category.DEFAULT" />
+355-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:17-76
+355-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:27-73
+356            </intent-filter>
+357        </activity>
+358
+359        <service
+359-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\1992463a43f7f6400b2c2134388c8635\jetified-firebase-iid-21.1.0\AndroidManifest.xml:29:9-35:19
+360            android:name="com.google.firebase.components.ComponentDiscoveryService"
+360-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\1992463a43f7f6400b2c2134388c8635\jetified-firebase-iid-21.1.0\AndroidManifest.xml:30:13-84
+361            android:directBootAware="true"
+361-->[com.google.firebase:firebase-common:20.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\588f17dde35b5ebb8b81a063535c3b0c\jetified-firebase-common-20.0.0\AndroidManifest.xml:35:13-43
+362            android:exported="false" >
+362-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\1992463a43f7f6400b2c2134388c8635\jetified-firebase-iid-21.1.0\AndroidManifest.xml:31:13-37
+363            <meta-data
+363-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\1992463a43f7f6400b2c2134388c8635\jetified-firebase-iid-21.1.0\AndroidManifest.xml:32:13-34:85
+364                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+364-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\1992463a43f7f6400b2c2134388c8635\jetified-firebase-iid-21.1.0\AndroidManifest.xml:33:17-96
+365                android:value="com.google.firebase.components.ComponentRegistrar" />
+365-->[com.google.firebase:firebase-iid:21.1.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\1992463a43f7f6400b2c2134388c8635\jetified-firebase-iid-21.1.0\AndroidManifest.xml:34:17-82
+366            <meta-data
+366-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:52:13-54:85
+367                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+367-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:53:17-119
+368                android:value="com.google.firebase.components.ComponentRegistrar" />
+368-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:54:17-82
+369            <meta-data
+369-->[com.google.firebase:firebase-database:20.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b521acf4dbcd5b0f4926145dd68162da\jetified-firebase-database-20.0.2\AndroidManifest.xml:32:13-34:85
+370                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+370-->[com.google.firebase:firebase-database:20.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b521acf4dbcd5b0f4926145dd68162da\jetified-firebase-database-20.0.2\AndroidManifest.xml:33:17-109
+371                android:value="com.google.firebase.components.ComponentRegistrar" />
+371-->[com.google.firebase:firebase-database:20.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b521acf4dbcd5b0f4926145dd68162da\jetified-firebase-database-20.0.2\AndroidManifest.xml:34:17-82
+372            <meta-data
+372-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:77:13-79:85
+373                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+373-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:78:17-109
+374                android:value="com.google.firebase.components.ComponentRegistrar" />
+374-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:79:17-82
+375            <meta-data
+375-->[com.google.android.gms:play-services-measurement-api:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\8f7c75bf864a1c4e6b1bbcc8dd897692\jetified-play-services-measurement-api-19.0.2\AndroidManifest.xml:30:13-32:85
+376                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+376-->[com.google.android.gms:play-services-measurement-api:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\8f7c75bf864a1c4e6b1bbcc8dd897692\jetified-play-services-measurement-api-19.0.2\AndroidManifest.xml:31:17-139
+377                android:value="com.google.firebase.components.ComponentRegistrar" />
+377-->[com.google.android.gms:play-services-measurement-api:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\8f7c75bf864a1c4e6b1bbcc8dd897692\jetified-play-services-measurement-api-19.0.2\AndroidManifest.xml:32:17-82
+378            <meta-data
+378-->[com.google.firebase:firebase-installations:17.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f091b073cef3de8eebfeaa5a28213f77\jetified-firebase-installations-17.0.0\AndroidManifest.xml:18:13-20:85
+379                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+379-->[com.google.firebase:firebase-installations:17.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f091b073cef3de8eebfeaa5a28213f77\jetified-firebase-installations-17.0.0\AndroidManifest.xml:19:17-127
+380                android:value="com.google.firebase.components.ComponentRegistrar" />
+380-->[com.google.firebase:firebase-installations:17.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f091b073cef3de8eebfeaa5a28213f77\jetified-firebase-installations-17.0.0\AndroidManifest.xml:20:17-82
+381            <meta-data
+381-->[com.google.firebase:firebase-datatransport:18.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\fbab4d2099995596e2a97eca0fd3946f\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:28:13-30:85
+382                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+382-->[com.google.firebase:firebase-datatransport:18.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\fbab4d2099995596e2a97eca0fd3946f\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:29:17-115
+383                android:value="com.google.firebase.components.ComponentRegistrar" />
+383-->[com.google.firebase:firebase-datatransport:18.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\fbab4d2099995596e2a97eca0fd3946f\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:30:17-82
+384        </service>
+385
+386        <receiver
+386-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:28:9-35:20
+387            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+387-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:29:13-78
+388            android:exported="true"
+388-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:30:13-36
+389            android:permission="com.google.android.c2dm.permission.SEND" >
+389-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:31:13-73
+390            <intent-filter>
+390-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:32:13-34:29
+391                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+391-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:33:17-81
+391-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:33:25-78
+392            </intent-filter>
+393        </receiver>
+394        <!--
+395             FirebaseMessagingService performs security checks at runtime,
+396             but set to not exported to explicitly avoid allowing another app to call it.
+397        -->
+398        <service
+398-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:41:9-48:19
+399            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+399-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:42:13-82
+400            android:directBootAware="true"
+400-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:43:13-43
+401            android:exported="false" >
+401-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\924c80ba2daa9714d459fcf1efa71769\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:44:13-37
+402            <intent-filter android:priority="-500" >
+402-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:295:13-297:29
+403                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+403-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:296:17-78
+403-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:296:25-75
+404            </intent-filter>
+405        </service>
+406        <!--
+407             Receives GooglePlay execution requests and forwards them to the
+408             appropriate internal service.
+409        -->
+410        <service
+410-->[com.firebase:firebase-jobdispatcher:0.8.5] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\7027305125703f1ed2bda6d4d5fc1486\jetified-firebase-jobdispatcher-0.8.5\AndroidManifest.xml:32:9-39:19
+411            android:name="com.firebase.jobdispatcher.GooglePlayReceiver"
+411-->[com.firebase:firebase-jobdispatcher:0.8.5] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\7027305125703f1ed2bda6d4d5fc1486\jetified-firebase-jobdispatcher-0.8.5\AndroidManifest.xml:33:13-73
+412            android:exported="true"
+412-->[com.firebase:firebase-jobdispatcher:0.8.5] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\7027305125703f1ed2bda6d4d5fc1486\jetified-firebase-jobdispatcher-0.8.5\AndroidManifest.xml:34:13-36
+413            android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE" >
+413-->[com.firebase:firebase-jobdispatcher:0.8.5] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\7027305125703f1ed2bda6d4d5fc1486\jetified-firebase-jobdispatcher-0.8.5\AndroidManifest.xml:35:13-93
+414            <intent-filter>
+414-->[com.firebase:firebase-jobdispatcher:0.8.5] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\7027305125703f1ed2bda6d4d5fc1486\jetified-firebase-jobdispatcher-0.8.5\AndroidManifest.xml:36:13-38:29
+415                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY" />
+415-->[com.firebase:firebase-jobdispatcher:0.8.5] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\7027305125703f1ed2bda6d4d5fc1486\jetified-firebase-jobdispatcher-0.8.5\AndroidManifest.xml:37:17-87
+415-->[com.firebase:firebase-jobdispatcher:0.8.5] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\7027305125703f1ed2bda6d4d5fc1486\jetified-firebase-jobdispatcher-0.8.5\AndroidManifest.xml:37:25-84
+416            </intent-filter>
+417        </service>
+418
+419        <activity
+419-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:27:9-44:20
+420            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+420-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:28:13-80
+421            android:excludeFromRecents="true"
+421-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:29:13-46
+422            android:exported="true"
+422-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:30:13-36
+423            android:launchMode="singleTask"
+423-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:31:13-44
+424            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+424-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:32:13-72
+425            <intent-filter>
+425-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:33:13-43:29
+426                <action android:name="android.intent.action.VIEW" />
+426-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:90:17-69
+426-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:90:25-66
+427
+428                <category android:name="android.intent.category.DEFAULT" />
+428-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:17-76
+428-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:27-73
+429                <category android:name="android.intent.category.BROWSABLE" />
+429-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:93:17-78
+429-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:93:27-75
+430
+431                <data
+431-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:95:17-97:46
+432                    android:host="firebase.auth"
+432-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:96:21-51
+433                    android:path="/"
+434                    android:scheme="genericidp" />
+434-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:97:21-43
+435            </intent-filter>
+436        </activity>
+437        <activity
+437-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:45:9-62:20
+438            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+438-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:46:13-79
+439            android:excludeFromRecents="true"
+439-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:47:13-46
+440            android:exported="true"
+440-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:48:13-36
+441            android:launchMode="singleTask"
+441-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:49:13-44
+442            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+442-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:50:13-72
+443            <intent-filter>
+443-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:51:13-61:29
+444                <action android:name="android.intent.action.VIEW" />
+444-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:90:17-69
+444-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:90:25-66
+445
+446                <category android:name="android.intent.category.DEFAULT" />
+446-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:17-76
+446-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:27-73
+447                <category android:name="android.intent.category.BROWSABLE" />
+447-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:93:17-78
+447-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:93:27-75
+448
+449                <data
+449-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:95:17-97:46
+450                    android:host="firebase.auth"
+450-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:96:21-51
+451                    android:path="/"
+452                    android:scheme="recaptcha" />
+452-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:97:21-43
+453            </intent-filter>
+454        </activity>
+455
+456        <service
+456-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:64:9-73:19
+457            android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService"
+457-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:65:13-101
+458            android:enabled="true"
+458-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:66:13-35
+459            android:exported="false" >
+459-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:67:13-37
+460            <intent-filter>
+460-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:68:13-72:29
+461                <action android:name="com.google.firebase.auth.api.gms.service.START" />
+461-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:69:17-89
+461-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\0d5b782f240106a8da3d2f84ce28b0e1\jetified-firebase-auth-21.0.1\AndroidManifest.xml:69:25-86
+462
+463                <category android:name="android.intent.category.DEFAULT" />
+463-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:17-76
+463-->D:\Usman\PFAAndroidAppLatest\app\src\main\AndroidManifest.xml:92:27-73
+464            </intent-filter>
+465        </service>
+466
+467        <activity
+467-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:46:9-52:63
+468            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+468-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:47:13-74
+469            android:clearTaskOnLaunch="true"
+469-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:48:13-45
+470            android:screenOrientation="sensorLandscape"
+470-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:49:13-56
+471            android:stateNotNeeded="true"
+471-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:50:13-42
+472            android:theme="@style/zxing_CaptureTheme"
+472-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:51:13-54
+473            android:windowSoftInputMode="stateAlwaysHidden" /> <!-- The activities will be merged into the manifest of the hosting app. -->
+473-->[com.journeyapps:zxing-android-embedded:3.2.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\f0486f21058be3698ad40570d7c292ae\jetified-zxing-android-embedded-3.2.0\AndroidManifest.xml:52:13-60
+474        <activity
+474-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:18:9-24:45
+475            android:name="com.google.android.play.core.missingsplits.PlayCoreMissingSplitsActivity"
+475-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:19:13-100
+476            android:enabled="false"
+476-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:20:13-36
+477            android:exported="false"
+477-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:21:13-37
+478            android:launchMode="singleInstance"
+478-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:22:13-48
+479            android:process=":playcore_missing_splits_activity"
+479-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:23:13-64
+480            android:stateNotNeeded="true" />
+480-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:24:13-42
+481        <activity
+481-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:25:9-29:65
+482            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
+482-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:26:13-93
+483            android:exported="false"
+483-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:27:13-37
+484            android:stateNotNeeded="true"
+484-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:28:13-42
+485            android:theme="@style/Theme.PlayCore.Transparent" /> <!-- The services will be merged into the manifest of the hosting app. -->
+485-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:29:13-62
+486        <service
+486-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:32:9-39:19
+487            android:name="com.google.android.play.core.assetpacks.AssetPackExtractionService"
+487-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:33:13-94
+488            android:enabled="false"
+488-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:34:13-36
+489            android:exported="true" >
+489-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:35:13-36
+490            <meta-data
+490-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:36:13-38:41
+491                android:name="com.google.android.play.core.assetpacks.versionCode"
+491-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:37:17-83
+492                android:value="11002" />
+492-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:38:17-38
+493        </service>
+494        <service
+494-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:40:9-43:40
+495            android:name="com.google.android.play.core.assetpacks.ExtractionForegroundService"
+495-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:41:13-95
+496            android:enabled="false"
+496-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:42:13-36
+497            android:exported="false" />
+497-->[com.google.android.play:core:1.10.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\b9f2a91a9c1cec38568bbec1cab64c10\jetified-core-1.10.2\AndroidManifest.xml:43:13-37
+498
+499        <receiver
+499-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:29:9-33:20
+500            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+500-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:30:13-85
+501            android:enabled="true"
+501-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:31:13-35
+502            android:exported="false" >
+502-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:32:13-37
+503        </receiver>
+504
+505        <service
+505-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:35:9-38:40
+506            android:name="com.google.android.gms.measurement.AppMeasurementService"
+506-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:36:13-84
+507            android:enabled="true"
+507-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:37:13-35
+508            android:exported="false" />
+508-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:38:13-37
+509        <service
+509-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:39:9-43:72
+510            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+510-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:40:13-87
+511            android:enabled="true"
+511-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:41:13-35
+512            android:exported="false"
+512-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:42:13-37
+513            android:permission="android.permission.BIND_JOB_SERVICE" />
+513-->[com.google.android.gms:play-services-measurement:19.0.2] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\662ba6cdc7914f91d0b9b0d5e1283165\jetified-play-services-measurement-19.0.2\AndroidManifest.xml:43:13-69
+514
+515        <activity
+515-->[com.google.android.gms:play-services-base:17.5.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5d823f263c4afcfa92e673b1cf5744fe\jetified-play-services-base-17.5.0\AndroidManifest.xml:23:9-26:75
+516            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+516-->[com.google.android.gms:play-services-base:17.5.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5d823f263c4afcfa92e673b1cf5744fe\jetified-play-services-base-17.5.0\AndroidManifest.xml:24:13-79
+517            android:exported="false"
+517-->[com.google.android.gms:play-services-base:17.5.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5d823f263c4afcfa92e673b1cf5744fe\jetified-play-services-base-17.5.0\AndroidManifest.xml:25:13-37
+518            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+518-->[com.google.android.gms:play-services-base:17.5.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5d823f263c4afcfa92e673b1cf5744fe\jetified-play-services-base-17.5.0\AndroidManifest.xml:26:13-72
+519
+520        <provider
+520-->[com.google.firebase:firebase-common:20.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\588f17dde35b5ebb8b81a063535c3b0c\jetified-firebase-common-20.0.0\AndroidManifest.xml:26:9-31:39
+521            android:name="com.google.firebase.provider.FirebaseInitProvider"
+521-->[com.google.firebase:firebase-common:20.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\588f17dde35b5ebb8b81a063535c3b0c\jetified-firebase-common-20.0.0\AndroidManifest.xml:27:13-77
+522            android:authorities="com.pfaofficial.firebaseinitprovider"
+522-->[com.google.firebase:firebase-common:20.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\588f17dde35b5ebb8b81a063535c3b0c\jetified-firebase-common-20.0.0\AndroidManifest.xml:28:13-72
+523            android:directBootAware="true"
+523-->[com.google.firebase:firebase-common:20.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\588f17dde35b5ebb8b81a063535c3b0c\jetified-firebase-common-20.0.0\AndroidManifest.xml:29:13-43
+524            android:exported="false"
+524-->[com.google.firebase:firebase-common:20.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\588f17dde35b5ebb8b81a063535c3b0c\jetified-firebase-common-20.0.0\AndroidManifest.xml:30:13-37
+525            android:initOrder="100" />
+525-->[com.google.firebase:firebase-common:20.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\588f17dde35b5ebb8b81a063535c3b0c\jetified-firebase-common-20.0.0\AndroidManifest.xml:31:13-36
+526
+527        <service
+527-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\a06994068ed0e601e6e09b7df203be5a\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:29:9-35:19
+528            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+528-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\a06994068ed0e601e6e09b7df203be5a\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:30:13-103
+529            android:exported="false" >
+529-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\a06994068ed0e601e6e09b7df203be5a\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:31:13-37
+530            <meta-data
+530-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\a06994068ed0e601e6e09b7df203be5a\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:32:13-34:39
+531                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+531-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\a06994068ed0e601e6e09b7df203be5a\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:33:17-94
+532                android:value="cct" />
+532-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\a06994068ed0e601e6e09b7df203be5a\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:34:17-36
+533        </service>
+534        <service
+534-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5b090c409d2b09f81d765be193c3d1be\jetified-transport-runtime-3.0.0\AndroidManifest.xml:26:9-30:19
+535            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+535-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5b090c409d2b09f81d765be193c3d1be\jetified-transport-runtime-3.0.0\AndroidManifest.xml:27:13-117
+536            android:exported="false"
+536-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5b090c409d2b09f81d765be193c3d1be\jetified-transport-runtime-3.0.0\AndroidManifest.xml:28:13-37
+537            android:permission="android.permission.BIND_JOB_SERVICE" >
+537-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5b090c409d2b09f81d765be193c3d1be\jetified-transport-runtime-3.0.0\AndroidManifest.xml:29:13-69
+538        </service>
+539
+540        <receiver
+540-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5b090c409d2b09f81d765be193c3d1be\jetified-transport-runtime-3.0.0\AndroidManifest.xml:32:9-34:40
+541            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+541-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5b090c409d2b09f81d765be193c3d1be\jetified-transport-runtime-3.0.0\AndroidManifest.xml:33:13-132
+542            android:exported="false" />
+542-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\5b090c409d2b09f81d765be193c3d1be\jetified-transport-runtime-3.0.0\AndroidManifest.xml:34:13-37
+543    </application>
+544
+545</manifest>

@@ -531,7 +531,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
             View.OnClickListener onClickListener = new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("viewCreated", "pfaTableAdapter text Click2");
+                    Log.d("viewCreated", "pfaTableAdapter text Click2 = " + conducted_inspection);
                     if (isClicked) {
                         return;
                     }

@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -49,6 +50,7 @@ public class VerifyActivity extends BaseActivity implements HttpResponseCallback
         setContentView(R.layout.activity_verify);
 
         setTitle(getString(R.string.verify_mob_num), true);
+        Log.d("onCreateActv" , "VerifyActivity");
 
         sharedPrefUtils.applyFont(findViewById(R.id.tempPinTV), AppUtils.FONTS.HelveticaNeue);
 
@@ -57,7 +59,6 @@ public class VerifyActivity extends BaseActivity implements HttpResponseCallback
         sharedPrefUtils.applyFont(timerTv, AppUtils.FONTS.HelveticaNeueMedium);
 
         sharedPrefUtils.applyFont(findViewById(R.id.changeNumBtn), AppUtils.FONTS.HelveticaNeueMedium);
-
 
         pinCodeET1 = findViewById(R.id.pinCodeET1);
         sharedPrefUtils.applyFont(pinCodeET1, AppUtils.FONTS.HelveticaNeueMedium);

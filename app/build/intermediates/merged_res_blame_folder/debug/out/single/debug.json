@@ -32,10 +32,6 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\bg_transparent.png"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_baseline_save_alt_24.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_baseline_save_alt_24.png"
-    },
-    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_share.xml.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\fragment_share.xml"
     },
@@ -88,10 +84,6 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\horizontal_line.png"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_pdf.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_pdf.png"
-    },
-    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_img_detail_ll.xml.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\img_detail_ll.xml"
     },
@@ -128,10 +120,6 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\left_arrow_white.png"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_baseline_save_alt_24.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_baseline_save_alt_24.png"
-    },
-    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_detail_heading.xml.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pfa_detail_heading.xml"
     },
@@ -140,20 +128,12 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\ur_text_bg_disabled.9.png"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_docx.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_docx.png"
-    },
-    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_download_white.png.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-mdpi\\download_white.png"
     },
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_picon.png.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\picon.png"
-    },
-    {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_print.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\print.png"
     },
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pull_list_view_head.xml.flat",
@@ -190,10 +170,6 @@
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_right_slider_arrow.png.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\right_slider_arrow.png"
-    },
-    {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_pdf.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_pdf.png"
     },
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_badge_verified.png.flat",
@@ -284,20 +260,8 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\splash_bg.png"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_pdf.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_pdf.png"
-    },
-    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_white_rounded_corner_box.xml.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\white_rounded_corner_box.xml"
-    },
-    {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_print.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\print.png"
-    },
-    {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_baseline_save_alt_24.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_baseline_save_alt_24.png"
     },
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_pfasearch.xml.flat",
@@ -320,10 +284,6 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_forgot_pin.xml"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_baseline_save_alt_24.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_baseline_save_alt_24.png"
-    },
-    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_horizontal_line_long.png.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\horizontal_line_long.png"
     },
@@ -342,10 +302,6 @@
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_printing.xml.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_printing.xml"
-    },
-    {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_pdf.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_pdf.png"
     },
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_dropdown.xml.flat",
@@ -378,10 +334,6 @@
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rb_checked.xml.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\rb_checked.xml"
-    },
-    {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_docx.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_docx.png"
     },
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\anim_slide_in_from_right.xml.flat",
@@ -432,6 +384,10 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\print2.png"
     },
     {
+        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_save_alt_24.xml.flat",
+        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\ic_baseline_save_alt_24.xml"
+    },
+    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_video_btn.png.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\video_btn.png"
     },
@@ -456,10 +412,6 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\grey_border_round_corners.xml"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_docx.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_docx.png"
-    },
-    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_delete_photo.png.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\delete_photo.png"
     },
@@ -476,10 +428,6 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_set_pin.xml"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_print.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\print.png"
-    },
-    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_existing_client_dialog.xml.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\existing_client_dialog.xml"
     },
@@ -488,12 +436,12 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\ur_spinner_required.9.png"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_proof_camera.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\proof_camera.png"
-    },
-    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_list_footer.xml.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\list_footer.xml"
+    },
+    {
+        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_proof_camera.png.flat",
+        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\proof_camera.png"
     },
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\xml_provider_paths.xml.flat",
@@ -512,10 +460,6 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_pfaadd_new.xml"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_docx.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_docx.png"
-    },
-    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_pfa_gif.gif.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\pfa_gif.gif"
     },
@@ -530,10 +474,6 @@
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_dialog_logo.png.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\dialog_logo.png"
-    },
-    {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_print.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\print.png"
     },
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_record_video.png.flat",
@@ -552,10 +492,6 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pfa_sidemenu_rb.xml"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_pdf.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_pdf.png"
-    },
-    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_white_text_bg.png.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\white_text_bg.png"
     },
@@ -570,6 +506,10 @@
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_no_img.png.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\no_img.png"
+    },
+    {
+        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_pdf.xml.flat",
+        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\ic_pdf.xml"
     },
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_menu_table.xml.flat",
@@ -592,10 +532,6 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\row_input_list.xml"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_print.xml.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\print.xml"
-    },
-    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_green_rounded.xml.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\button_green_rounded.xml"
     },
@@ -616,20 +552,12 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\drawer_custom_title.xml"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_baseline_save_alt_24.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_baseline_save_alt_24.png"
-    },
-    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_download_cancel_white11.png.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\download_cancel_white11.png"
     },
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_lock_help.xml.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_lock_help.xml"
-    },
-    {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_print.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\print.png"
     },
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_current_loc_pin.png.flat",
@@ -676,6 +604,10 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_video_record.xml"
     },
     {
+        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_print.xml.flat",
+        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\print.xml"
+    },
+    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_printt.png.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\printt.png"
     },
@@ -688,6 +620,10 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\search.png"
     },
     {
+        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_docx.xml.flat",
+        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\ic_docx.xml"
+    },
+    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_splash.xml.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\activity_splash.xml"
     },
@@ -696,16 +632,12 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\datepicker_layout.xml"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_baseline_save_alt_24.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_baseline_save_alt_24.png"
+        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_checkicon.png.flat",
+        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\checkicon.png"
     },
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_plus.png.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\plus.png"
-    },
-    {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_checkicon.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\checkicon.png"
     },
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable_grey_box_selector.xml.flat",
@@ -752,10 +684,6 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xhdpi\\attachment_link.png"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_docx.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_docx.png"
-    },
-    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_text_input_password_icon.xml.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\design_text_input_password_icon.xml"
     },
@@ -784,12 +712,12 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-xxhdpi\\ur_left_arrow_white.png"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_fbo_check_list_item.xml.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\fbo_check_list_item.xml"
-    },
-    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_search_filter.png.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\mipmap-hdpi\\search_filter.png"
+    },
+    {
+        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_fbo_check_list_item.xml.flat",
+        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\fbo_check_list_item.xml"
     },
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_text_bg_star.9.png.flat",
@@ -824,24 +752,12 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\fragment_local_tabbed.xml"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_docx.xml.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_docx.xml"
-    },
-    {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_pdf.xml.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_pdf.xml"
-    },
-    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_nav_header_main.xml.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\nav_header_main.xml"
     },
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_bluetooth_list.xml.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\bluetooth_list.xml"
-    },
-    {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_docx.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_docx.png"
     },
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pfa_chat_footer.xml.flat",
@@ -876,10 +792,6 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\drawable\\white_dialogbox_rounded_corners.xml"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_pdf.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_pdf.png"
-    },
-    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_img_attachment_ll.xml.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\img_attachment_ll.xml"
     },
@@ -900,16 +812,8 @@
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\form_img_fl.xml"
     },
     {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_baseline_save_alt_24.xml.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_baseline_save_alt_24.xml"
-    },
-    {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\layout_pull_list_view_foot.xml.flat",
         "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\src\\main\\res\\layout\\pull_list_view_foot.xml"
-    },
-    {
-        "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_print.png.flat",
-        "source": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\print.png"
     },
     {
         "merged": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ur_left_arrow_grey.png.flat",

@@ -242,7 +242,8 @@ public class BaseActivity extends AppCompatActivity {
 
     public void startLocation() {
         if (!LocationUtils.isLocationServiceEnabled(this)) {
-            LocationUtils.showSettingsAlert(this);
+//            LocationUtils.showSettingsAlert(this);
+            LocationUtils.displayLocationSettingsRequest(this , this);
         } else {
             startLocationService();
         }

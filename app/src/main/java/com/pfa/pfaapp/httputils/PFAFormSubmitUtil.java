@@ -154,8 +154,6 @@ public class PFAFormSubmitUtil extends PFAViewsUtils {
         for (String sectionKey : sectionRequired.keySet()) {
             //fields value check in true false
 
-
-
             HashMap<String, Boolean> AllValues = sectionRequired.get(sectionKey);
             init(menuFragParentLL, AllValues);
             boolean allRequiredFields = isAllReqFieldsDone(showError);

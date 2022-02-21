@@ -16,7 +16,7 @@ public class ImageCompressionAsyncTask extends AsyncTask<Void, Void, String> {
     private Context mContext;
     private GetImgFileCallback getImgFileCallback;
     private File imageFile;
-    ImageCompressionAsyncTask(File imageFile, Context context, GetImgFileCallback getImgFileCallback){
+    public ImageCompressionAsyncTask(File imageFile, Context context, GetImgFileCallback getImgFileCallback){
         this.mContext = context;
         this.getImgFileCallback=getImgFileCallback;
         this.imageFile=imageFile;

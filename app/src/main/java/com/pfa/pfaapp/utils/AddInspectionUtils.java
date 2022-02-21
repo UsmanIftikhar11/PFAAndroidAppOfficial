@@ -281,7 +281,64 @@ public class AddInspectionUtils {
 
         } else {
             // Do API call to send local form data to server
-                baseActivity.sharedPrefUtils.showThreeBtnsMsgDialog( addProduct , new SendMessageCallback() {
+/*
+            new LocalFormHttpUtils(baseActivity.httpService, pfaMenuInfos, API_URL, inspection_id, baseActivity.sharedPrefUtils.getSharedPrefValue(SP_STAFF_ID, "")).sendInspectionToServer(new HttpResponseCallback() {
+                @Override
+                public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+
+                    String apiUrl = null;
+
+//                    {"status":true,"message_code":"REQUEST COMPLETED SUCCESSFULLY","localMenu":"Only Checklist is updated."}
+                    if (response != null && response.optBoolean("status")) {
+
+                        JSONObject localMenuObject = response.optJSONObject("detailMenu");
+                        if (localMenuObject != null) {
+                            try {
+                                JSONArray menus = localMenuObject.getJSONArray("menus");
+                                apiUrl = menus.getJSONObject(0).optString("API_URL");
+                                Log.d("productReg", "api url = " + menus.getJSONObject(0).optString("API_URL"));
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                            Log.d("productReg", "message = " + response.optString("message_code"));
+                        }
+
+                        String finalApiUrl = apiUrl;
+                        baseActivity.sharedPrefUtils.showMsgDialog(response.optString("message_code"), new SendMessageCallback() {
+                            @Override
+                            public void sendMsg(String message) {
+
+                                if ( finalApiUrl!=null */
+/*&& !finalApiUrl.isEmpty()*//*
+){
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString(EXTRA_URL_TO_CALL, finalApiUrl);
+                                    baseActivity.sharedPrefUtils.startNewActivity(PFADetailActivity.class, bundle, true);
+                                }
+                                else {
+                                    baseActivity.dbQueriesUtil.deleteTableRow(TABLE_LOCAL_INSPECTIONS, "inspectionID", inspection_id);
+                                    if (baseActivity.isTaskRoot()) {
+                                        baseActivity.onBackPressed();
+                                    } else {
+                                        AppConst.DO_REFRESH = true;
+                                        baseActivity.finish();
+                                    }
+                                }
+                            }
+                        });
+                    } else {
+                        if (response != null && response.has("message_code"))
+                            baseActivity.sharedPrefUtils.showMsgDialog(response.optString("message_code"), null);
+                        else
+                            baseActivity.sharedPrefUtils.showMsgDialog("Error Occurred" + response, null);
+                    }
+                }
+            }, action);
+*/
+
+            baseActivity.sharedPrefUtils.showThreeBtnsMsgDialog( addProduct , new SendMessageCallback() {
                     @Override
                     public void sendMsg(String message) {
                         performInspAction(message, false);
@@ -388,6 +445,11 @@ public class AddInspectionUtils {
                 Log.d("onCreateActv" , "add inscpection util = " + API_URL);
 //                if (localMenuObject.has("inspection_id"))
                     inspection_id = localMenuObject.getString("inspection_id");
+                Log.d("onCreateActv" , "add inscpection util inspection_id= " + inspection_id);
+                Log.d("onCreateActv" , "add inscpection util conducted_inspection= " + conducted_inspection);
+
+                baseActivity.getSharedPreferences("appPrefs", Context.MODE_PRIVATE).edit().putBoolean("conductedInspection", conducted_inspection).apply();
+                baseActivity.getSharedPreferences("appPrefs", Context.MODE_PRIVATE).edit().putString("inspectionId", API_URL).apply();
 
                 if (localMenuObject.has("download_url")) {
                     downloadUrl = localMenuObject.optString("download_url");

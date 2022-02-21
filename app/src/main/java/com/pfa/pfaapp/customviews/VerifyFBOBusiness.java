@@ -65,7 +65,7 @@ public class VerifyFBOBusiness extends LinearLayout implements HttpResponseCallb
                     if (jsonArray == null || jsonArray.length() == 0) {
                         sharedPrefUtils.showMsgDialog("There is no emergency information against this business", null);
                     } else {
-                        checkUserCallback.getExistingBusiness(jsonArray);
+                        checkUserCallback.getExistingBusiness(jsonArray , "");
                     }
                 }
             }

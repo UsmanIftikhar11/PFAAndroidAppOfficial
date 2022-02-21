@@ -4,15 +4,15 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.pfaofficial.test",
+  "applicationId": "com.pfaofficial",
   "variantName": "processDebugResources",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 60,
-      "versionName": "1.60",
-      "outputFile": "PFA Official - VC-60 VN-1.60-debug.apk"
+      "versionCode": 63,
+      "versionName": "1.63",
+      "outputFile": "PFA Official - VC-63 VN-1.63-debug.apk"
     }
   ]
 }

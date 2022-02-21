@@ -19,6 +19,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
+import com.google.android.gms.security.ProviderInstaller;
 import com.pfa.pfaapp.AppController;
 import com.pfa.pfaapp.R;
 import com.pfa.pfaapp.interfaces.HttpResponseCallback;
@@ -51,7 +52,7 @@ import static com.pfa.pfaapp.utils.AppConst.SP_STAFF_ID;
 /**
  * HttpUtils->SharedPrefUtils->AppUtils->CustomDialogs
  */
-class HttpUtils extends ScalingUtilities implements X509TrustManager {
+class HttpUtils extends ScalingUtilities /*implements X509TrustManager*/ {
     private static final X509Certificate[] _AcceptedIssuers = new X509Certificate[]{};
      ProgressDialog progressDialog;
      Context context;
@@ -128,7 +129,8 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
         }
 
         printLog("Request Url=>", "" + url.toString());
-        HttpsTrustManager.allowAllSSL();
+//        HttpsTrustManager.allowAllSSL();
+        updateAndroidSecurityProvider();
         StringRequest stringRequest = new StringRequest(Method.GET, url.toString().replaceAll(" ", "%20"), new Response.Listener<String>() {
 
             @Override
@@ -264,6 +266,7 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
 
         this.params = httpParams;
 
+
         if (isNetworkDisconnected()) {
             showMsgDialog(mContext.getResources().getString(R.string.no_internet_connection), null);
             return;
@@ -285,7 +288,7 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
 //        }
 
 
-        HttpsTrustManager.allowAllSSL();
+//        HttpsTrustManager.allowAllSSL();
         StringRequest stringRequest = new StringRequest(Method.POST, requestUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -364,24 +367,35 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
             protected Map<String, String> getParams() {
                 return params;
             }
+            /*@Override
+            public String getBodyContentType()
+            {
+                return "application/x-www-form-urlencoded; charset=UTF-8";
+            }*/
 
             @Override
             public Map<String, String> getHeaders() {
                 Map<String, String> headers = new HashMap<>();
                 headers.put("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+//                headers.put("Content-Type", "application/json; charset=UTF-8");
                 if (getSharedPrefValue(SP_STAFF_ID, "") != null && getSharedPrefValue(APP_LATITUDE, "") != null) {
+
+                    Log.d("getHeaders" , "SP_STAFF_ID = " + "not null");
 
                     headers.put("HTTP-CURRENT-LAT", getSharedPrefValue(APP_LATITUDE, ""));
                     headers.put("HTTP-CURRENT-LNG", getSharedPrefValue(APP_LONGITUDE, ""));
                     headers.put("HTTP-USER-ID", getSharedPrefValue(SP_STAFF_ID, ""));
-//                    headers.put("APP-AUTH-TOKEN",getSharedPrefValue(SP_APP_AUTH_TOKEN,""));
+//                    6.put("APP-AUTH-TOKEN",getSharedPrefValue(SP_APP_AUTH_TOKEN,""));
 
                     if (getSharedPrefValue(SP_APP_AUTH_TOKEN, "") != null) {
                         headers.put("APP-AUTH-TOKEN", getSharedPrefValue(SP_APP_AUTH_TOKEN, ""));
+                        Log.d("getHeaders" , "SP_APP_AUTH_TOKEN = " + "not null");
                     }
 
                     if (getSharedPrefValue(SP_AUTH_TOKEN, "") != null) {
                         headers.put("AUTH-TOKEN", getSharedPrefValue(SP_AUTH_TOKEN, ""));
+                        Log.d("getHeaders" , "SP_AUTH_TOKEN = " + "not null");
+
                     }
                 }
 
@@ -404,8 +418,7 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
         stringRequest.setShouldCache(false);
         AppController.getInstance().addToRequestQueue(stringRequest, "" + requestUrl);
     }
-
-    @Override
+    /*@Override
     public void checkClientTrusted(X509Certificate[] chain, String authType) {
         printLog("checkClientTrusted =>", "X509Certificate authType " + authType);
     }
@@ -418,7 +431,7 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
     @Override
     public X509Certificate[] getAcceptedIssuers() {
         return _AcceptedIssuers;
-    }
+    }*/
 
     void httpMultipartAPICall(final String requestUrl, Map<String, String> params, Map<String, File> fileParams,
                               final HttpResponseCallback callback, boolean showProgress) {
@@ -440,10 +453,12 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
 
 //        if(!((Activity) context).isFinishing()) {
             //show dialog
+        if (showProgress) {
             progressDialog = new ProgressDialog(mContext);
             progressDialog.setMessage("Submitting please wait...");
             progressDialog.setCancelable(false);
             progressDialog.show();
+        }
 //        }
 
         MultipartRequest multipartRequest = new MultipartRequest(requestUrl, new Response.ErrorListener() {
@@ -451,7 +466,8 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
 
-                progressDialog.dismiss();
+                if (showProgress)
+                    progressDialog.dismiss();
 
                 printStackTrace(volleyError);
                 hideProgressDialog();
@@ -495,7 +511,8 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
             public void onResponse(String response) {
                 printLog(TAG, "" + response);
                 hideProgressDialog();
-                progressDialog.dismiss();
+                if (showProgress)
+                    progressDialog.dismiss();
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     if (jsonObject.optBoolean("invalid_user")) {
@@ -615,5 +632,7 @@ class HttpUtils extends ScalingUtilities implements X509TrustManager {
             e2.printStackTrace();
         }*/
     }
+
+    private void updateAndroidSecurityProvider() { try { ProviderInstaller.installIfNeeded(mContext); } catch (Exception e) { e.getMessage(); } }
 
 }

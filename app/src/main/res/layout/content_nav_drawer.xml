@@ -21,4 +21,29 @@
         android:layout_height="match_parent"
         android:background="@color/transparent" />
 
+   <!-- <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_70sdp"
+        app:lottie_rawRes="@raw/imageloader"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_50sdp"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loading please wait..."
+        android:textSize="@dimen/_14sdp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/animationView"
+        android:layout_marginTop="@dimen/_10sdp"/>-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>
