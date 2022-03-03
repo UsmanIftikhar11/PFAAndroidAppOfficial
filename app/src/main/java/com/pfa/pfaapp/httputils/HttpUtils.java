@@ -121,6 +121,7 @@ class HttpUtils extends ScalingUtilities /*implements X509TrustManager*/ {
 //              url.append("&").append(SP_AUTH_TOKEN).append("=").append(URLEncoder.encode(getSharedPrefValue(SP_AUTH_TOKEN), "UTF-8"));
                 url.append("&").append(SP_FCM_ID).append("=").append(URLEncoder.encode(getSharedPrefValue(SP_FCM_ID, ""), "UTF-8"));
             //////////////THIISSS
+                if (!SP_APP_AUTH_TOKEN.isEmpty())
                 url.append("&").append(SP_APP_AUTH_TOKEN).append("=").append(URLEncoder.encode(getSharedPrefValue(SP_APP_AUTH_TOKEN, ""), "UTF-8"));
 
             } catch (UnsupportedEncodingException e) {
@@ -144,6 +145,7 @@ class HttpUtils extends ScalingUtilities /*implements X509TrustManager*/ {
                             JSONObject jsonObject = new JSONObject(response);
                             /////////
                             if (jsonObject.optBoolean("invalid_user")) {
+                                Log.d("invalidUser" , "invalid_user 1");
                                 invalidUserLogout(jsonObject.optString("message_code"));
                             } else {
                                 callback.onCompleteHttpResponse(jsonObject, url.toString());
@@ -300,6 +302,7 @@ class HttpUtils extends ScalingUtilities /*implements X509TrustManager*/ {
                         JSONObject jsonObject = new JSONObject(response);
                         /////////
                         if (jsonObject.optBoolean("invalid_user")) {
+                            Log.d("invalidUser" , "invalid_user 2");
                             invalidUserLogout(jsonObject.optString("message_code"));
 
                         } else {
@@ -517,6 +520,7 @@ class HttpUtils extends ScalingUtilities /*implements X509TrustManager*/ {
                     JSONObject jsonObject = new JSONObject(response);
                     if (jsonObject.optBoolean("invalid_user")) {
 
+                        Log.d("invalidUser" , "invalid_user 3");
                         invalidUserLogout(jsonObject.optString("message_code"));
                     } else {
                         callback.onCompleteHttpResponse(jsonObject, requestUrl);
@@ -602,7 +606,8 @@ class HttpUtils extends ScalingUtilities /*implements X509TrustManager*/ {
                 removeSharedPrefValue(SP_APP_AUTH_TOKEN);
 
                 if (message.equals("")) {
-                    logoutFromApp(new HttpService(mContext));
+                    HttpService httpService = new HttpService(mContext);
+                    logoutFromApp(httpService);
                 }
 
             }

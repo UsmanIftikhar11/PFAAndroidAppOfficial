@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pfaofficial"
-    android:versionCode="63"
-    android:versionName="1.63" >
+    android:versionCode="64"
+    android:versionName="1.64" >
 
     <uses-sdk
         android:minSdkVersion="25"
@@ -97,7 +97,6 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/pfalogo"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity android:name="com.pfa.pfaapp.printing.PrinterActivity" />
         <activity android:name="com.pfa.pfaapp.BTDeviceList" />

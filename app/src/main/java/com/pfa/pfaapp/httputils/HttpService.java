@@ -115,6 +115,7 @@ public class HttpService extends HttpUtils {
     }
 
     public void logout(HashMap<String, String> httpParams, HttpResponseCallback callback) {
+        Log.d("invalidUser" , "httpPost = " + "logout");
         httpPost(BaseUrl + "account/tokenDelete", httpParams, callback, true);
     }
 

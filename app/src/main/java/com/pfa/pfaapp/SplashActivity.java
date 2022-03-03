@@ -121,8 +121,8 @@ public class SplashActivity extends BaseActivity {
                 } else {
                     startMain();
                 }
-            }
-        }*/
+            }*/
+
 
 
 
@@ -221,7 +221,7 @@ public class SplashActivity extends BaseActivity {
         }
 
 //        startLoginScreen(null);
-        httpService.getListsData1("https://app.pfa.gop.pk/api/BaseURL/GetBaseURL?applicationName=cellpfagop_new", new HashMap<String, String>(), new HttpResponseCallback() {
+        httpService.getListsData1("https://app.pfa.gop.pk/api/BaseURL/GetBaseURL?applicationName=cellpfagop", new HashMap<String, String>(), new HttpResponseCallback() {
             @Override
             public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
                 //"account/api_version?type=softwareVersion"
@@ -262,7 +262,6 @@ public class SplashActivity extends BaseActivity {
                 }
             }
         }, false);
-
     }
 
 

@@ -272,7 +272,6 @@ public class LocalGridLL extends LinearLayout implements WhichItemClicked {
         boolean conductedInspectoin = mContext.getSharedPreferences("appPrefs", Context.MODE_PRIVATE).getBoolean("conductedInspection", false);
         String inspectoinId = mContext.getSharedPreferences("appPrefs", Context.MODE_PRIVATE).getString("inspectionId", null);
 
-
         Log.d("imagePath" , "onActivityResult API_URL = " + inspectoinId);
 
         if (conductedInspectoin){
@@ -406,8 +405,8 @@ public class LocalGridLL extends LinearLayout implements WhichItemClicked {
                     progressDialog.show();
                     final ArrayList<Image> images = data.getParcelableArrayListExtra(Constants.INTENT_EXTRA_IMAGES);
                     Log.d("imagePath", "local form LL Grid INTENT_MULTIPLE_IMAGES size= " + images.size());
-                    Log.d("imagePath", "local form LL Grid INTENT_MULTIPLE_IMAGES 0= " + images.get(0).path);
-                    Log.d("imagePath", "local form LL Grid INTENT_MULTIPLE_IMAGES 1= " + images.get(1).path);
+//                    Log.d("imagePath", "local form LL Grid INTENT_MULTIPLE_IMAGES 0= " + images.get(0).path);
+//                    Log.d("imagePath", "local form LL Grid INTENT_MULTIPLE_IMAGES 1= " + images.get(1).path);
                     final Handler handler = new Handler();
 
                     runnable = new Runnable() {
@@ -493,8 +492,8 @@ public class LocalGridLL extends LinearLayout implements WhichItemClicked {
                 case Constants.REQUEST_CODE:
                     final ArrayList<Image> images = data.getParcelableArrayListExtra(Constants.INTENT_EXTRA_IMAGES);
                     Log.d("imagePath", "local form LL Grid INTENT_MULTIPLE_IMAGES size= " + images.size());
-                    Log.d("imagePath", "local form LL Grid INTENT_MULTIPLE_IMAGES 0= " + images.get(0).path);
-                    Log.d("imagePath", "local form LL Grid INTENT_MULTIPLE_IMAGES 1= " + images.get(1).path);
+//                    Log.d("imagePath", "local form LL Grid INTENT_MULTIPLE_IMAGES 0= " + images.get(0).path);
+//                    Log.d("imagePath", "local form LL Grid INTENT_MULTIPLE_IMAGES 1= " + images.get(1).path);
                     final Handler handler = new Handler();
 
                     runnable = new Runnable() {

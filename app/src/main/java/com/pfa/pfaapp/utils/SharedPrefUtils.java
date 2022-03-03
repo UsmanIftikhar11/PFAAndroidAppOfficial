@@ -10,6 +10,7 @@ import android.net.Uri;
 import androidx.appcompat.app.AlertDialog;
 
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
@@ -33,6 +34,7 @@ import com.pfa.pfaapp.models.PFAMenuInfo;
 import com.pfa.pfaapp.models.UserInfo;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
@@ -539,12 +541,19 @@ public class SharedPrefUtils extends AppUtils {
         HashMap<String, String> reqParams = new HashMap<>();
         reqParams.put("fcmID", getSharedPrefValue(SP_FCM_ID, ""));
         reqParams.put("staffID", getSharedPrefValue(SP_STAFF_ID, ""));
+        Log.d("invalidUser" , "logoutFromApp 1");
 
         httpService.logout(reqParams, new HttpResponseCallback() {
             @Override
             public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
                 if (response != null) {
+                    Log.d("invalidUser" , "logoutFromApp response =2 ");
                     if (response.optBoolean("status")) {
+                        try {
+                            Log.d("invalidUser" , "logoutFromApp response = " + response.getBoolean("status"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                         clearSharedPref();
                         startHomeActivity(FBOMainGridActivity.class, null);
                         dbQueriesUtil.deleteRecordsOfAllTable();
@@ -552,7 +561,8 @@ public class SharedPrefUtils extends AppUtils {
                     } else {
                         showMsgDialog("Logout Failed!", null);
                     }
-                }
+                } else
+                    Log.d("invalidUser" , "logoutFromApp response = null ");
             }
         });
     }
