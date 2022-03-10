@@ -42,8 +42,8 @@ import static com.pfa.pfaapp.utils.AppConst.SEARCH_DATA;
 
 public class PFADDACTV extends androidx.appcompat.widget.AppCompatAutoCompleteTextView {
 
-    private List<String> listItemNames = new ArrayList<>();
-    FormDataInfo formDataInfo;
+    public List<String> listItemNames = new ArrayList<>();
+    public FormDataInfo formDataInfo;
 
     AppUtils appUtils;
     private Context mContext;

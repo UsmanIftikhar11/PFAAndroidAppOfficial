@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Usman\\PFAAndroidAppLatest\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-xxhdpi-v4\\values-xxhdpi-v4.xml",
+            "outputFile": "C:\\Users\\PFA\\Downloads\\Android App\\PFAAndroidAppLatest\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-xxhdpi-v4\\values-xxhdpi-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\HP\\.gradle\\caches\\transforms-2\\files-2.1\\e5180152d133a397c92cd178cc9aa159\\jetified-core-1.9.8\\res\\values-xxhdpi-v4\\values-xxhdpi-v4.xml",
+                    "source": "C:\\Users\\PFA\\.gradle\\caches\\transforms-2\\files-2.1\\46990d7b25b498b1fdf95067f0c37f95\\jetified-core-1.9.8\\res\\values-xxhdpi-v4\\values-xxhdpi-v4.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

@@ -114,8 +114,8 @@ public class ImageSelectionUtils extends ScalingUtilities {
         filePathOfCamera = f.getAbsolutePath();
 
 //        Uri mImageCaptureUri = FileProvider.getUriForFile(activity, BuildConfig.APPLICATION_ID + ".provider", f);
-//        Uri mImageCaptureUri = FileProvider.getUriForFile(activity, "com.pfaofficial.test.provider", f);
-        Uri mImageCaptureUri = FileProvider.getUriForFile(activity, "com.pfaofficial.provider", f);
+        Uri mImageCaptureUri = FileProvider.getUriForFile(activity, "com.pfaofficial.test.provider", f);
+//        Uri mImageCaptureUri = FileProvider.getUriForFile(activity, "com.pfaofficial.provider", f);
 
         Intent photoCaptureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         photoCaptureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);

@@ -1,9 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.test.ext:junit:1.1.3@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d249f4ea58add2b5b346b2feb7ef7f4f/jetified-junit-1.1.3/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e6fd7926fdc5eae03cfc2bee2eab22fe/jetified-junit-1.1.3/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e6fd7926fdc5eae03cfc2bee2eab22fe/jetified-junit-1.1.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e6fd7926fdc5eae03cfc2bee2eab22fe/jetified-junit-1.1.3/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e6fd7926fdc5eae03cfc2bee2eab22fe/jetified-junit-1.1.3/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>

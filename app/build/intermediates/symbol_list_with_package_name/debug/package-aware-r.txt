@@ -4383,7 +4383,6 @@ string fields_fill_firstly
 string fill_atleast_one_field
 string fill_passcode
 string fill_required_fields
-string firebase_database_url
 string first_amp_last_name
 string forgotPin
 string forgot_password

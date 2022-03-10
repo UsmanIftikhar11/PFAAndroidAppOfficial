@@ -167,7 +167,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
     private PFAEditText editTextName;
     private PFADDACTV product_categoryDD;
     private boolean firstTime = true;
-    String parentLicenseVal , revisedLicesneUrl , confirmRevisedCatMsg;
+    String parentLicenseVal , revisedLicesneUrl , confirmRevisedCatMsg , parentBusinessCatUrl;
     String revBusinessCategoryURL;
 
     private String retailer_investment, retailer_avg_sale, retailer_rent, retailer_employees, retailer_location, retailer_bills, parent_license_type = "Retailer";
@@ -2099,6 +2099,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
             }
             if (fieldInfo.getField_name().equals("revise_business_category"))
                 revisedBusinessCatDropDownUrl = fieldInfo.getAPI_URL();
+            if (fieldInfo.getField_name().equals("parent_business_category"))
+                parentBusinessCatUrl = fieldInfo.getAPI_URL();
 
             if (fieldInfo.getField_name().equals("parent_license_type")) {
                 parentLicenseVal = fieldInfo.getDefault_value();
@@ -3583,6 +3585,76 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                         }
 
                                     }
+                                }
+                            });
+                        }
+                        else if (fieldInfo.getField_name().equals("parent_business_category") && parentBusinessCatUrl != null){
+                            new PopulateParentLicense(mContext, parentBusinessCatUrl , id, new CheckUserCallback() {
+                                @Override
+                                public void getExistingUser(JSONArray jsonArray) {
+                                }
+
+                                @Override
+                                public void getExistingBusiness(JSONArray jsonArray , String msg) {
+                                    Log.d("liscentype", "business category field repsone");
+                                    List<String> listItemNames = new ArrayList<>();
+                                    JSONObject jsonObject = null;
+                                    List<FormDataInfo> data = new ArrayList<>();
+                                    FormDataInfo formDataInfo = new FormDataInfo();
+                                    if (parentView.findViewWithTag("business_category") instanceof PFADDACTV){
+                                        PFADDACTV pfaddactv = parentView.findViewWithTag("business_category");
+                                        pfaddactv.setText("");
+                                        pfaddactv.setSelectedValues(null);
+
+                                        if (pfaViewsCallbacks != null)
+                                            pfaViewsCallbacks.onDropdownItemSelected(null, pfaddactv.formFieldInfo.getField_name());
+                                        pfaddactv.clearFocus();
+                                        clearFocusOfAllViews(parentView);
+
+                                        if (pfaddactv.formFieldInfo.getField_name() != null && (pfaddactv.formFieldInfo.getField_name().equalsIgnoreCase(DD_STATUS))) {
+
+                                            if (pfaddBizSizeACTV == null && parentView.findViewWithTag(DD_BIZ_SIZE) != null) {
+                                                pfaddBizSizeACTV = parentView.findViewWithTag(DD_BIZ_SIZE);
+                                            }
+
+                                            if (pfaddBizSizeACTV != null) {
+                                                setPFABizSizeACTVStatus(false, GONE);
+                                            }
+                                        }
+                                    }
+
+
+                                        Type type = new TypeToken<List<FormDataInfo>>() {
+                                        }.getType();
+                                        data = new GsonBuilder().create().fromJson(jsonArray.toString(), type);
+//                                                formDataInfo.setName(jsonObject.getString("name"));
+//                                                formDataInfo.setKey(jsonObject.getString("key"));
+//                                                formDataInfo.setValue(jsonObject.getString("value"));
+//                                                data.set(i , formDataInfo);
+//                                        Log.d("BusinessCattype", "array i = " + i);
+
+                                    for (int i = 0; i < jsonArray.length(); i++) {
+
+                                        jsonObject = jsonArray.optJSONObject(i);
+
+
+                                        if (parentView.findViewWithTag(jsonObject.optString("name")) instanceof PFADDACTV) {
+
+                                            try {
+                                            listItemNames.add(jsonObject.getString("value"));
+                                             } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                        }
+                                    }
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("business_category");
+//                                    data.add(formDataInfo);
+                                    if (parentView.findViewWithTag("business_category") instanceof PFADDACTV){
+                                        pfaddactv.formFieldInfo.setData(data);
+                                    Log.d("BusinessCattype", "data size = " + data.size());
+                                    }
+                                    pfaddactv.listItemNames.clear();
+                                    pfaddactv.listItemNames = listItemNames;
                                 }
                             });
                         }

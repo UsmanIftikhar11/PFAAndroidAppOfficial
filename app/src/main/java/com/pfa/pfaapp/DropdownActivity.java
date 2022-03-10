@@ -51,6 +51,7 @@ public class DropdownActivity extends BaseActivity {
             @Override
             public void sendMsg(String position) {
                 selectedPos = Integer.parseInt(position);
+                Log.d("onCreateDropDownActv" , "selectedPos1 = " + selectedPos);
                 setActivityResult();
             }
         });
@@ -81,6 +82,7 @@ public class DropdownActivity extends BaseActivity {
         if (bundle == null)
             bundle = new Bundle();
         bundle.putInt(SELECTED_POSITION, selectedPos);
+        Log.d("onCreateDropDownActv" , "selectedPos2 = " + selectedPos);
         intent.putExtras(bundle);
         setResult(RESULT_OK, intent);
         finish();

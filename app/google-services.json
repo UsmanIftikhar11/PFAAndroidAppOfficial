@@ -1,84 +1,44 @@
 {
   "project_info": {
-    "project_number": "866759406266",
-    "firebase_url": "https://pfaweb-7c553.firebaseio.com",
-    "project_id": "pfaweb-7c553",
-    "storage_bucket": "pfaweb-7c553.appspot.com"
+    "project_number": "168588805996",
+    "project_id": "pfa-test-601be",
+    "storage_bucket": "pfa-test-601be.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:866759406266:android:a521ab50633d02fc",
+        "mobilesdk_app_id": "1:168588805996:android:7bd150fec9f09e410a9549",
         "android_client_info": {
-          "package_name": "com.pfaofficial"
+          "package_name": "com.pfaofficial.test"
         }
       },
       "oauth_client": [
         {
-          "client_id": "866759406266-k88vde6pi930jnvkqfmar1negphjbq2v.apps.googleusercontent.com",
+          "client_id": "168588805996-cpup6pd0blodbgi624oktuhi5edqta5o.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.pfaofficial",
-            "certificate_hash": "77141622dc593889e2da1dba854b9e19c7129bcc"
+            "package_name": "com.pfaofficial.test",
+            "certificate_hash": "a0c38c7a2e90b9f5dc20bbc8f78ef9ee6fc328a4"
           }
         },
         {
-          "client_id": "866759406266-osec9l21th7kcuueahdp3h1ndr2knmqe.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.pfaofficial",
-            "certificate_hash": "095f85f1de0a82f7e9e11787d7e21250c307c40a"
-          }
-        },
-        {
-          "client_id": "866759406266-rkngu1h7ghml1j4c6oel995g7fa0m5u5.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.pfaofficial",
-            "certificate_hash": "5575ed0eb89db1649084dc3c47cffee90ce377ac"
-          }
-        },
-        {
-          "client_id": "866759406266-m3kcuuitn8v1paj5pu2pr3n5khi40ldg.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.pfaofficial",
-            "certificate_hash": "f80f93d19538da21ecf98f3c71b17df7c93fdf3b"
-          }
-        },
-        {
-          "client_id": "866759406266-lklejmtp86m1auf5jsapu04a9bstsm8l.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.pfaofficial",
-            "certificate_hash": "0766245a7062f98107d6ba685e727a1703c09926"
-          }
-        },
-        {
-          "client_id": "866759406266-id4cvcave5ai36is44u27rhelofd743d.apps.googleusercontent.com",
+          "client_id": "168588805996-92fil193mam6v23un65c4011sib005nj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBi_1klOSwWKyv3meFy3EsVFoR0c71vmCE"
+          "current_key": "AIzaSyAK4pzOc4vu8uLY6_Pu1uL9N1-o34dZfUM"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "866759406266-id4cvcave5ai36is44u27rhelofd743d.apps.googleusercontent.com",
+              "client_id": "168588805996-92fil193mam6v23un65c4011sib005nj.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }

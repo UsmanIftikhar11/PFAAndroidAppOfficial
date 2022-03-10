@@ -353,6 +353,8 @@ com/pfa/pfaapp/customviews/CustomViewCreate.java
  com.pfa.pfaapp.customviews.CustomViewCreate$28
  com.pfa.pfaapp.customviews.CustomViewCreate$28$1
  com.pfa.pfaapp.customviews.CustomViewCreate$28$2
+ com.pfa.pfaapp.customviews.CustomViewCreate$28$2$1
+ com.pfa.pfaapp.customviews.CustomViewCreate$28$3
  com.pfa.pfaapp.customviews.CustomViewCreate$29
  com.pfa.pfaapp.customviews.CustomViewCreate$3
  com.pfa.pfaapp.customviews.CustomViewCreate$30
@@ -633,14 +635,8 @@ com/pfa/pfaapp/customviews/PFAChatLayout.java
  com.pfa.pfaapp.customviews.PFAChatLayout$3
 com/pfa/pfaapp/customviews/custominputlayout/CustomViewUtils.java
  com.pfa.pfaapp.customviews.custominputlayout.CustomViewUtils
-com/pfa/pfaapp/SplashActivity.java
- com.pfa.pfaapp.SplashActivity
- com.pfa.pfaapp.SplashActivity$1
- com.pfa.pfaapp.SplashActivity$2
- com.pfa.pfaapp.SplashActivity$3
- com.pfa.pfaapp.SplashActivity$3$1
- com.pfa.pfaapp.SplashActivity$4
- com.pfa.pfaapp.SplashActivity$4$1
+com/iceteck/silicompressorr/videocompression/OutputSurface.java
+ com.iceteck.silicompressorr.videocompression.OutputSurface
 com/pfa/pfaapp/localdbmodels/InspectionInfo.java
  com.pfa.pfaapp.localdbmodels.InspectionInfo
 com/pfa/pfaapp/PinSuccessActivity.java
@@ -825,5 +821,8 @@ com/pfa/pfaapp/fragments/MenuFormFragment.java
  com.pfa.pfaapp.fragments.MenuFormFragment$3
  com.pfa.pfaapp.fragments.MenuFormFragment$3$1
  com.pfa.pfaapp.fragments.MenuFormFragment$3$2
-com/iceteck/silicompressorr/videocompression/OutputSurface.java
- com.iceteck.silicompressorr.videocompression.OutputSurface
+com/pfa/pfaapp/SplashActivity.java
+ com.pfa.pfaapp.SplashActivity
+ com.pfa.pfaapp.SplashActivity$1
+ com.pfa.pfaapp.SplashActivity$2
+ com.pfa.pfaapp.SplashActivity$2$1

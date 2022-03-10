@@ -4,14 +4,14 @@
     "type": "MERGED_MANIFESTS",
     "kind": "Directory"
   },
-  "applicationId": "com.pfaofficial",
+  "applicationId": "com.pfaofficial.test",
   "variantName": "debug",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 64,
-      "versionName": "1.64",
+      "versionCode": 65,
+      "versionName": "1.65",
       "outputFile": "AndroidManifest.xml"
     }
   ]
