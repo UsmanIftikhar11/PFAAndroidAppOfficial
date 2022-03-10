@@ -151,13 +151,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8954ad4f-1517-491e-a5ce-7a6dfe8af176" name="Default Changelist" comment="PFA App Files v1.65" />
+    <list default="true" id="8954ad4f-1517-491e-a5ce-7a6dfe8af176" name="Default Changelist" comment="PFA App Files v1.65">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[xosw5dk799w4fm9t]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -667,7 +669,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646903287689</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="PFA App Files v1.65">
+      <created>1646903349052</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1646903349052</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView">
