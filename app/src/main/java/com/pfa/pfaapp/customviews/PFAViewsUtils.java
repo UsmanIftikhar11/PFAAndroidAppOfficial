@@ -494,12 +494,15 @@ public class PFAViewsUtils extends SharedPrefUtils {
             } else if (view instanceof CustomNetworkImageView) {
                 CustomNetworkImageView customNetworkImageView = (CustomNetworkImageView) view;
 
-                if (customNetworkImageView.getImageFile() != null && (customNetworkImageView.getFormFieldInfo().isClickable()))
+                if (customNetworkImageView.getImageFile() != null && (customNetworkImageView.getFormFieldInfo().isClickable())) {
+                    Log.d("getViewDataLOg" , "image file not null = " + customNetworkImageView.getImageFile().getPath());
                     filesMap.put(customNetworkImageView.getTag().toString(), customNetworkImageView.getImageFile());
+                }
 
                 ////////Local Image file path for Form ImageView
                 if (customNetworkImageView.getImageFile() != null) {
 
+                    Log.d("getViewDataLOg" , "image file not null 1");
                     List<FormDataInfo> values = new ArrayList<>();
                     FormDataInfo formDataInfo = new FormDataInfo();
                     formDataInfo.setKey("" + (customNetworkImageView.getImageFile().getAbsolutePath()));
@@ -513,10 +516,13 @@ public class PFAViewsUtils extends SharedPrefUtils {
 
 
                 if (customNetworkImageView.getFormFieldInfo().getData() != null && customNetworkImageView.getFormFieldInfo().getData().size() > 0) {
+                    Log.d("getViewDataLOg" , "image file not null 2");
                     List<FormDataInfo> values = formViewsData.get(customNetworkImageView.getTag().toString());
                     for (FormDataInfo localFormDataInfo : customNetworkImageView.getFormFieldInfo().getData()) {
 
+                        Log.d("getViewDataLOg" , "image file not null 3");
                         if (localFormDataInfo.getValue().startsWith("http")) {
+                            Log.d("getViewDataLOg" , "image file not null 4");
                             if (values == null)
                                 values = new ArrayList<>();
                             values.add(localFormDataInfo);

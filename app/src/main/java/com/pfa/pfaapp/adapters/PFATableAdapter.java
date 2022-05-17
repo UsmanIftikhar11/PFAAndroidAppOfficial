@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.text.Html;
 import android.util.Log;
@@ -69,6 +70,8 @@ import static android.view.View.GONE;
 import static com.pfa.pfaapp.utils.AppConst.CANCEL;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_ACTIVITY_TITLE;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_DOWNLOAD_URL;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_IMAGES_LIST;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_IMAGE_POSITION;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_JSON_STR_RESPONSE;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_LATLNG_STR;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_URL_TO_CALL;
@@ -213,9 +216,15 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
                     });
                 } else {
                     final int finalI = i;
+                    List<String>  imagesListData = new ArrayList<>();
+                    for (int i1 = 0 ; i1 < columnsData.size() ; i1++){
+                        imagesListData.add(columnsData.get(i1).getData());
+                    }
                     customNetworkImageView.setOnClickListener(v -> {
                         Bundle bundle = new Bundle();
                         bundle.putString(EXTRA_DOWNLOAD_URL, columnsData.get(finalI).getIcon());
+                        bundle.putString(EXTRA_IMAGE_POSITION, String.valueOf(finalI));
+                        bundle.putStringArrayList(EXTRA_IMAGES_LIST, (ArrayList<String>) imagesListData);
                         baseActivity.sharedPrefUtils.startNewActivity(ImageGalleryActivity.class, bundle, false);
                     });
                 }
@@ -564,6 +573,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
 
                             final Bundle bundle = new Bundle();
                             bundle.putString(EXTRA_URL_TO_CALL, suggestions.get(position).get(0).getAPI_URL());
+                            Log.d("BusinessDetailsMenu", "EXTRA_URL_TO_CALL = " + suggestions.get(position).get(0).getAPI_URL());
                             bundle.putString(EXTRA_ACTIVITY_TITLE, baseActivity.sharedPrefUtils.isEnglishLang() ? suggestions.get(position).get(0).getValue() : suggestions.get(position).get(0).getValueUrdu());
                             baseActivity.httpService.getListsData(suggestions.get(position).get(0).getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
                                 @Override
@@ -571,6 +581,8 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
 
                                     if (response != null)
                                         bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+
+                                    Log.d("BusinessDetailsMenu", "after getting response = " );
                                     baseActivity.sharedPrefUtils.startNewActivity(PFADetailActivity.class, bundle, false);
                                 }
                             }, true);

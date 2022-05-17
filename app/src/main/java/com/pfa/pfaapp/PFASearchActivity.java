@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_ACTV_TAG;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_FILTERS_DATA;
 import static com.pfa.pfaapp.utils.AppConst.PFA_SEARCH_TAG;
 
@@ -70,6 +71,7 @@ public class PFASearchActivity extends BaseActivity {
         if (bundle == null)
             bundle = new Bundle();
         bundle.putSerializable(PFA_SEARCH_TAG, pfaSearchInfo);
+//        bundle.putString(EXTRA_ACTV_TAG, "autoSearch");
         intent.putExtras(bundle);
         setResult(RESULT_OK, intent);
         finish();

@@ -7,6 +7,7 @@
     <!--<color name="green_btn_color">#086038</color>-->
 
     <color name="colorPrimary">#29A444</color>
+    <color name="colorPrimary1">#5EE766</color>
     <color name="colorPrimaryDark">#29A444</color>
     <color name="colorAccent">#29A444</color>
     <color name="green_btn_color">#29A444</color>
@@ -18,7 +19,7 @@
     <color name="hor_tab_color">#29A444</color>
 
     <color name="light_grey">#b8b8b8</color>
-    <color name="light_grey1">#6BB8B8B8</color>
+    <color name="light_grey1">#6B000000</color>
     <color name="white_grey">#BCBCBC</color>
     <color name="button_light_grey">#cecccd</color>
     <color name="dark_grey">#3a393e</color>

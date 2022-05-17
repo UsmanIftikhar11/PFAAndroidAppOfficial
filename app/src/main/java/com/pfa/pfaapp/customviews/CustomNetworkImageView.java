@@ -12,6 +12,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.pfa.pfaapp.R;
 import com.pfa.pfaapp.models.FormFieldInfo;
+import com.pfa.pfaapp.utils.UriFileUtil;
 
 import java.io.File;
 
@@ -50,7 +51,7 @@ public class CustomNetworkImageView extends NetworkImageView {
         mShowLocal = false;
 
         if (url != null && url.startsWith("http")) {
-            this.imgUrl=url;
+            this.imgUrl = url;
             imageLoader.get(url, ImageLoader.getImageListener(
                     this, R.mipmap.no_img, R.mipmap.no_img));
         }
@@ -75,22 +76,20 @@ public class CustomNetworkImageView extends NetworkImageView {
 
     public void setLocalImageBitmap(Bitmap unscaledBitmap) {
         if (unscaledBitmap != null) {
-            Log.d("unscaledBitmap" , "bitmap not null");
+            Log.d("unscaledBitmap", "bitmap not null");
             mShowLocal = true;
             if (deleteImgBtn != null) {
-                Log.d("unscaledBitmap" , "delete not null");
+                Log.d("unscaledBitmap", "delete not null");
                 deleteImgBtn.setVisibility(VISIBLE);
-            }
-            else
-                Log.d("unscaledBitmap" , "delete null");
+            } else
+                Log.d("unscaledBitmap", "delete null");
         } else {
-            Log.d("unscaledBitmap" , "bitmap null");
+            Log.d("unscaledBitmap", "bitmap null");
             if (deleteImgBtn != null) {
-                Log.d("unscaledBitmap" , "delete not null");
+                Log.d("unscaledBitmap", "delete not null");
                 deleteImgBtn.setVisibility(VISIBLE);
-            }
-            else
-                Log.d("unscaledBitmap" , "delete null");
+            } else
+                Log.d("unscaledBitmap", "delete null");
         }
 
 //        // Part 2: Scale image
@@ -122,8 +121,17 @@ public class CustomNetworkImageView extends NetworkImageView {
     }
 
     public void setFileBitmap(String filePath) {
-        Bitmap bitmap = BitmapFactory.decodeFile(filePath);
-        setLocalImageBitmap(bitmap);
+        Log.d("fileViewIcon", "setFileBitmap = " + filePath);
+        if (filePath.endsWith("pdf")) {
+            Bitmap bitmap = UriFileUtil.drawableToBitmap(getResources().getDrawable(R.drawable.ic_pdf));
+            setLocalImageBitmap(bitmap);
+        } else if (filePath.endsWith("docx")) {
+            Bitmap bitmap = UriFileUtil.drawableToBitmap(getResources().getDrawable(R.drawable.ic_docx));
+            setLocalImageBitmap(bitmap);
+        } else {
+            Bitmap bitmap = BitmapFactory.decodeFile(filePath);
+            setLocalImageBitmap(bitmap);
+        }
         setImageFile(new File(filePath));
 
     }

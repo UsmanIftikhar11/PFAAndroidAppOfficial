@@ -3,6 +3,9 @@ package com.pfa.pfaapp.httputils;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
@@ -19,6 +22,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.security.ProviderInstaller;
 import com.pfa.pfaapp.AppController;
 import com.pfa.pfaapp.R;
@@ -32,10 +36,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.cert.X509Certificate;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.net.ssl.X509TrustManager;
@@ -44,15 +51,18 @@ import static com.android.volley.Request.Method;
 import static com.pfa.pfaapp.utils.AppConst.APP_LATITUDE;
 import static com.pfa.pfaapp.utils.AppConst.APP_LONGITUDE;
 
+import static com.pfa.pfaapp.utils.AppConst.APP_TOWN;
 import static com.pfa.pfaapp.utils.AppConst.SP_APP_AUTH_TOKEN;
 import static com.pfa.pfaapp.utils.AppConst.SP_AUTH_TOKEN;
 import static com.pfa.pfaapp.utils.AppConst.SP_FCM_ID;
 import static com.pfa.pfaapp.utils.AppConst.SP_STAFF_ID;
 
+import androidx.annotation.NonNull;
+
 /**
  * HttpUtils->SharedPrefUtils->AppUtils->CustomDialogs
  */
-class HttpUtils extends ScalingUtilities /*implements X509TrustManager*/ {
+class HttpUtils extends ScalingUtilities implements LocationListener /*implements X509TrustManager*/ {
     private static final X509Certificate[] _AcceptedIssuers = new X509Certificate[]{};
      ProgressDialog progressDialog;
      Context context;
@@ -109,6 +119,24 @@ class HttpUtils extends ScalingUtilities /*implements X509TrustManager*/ {
         }
 
         if (getSharedPrefValue(SP_STAFF_ID, "") != null && getSharedPrefValue(APP_LATITUDE, "") != null) {
+
+            /*double lat = Double.parseDouble(getSharedPrefValue(APP_LATITUDE , ""));
+            double lng = Double.parseDouble(getSharedPrefValue(APP_LONGITUDE , ""));
+
+            Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
+            List<Address> addresses = null;
+            try {
+                addresses = geocoder.getFromLocation(29.7956, 72.8634, 1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            String cityName = addresses.get(0).getAddressLine(0);
+            String stateName = String.valueOf(addresses);
+            String countryName = addresses.get(0).getLocality();
+
+            Log.d("CurrentTown" , "city = " + cityName);
+            Log.d("CurrentTown" , "state = " + stateName);
+            Log.d("CurrentTown" , "country = " + countryName);*/
 
             try {
                 if (url.toString().contains("?")) {
@@ -216,6 +244,7 @@ class HttpUtils extends ScalingUtilities /*implements X509TrustManager*/ {
 
                     headers.put("HTTP-CURRENT-LAT", getSharedPrefValue(APP_LATITUDE, ""));
                     headers.put("HTTP-CURRENT-LNG", getSharedPrefValue(APP_LONGITUDE, ""));
+//                    headers.put("HTTP-CURRENT-TOWN", getSharedPrefValue(APP_TOWN, ""));
                     headers.put("HTTP-USER-ID", getSharedPrefValue(SP_STAFF_ID, ""));
 //                    headers.put("APP-AUTH-TOKEN",getSharedPrefValue(SP_APP_AUTH_TOKEN,""));
 
@@ -382,6 +411,24 @@ class HttpUtils extends ScalingUtilities /*implements X509TrustManager*/ {
                 headers.put("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
 //                headers.put("Content-Type", "application/json; charset=UTF-8");
                 if (getSharedPrefValue(SP_STAFF_ID, "") != null && getSharedPrefValue(APP_LATITUDE, "") != null) {
+
+                    /*double lat = Double.parseDouble(getSharedPrefValue(APP_LATITUDE , ""));
+                    double lng = Double.parseDouble(getSharedPrefValue(APP_LONGITUDE , ""));
+
+                    Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
+                    List<Address> addresses = null;
+                    try {
+                        addresses = geocoder.getFromLocation(lat, lng, 1);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    String cityName = addresses.get(0).getAddressLine(0);
+                    String stateName = addresses.get(0).getAddressLine(1);
+                    String countryName = addresses.get(0).getAddressLine(2);
+
+                    Log.d("CurrentTown" , "city1 = " + cityName);
+                    Log.d("CurrentTown" , "state1 = " + stateName);
+                    Log.d("CurrentTown" , "country1 = " + countryName);*/
 
                     Log.d("getHeaders" , "SP_STAFF_ID = " + "not null");
 
@@ -640,4 +687,11 @@ class HttpUtils extends ScalingUtilities /*implements X509TrustManager*/ {
 
     private void updateAndroidSecurityProvider() { try { ProviderInstaller.installIfNeeded(mContext); } catch (Exception e) { e.getMessage(); } }
 
+    @Override
+    public void onLocationChanged(@NonNull Location location) {
+        double lat = location.getLatitude();
+        double lng = location.getLongitude();
+
+
+    }
 }

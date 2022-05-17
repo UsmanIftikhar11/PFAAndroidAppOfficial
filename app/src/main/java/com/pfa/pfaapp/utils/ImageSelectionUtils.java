@@ -67,30 +67,21 @@ public class ImageSelectionUtils extends ScalingUtilities {
 
     public void showImagePickerDialog(VideoFileCallback filePathCallback, final boolean showVideoBtns, final boolean isMultiple) {
         this.filePathCallback = filePathCallback;
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                showSelectPictureDialog(new SendMessageCallback() {
-                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                    @Override
-                    public void sendMsg(String message) {
-                        filePathOfCamera = null;
-                        int i = Integer.parseInt(message);
-                        if (i == CAPTURE_PHOTO) {
-                            Log.d("imagePath", "image selection utils capture camera");
-                            capturePicFromCamera();
+        new Handler().postDelayed(() -> showSelectPictureDialog(message -> {
+            filePathOfCamera = null;
+            int i = Integer.parseInt(message);
+            if (i == CAPTURE_PHOTO) {
+                Log.d("imagePath", "image selection utils capture camera");
+                capturePicFromCamera();
 
-                        } else if (i == CHOOSE_FROM_GALLERY) {
-                            pickImageFromGallery(showVideoBtns);
-                        } else if (i == MULTIPLE_IMAGES) {
-                            pickMultipleImages();
-                        } else if (i == RECORD_VIDEO) {
-                            captureVideoFromCamera();
-                        }
-                    }
-                }, showVideoBtns, isMultiple);
+            } else if (i == CHOOSE_FROM_GALLERY) {
+                pickImageFromGallery(showVideoBtns);
+            } else if (i == MULTIPLE_IMAGES) {
+                pickMultipleImages();
+            } else if (i == RECORD_VIDEO) {
+                captureVideoFromCamera();
             }
-        }, 100);
+        }, showVideoBtns, isMultiple), 100);
     }
 
     public void showFilePickerDialog(VideoFileCallback filePathCallback, final boolean showVideoBtns, final boolean isMultiple) {
@@ -232,8 +223,8 @@ public class ImageSelectionUtils extends ScalingUtilities {
             if (mimeType.equals("png") || mimeType.equals("jpg") || mimeType.equals("jpeg") || mimeType.equals("gif"))
                 imagePath = FilePathUtils.getPath(activity, mImageCaptureUri);
             else {
-                imagePath = "/storage/emulated/0/DCIM/MaoizCV.pdf";
-                Log.d("imagePath", "/storage/emulated/0/DCIM/MaoizCV.pdf");
+                imagePath = FilePathUtils.getPath(activity, mImageCaptureUri);
+                Log.d("imagePath", "PATH = " + imagePath);
             }
 //                    imagePath = getRealPath(mContext , mImageCaptureUri);
 
@@ -322,12 +313,18 @@ public class ImageSelectionUtils extends ScalingUtilities {
                     Log.d("mimeTypeVal", "name = " + getFileName(mImageCaptureUri));
                     Bitmap icon = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.ic_pdf);
 
-                    customNetworkImageView.setLocalImageBitmap(icon);
+                    customNetworkImageView.setLocalImageBitmap(UriFileUtil.drawableToBitmap(mContext.getResources().getDrawable(R.drawable.ic_pdf)));
 
-                    IMAGE_SELECTION_MAP.put(customNetworkImageView.getTag().toString(), imagePath);
 
                     InputStream in;
-                    File file = new File(Environment.getExternalStorageDirectory() + "/DCIM/" + getFileName(mImageCaptureUri));
+                    File file = null;
+                    try {
+                        file = UriFileUtil.from(mContext , mImageCaptureUri);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    IMAGE_SELECTION_MAP.put(customNetworkImageView.getTag().toString(), file.getPath());
+                    /*File file = new File(Environment.getExternalStorageDirectory().toString() + "/DCIM/" + getFileName(mImageCaptureUri));
                     try {
                         in = mContext.getContentResolver().openInputStream(mImageCaptureUri);
                         OutputStream out = new FileOutputStream(file);
@@ -342,13 +339,13 @@ public class ImageSelectionUtils extends ScalingUtilities {
                         e.printStackTrace();
                     } catch (IOException e) {
                         e.printStackTrace();
-                    }
+                    }*/
 
                     customNetworkImageView.setImageFile(file);
                     customNetworkImageView.setDrawable(R.drawable.ic_pdf);
 
                     if (filePathCallback != null) {
-                        filePathCallback.onFileSelected(imagePath);
+                        filePathCallback.onFileSelected(file.getPath());
                     }
 
                     if (callback != null)
@@ -364,12 +361,19 @@ public class ImageSelectionUtils extends ScalingUtilities {
                     Log.d("mimeTypeVal", "mime = docx");
                     Bitmap icon = BitmapFactory.decodeResource(mContext.getResources(), R.drawable.ic_docx);
 
-                    customNetworkImageView.setLocalImageBitmap(icon);
+                    customNetworkImageView.setLocalImageBitmap(UriFileUtil.drawableToBitmap(mContext.getResources().getDrawable(R.drawable.ic_docx)));
 
-                    IMAGE_SELECTION_MAP.put(customNetworkImageView.getTag().toString(), imagePath);
+//                    IMAGE_SELECTION_MAP.put(customNetworkImageView.getTag().toString(), imagePath);
 
                     InputStream in;
-                    File file = new File(Environment.getExternalStorageDirectory() + "/DCIM/" + getFileName(mImageCaptureUri));
+                    File file = null;
+                    try {
+                        file = UriFileUtil.from(mContext , mImageCaptureUri);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    IMAGE_SELECTION_MAP.put(customNetworkImageView.getTag().toString(), file.getPath());
+                    /*File file = new File(Environment.getExternalStorageDirectory() + "/DCIM/" + getFileName(mImageCaptureUri));
                     try {
                         in = mContext.getContentResolver().openInputStream(mImageCaptureUri);
                         OutputStream out = new FileOutputStream(file);
@@ -384,14 +388,16 @@ public class ImageSelectionUtils extends ScalingUtilities {
                         e.printStackTrace();
                     } catch (IOException e) {
                         e.printStackTrace();
-                    }
+                    }*/
 
                     customNetworkImageView.setImageFile(file);
                     customNetworkImageView.setDrawable(R.drawable.ic_docx);
 
                     if (filePathCallback != null) {
-                        filePathCallback.onFileSelected(imagePath);
+                        filePathCallback.onFileSelected(file.getPath());
                     }
+
+                    Log.d("mimeTypeVal", "file path = docx = " + file.getPath());
 
                     if (callback != null)
                         callback.sendMsg("Choose File");
@@ -480,6 +486,19 @@ public class ImageSelectionUtils extends ScalingUtilities {
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inPreferredConfig = Bitmap.Config.ARGB_8888;
             bitmap = BitmapFactory.decodeStream(new FileInputStream(f), null, options);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bitmap;
+    }
+
+    private Bitmap getBitmapFromFile(File file) {
+        Bitmap bitmap = null;
+        try {
+
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inPreferredConfig = Bitmap.Config.ARGB_8888;
+            bitmap = BitmapFactory.decodeStream(new FileInputStream(file), null, options);
         } catch (Exception e) {
             e.printStackTrace();
         }

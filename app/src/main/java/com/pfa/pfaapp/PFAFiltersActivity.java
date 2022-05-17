@@ -56,6 +56,7 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
     HashMap<String, Boolean> reqViews = new HashMap<>();
     HashMap<String, List<FormDataInfo>> formFilteredData;
     List<List<PFATableInfo>> tableData;
+    String activityTitle;
     private String nextUrl;
     private String itemCount;
 
@@ -195,6 +196,10 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
                         JSONArray formJSONArray = tableJsonObject.getJSONArray("tableData");
                         tableData = new GsonBuilder().create().fromJson(formJSONArray.toString(), type);
 
+                        if (tableJsonObject.has("title")){
+                            activityTitle = tableJsonObject.getString("title");
+                        }
+
                         if (tableJsonObject.has("next_page")) {
                             nextUrl = tableJsonObject.optString("next_page");
                         }
@@ -250,8 +255,11 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
         bundle.putSerializable(EXTRA_FILTERS_DATA, formFilteredData);
+
         if (tableData != null && tableData.size() > 0)
             bundle.putSerializable(SEARCH_DATA, (Serializable) tableData);
+        if (activityTitle != null )
+            bundle.putString("activityTitle", activityTitle);
 
         if (nextUrl != null) {
             bundle.putString(AppConst.EXTRA_NEXT_URL, nextUrl);

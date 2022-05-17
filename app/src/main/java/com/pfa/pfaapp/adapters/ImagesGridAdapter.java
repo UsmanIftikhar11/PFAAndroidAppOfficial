@@ -5,6 +5,8 @@
 package com.pfa.pfaapp.adapters;
 
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,17 +23,23 @@ import com.pfa.pfaapp.customviews.CustomNetworkImageView;
 import com.pfa.pfaapp.models.PFATableInfo;
 import com.pfa.pfaapp.utils.AppUtils;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_DOWNLOAD_URL;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_IMAGES_LIST;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_IMAGE_POSITION;
 
 public class ImagesGridAdapter extends BaseAdapter {
     private final BaseActivity baseActivity;
     private final List<PFATableInfo>  imagesList;
+    private List<String>  imagesListData = new ArrayList<>();
 
     public ImagesGridAdapter(BaseActivity baseActivity, List<PFATableInfo>  imagesList) {
         this.baseActivity = baseActivity;
         this.imagesList = imagesList;
+
     }
 
     @Override
@@ -55,6 +63,8 @@ public class ImagesGridAdapter extends BaseAdapter {
         LayoutInflater inflater = LayoutInflater.from(baseActivity);
 
         final ViewHolder holder;
+
+
 
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.local_media_grid_item, parent, false);
@@ -83,8 +93,17 @@ public class ImagesGridAdapter extends BaseAdapter {
 
         holder.mediaGridNIV.setOnClickListener(v -> {
 
+            Log.d("ImageListSize" , "size adapter = " + imagesListData.size());
+
+            imagesListData = new ArrayList<>();
+            for (int i = 0 ; i < imagesList.size() ; i++){
+                imagesListData.add(imagesList.get(i).getData());
+            }
+
             Bundle bundle = new Bundle();
             bundle.putString(EXTRA_DOWNLOAD_URL,imagesList.get(position).getData());
+            bundle.putString(EXTRA_IMAGE_POSITION, String.valueOf(position));
+            bundle.putStringArrayList(EXTRA_IMAGES_LIST, (ArrayList<String>) imagesListData);
             baseActivity.sharedPrefUtils.startNewActivity(ImageGalleryActivity.class,bundle,false);
 
         });

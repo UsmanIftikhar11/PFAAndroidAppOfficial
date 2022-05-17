@@ -7,6 +7,7 @@ package com.pfa.pfaapp.adapters;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,9 +29,12 @@ import com.pfa.pfaapp.models.FormSectionInfo;
 import com.pfa.pfaapp.utils.AppUtils;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_DOWNLOAD_URL;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_IMAGES_LIST;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_IMAGE_POSITION;
 
 public class LocalGridAdapter extends BaseAdapter {
     private final BaseActivity baseActivity;
@@ -38,12 +42,14 @@ public class LocalGridAdapter extends BaseAdapter {
     private List<FormSectionInfo> formSectionInfos;
 
     private final WhichItemClicked whichItemClicked;
+    List<String>  imagesListData = new ArrayList<>();
 
     public LocalGridAdapter(BaseActivity baseActivity, List<FormSectionInfo> formSectionInfos, WhichItemClicked whichItemClicked) {
         this.baseActivity = baseActivity;
         this.whichItemClicked = whichItemClicked;
         this.formSectionInfos = formSectionInfos;
         Log.d("viewCreated", "LocalGridAdapter");
+
     }
 
     public void updateAdapter(List<FormSectionInfo> formSectionInfos) {
@@ -120,8 +126,14 @@ public class LocalGridAdapter extends BaseAdapter {
             }
 
             holder.mediaGridNIV.setOnClickListener(v -> {
+                imagesListData = new ArrayList<>();
+                for (int i1 = 0 ; i1 < formSectionInfos.size() ; i1++){
+                    imagesListData.add(formSectionInfos.get(i1).getFields().get(0).getData().get(0).getValue());
+                }
                 Bundle bundle = new Bundle();
                 bundle.putString(EXTRA_DOWNLOAD_URL, formSectionInfos.get(position).getFields().get(0).getData().get(0).getValue());
+                bundle.putString(EXTRA_IMAGE_POSITION, String.valueOf(position));
+                bundle.putStringArrayList(EXTRA_IMAGES_LIST, (ArrayList<String>) imagesListData);
                 baseActivity.sharedPrefUtils.startNewActivity(ImageGalleryActivity.class, bundle, false);
 
             });

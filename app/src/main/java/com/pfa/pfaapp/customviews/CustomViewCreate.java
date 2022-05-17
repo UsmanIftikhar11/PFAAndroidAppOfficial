@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.StrictMode;
+import android.text.Editable;
 import android.text.Html;
 import android.text.InputType;
 import android.text.Spanned;
@@ -74,6 +75,7 @@ import com.pfa.pfaapp.utils.AppUtils;
 import com.pfa.pfaapp.utils.CustomDateUtils;
 import com.pfa.pfaapp.utils.DownloadFileManager;
 import com.pfa.pfaapp.utils.SharedPrefUtils;
+import com.pfa.pfaapp.utils.UriFileUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -181,6 +183,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
 
     private String e_commerce_investment, e_commerce_sales, e_commerce_employees, e_commerce_riders, e_commerce_registered_fbos;
     private String e_commerce_investment_key, e_commerce_sales_key, e_commerce_employees_key, e_commerce_riders_key, e_commerce_registered_fbos_key;
+    private String businessCatVal;
 
     /**
      * @param mContext          {@link Context}
@@ -312,7 +315,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
 //                get_code_button, text, textarea, numeric, cnic ,phone, email, dropdown , radiogroup, checkbox, label, date, imageView,  button,  autoSearch, location_fields
             switch (fieldInfo.getField_type()) {
                 case "heading":
-                    Log.d("viewCreated", "heading");
+                    Log.d("viewCreated", "heading = " + fieldInfo.getField_name());
                     createViewHeading(parentView, inflater, fieldInfo);
                     break;
 
@@ -369,7 +372,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                     break;
 
                 case "imageView":
-                    Log.d("viewCreated", "imageView");
+                    Log.d("viewCreated", "imageView = " + fieldInfo.getField_name());
                     createViewImageView(parentView, inflater, formSectionInfo, fieldInfo, imageLayout, fields, sectionRequired, pfaViewsCallbacks2, fieldCount);
                     break;
 
@@ -390,7 +393,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                     break;
 
                 case "autoSearch":
-                    Log.d("viewCreated", "autoSearch");
+                    Log.d("viewCreated", "autoSearch 123");
                     createAutoSearchView(parentView, inflater, fieldInfo);
                     break;
 
@@ -493,6 +496,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                     .setPositiveButton(android.R.string.yes, (dialog1, which) -> {
                         if (pfaViewsCallbacks != null) {
                             pfaViewsCallbacks.onButtonCLicked(view);
+                            PFADDACTV pfaddactv = parentView.findViewWithTag("parent_license_type");
+                            Log.d("parentLicVal" , "parentView Parent License = " + pfaddactv.getText().toString());
                         }
                     })
                     .setNegativeButton(android.R.string.no, null)
@@ -1127,12 +1132,12 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                 } else
                                     sharedPrefUtils.showMsgDialog("Please fill above restaurants assessment dropdowns", null);
                             } else if (parent_license_type.equals("E-Commerce")) {
-                                Log.d("liscentype", "Restaurants");
+                                Log.d("liscentype", "E-Commerce");
                                 if (e_commerce_investment != null && e_commerce_sales != null && e_commerce_employees != null &&
                                         e_commerce_riders != null && e_commerce_registered_fbos != null) {
 
 
-                                    Log.d("liscentype", "Restaurants fields not null");
+                                    Log.d("liscentype", "E-Commerce fields not null");
                                     retailer_val.clear();
                                     retailer_val_key.clear();
 
@@ -1155,7 +1160,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
 
                                         @Override
                                         public void getExistingBusiness(JSONArray jsonArray , String msg) {
-                                            Log.d("liscentype", "Restaurants fields response");
+                                            Log.d("liscentype", "E-Commerce fields response");
                                             confirmRevisedCatMsg = msg;
                                             for (int i = 0; i < jsonArray.length(); i++) {
 
@@ -1168,7 +1173,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                                     } catch (JSONException e) {
                                                         e.printStackTrace();
                                                     }
-                                                    Log.d("liscentype", "Restaurants response not null");
+                                                    Log.d("liscentype", "E-Commerce response not null");
                                                 }
 
                                             }
@@ -1426,6 +1431,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
         ImageButton addMoreImgBtn = img_attachment_ll.findViewById(R.id.addMoreImgBtn);
         final ImageButton deleteImgBtn = img_attachment_ll.findViewById(R.id.deleteImgBtn);
 
+        Log.d("ViewTypeCreated" , "imageView");
+
         if (fieldInfo.getField_name().equalsIgnoreCase("application_image") ||
                 fieldInfo.getField_name().equalsIgnoreCase("application_cnic_image") ||
                 fieldInfo.getField_name().equalsIgnoreCase("application_cnic_back_image") ||
@@ -1601,6 +1608,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
         final ImageButton deleteImgBtn = img_attachment_ll.findViewById(R.id.deleteImgBtn);
         final ImageButton downloadImgBtn = img_attachment_ll.findViewById(R.id.downloadImgBtn);
 
+        Log.d("ViewTypeCreated" , "fileView");
+
         if (fieldInfo.getField_name().equalsIgnoreCase("application_image") ||
                 fieldInfo.getField_name().equalsIgnoreCase("application_cnic_image") ||
                 fieldInfo.getField_name().equalsIgnoreCase("application_cnic_back_image") ||
@@ -1624,29 +1633,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                 selectImgTV.setText(mContext.getString(R.string.select_image));
             }
 
-//            if ((fieldInfo.getIcon().startsWith("http")))
-//                attachmentLblTV.setText(Html.fromHtml(isEnglishLang() ? fieldInfo.getValue() : fieldInfo.getValueUrdu()));
-//            else
-//                attachmentLblTV.setText("Attachment");
+            attachmentLblTV.setText(Html.fromHtml(isEnglishLang() ? fieldInfo.getValue() : fieldInfo.getValueUrdu()));
         } else {
-//            if ((fieldInfo.getIcon().startsWith("http")))
-//                attachmentLblTV.setText(Html.fromHtml(isEnglishLang() ? fieldInfo.getValue() : fieldInfo.getValueUrdu()));
-//            else
-//                attachmentLblTV.setText("Attachment");
+            attachmentLblTV.setText("Attachment");
             img_attachment_ll.findViewById(R.id.selectImgLblFL).setVisibility(GONE);
         }
-
-        if ((fieldInfo.getValue() != null))
-            attachmentLblTV.setText(Html.fromHtml(isEnglishLang() ? fieldInfo.getValue() : fieldInfo.getValueUrdu()));
-        else
-            attachmentLblTV.setText("Attachment");
-
-        if (fieldInfo.isNotEditable()) {
-            deleteImgBtn.setVisibility(GONE);
-        }
-
-//        if (fieldInfo.isClickable() && fieldInfo.getData() != null)
-//            deleteImgBtn.setVisibility(GONE);
 
         if ((fieldInfo.getIcon().startsWith("http")) && fieldInfo.isClickable()) {
 
@@ -1685,116 +1676,74 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
             downloadImgBtn.setVisibility(GONE);
         }
 
-       /* if (fieldInfo.getIcon().endsWith("pdf") && fieldInfo.isClickable()){
-            Log.d("pdfFilePath" , "path = " + fieldInfo.getIcon());
-            attachmentCNIV.setDrawable(R.drawable.ic_pdf);
-            deleteImgBtn.setVisibility(VISIBLE);
-            downloadImgBtn.setVisibility(VISIBLE);
-        } else {
-            attachmentCNIV.setDrawable(R.drawable.ic_pdf);
-            deleteImgBtn.setVisibility(GONE);
-            downloadImgBtn.setVisibility(VISIBLE);
-        }*/
 
-       /* if (fieldInfo.getIcon().endsWith("docx") && !fieldInfo.isClickable()){
-            Log.d("pdfFilePath" , "path = " + fieldInfo.getIcon());
-            attachmentCNIV.setDrawable(R.drawable.ic_docx);
-            deleteImgBtn.setVisibility(VISIBLE);
-            downloadImgBtn.setVisibility(VISIBLE);
+        if (fieldInfo.isNotEditable()) {
+            deleteImgBtn.setVisibility(GONE);
         }
-        else {
-            attachmentCNIV.setDrawable(R.drawable.ic_docx);
-            deleteImgBtn.setVisibility(GONE);
-            downloadImgBtn.setVisibility(VISIBLE);
-        }*/
-
-        /* else if (fieldInfo.getIcon()!=null){
-            attachmentCNIV.setImageUrl(fieldInfo.getIcon() , AppController.getInstance().getImageLoader());
-        }*/
+        if ((fieldInfo.getData() != null && fieldInfo.getData().size() > 0) && (!fieldInfo.getData().get(0).getValue().equals(""))) {
+            if (fieldInfo.getData().get(0).getValue().startsWith("http")) {
+                attachmentCNIV.setImageUrl(fieldInfo.getData().get(0).getValue(), AppController.getInstance().getImageLoader());
+            } else {
+                deleteImgBtn.setVisibility(VISIBLE);
+//                if (fieldInfo.getData().get(0).getValue().endsWith("pdf")) {
+//                    attachmentCNIV.setFileBitmap(fieldInfo.getData().get(0).getValue());
+//                    Log.d("fileViewIcon", "icon pdf= " + fieldInfo.getData().get(0).getValue());
+//                } else if (fieldInfo.getData().get(0).getValue().endsWith("docx")) {
+//                    attachmentCNIV.setFileBitmap(fieldInfo.getData().get(0).getValue());
+//                    Log.d("fileViewIcon", "icon docx= " + fieldInfo.getData().get(0).getValue());
+//                } else {
+                    attachmentCNIV.setFileBitmap(fieldInfo.getData().get(0).getValue());
+                    Log.d("fileViewIcon", "icon = " + fieldInfo.getData().get(0).getValue());
+//                }
+            }
+        } else {
+            attachmentCNIV.setDrawable(R.mipmap.no_img);
+        }
 
         if (fieldInfo.isInvisible()) {
             img_attachment_ll.setVisibility(GONE);
         }
 
-        deleteImgBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                attachmentCNIV.setImageFile(null);
-                attachmentCNIV.setLocalImageBitmap(null);
-                attachmentCNIV.setDrawable(R.mipmap.no_img);
-                deleteImgBtn.setVisibility(GONE);
-                downloadImgBtn.setVisibility(GONE);
-            }
+
+        deleteImgBtn.setOnClickListener(v -> {
+            attachmentCNIV.setImageFile(null);
+            attachmentCNIV.setLocalImageBitmap(null);
         });
 
-        downloadImgBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (fieldInfo.getIcon().startsWith("http")) {
-//                    Toast.makeText(mContext, "Download started", Toast.LENGTH_SHORT).show();
-//                    downloadFile(fieldInfo.getIcon());
-                    downloadImgBtn.setVisibility(GONE);
-
-                    //         get the file name to be downloaded from url
-                    final String outputFile = URLUtil.guessFileName(fieldInfo.getIcon(), null, null);
-
-//        Create the folder for downloads
-                    String rootDir = Environment.getExternalStorageDirectory()
-                            + File.separator + "Download";
-//                + File.separator + "PFA_Mobile_Downloads";
-                    File rootFile = new File(rootDir);
-
-                    if (!rootFile.exists())
-                        rootFile.mkdir();
-
-//        End create folder
-
-                    if (sharedPrefUtils.isVideoFile(fieldInfo.getIcon())) {
-                        DownloadFileManager.downloadVideo(fieldInfo.getIcon(), new File(rootFile, outputFile), pbListener, mContext);
-                    } else {
-                        DownloadFileManager.downloadImage(fieldInfo.getIcon(), new File(rootFile, outputFile), pbListener, mContext);
-                    }
-
-                }
-            }
-        });
 
         printLog("fieldInfo.isAdd_more", "" + (fieldInfo.isAdd_more()));
         if (fieldInfo.isAdd_more()) {
             addMoreImgBtn.setVisibility(VISIBLE);
-            addMoreImgBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+            addMoreImgBtn.setOnClickListener(v -> {
 
-                    PFAViewsUtils pfaViewsUtils = new PFAViewsUtils(mContext);
-                    HashMap<String, List<FormDataInfo>> pfaViewsData = pfaViewsUtils.getViewsData(parentView, false);
+                PFAViewsUtils pfaViewsUtils = new PFAViewsUtils(mContext);
+                HashMap<String, List<FormDataInfo>> pfaViewsData = pfaViewsUtils.getViewsData(parentView, false);
 
-                    for (int x = 0; x < fields.size(); x++) {
-                        String fieldType = fields.get(x).getField_type();
+                for (int x = 0; x < fields.size(); x++) {
+                    String fieldType = fields.get(x).getField_type();
 
-                        if (fieldType.equalsIgnoreCase("radioGroup") || fieldType.equalsIgnoreCase("dropdown")) {
-                            if (pfaViewsData.get(fields.get(x).getField_name()) != null && pfaViewsData.get(fields.get(x).getField_name()).size() > 0)
-                                fields.get(x).setDefault_value(pfaViewsData.get(fields.get(x).getField_name()).get(0).getKey());
-                        } else if (fieldType.equalsIgnoreCase("location_fields")) {
+                    if (fieldType.equalsIgnoreCase("radioGroup") || fieldType.equalsIgnoreCase("dropdown")) {
+                        if (pfaViewsData.get(fields.get(x).getField_name()) != null && pfaViewsData.get(fields.get(x).getField_name()).size() > 0)
+                            fields.get(x).setDefault_value(pfaViewsData.get(fields.get(x).getField_name()).get(0).getKey());
+                    } else if (fieldType.equalsIgnoreCase("location_fields")) {
 
-                            fields.get(x).setData(pfaViewsData.get(fields.get(x).getField_name()));
-                            fields.get(x).setRequired(true);
+                        fields.get(x).setData(pfaViewsData.get(fields.get(x).getField_name()));
+                        fields.get(x).setRequired(true);
 
-                        } else {
-                            fields.get(x).setData(pfaViewsData.get(fields.get(x).getField_name()));
-                        }
+                    } else {
+                        fields.get(x).setData(pfaViewsData.get(fields.get(x).getField_name()));
                     }
-
-                    FormFieldInfo addMoreFieldInfo = copyFormFieldInfo(fieldInfo, fields.size());
-
-                    fields.add(addMoreFieldInfo);
-
-                    parentView.removeAllViews();
-                    formSectionInfo.setFields(fields);
-
-                    createViews(formSectionInfo, parentView, sectionRequired, pfaViewsCallbacks2, true, mainScrollView);
-
                 }
+
+                FormFieldInfo addMoreFieldInfo = copyFormFieldInfo(fieldInfo, fields.size());
+
+                fields.add(addMoreFieldInfo);
+
+                parentView.removeAllViews();
+                formSectionInfo.setFields(fields);
+
+                createViews(formSectionInfo, parentView, sectionRequired, pfaViewsCallbacks2, true, mainScrollView);
+
             });
         }
 
@@ -1840,10 +1789,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
         }
 
         if (fieldInfo.isClickable()) {
-            if (deleteImgBtn != null)
-                attachmentCNIV.setDeleteImgBtn(deleteImgBtn);
-            else
-                Log.d("deleteIMageBtn", "dlete button null");
+            attachmentCNIV.setDeleteImgBtn(deleteImgBtn);
             attachmentCNIV.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -3588,6 +3534,9 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                 }
                             });
                         }
+                        else if (fieldInfo.getField_name().equals("call_status")){
+
+                        }
                         else if (fieldInfo.getField_name().equals("parent_business_category") && parentBusinessCatUrl != null){
                             new PopulateParentLicense(mContext, parentBusinessCatUrl , id, new CheckUserCallback() {
                                 @Override
@@ -4280,17 +4229,18 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                                 PFADDACTV pfaEditText = parentView.findViewWithTag(jsonObject.optString("key"));
                                                 try {
                                                     pfaEditText.setText(jsonObject.getString("value"));
+                                                    businessCatVal = pfaEditText.getText().toString();
                                                     if (!jsonObject.optBoolean("is_editable")) {
-                                                        pfaEditText.setEnabled(false);
+//                                                        pfaEditText.setEnabled(false);
                                                         pfaEditText.setClickable(false);
-                                                        pfaEditText.setFocusable(false);
+//                                                        pfaEditText.setFocusable(false);
 
                                                         pfaEditText.setBackgroundColor(mContext.getResources().getColor(R.color.chat_list_footer_bg));
 
                                                     }else {
-                                                        pfaEditText.setEnabled(true);
+//                                                        pfaEditText.setEnabled(true);
                                                         pfaEditText.setClickable(true);
-                                                        pfaEditText.setFocusable(true);
+//                                                        pfaEditText.setFocusable(true);
 
                                                         pfaEditText.setBackgroundColor(mContext.getResources().getColor(R.color.white));
 
@@ -6502,6 +6452,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                 pfaSearchACTV.setText(String.format(Locale.getDefault(), "%s%s", pfaSearchInfo.getFull_name(), (pfaSearchInfo.getCnic_number() == null || pfaSearchInfo.getCnic_number().isEmpty()) ? "" : " / " + pfaSearchInfo.getCnic_number()));
 
                                 HttpService httpService = new HttpService(mContext);
+                                Log.d("formSectionName", "httpService url=  " + pfaSearchInfo.getAPI_URL());
                                 httpService.getListsData(pfaSearchInfo.getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
                                     @Override
                                     public void onCompleteHttpResponse(JSONObject response, String requestUrl) {

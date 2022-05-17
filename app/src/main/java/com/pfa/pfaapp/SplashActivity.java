@@ -32,9 +32,9 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.List;
 
-import eu.dkaratzas.android.inapp.update.Constants;
-import eu.dkaratzas.android.inapp.update.InAppUpdateManager;
-import eu.dkaratzas.android.inapp.update.InAppUpdateStatus;
+//import eu.dkaratzas.android.inapp.update.Constants;
+//import eu.dkaratzas.android.inapp.update.InAppUpdateManager;
+//import eu.dkaratzas.android.inapp.update.InAppUpdateStatus;
 
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_FP_ACTION;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_JSON_STR_RESPONSE;
@@ -64,8 +64,8 @@ public class SplashActivity extends BaseActivity {
         }
 
         sharedPrefUtils.applyFont(findViewById(R.id.logoTV), AppUtils.FONTS.HelveticaNeueMedium);
-/*
-        if (android.os.Build.VERSION.SDK_INT < 25){
+
+        /*if (android.os.Build.VERSION.SDK_INT < 25){
             new AlertDialog.Builder(SplashActivity.this)
                     .setTitle("Old Android Version")
                     .setMessage("You are using the old Android version. \n" +
@@ -109,8 +109,8 @@ public class SplashActivity extends BaseActivity {
                     }
                 }
             });
-        }*/
-
+        }
+*/
             if (!updateAvailable) {
                 if (getIntent().getData() != null) {
                     Log.d("onCreateActv", "fbo here 4 ");
@@ -221,7 +221,7 @@ public class SplashActivity extends BaseActivity {
         }
 
         startLoginScreen(null);
-    /*
+/*
         httpService.getListsData1("https://app.pfa.gop.pk/api/BaseURL/GetBaseURL?applicationName=cellpfagop", new HashMap<String, String>(), new HttpResponseCallback() {
             @Override
             public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
@@ -263,7 +263,7 @@ public class SplashActivity extends BaseActivity {
                 }
             }
         }, false);
-    */
+*/
     }
 
 

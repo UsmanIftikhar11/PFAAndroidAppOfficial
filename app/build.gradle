@@ -9,8 +9,8 @@ android {
         applicationId "com.pfaofficial.test"
         minSdkVersion 25
         targetSdkVersion 30
-        versionCode 65
-        versionName "1.65"
+        versionCode 69
+        versionName "1.69"
         setProperty("archivesBaseName", "PFA Official" + " - VC-" + versionCode + " VN-" + versionName)
         multiDexEnabled true
     }
@@ -99,9 +99,12 @@ dependencies {
     implementation 'com.google.zxing:core:3.4.0'
     implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
     implementation 'me.dm7.barcodescanner:zxing:1.9.8'
+//    implementation 'androidx.viewpager2:viewpager2:1.0.0'
 
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
-    implementation 'eu.dkaratzas:android-inapp-update:1.0.5'
+//    implementation 'eu.dkaratzas:android-inapp-update:1.0.5'
+//    implementation 'com.github.yuriy-budiyev:code-scanner:2.1.2'
+    implementation 'com.github.blikoon:QRCodeScanner:0.1.2'
 
 
     //     Pre-loaders library

@@ -1,6 +1,7 @@
 package com.pfa.pfaapp;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -30,6 +31,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.blikoon.qrcodescanner.QrCodeActivity;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
@@ -39,6 +41,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.zxing.Result;
 import com.pfa.pfaapp.customviews.PFASideMenuRB;
 import com.pfa.pfaapp.fragments.CiTabbedFragment;
 import com.pfa.pfaapp.fragments.DraftsFragment;
@@ -63,6 +66,7 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Timer;
@@ -70,9 +74,12 @@ import java.util.TimerTask;
 
 import static com.pfa.pfaapp.AppController.TAG;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_ACTIVITY_TITLE;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_DETAIL_MENU;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_FILTERS_DATA;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_FORM_SECTION_LIST;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_FP_ACTION;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_JSON_STR_RESPONSE;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_URL_TO_CALL;
 import static com.pfa.pfaapp.utils.AppConst.FP_SIGNUP;
 import static com.pfa.pfaapp.utils.AppConst.RC_ACTIVITY;
 import static com.pfa.pfaapp.utils.AppConst.SP_DRAWER_MENU;
@@ -100,6 +107,9 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
     List<Fragment> menuItemFragments = new ArrayList<>();
     UserInfo userInfo;
 
+    private static final int REQUEST_CODE_QR_SCAN = 101;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,7 +119,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
 
         setDownloadInspBtnClick();
 
-        Log.d("onCreateActv" , "PFADrawerActivity");
+        Log.d("onCreateActv", "PFADrawerActivity");
 
         dbQueriesUtil.deleteExpiredInspections();
         if (sharedPrefUtils.getSharedPrefValue(SP_IS_DELETE_DB_DELETED, "") == null) {
@@ -139,14 +149,14 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             fetchUserInfo(new HttpResponseCallback() {
                 @Override
                 public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                    Log.d("SideDrawerMenu" , "SP_USER_INFO_null");
+                    Log.d("SideDrawerMenu", "SP_USER_INFO_null");
                     if (response != null)
                         PFADrawerActivity.this.onCompleteHttpResponse(response, requestUrl);
                 }
             }, false);
             updateConfigData();
         } else {
-            Log.d("SideDrawerMenu" , "SP_USER_INFO_not_null");
+            Log.d("SideDrawerMenu", "SP_USER_INFO_not_null");
             getSideMenu();
         }
 
@@ -199,7 +209,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             if (checkSelfPermission(Manifest.permission.CAMERA) ==
                     PackageManager.PERMISSION_DENIED ||
                     checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-                            PackageManager.PERMISSION_DENIED||
+                            PackageManager.PERMISSION_DENIED ||
                     checkSelfPermission(Manifest.permission.CALL_PHONE) ==
                             PackageManager.PERMISSION_DENIED) {
                 //permission not enabled, request it
@@ -214,7 +224,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
                     PackageManager.PERMISSION_DENIED ||
                     checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-                            PackageManager.PERMISSION_DENIED||
+                            PackageManager.PERMISSION_DENIED ||
                     checkSelfPermission(Manifest.permission.CALL_PHONE) ==
                             PackageManager.PERMISSION_DENIED) {
                 //permission not enabled, request it
@@ -242,20 +252,20 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "camera permission granted", Toast.LENGTH_LONG).show();
 
-                String permission_status ="Permission_granted";
-                 sharedPrefUtils.savePermissionStatus(permission_status);
+                String permission_status = "Permission_granted";
+                sharedPrefUtils.savePermissionStatus(permission_status);
             } else {
                 Toast.makeText(this, "camera permission denied", Toast.LENGTH_LONG).show();
             }
 
-        }else if (requestCode == 10) {
+        } else if (requestCode == 10) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "gallery permission granted", Toast.LENGTH_LONG).show();
 
             } else {
                 Toast.makeText(this, "gallery permission denied", Toast.LENGTH_LONG).show();
             }
-        }    else {
+        } else {
             Toast.makeText(this, "Error in permissions", Toast.LENGTH_LONG).show();
         }
     }
@@ -275,8 +285,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
         httpService.getUserConfirmation(userId, pincode, new HttpResponseCallback() {
             @Override
             public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                if (response!= null)
-                {
+                if (response != null) {
                     try {
                         String status = response.getString("status");
                         if (status == "false") {
@@ -363,15 +372,93 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        Log.d("imagePath" , "onActivityResult = " + "PFADrawerActivity");
+        Log.d("imagePath", "onActivityResult = " + "PFADrawerActivity");
 
         if (lastClicked >= 0) {
             menuItemFragments.get(lastClicked).onActivityResult(requestCode, resultCode, data);
         }
+
+        if (resultCode != Activity.RESULT_OK) {
+            Log.d("LOGTAG", "COULD NOT GET A GOOD RESULT.");
+            if (data == null)
+                return;
+            //Getting the passed result
+            String result = data.getStringExtra("com.blikoon.qrcodescanner.error_decoding_image");
+            if (result != null) {
+                AlertDialog alertDialog = new AlertDialog.Builder(PFADrawerActivity.this).create();
+                alertDialog.setTitle("Scan Error");
+                alertDialog.setMessage("QR Code could not be scanned");
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
+            }
+            return;
+
+        }
+        if (requestCode == REQUEST_CODE_QR_SCAN) {
+            if (data == null)
+                return;
+            //Getting the passed result
+            String result = data.getStringExtra("com.blikoon.qrcodescanner.got_qr_scan_relult");
+            String businessId = result.substring(result.lastIndexOf("=") + 1);
+            Log.d("LOGTAG", "Have scan result in your app activity :" + result);
+
+            HashMap<String, String> reqParams = new HashMap<>();
+            reqParams.put("LicenseNo", businessId);
+            String suffix = "business_menu/business_url_from_license_id";
+            httpService.checkExistingBusiness(suffix, reqParams, new HttpResponseCallback() {
+                @Override
+                public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+
+                    if (response != null && response.optBoolean("status")) {
+
+                        try {
+//                            "business_menu/411/" + 409285 + "?menu_type=business_profile"
+                            String suffix = response.getString("data");
+                            httpService.getListsData(suffix, new HashMap<String, String>(), new HttpResponseCallback() {
+                                @Override
+                                public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+                                    if (response != null) {
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString(EXTRA_URL_TO_CALL, suffix);
+                                        bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                                        sharedPrefUtils.startNewActivity(PFADetailActivity.class, bundle,   true);
+                                    } else
+                                        sharedPrefUtils.showMsgDialog("No Business Found", null);
+                                }
+                            }, true);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    } else
+                        sharedPrefUtils.showMsgDialog("No Data Received from the Server", null);
+                }
+            }, true);
+
+            /*Bundle bundle = new Bundle();
+            bundle.putString(EXTRA_DETAIL_MENU, response.toString());
+            baseActivity.sharedPrefUtils.startNewActivity(PFADetailActivity.class, bundle, true);*/
+
+//            AlertDialog alertDialog = new AlertDialog.Builder(PFADrawerActivity.this).create();
+//            alertDialog.setTitle("Scan result");
+//            alertDialog.setMessage("Business Id = " + businessId);
+//            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+//                    new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            dialog.dismiss();
+//                        }
+//                    });
+//            alertDialog.show();
+
+        }
     }
 
     private void getSideMenu() {
-        Log.d("SideDrawerMenu" , "getSideMenu");
+        Log.d("SideDrawerMenu", "getSideMenu");
         userInfo = sharedPrefUtils.getUserInfo();
         if (userInfo != null) {
             String fullNameStr = String.format(Locale.getDefault(), "%s %s", userInfo.getFirstname(), userInfo.getLastname());
@@ -399,11 +486,10 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
         }
 
         if (sharedPrefUtils.getDrawerMenu() == null) {
-            Log.d("SideDrawerMenu" , "getDrawerMenu_null");
+            Log.d("SideDrawerMenu", "getDrawerMenu_null");
             httpService.getSideMenu("" + sharedPrefUtils.getSharedPrefValue(SP_STAFF_ID, ""), sharedPrefUtils.getSharedPrefValue(SP_LOGIN_TYPE, ""), this);
-        }
-        else {
-            Log.d("SideDrawerMenu" , "populateSideMenu");
+        } else {
+            Log.d("SideDrawerMenu", "populateSideMenu");
             populateSideMenu();
         }
     }
@@ -458,7 +544,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                     sharedPrefUtils.saveSharedPrefValue(SP_USER_INFO, response.optJSONObject("data").toString());
 
                     getSideMenu();
-                    Log.d("SideDrawerMenu" , "getSideMenu requestUrl.contains users");
+                    Log.d("SideDrawerMenu", "getSideMenu requestUrl.contains users");
 
                 } else if (requestUrl.contains("/api/menu/")) {
                     try {
@@ -467,7 +553,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                         JSONArray formJSONArray = jsonObject.getJSONArray("menus");
 
                         sharedPrefUtils.saveSharedPrefValue(SP_DRAWER_MENU, formJSONArray.toString());
-                        Log.d("SideDrawerMenu" , "populateSideMenu requestUrl.contains api");
+                        Log.d("SideDrawerMenu", "populateSideMenu requestUrl.contains api");
                         populateSideMenu();
 
                     } catch (JSONException e) {
@@ -497,31 +583,31 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                                 hideShowFilters();
                             }
                         });
-                        Log.d("SideMenuType" , "MenuListFragment");
+                        Log.d("SideMenuType", "MenuListFragment");
                         break;
                     case "menu":
                         menuItemFragment = TabbedFragment.newInstance(pfaMenuInfo, true);
-                        Log.d("SideMenuType" , "TabbedFragment");
+                        Log.d("SideMenuType", "TabbedFragment");
                         break;
                     case "ci_menu":
                         menuItemFragment = CiTabbedFragment.newInstance(pfaMenuInfo, true);
-                        Log.d("SideMenuType" , "CiTabbedFragment");
+                        Log.d("SideMenuType", "CiTabbedFragment");
                         break;
                     case "localMenu":
                         menuItemFragment = LocalTabbedFragment.newInstance(pfaMenuInfo, true);
-                        Log.d("SideMenuType" , "LocalTabbedFragment");
+                        Log.d("SideMenuType", "LocalTabbedFragment");
                         break;
                     case "googlemap":
                         menuItemFragment = MenuMapFragment.newInstance(pfaMenuInfo, null);
-                        Log.d("SideMenuType" , "MenuMapFragment");
+                        Log.d("SideMenuType", "MenuMapFragment");
                         break;
                     case "dashboard":
                     case "grid":
                         menuItemFragment = MenuGridFragment.newInstance(pfaMenuInfo);
-                        Log.d("SideMenuType" , "MenuGridFragment");
+                        Log.d("SideMenuType", "MenuGridFragment");
                         break;
                     case "logout":
-                        Log.d("SideMenuType" , "MenuListFragmentlohouyu");
+                        Log.d("SideMenuType", "MenuListFragmentlohouyu");
 //                        AlertDialog.Builder builder = new AlertDialog.Builder(PFADrawerActivity.this);
 //                        builder.setTitle("Log out");
 //
@@ -555,11 +641,11 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
 
                     case "fingerPrint":
                         menuItemFragment = new Fragment();
-                        Log.d("SideMenuType" , "ndew MenuListFragment");
+                        Log.d("SideMenuType", "ndew MenuListFragment");
                         break;
                     case "share":
                         menuItemFragment = ShareFragment.newInstance(pfaMenuInfo);
-                        Log.d("SideMenuType" , "ShareFragment");
+                        Log.d("SideMenuType", "ShareFragment");
                         break;
 
                     case "draft":
@@ -568,11 +654,11 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                             public void sendMsg(String message) {
                             }
                         });
-                        Log.d("SideMenuType" , "DraftsFragment");
+                        Log.d("SideMenuType", "DraftsFragment");
                         break;
                     default:
                         menuItemFragment = MenuFormFragment.newInstance(pfaMenuInfo, null);
-                        Log.d("SideMenuType" , "MenuFormFragment");
+                        Log.d("SideMenuType", "MenuFormFragment");
                         break;
                 }
 
@@ -588,7 +674,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
     @Override
     public void onClickRB(View view) {
 
-        Log.d("NavDrawerClick" , "PFASideMenuRB after click");
+        Log.d("NavDrawerClick", "PFASideMenuRB after click");
 
 
         if (view.getTag().toString().equalsIgnoreCase("logout")) {
@@ -596,7 +682,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             AlertDialog.Builder builder = new AlertDialog.Builder(PFADrawerActivity.this);
 //                builder.setTitle("Log out");
 
-            String[] options = {"Log Out","Log Out from All Devices"};
+            String[] options = {"Log Out", "Log Out from All Devices"};
             builder.setItems(options, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -625,6 +711,28 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             return;
         }
 
+        if (view.getTag().toString().equalsIgnoreCase("Scan Business By QR")) {
+//            CodeScannerView scannerView = new CodeScannerView(PFADrawerActivity.this);
+//            CodeScanner mCodeScanner = new CodeScanner(this, scannerView);
+            /*mCodeScanner.setDecodeCallback(new DecodeCallback() {
+                @Override
+                public void onDecoded(@NonNull final Result result) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(PFADrawerActivity.this, result.getText(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            });*/
+
+//            mCodeScanner.startPreview();
+            Log.d("NavDrawerClick", "Scan Business By QR after click");
+            Intent i = new Intent(PFADrawerActivity.this, QrCodeActivity.class);
+            startActivityForResult(i, REQUEST_CODE_QR_SCAN);
+            return;
+        }
+
         if (view.getTag().toString().equalsIgnoreCase("Add Fingerprint")) {
             drawer.closeDrawer(GravityCompat.START);
 
@@ -649,14 +757,13 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
 //        }
 
 
-
         if (lastClicked == id) {
             drawer.closeDrawer(GravityCompat.START);
             return;
         }
 
         addFragment(menuItemFragments.get(id), id == 0, pfaMenuInfos.get(id).getMenuItemName());
-        Log.d("NavDrawerClick" , "PFASideMenuRB item name = " + pfaMenuInfos.get(id).getMenuItemName());
+        Log.d("NavDrawerClick", "PFASideMenuRB item name = " + pfaMenuInfos.get(id).getMenuItemName());
         if (drawer != null)
             drawer.closeDrawer(GravityCompat.START);
 
@@ -706,30 +813,30 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
     public void addFragment(Fragment frag, boolean isHome, String fragmentTitleStr) {
 
 //        if (menuItemFragments.get(lastClicked) == frag) {
-            if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
-                actionOnViewChange();
-            }
+        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+            actionOnViewChange();
+        }
 
-            if (mySaveInstanceState == null) {
-                if (isHome) {
-                    currentTab = fragmentTitleStr;
-                    if (isHomeAlreadyAdded)
-                        return;
-                    else {
-                        isHomeAlreadyAdded = true;
-                    }
-                }
-
-                if (isHome || (!fragmentTitleStr.equals(currentTab))) {
-                    currentTab = fragmentTitleStr;
-                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                    transaction.setReorderingAllowed(true);
-                    transaction.add(getFrameLayoutId(isHome), frag);
-                    transaction.addToBackStack(getSupportFragmentManager().getBackStackEntryCount() == 0 ? KEY_FRAG_FIRST : currentTab).commit();
+        if (mySaveInstanceState == null) {
+            if (isHome) {
+                currentTab = fragmentTitleStr;
+                if (isHomeAlreadyAdded)
+                    return;
+                else {
+                    isHomeAlreadyAdded = true;
                 }
             }
 
-            setTitle(currentTab, false);
+            if (isHome || (!fragmentTitleStr.equals(currentTab))) {
+                currentTab = fragmentTitleStr;
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.setReorderingAllowed(true);
+                transaction.add(getFrameLayoutId(isHome), frag);
+                transaction.addToBackStack(getSupportFragmentManager().getBackStackEntryCount() == 0 ? KEY_FRAG_FIRST : currentTab).commit();
+            }
+        }
+
+        setTitle(currentTab, false);
 //        }
     }
 

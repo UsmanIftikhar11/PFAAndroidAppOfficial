@@ -200,6 +200,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
         baseActivity = (BaseActivity) getActivity();
 //        baseActivity.filterCountTV.setText(String.format(Locale.getDefault(), "%d", formFilteredData.size())+"1");
 //        baseActivity.filterCountTV.setVisibility(View.VISIBLE);
+        Log.d("onActivityCreated" , "onActivityCreated 1 ");
         populateListMain();
     }
 
@@ -210,6 +211,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
     @Override
     public void onResume() {
         super.onResume();
+        Log.d("onActivityCreated" , "onActivityCreated 2 ");
         if (AppConst.DO_REFRESH || AppConst.BIZ_LOC_UPDATED) {
 
             if (AppConst.DO_REFRESH) {
@@ -220,12 +222,14 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
                 else
                     return;
             }
+            Log.d("onActivityCreated" , "onActivityCreated 3 ");
             baseActivity.removeFilter();
             populateListMain();
         }
     }
 
     private void populateListMain() {
+        Log.d("onActivityCreated" , "onActivityCreated 4 ");
         if (tableData != null && tableData.size() > 0)
             tableData.clear();
 
@@ -400,6 +404,10 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
                 baseActivity.removeFilter();
             }
 
+            if (bundle.containsKey("activityTitle")){
+                baseActivity.setTitle(bundle.getString("activityTitle" , "Businesses") , true);
+            }
+
             if (bundle.containsKey(SEARCH_DATA)) {
                 if (bundle.containsKey(EXTRA_ITEM_COUNT) && sendMessageCallback != null) {
                     sendMessageCallback.sendMsg(bundle.getString(EXTRA_ITEM_COUNT));
@@ -553,6 +561,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
             if (response.optBoolean("status")) {
                 try {
                     JSONObject tableJsonObject = response.getJSONObject("table");
+                    Log.d("AfterSearch" , "menuListFragment after search= 1 " );
                     populateTableData(tableJsonObject, requestUrl);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -723,14 +732,23 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
                 }
             }
 
+            Log.d("AfterSearch" , "menuListFragment after search= 2 " );
             if (tableJsonObject.has("title")) {
-                if (!isDrawer) {
+//                if (!isDrawer) {
+                Log.d("AfterSearch" , "menuListFragment after search= 3 " );
                     baseActivity.setTitle(baseActivity.sharedPrefUtils.isEnglishLang() ? tableJsonObject.getString("title") : tableJsonObject.optString("titleUrdu"), true);
-                }
+//                }
                 // Add a header to the ListView
                 if (addHeader && isDrawer) {
                     addHeader = false;
                 }
+            }
+
+            if (tableJsonObject.has("search_filters_count")){
+                String search_filters_count = tableJsonObject.getString("search_filters_count");
+                baseActivity.searchFilterFL.setVisibility(View.VISIBLE);
+                baseActivity.filterCountTV.setVisibility(View.VISIBLE);
+                baseActivity.filterCountTV.setText(search_filters_count);
             }
 
             if (tableJsonObject.has("search_filters")) {

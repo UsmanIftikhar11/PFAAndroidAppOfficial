@@ -42,6 +42,7 @@ public class AppConst {
 
     public static final String APP_LATITUDE = "latitude";
     public static final String APP_LONGITUDE = "longitude";
+    public static final String APP_TOWN = "town";
     public static boolean codeVerified = false;
 
 
@@ -81,6 +82,8 @@ public class AppConst {
     public static final String EXTRA_URL_TO_CALL = "EXTRA_URL_TO_CALL";
     public static final String EXTRA_JSON_STR_RESPONSE = "EXTRA_JSON_STR_RESPONSE";
     public static final String EXTRA_DOWNLOAD_URL = "EXTRA_DOWNLOAD_URL";
+    public static final String EXTRA_IMAGE_POSITION = "EXTRA_IMAGE_POSITION";
+    public static final String EXTRA_IMAGES_LIST = "EXTRA_IMAGES_LIST";
     public static final String EXTRA_MENU_ITEM_NAME = "EXTRA_MENU_ITEM_NAME";
 
     public static final String EXTRA_FORM_SECTION_LIST = "EXTRA_FORM_SECTION_LIST";

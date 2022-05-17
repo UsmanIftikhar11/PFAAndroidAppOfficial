@@ -275,6 +275,66 @@ public class PFADetailMenu extends SharedPrefUtils {
                     }
 
                     break;
+
+                case "fileView":
+
+                    Log.d("viewCreated", "PFADetailMenu fileView");
+                    if (!fieldInfo.getData().equals("")) {
+
+                        if (imagesLL == null) {
+                            imagesLL = new LinearLayout(mContext);
+                            imagesLL.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+                            imagesLL.setOrientation(LinearLayout.HORIZONTAL);
+                            imagesLL.setBackground(mContext.getResources().getDrawable(R.mipmap.text_bg));
+                        }
+
+                        @SuppressLint("InflateParams") LinearLayout img_attachment_ll = (LinearLayout) inflater.inflate(R.layout.img_detail_ll, null, false);
+
+                        (img_attachment_ll.findViewById(R.id.selectImgTV)).setVisibility(View.GONE);
+                        TextView attachmentLblTV = img_attachment_ll.findViewById(R.id.attachmentLblTV);
+                        final CustomNetworkImageView attachmentCNIV = img_attachment_ll.findViewById(R.id.attachmentCNIV);
+                        attachmentCNIV.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                        imagesLL.addView(img_attachment_ll);
+
+                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f);
+                        params.setMargins(0, (int) mContext.getResources().getDimension(R.dimen.form_top_margin), 0, 0);
+                        img_attachment_ll.setLayoutParams(params);
+
+                        attachmentCNIV.setTag(fieldInfo.getField_name());
+                        attachmentLblTV.setText(isEnglishLang()?fieldInfo.getValue():fieldInfo.getValueUrdu());
+                        attachmentLblTV.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+
+                        if ((fieldInfo.getData() != null) && (!fieldInfo.getData().equals(""))) {
+                            Log.d("viewCreated" , "fieldInfo = "  + fieldInfo.getData());
+                            if (fieldInfo.getData().endsWith("pdf")){
+                                attachmentCNIV.setDrawable(R.drawable.pdf_large);
+                            } else if (fieldInfo.getData().endsWith("docx")){
+                                attachmentCNIV.setDrawable(R.drawable.doc_large);
+                            } else
+                                attachmentCNIV.setImageUrl(fieldInfo.getData(), AppController.getInstance().getImageLoader());
+
+                            img_attachment_ll.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Log.d("imageCheck" , "fieldInfo = "  + fieldInfo.getField_type());
+                                    Log.d("imageCheck" , "fieldInfo data= "  + fieldInfo.getData());
+                                    if (fieldInfo.getData() != null && (!fieldInfo.getData().isEmpty())) {
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString(EXTRA_DOWNLOAD_URL, fieldInfo.getData());
+                                        startNewActivity(ImageGalleryActivity.class, bundle, false);
+                                    }
+                                }
+                            });
+
+                        } else {
+                            attachmentCNIV.setDrawable(R.mipmap.no_img);
+                        }
+                        if (fieldInfo.isInvisible()) {
+                            img_attachment_ll.setVisibility(GONE);
+                        }
+                    }
+
+                    break;
                 case "googlemap":
                     @SuppressLint("InflateParams") RelativeLayout map_detail_ll = (RelativeLayout) inflater.inflate(R.layout.map_detail_ll, null, false);
 

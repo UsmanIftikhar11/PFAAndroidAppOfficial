@@ -114,6 +114,7 @@ public class PFADetailActivity extends BaseActivity implements HttpResponseCallb
                     try {
                         JSONObject responseJSONObject = new JSONObject(responseStr);
                         onCompleteHttpResponse(responseJSONObject, urlToCall);
+                        Log.d("BusinessDetailsMenu", "PFADetailActivity = " );
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

@@ -246,6 +246,11 @@ public class AppUtils extends CustomDialogs {
         return mimeType != null && mimeType.startsWith("video");
     }
 
+    public boolean isPdfFile(String path) {
+        String mimeType = URLConnection.guessContentTypeFromName(path);
+        return mimeType != null && mimeType.startsWith("pdf");
+    }
+
     public void setVideoThumb(CustomNetworkImageView mediaGridNIV, String filePath) {
 
         Bitmap bmThumbnail;

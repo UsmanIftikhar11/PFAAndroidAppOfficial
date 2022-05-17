@@ -7,8 +7,11 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import androidx.annotation.Nullable;
+
+import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.text.TextWatcher;
 import android.text.method.KeyListener;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -115,6 +118,25 @@ public class PFAEditText extends ClearableEditText {
             setFilters(new InputFilter[]{new InputFilter.LengthFilter(11), new EmojiExcludeFilter()});
 
         } else {
+            addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if (formFieldInfo.getMax_limit() > 0 && count == formFieldInfo.getMax_limit()) {
+//                        textInputLayout.setError("maximum character limit reached");
+                        setError("maximum character limit reached");
+                        }
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
+                }
+            });
             if (formFieldInfo.getMin_limit() > 0) {
                 setMinEms(formFieldInfo.getMin_limit());
             }

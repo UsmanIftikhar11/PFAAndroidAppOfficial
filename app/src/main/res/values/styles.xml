@@ -351,7 +351,7 @@
     </style>
 
     <!--<item name="android:colorError">@color/red</item>-->
-    <style name="CustomDialog" parent="android:Theme.Dialog">
+    <style name="CustomDialog" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@color/transparent</item>
     </style>
