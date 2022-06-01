@@ -7,6 +7,7 @@ package com.pfa.pfaapp.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -67,6 +68,8 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
     private FragmentManager fragmentManager;
 
     private boolean isInspectionsTabBar;
+    private String enforcementUrlToCall;
+    public static boolean tabClickable = true;
 
     public TabbedFragment() {
         // Required empty public constructor
@@ -88,6 +91,7 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
         }
         args.putBoolean("isDrawer", isDrawer);
         fragment.setArguments(args);
+        Log.d("TabbedFragmentFlow" , "newInstance = " );
         return fragment;
     }
 
@@ -100,7 +104,8 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
         detailSectionsCVP = rootView.findViewById(R.id.detailSectionsCVP);
         menubarHSV = rootView.findViewById(R.id.menubarHSV);
 
-        Log.d("onCreateActv" , "TabbedFragment");
+        Log.d("onCreateActv", "TabbedFragment");
+        Log.d("TabbedFragmentFlow" , "onCreateView = " );
 
         return rootView;
     }
@@ -109,6 +114,7 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         baseActivity = (BaseActivity) getActivity();
+        Log.d("TabbedFragmentFlow" , "onActivityCreated = " );
         if (getArguments() != null) {
             urlToCall = getArguments().getString(EXTRA_URL_TO_CALL);
             isDrawer = getArguments().getBoolean("isDrawer");
@@ -118,21 +124,26 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
             }
             refreshData();
         }
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        Log.d("TabbedFragmentFlow" , "onResume = " + lastClicked);
         if (lastClicked >= 0) {
             menuItemFragments.get(lastClicked).onResume();
         }
+
+
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        Log.d("imagePath" , "onActivityResult = " + "TabbedFragment");
+        Log.d("imagePath", "onActivityResult = " + "TabbedFragment");
+        Log.d("TabbedFragmentFlow" , "onActivityResult = " );
 
         if (lastClicked >= 0) {
             menuItemFragments.get(lastClicked).onActivityResult(requestCode, resultCode, data);
@@ -142,8 +153,24 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
 
     @Override
     public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+        Log.d("TabbedFragmentFlow" , "onCompleteHttpResponse = " );
         if (response != null && response.optBoolean("status")) {
             try {
+                try {
+                    int tabClick = response.getInt("tabClickable");
+                    if (tabClick == 1) {
+                        Log.d("tabClickable123", "response = true");
+                        tabClickable = true;
+                    } else /*if (tabClick == 0)*/ {
+                        Log.d("tabClickable123", "response = false)");
+                        tabClickable = false;
+                    }
+                    MenuListFragment.firstTimee = false;
+                } catch (JSONException e) {
+                    Log.d("tabClickable123", "response = exception)");
+                    e.printStackTrace();
+                    tabClickable = false;
+                }
                 if (response.has("data")) {
 
                     JSONObject dataJsonObject = response.optJSONObject("data");
@@ -162,6 +189,7 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
     }
 
     private void setMenus(JSONArray menusJsonArray) {
+        Log.d("TabbedFragmentFlow" , "setMenus = " );
         Type type = new TypeToken<List<PFAMenuInfo>>() {
         }.getType();
 
@@ -172,22 +200,35 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
         pfaMenuInfos = new GsonBuilder().create().fromJson(menusJsonArray.toString(), type);
 
         if (pfaMenuInfos != null && pfaMenuInfos.size() > 0) {
+            Log.d("TabbedFragmentFlow" , "pfaMenuInfos.size() > 0 = ");
             populateHorizontalMenu();
         }
     }
 
     @Override
     public void onClickRB(View targetView) {
+        Log.d("TabbedFragmentFlow" , "onClickRB = " );
+        Log.d("CiTabbedDrawerClick", "Tabbed Fragment item id = " + targetView.getId());
+        Log.d("TabbedFragmentFlow" , "Tabbed Fragment item id = " + targetView.getId());
+
         lastClicked = targetView.getId();
         replaceFragment();
         topbarRG.clearCheck();
         ((RadioButton) targetView).setChecked(true);
 
         if (menuItemFragments.get(lastClicked) instanceof MenuListFragment) {
+            if (tabClickable)
+                ((MenuListFragment) getCurrentFragment()).setResetData(true);
+            else
+                ((MenuListFragment) getCurrentFragment()).setResetData(false);
             if (((MenuListFragment) menuItemFragments.get(lastClicked)).isResetData()) {
                 baseActivity.removeFilter();
 
-                ((MenuListFragment) (menuItemFragments.get(lastClicked))).doAPICall();
+                if (tabClickable) {
+                    ((MenuListFragment) getCurrentFragment()).firstTimee = false;
+                    ((MenuListFragment) getCurrentFragment()).doAPICall(enforcementUrlToCall);
+                } else
+                    ((MenuListFragment) getCurrentFragment()).doAPICall();
             }
 
         } else if (menuItemFragments.get(lastClicked) instanceof DraftsFragment) {
@@ -197,7 +238,13 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
         hideShowFilters();
     }
 
+    @Override
+    public void onClickCallUrl(String url) {
+        enforcementUrlToCall = url;
+    }
+
     private void hideShowFilters() {
+        Log.d("TabbedFragmentFlow" , "hideShowFilters = " );
         baseActivity.searchFilterFL.setVisibility(View.GONE);
         if (menuItemFragments != null && lastClicked < menuItemFragments.size() && menuItemFragments.get(lastClicked) instanceof MenuListFragment) {
             if (((MenuListFragment) menuItemFragments.get(lastClicked)).showFilter) {
@@ -207,21 +254,23 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
                 baseActivity.searchFilterFL.setVisibility(View.VISIBLE);
             }
         }
+
     }
 
     public Fragment getCurrentFragment() {
+        Log.d("TabbedFragmentFlow" , "getCurrentFragment = " );
         return menuItemFragments.get(lastClicked);
     }
 
 
     private void addAllFragments() {
 
+        Log.d("TabbedFragmentFlow" , "addAllFragments = " );
         if (fragmentManager == null)
             fragmentManager = baseActivity.getSupportFragmentManager();
 
         for (int i = 0; i < menuItemFragments.size(); i++) {
-            if(detailSectionsCVP!=null)
-            {
+            if (detailSectionsCVP != null) {
                 try {
                     fragmentManager.beginTransaction().add(R.id.detailSectionsCVP, menuItemFragments.get(i)).commit();
                     fragmentManager.beginTransaction().hide(menuItemFragments.get(i)).commit();
@@ -241,9 +290,9 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
 
 
     private void replaceFragment() {
-
+        Log.d("TabbedFragmentFlow" , "replaceFragment = " );
         if (fragmentManager == null)
-            fragmentManager = baseActivity.getSupportFragmentManager();
+            fragmentManager = getFragmentManager();
 
         for (int i = 0; i < menuItemFragments.size(); i++) {
             try {
@@ -266,6 +315,7 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
     }
 
     private void clearViews() {
+        Log.d("TabbedFragmentFlow" , "clearViews = " );
         menubarHSV.setVisibility(View.GONE);
         if (menuItemFragments != null && menuItemFragments.size() > 0) {
             menuItemFragments.clear();
@@ -276,6 +326,7 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
     }
 
     private void populateHorizontalMenu() {
+        Log.d("TabbedFragmentFlow" , "populateHorizontalMenu = " );
         clearViews();
         menubarHSV.setVisibility(View.VISIBLE);
         detailSectionsCVP.setVisibility(View.VISIBLE);
@@ -354,10 +405,12 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
     }
 
     private void populatePager() {
+        Log.d("TabbedFragmentFlow" , "populatePager = " );
         addAllFragments();
     }
 
     public void refreshData() {
+        Log.d("TabbedFragmentFlow" , "refreshData = " );
         if (urlToCall != null) {
 
             if (pfaMenuInfos == null || pfaMenuInfos.size() == 0) {
@@ -371,8 +424,7 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
                         e.printStackTrace();
                     }
                 }
-            }
-            else {
+            } else {
                 if (menuItemFragments != null && menuItemFragments.size() > 0)
                     for (int i = 0; i < menuItemFragments.size(); i++)
                         if (menuItemFragments.get(i) instanceof MenuListFragment) {
@@ -380,6 +432,19 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
                         }
             }
         }
+        if (lastClicked>0) {
+            ((MenuListFragment) getCurrentFragment()).setResetData(true);
+            ((MenuListFragment) getCurrentFragment()).firstTimee = false;
+            ((MenuListFragment) getCurrentFragment()).doAPICall(pfaMenuInfos.get(lastClicked).getAPI_URL());
+        }
     }
+
+    /*public void onResumeTabbedFragment(){
+        if (lastClicked>0) {
+            ((MenuListFragment) getCurrentFragment()).setResetData(true);
+            ((MenuListFragment) getCurrentFragment()).firstTimee = false;
+            ((MenuListFragment) getCurrentFragment()).doAPICall(pfaMenuInfos.get(lastClicked).getAPI_URL());
+        }
+    }*/
 
 }

@@ -106,6 +106,12 @@ public class LocalTabbedFragment extends Fragment implements HttpResponseCallbac
     @Override
     public void onClickRB(View targetView) {
         baseActivity.addInspectionUtils.onClickRB(targetView);
+        Log.d("LocalTabbedDrawerClick", "LocalTabbed Fragment item name = " + targetView.getTag());
+    }
+
+    @Override
+    public void onClickCallUrl(String url) {
+
     }
 
     @Override

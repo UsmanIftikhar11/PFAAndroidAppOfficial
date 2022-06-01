@@ -6,15 +6,23 @@
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/drawable/button_green.xml" value="0.2175925925925926" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/drawable/ic_pdf.xml" value="0.12916666666666668" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/activity_image_gallery.xml" value="0.11302083333333333" />
+        <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
+        <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/activity_pfadrawer.xml" value="0.25416666666666665" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/activity_pfasearch.xml" value="0.11302083333333333" />
+        <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/activity_signup.xml" value="0.25416666666666665" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/activity_splash.xml" value="0.25407608695652173" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/form_img_fl.xml" value="0.11302083333333333" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/fragment_menu_table.xml" value="0.25416666666666665" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/img_attachment_ll.xml" value="0.25416666666666665" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/img_detail_ll.xml" value="0.25416666666666665" />
+        <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/map_detail_ll.xml" value="0.25416666666666665" />
+        <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/nav_header_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/pfa_dropdown_actv.xml" value="0.25416666666666665" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/pfa_form_edittext.xml" value="0.25416666666666665" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/pfa_search_actv.xml" value="0.12360688956433637" />
+        <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/pfa_sidemenu_rb.xml" value="0.1046875" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/progress_dialog_layout.xml" value="0.20425724637681159" />
+        <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/rating_bar_ll.xml" value="0.2" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/viewpager_gallery_row.xml" value="0.2" />
         <entry key="..\:/Users/PFA/Downloads/Android App/PFAAndroidAppLatest/app/src/main/res/layout/progress_dialog_layout.xml" value="0.2817028985507246" />
         <entry key="..\:/Usman/PFAAndroidAppLatest/app/src/main/res/drawable/count_round_bg.xml" value="0.21574074074074073" />

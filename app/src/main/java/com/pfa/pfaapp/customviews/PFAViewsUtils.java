@@ -34,6 +34,8 @@ import static com.pfa.pfaapp.utils.AppConst.DISTRICT_TAG;
 import static com.pfa.pfaapp.utils.AppConst.SP_VERIFICATION_CODE;
 import static com.pfa.pfaapp.utils.AppConst.TOWN_TAG;
 
+import me.zhanghai.android.materialratingbar.MaterialRatingBar;
+
 public class PFAViewsUtils extends SharedPrefUtils {
     private ViewGroup viewGroup;
     List<FormDataInfo> values;
@@ -186,11 +188,11 @@ public class PFAViewsUtils extends SharedPrefUtils {
 
                         }
 
-                    } else if (view instanceof PFASearchACTV) {
+                    } /*else if (view instanceof PFASearchACTV) {
                         PFASearchACTV pfaSearchACTV = (PFASearchACTV) view;
                         if (pfaSearchACTV.getPfaSearchInfo() == null)
                             allFieldsValid = false;
-                    } else if (view instanceof CustomNetworkImageView) {
+                    } */else if (view instanceof CustomNetworkImageView) {
                         CustomNetworkImageView customNetworkImageView = (CustomNetworkImageView) view;
                         if (customNetworkImageView.getImageFile() == null && customNetworkImageView.getImgUrl() == null)
                             allFieldsValid = false;
@@ -451,6 +453,16 @@ public class PFAViewsUtils extends SharedPrefUtils {
 
                     formViewsData.put(pfaDropdown.getTag().toString(), pfaDropdown.getSelectedValues());
                 }
+
+            } else if (view instanceof MaterialRatingBar) {
+                MaterialRatingBar ratingBar = (MaterialRatingBar) view;
+                List<FormDataInfo> list = new ArrayList<>();
+                FormDataInfo formDataInfo = new FormDataInfo();
+
+                formDataInfo.setValue(String.valueOf(ratingBar.getRating()));
+                formDataInfo.setKey(String.valueOf(ratingBar.getRating()));
+                list.add(formDataInfo);
+                formViewsData.put(ratingBar.getTag().toString(), list);
 
             } else if (view instanceof PFASearchACTV) {
                 PFASearchACTV pfaSearchACTV = (PFASearchACTV) view;

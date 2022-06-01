@@ -67,6 +67,8 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
     private boolean isInspectionsTabBar;
 
     private FragmentManager fragmentManager;
+    private String enforcementUrlToCall;
+    public static boolean tabClickable;
 
     public CiTabbedFragment() {
         // Required empty public constructor
@@ -99,7 +101,7 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
         topbarRG = rootView.findViewById(R.id.topbarCIRG);
         detailSectionsCICVP = rootView.findViewById(R.id.detailSectionsCICVP);
         menubarHSV = rootView.findViewById(R.id.menubarCIHSV);
-        Log.d("onCreateActv" , "CiTabbedFragment");
+        Log.d("onCreateActv", "CiTabbedFragment");
         return rootView;
     }
 
@@ -130,7 +132,7 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        Log.d("imagePath" , "onActivityResult = " + "CiTabbedFragment");
+        Log.d("imagePath", "onActivityResult = " + "CiTabbedFragment");
 
         if (lastClicked >= 0) {
             getCurrentFragment().onActivityResult(requestCode, resultCode, data);
@@ -142,6 +144,21 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
         if (response != null) {
             if (response.optBoolean("status")) {
                 try {
+                    try {
+                        int tabClick = response.getInt("tabClickable");
+                        if (tabClick == 1) {
+                            Log.d("tabClickable123", "response = true");
+                            tabClickable = true;
+                        } else /*if (tabClick == 0)*/ {
+                            Log.d("tabClickable123", "response = false)");
+                            tabClickable = false;
+                        }
+                        MenuListFragment.firstTimee = false;
+                    } catch (JSONException e) {
+                        Log.d("tabClickable123", "response = exception)");
+                        e.printStackTrace();
+                        tabClickable = false;
+                    }
                     if (response.has("data")) {
                         JSONObject dataJsonObject = response.optJSONObject("data");
                         if (dataJsonObject.has("detailMenu")) {
@@ -149,7 +166,7 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
 
                         } else if (dataJsonObject.has("menus")) {
                             setMenus(dataJsonObject.getJSONArray("menus"));
-                            Log.d(":cittabbed" , "enforcement menu");
+                            Log.d(":cittabbed", "enforcement menu");
                         }
                     }
 
@@ -177,6 +194,9 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
 
     @Override
     public void onClickRB(View targetView) {
+        Log.d("CiTabbedDrawerClick", "CiTabbed Fragment item name = " + targetView.getTag());
+        Log.d("CiTabbedDrawerClick", "CiTabbed Fragment item id = " + targetView.getId());
+        Log.d("CiTabbedDrawerClick", "CiTabbed Fragment item tabClickable = " + tabClickable);
         lastClicked = targetView.getId();
         try {
             replaceFragment();
@@ -188,13 +208,24 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
 
         try {
             if (getCurrentFragment() instanceof MenuListFragment) {
+//                if (!MenuListFragment.firstTimee)
+                if (tabClickable)
+                    ((MenuListFragment) getCurrentFragment()).setResetData(true);
+                else
+                    ((MenuListFragment) getCurrentFragment()).setResetData(false);
                 if (((MenuListFragment) getCurrentFragment()).isResetData()) {
+                    Log.d("CiTabbedDrawerClick", "CiTabbed Fragment item id MenuListFragment = " + enforcementUrlToCall);
                     baseActivity.removeFilter();
 
-                    ((MenuListFragment) getCurrentFragment()).doAPICall();
+                    if (tabClickable) {
+                        ((MenuListFragment) getCurrentFragment()).firstTimee = false;
+                        ((MenuListFragment) getCurrentFragment()).doAPICall(enforcementUrlToCall);
+                    } else
+                        ((MenuListFragment) getCurrentFragment()).doAPICall();
                 }
 
             } else if (getCurrentFragment() instanceof DraftsFragment) {
+                Log.d("CiTabbedDrawerClick", "CiTabbed Fragment item id = DraftsFragment");
                 ((DraftsFragment) (getCurrentFragment())).populateData();
             }
         } catch (Exception e) {
@@ -202,6 +233,11 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
         }
 
         hideShowFilters();
+    }
+
+    @Override
+    public void onClickCallUrl(String url) {
+        enforcementUrlToCall = url;
     }
 
     private void hideShowFilters() {
@@ -218,7 +254,7 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
 
     public Fragment getCurrentFragment() {
 //        if (lastClicked < menuItemFragments.size() && menuItemFragments.get(lastClicked) != null)
-            return menuItemFragments.get(lastClicked);
+        return menuItemFragments.get(lastClicked);
 //        else
 //            return menuItemFragments.get(lastClicked-1);
     }
@@ -251,6 +287,7 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
     }
 
     private void replaceFragment() {
+        Log.d("CiTabbedDrawerClick", "CiTabbed Fragment item id = replaceFragment()");
 
         if (fragmentManager == null)
             fragmentManager = getFragmentManager();

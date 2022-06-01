@@ -5,6 +5,9 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.BulletSpan;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -38,6 +41,8 @@ public class PFASideMenuRB {
         boolean showMenuBar = false;
 
         for (int i = 0; i < pfaMenuInfos.size(); i++) {
+            Log.d("NavDrawerClick" , "PFASideMenuRB size = " + pfaMenuInfos.size());
+            Log.d("NavDrawerClick" , "PFASideMenuRB name = " + pfaMenuInfos.get(i).getMenuItemName());
             final RadioButton radioButton;
             LinearLayout.LayoutParams params;
             if (isVertical) {
@@ -68,7 +73,8 @@ public class PFASideMenuRB {
             }
             if (i == 0)
                 radioButton.setChecked(true);
-            else radioButton.setChecked(false);
+            else
+                radioButton.setChecked(false);
 
             if (!pfaMenuInfos.get(i).getMenuItemImg().equals("") && isVertical)
                 new ImageHttpUtils(mContext, pfaMenuInfos.get(i).getMenuItemImg(), new ImageCallback() {
@@ -85,11 +91,20 @@ public class PFASideMenuRB {
                     }
                 });
 
+            int finalI = i;
             radioButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    callbacks.onClickCallUrl(pfaMenuInfos.get(view.getId()).getAPI_URL());
                     callbacks.onClickRB(view);
-                    Log.d("NavDrawerClick" , "PFASideMenuRB click");
+
+                    Log.d("CiTabbedDrawerClick", "view id = " + view.getTag());
+                    Log.d("CiTabbedDrawerClick", "view id i= " + finalI);
+                    Log.d("CiTabbedDrawerClick", "view id url= " + pfaMenuInfos.get(view.getId()).getAPI_URL());
+
+                    Log.d("NavDrawerClick" , "PFASideMenuRB1 click = " /*+ view.getTag().toString()*/);
+
                 }
             });
             if (pfaMenuInfos.get(i).getMenuItemName() == null || pfaMenuInfos.get(i).getMenuItemName().isEmpty()) {

@@ -61,7 +61,7 @@
         android:allowBackup="true"
         android:debuggable="false"
         android:fullBackupContent="true"
-        android:hardwareAccelerated="false"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/pfalogo"
         android:label="@string/app_name"
         android:largeHeap="true"

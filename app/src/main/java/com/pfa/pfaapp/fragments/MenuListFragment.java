@@ -99,6 +99,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
     private ImageButton deseizeAllBtn;
     private CustomViewCreate customViewCreate;
     private boolean isDeseize;
+    public static boolean firstTimee;
 
     public MenuListFragment() {
         // Required empty public constructor
@@ -234,17 +235,21 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
             tableData.clear();
 
         if (getArguments() != null) {
+            Log.d("onActivityCreated" , "onActivityCreated 5 ");
             urlToCall = getArguments().getString(EXTRA_URL_TO_CALL);
+            Log.d("onActivityCreated" , "onActivityCreated url = " + urlToCall);
             assert getArguments() != null;
             isDrawer = getArguments().getBoolean("isDrawer");
 
             showProgress = getArguments().getBoolean("showProgress");
 
         } else {
+            Log.d("onActivityCreated" , "onActivityCreated 6 ");
             baseActivity.removeFilter();
         }
 
         if (getArguments() != null && getArguments().containsKey(EXTRA_BIZ_FORM_DATA)) {
+            Log.d("onActivityCreated" , "onActivityCreated 7 ");
             try {
                 JSONObject dataJsonObject = new JSONObject(getArguments().getString(EXTRA_BIZ_FORM_DATA));
 
@@ -254,6 +259,8 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
             }
 
         } else if (urlToCall != null) {
+            Log.d("onActivityCreated" , "onActivityCreated 8 first time = " + firstTimee);
+            firstTimee = false;
             doAPICall();
         }
 
@@ -558,6 +565,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
         endRefresh();
         sorry_iv.setVisibility(View.GONE);
         if (response != null)
+
             if (response.optBoolean("status")) {
                 try {
                     JSONObject tableJsonObject = response.getJSONObject("table");
@@ -590,8 +598,49 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
             setResetData(false);
             sorry_iv.setVisibility(View.GONE);
 
-            baseActivity.httpService.getListsData(urlToCall, new HashMap<String, String>(), MenuListFragment.this, showProgress);
-            Log.d("getListData" , "menuListFragment = 6" );
+            if (urlToCall.contains("enforcementsListing_tabs") && !firstTimee) {
+                baseActivity.httpService.getListsData(urlToCall, new HashMap<String, String>(), MenuListFragment.this, showProgress);
+                Log.d("getListData", "menuListFragment = 6a");
+                firstTimee = true;
+            } else if (!firstTimee){
+
+                baseActivity.httpService.getListsData(urlToCall, new HashMap<String, String>(), MenuListFragment.this, showProgress);
+                Log.d("getListData", "menuListFragment = 6b");
+                if (CiTabbedFragment.tabClickable)
+                    firstTimee = true;
+                else if (TabbedFragment.tabClickable) {
+                    firstTimee = true;
+                }
+                else
+                    firstTimee = false;
+
+                Log.d("getListDataTab", "tabClickable = " + TabbedFragment.tabClickable);
+            }
+        }
+    }
+
+    void doAPICall(String urlToCall) {
+//        this.urlToCall = urlToCall;
+
+        if (tableData != null)
+            tableData.clear();
+        if (urlToCall != null) {
+
+            if (!showProgress) {
+                lastScrolledPosition = 0;
+            }
+            setResetData(true);
+            sorry_iv.setVisibility(View.GONE);
+
+            if (urlToCall.contains("enforcementsListing_tabs") && !firstTimee) {
+                baseActivity.httpService.getListsData(urlToCall, new HashMap<String, String>(), MenuListFragment.this, showProgress);
+                Log.d("getListData", "menuListFragment = 6c");
+                firstTimee = false;
+            } else if (!firstTimee){
+                baseActivity.httpService.getListsData(urlToCall, new HashMap<String, String>(), MenuListFragment.this, showProgress);
+                Log.d("getListData", "menuListFragment = 6d");
+                firstTimee = false;
+            }
         }
     }
 
@@ -675,7 +724,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
         return resetData;
     }
 
-    private void setResetData(boolean resetData) {
+    public void setResetData(boolean resetData) {
         this.resetData = resetData;
     }
 

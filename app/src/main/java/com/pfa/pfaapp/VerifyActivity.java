@@ -134,7 +134,7 @@ public class VerifyActivity extends BaseActivity implements HttpResponseCallback
             }
         }
 
-        if (!PinCodeMessage.isEmpty())
+        if (PinCodeMessage != null && !PinCodeMessage.isEmpty())
             tempPinTV.setText(PinCodeMessage);
         else
             tempPinTV.setText(getResources().getString(R.string.enter_passcode));

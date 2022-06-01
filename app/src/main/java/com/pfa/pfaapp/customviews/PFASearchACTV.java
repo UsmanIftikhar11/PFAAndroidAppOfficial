@@ -6,6 +6,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +25,9 @@ import static com.pfa.pfaapp.utils.AppConst.RC_DROPDOWN;
 public class PFASearchACTV extends androidx.appcompat.widget.AppCompatAutoCompleteTextView {
 
     private PFASearchInfo pfaSearchInfo;
-    private FormFieldInfo formFieldInfo;
+    public FormFieldInfo formFieldInfo;
     AppUtils appUtils;
+    public PFATextInputLayout textInputLayout;
 
     @SuppressLint("RtlHardcoded")
     public PFASearchACTV(Context context, AttributeSet attrs) {
@@ -87,12 +89,39 @@ public class PFASearchACTV extends androidx.appcompat.widget.AppCompatAutoComple
         });
     }
 
+    public void showHideDropDown(boolean show){
+        Log.d("duplicateEntry", "call_status showHideDropDown");
+        if (show)
+            textInputLayout.setVisibility(VISIBLE);
+        else
+            textInputLayout.setVisibility(GONE);
+    }
+
+    public void setRequired(boolean required){
+        if (required) {
+            formFieldInfo.setRequired(true);
+//            formFieldInfo.setInvisible(true);
+        }
+        else {
+            formFieldInfo.setRequired(false);
+//            formFieldInfo.setInvisible(false);
+        }
+    }
+
     public void startDropDownActivity() {
         Bundle bundle = new Bundle();
         bundle.putSerializable(EXTRA_FILTERS_DATA, formFieldInfo);
         bundle.putString(EXTRA_ACTV_TAG,formFieldInfo.getField_name());
 
         appUtils.startActivityForResult((Activity) getContext(), PFASearchActivity.class, bundle, RC_DROPDOWN);
+    }
+
+    public PFATextInputLayout getTextInputLayout() {
+        return textInputLayout;
+    }
+
+    public void setTextInputLayout(PFATextInputLayout textInputLayout) {
+        this.textInputLayout = textInputLayout;
     }
 
 

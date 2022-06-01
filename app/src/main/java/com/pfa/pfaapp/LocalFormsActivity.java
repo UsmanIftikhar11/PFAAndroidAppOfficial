@@ -192,6 +192,11 @@ public class LocalFormsActivity extends BaseActivity implements HttpResponseCall
     }
 
     @Override
+    public void onClickCallUrl(String url) {
+
+    }
+
+    @Override
     public void onDDDataSelected(FormDataInfo formDataInfo) {
         Log.d("createViewDropdown" , "localFormsActivity = " + formDataInfo.getAPI_URL());
         addInspectionUtils.onDDDataSelected(formDataInfo);
