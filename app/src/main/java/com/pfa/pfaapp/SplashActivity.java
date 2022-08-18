@@ -80,7 +80,8 @@ public class SplashActivity extends BaseActivity {
 //                    .setNegativeButton(android.R.string.no, null)
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
-        } else {
+        }
+        else {
             appUpdateManager = AppUpdateManagerFactory.create(SplashActivity.this);
 
             appUpdateManager.getAppUpdateInfo().addOnSuccessListener(appUpdateInfo -> {
@@ -110,6 +111,7 @@ public class SplashActivity extends BaseActivity {
                 }
             });
         }*/
+
             if (!updateAvailable) {
                 if (getIntent().getData() != null) {
                     Log.d("onCreateActv", "fbo here 4 ");
@@ -220,6 +222,7 @@ public class SplashActivity extends BaseActivity {
         }
 
         startLoginScreen(null);
+
         /*httpService.getListsData1("https://app.pfa.gop.pk/api/BaseURL/GetBaseURL?applicationName=cellpfagop", new HashMap<String, String>(), new HttpResponseCallback() {
             @Override
             public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
@@ -241,8 +244,10 @@ public class SplashActivity extends BaseActivity {
 
                             if (!BaseUrl.isEmpty())
                                 startLoginScreen(null);
-                            else
-                                sharedPrefUtils.showMsgDialog("No Base Url Found", null);
+                            else {
+                                BaseUrl = "https://cell.pfa.gop.pk/api/";
+//                                sharedPrefUtils.showMsgDialog("No Base Url Found", null);
+                            }
 
                         } else {
                             sharedPrefUtils.showMsgDialog("No Base Url Found", null);

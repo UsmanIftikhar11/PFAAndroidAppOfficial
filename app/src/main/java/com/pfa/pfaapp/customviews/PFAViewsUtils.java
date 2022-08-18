@@ -226,7 +226,7 @@ public class PFAViewsUtils extends SharedPrefUtils {
 //                        boolean Fake = sharedPreferencesG.getBoolean("IsNotRequired", false);
 //                        if (Fake) {
 
-                        Log.d("formDataValid", "instance of edittext created = ");
+                        Log.d("formDataValid", "instance of edittext created = " + view.getTag());
 
                         SharedPrefUtils sharedPrefUtils = new SharedPrefUtils(mContext);
                         if (sharedPrefUtils.getRLF("RequiredFalseField") != null) {

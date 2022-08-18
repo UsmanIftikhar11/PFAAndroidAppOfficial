@@ -147,6 +147,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public void fetchUserInfo(final HttpResponseCallback callback, boolean showProgress) {
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        Log.d("FCMToken" , "token = " + refreshedToken);
         sharedPrefUtils.saveSharedPrefValue(SP_FCM_ID, "" + refreshedToken);
         httpService.getUserInfo("" + sharedPrefUtils.getSharedPrefValue(SP_STAFF_ID, ""), "" + refreshedToken, new HttpResponseCallback() {
             @Override

@@ -30,6 +30,8 @@ import java.util.List;
 
 public class PFASideMenuRB {
 
+    public static int itemId;
+
     @SuppressLint("InflateParams")
     public PFASideMenuRB(final Context mContext, RadioGroup radioGroup, List<PFAMenuInfo> pfaMenuInfos, final RBClickCallback callbacks, final boolean isVertical) {
         final AppUtils appUtils = new AppUtils(mContext);
@@ -43,11 +45,17 @@ public class PFASideMenuRB {
         for (int i = 0; i < pfaMenuInfos.size(); i++) {
             Log.d("NavDrawerClick" , "PFASideMenuRB size = " + pfaMenuInfos.size());
             Log.d("NavDrawerClick" , "PFASideMenuRB name = " + pfaMenuInfos.get(i).getMenuItemName());
+            Log.d("NavDrawerClick" , "PFASideMenuRB id = " + pfaMenuInfos.get(i).getMenuItemID());
+
+            if (pfaMenuInfos.get(i).getMenuItemName().equals("Announcements")){
+                itemId = pfaMenuInfos.get(i).getMenuItemID();
+            }
+
             final RadioButton radioButton;
             LinearLayout.LayoutParams params;
             if (isVertical) {
                 radioButton = (RadioButton) inflater.inflate(R.layout.pfa_sidemenu_rb, null);
-                params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) mContext.getResources().getDimension(R.dimen.form_text_field_height));
+                params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 Log.d("NavDrawerClick" , "PFASideMenuRB vertical");
             } else {
                 radioButton = (RadioButton) inflater.inflate(R.layout.pfa_tab_rb, null);

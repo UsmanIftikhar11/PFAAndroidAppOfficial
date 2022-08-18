@@ -100,6 +100,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
     private CustomViewCreate customViewCreate;
     private boolean isDeseize;
     public static boolean firstTimee;
+    private int counter = 0;
 
     public MenuListFragment() {
         // Required empty public constructor
@@ -189,6 +190,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
             clickableWrapperView.setVisibility(View.VISIBLE);
 //            Log.e("On Refresh Called", "On refresh called");
             baseActivity.removeFilter();
+            Log.d("populateListMain" , "populateListMain 1 ");
             populateListMain();
         }
     };
@@ -202,6 +204,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
 //        baseActivity.filterCountTV.setText(String.format(Locale.getDefault(), "%d", formFilteredData.size())+"1");
 //        baseActivity.filterCountTV.setVisibility(View.VISIBLE);
         Log.d("onActivityCreated" , "onActivityCreated 1 ");
+        Log.d("populateListMain" , "populateListMain 2 ");
         populateListMain();
     }
 
@@ -225,6 +228,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
             }
             Log.d("onActivityCreated" , "onActivityCreated 3 ");
             baseActivity.removeFilter();
+            Log.d("populateListMain" , "populateListMain 3 ");
             populateListMain();
         }
     }
@@ -261,6 +265,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
         } else if (urlToCall != null) {
             Log.d("onActivityCreated" , "onActivityCreated 8 first time = " + firstTimee);
             firstTimee = false;
+            Log.d("doAPiCaLL" , "Menu List 1");
             doAPICall();
         }
 
@@ -431,12 +436,14 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
             } else {
                 if (nextUrl != null) {
                     nextUrl = null;
+                    Log.d("populateListMain" , "populateListMain 4 ");
                     populateListMain();
                 }
             }
         } else if (requestCode == RC_REFRESH_LIST && AppConst.DO_REFRESH) {
             AppConst.DO_REFRESH = false;
             populateListMain();
+            Log.d("populateListMain" , "populateListMain 5 ");
         } else if (requestCode == RC_DROPDOWN) {
             if (data != null)
                 customViewCreate.updateDropdownViewsData(data.getExtras(), newsSearchLL, sectionRequired);
@@ -477,6 +484,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
                                             baseActivity.sharedPrefUtils.showMsgDialog(response.optString("message_code"), new SendMessageCallback() {
                                                 @Override
                                                 public void sendMsg(String message) {
+                                                    Log.d("doAPiCaLL" , "Menu List 2");
                                                     doAPICall();
 
                                                 }
@@ -598,10 +606,15 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
             setResetData(false);
             sorry_iv.setVisibility(View.GONE);
 
-            if (urlToCall.contains("enforcementsListing_tabs") && !firstTimee) {
-                baseActivity.httpService.getListsData(urlToCall, new HashMap<String, String>(), MenuListFragment.this, showProgress);
-                Log.d("getListData", "menuListFragment = 6a");
-                firstTimee = true;
+            if (urlToCall.contains("enforcementsListing_tabs") && !firstTimee ) {
+//                if () {
+//                    if (counter == 0) {
+                        baseActivity.httpService.getListsData(urlToCall, new HashMap<String, String>(), MenuListFragment.this, showProgress);
+                        Log.d("getListData", "menuListFragment = 6a");
+                        firstTimee = true;
+                        counter++;
+//                    }
+//                }
             } else if (!firstTimee){
 
                 baseActivity.httpService.getListsData(urlToCall, new HashMap<String, String>(), MenuListFragment.this, showProgress);
@@ -665,6 +678,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
                                 baseActivity.sharedPrefUtils.showMsgDialog(response.optString("message_code"), new SendMessageCallback() {
                                     @Override
                                     public void sendMsg(String message) {
+                                        Log.d("doAPiCaLL" , "Menu List 3");
                                         doAPICall();
 
                                     }
@@ -710,6 +724,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
                     baseActivity.sharedPrefUtils.showMsgDialog(response.optString("message_code"), new SendMessageCallback() {
                         @Override
                         public void sendMsg(String message) {
+                            Log.d("doAPiCaLL" , "Menu List 4");
                             doAPICall();
 
                         }

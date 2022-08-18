@@ -158,6 +158,12 @@ public class PFADDACTV extends androidx.appcompat.widget.AppCompatAutoCompleteTe
         else
             textInputLayout.setVisibility(GONE);
     }
+    public void showHideDropDownVisibility(boolean show){
+        if (show)
+            formFieldInfo.setInvisible(false);
+        else
+            formFieldInfo.setInvisible(true);
+    }
 
     public void setRequired(boolean required){
         if (required) {

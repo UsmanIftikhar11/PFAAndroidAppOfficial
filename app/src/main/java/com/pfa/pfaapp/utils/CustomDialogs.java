@@ -94,6 +94,10 @@ public class CustomDialogs {
         Log.e(tag, message);
     }
 
+    public void printLogD(String tag, String message) {
+        Log.d(tag, message);
+    }
+
     public void printStackTrace(Exception e) {
         e.printStackTrace();
     }

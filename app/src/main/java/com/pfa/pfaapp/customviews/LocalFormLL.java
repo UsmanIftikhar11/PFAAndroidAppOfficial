@@ -226,6 +226,7 @@ public class LocalFormLL extends LinearLayout implements PFAViewsCallbacks{
                                     && (pfaddactv1.formFieldInfo.getShow_check_value().size() > 0)) {
 
                                 if (pfaddactv1.getSelectedValues() != null && pfaddactv1.getSelectedValues().size() > 0) {
+                                    Log.d("parentLicCat", "Rendering Units parent dd onChange here");
                                     if (pfaddactv1.formFieldInfo.getShow_check_value().contains(pfaddactv1.getSelectedValues().get(0).getValue())) {
                                         formFieldsHideShow.setFieldsRequiredAndVisible(pfaddactv1.formFieldInfo.getShow_hidden_false_fields(), true, sectionRequired, menuFragParentLL, pfaddactv1.getSelectedValues().get(0).getValue());
                                     } else {

@@ -327,7 +327,9 @@ class HttpUtils extends ScalingUtilities implements LocationListener /*implement
                 printLog("Response ", "  Response=>  " + response);
                 if (callback != null) {
                     try {
-                        progressDialog.dismiss();
+                        if (progressDialog != null && progressDialog.isShowing())
+                            progressDialog.dismiss();
+
                         JSONObject jsonObject = new JSONObject(response);
                         /////////
                         if (jsonObject.optBoolean("invalid_user")) {
@@ -517,7 +519,8 @@ class HttpUtils extends ScalingUtilities implements LocationListener /*implement
             public void onErrorResponse(VolleyError volleyError) {
 
                 if (showProgress)
-                    progressDialog.dismiss();
+                    if (progressDialog != null && progressDialog.isShowing())
+                        progressDialog.dismiss();
 
                 printStackTrace(volleyError);
                 hideProgressDialog();
@@ -562,7 +565,8 @@ class HttpUtils extends ScalingUtilities implements LocationListener /*implement
                 printLog(TAG, "" + response);
                 hideProgressDialog();
                 if (showProgress)
-                    progressDialog.dismiss();
+                    if (progressDialog != null && progressDialog.isShowing())
+                        progressDialog.dismiss();
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     if (jsonObject.optBoolean("invalid_user")) {

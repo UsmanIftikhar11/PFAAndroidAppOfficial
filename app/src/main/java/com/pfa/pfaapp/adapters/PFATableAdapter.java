@@ -33,6 +33,7 @@ import com.pfa.pfaapp.LocalFormsActivity;
 import com.pfa.pfaapp.MapsActivity;
 import com.pfa.pfaapp.PFAAddNewActivity;
 import com.pfa.pfaapp.PFADetailActivity;
+import com.pfa.pfaapp.PFADrawerActivity;
 import com.pfa.pfaapp.R;
 import com.pfa.pfaapp.customviews.LocalListLL;
 import com.pfa.pfaapp.customviews.PFAListItem;
@@ -111,7 +112,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
         this.print_data = print_data;
         suggestions.addAll(originalList);
         pfaListItem = new PFAListItem(context);
-        Log.d("viewCreated", "PFATableAdapter");
+        Log.d("viewCreated", "PFATableAdapter1");
 
     }
 
@@ -124,6 +125,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
         this.originalList = data;
         suggestions.addAll(originalList);
         pfaListItem = new PFAListItem(context);
+        Log.d("viewCreated", "PFATableAdapter2");
 
     }
 
@@ -136,6 +138,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
         this.originalList = data;
         suggestions.addAll(originalList);
         pfaListItem = new PFAListItem(context);
+        Log.d("viewCreated", "PFATableAdapter3");
 
     }
 
@@ -541,6 +544,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
                 @Override
                 public void onClick(View v) {
                     Log.d("viewCreated", "pfaTableAdapter text Click2 = " + conducted_inspection);
+                    Log.d("viewCreated", "pfaTableAdapter text Click2 tag= " + v.getId());
                     if (isClicked) {
                         return;
                     }
@@ -579,6 +583,7 @@ public class PFATableAdapter extends BaseAdapter implements Filterable {
                                 @Override
                                 public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
 
+//                                    PFADrawerActivity.notificationCountTV.setText("5");
                                     if (response != null)
                                         bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
 

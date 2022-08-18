@@ -15,6 +15,7 @@ import android.os.Handler;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -41,6 +42,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.zxing.Result;
 import com.pfa.pfaapp.customviews.PFASideMenuRB;
 import com.pfa.pfaapp.fragments.CiTabbedFragment;
@@ -79,6 +81,7 @@ import static com.pfa.pfaapp.utils.AppConst.EXTRA_FILTERS_DATA;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_FORM_SECTION_LIST;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_FP_ACTION;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_JSON_STR_RESPONSE;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_SEARCH_FRAGMENT;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_URL_TO_CALL;
 import static com.pfa.pfaapp.utils.AppConst.FP_SIGNUP;
 import static com.pfa.pfaapp.utils.AppConst.RC_ACTIVITY;
@@ -103,13 +106,16 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
     List<PFAMenuInfo> pfaMenuInfos;
 
     TextView userNameInitTV, loggedUserNameTV, userAddressTV;
+    public static TextView notificationCountTV;
+    public AppCompatImageView imgAnnoucement;
 
     List<Fragment> menuItemFragments = new ArrayList<>();
     UserInfo userInfo;
 
     private static final int REQUEST_CODE_QR_SCAN = 101;
-    private boolean firstTime;
+    private static boolean firstTime = true;
     private boolean tabClickable;
+    private int counter = 0;
 
 
     @Override
@@ -138,8 +144,11 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             sharedPrefUtils.applyFont(filterCountTV, AppUtils.FONTS.HelveticaNeue);
 
         sideMenuOptionsRG = findViewById(R.id.sideMenuOptionsRG);
+        imgAnnoucement = findViewById(R.id.imgAnnoucement);
         loggedUserNameTV = findViewById(R.id.loggedUserNameTV);
+        notificationCountTV = findViewById(R.id.notificationCountTV);
         sharedPrefUtils.applyFont(loggedUserNameTV, AppUtils.FONTS.HelveticaNeueMedium);
+        sharedPrefUtils.applyFont(notificationCountTV, AppUtils.FONTS.HelveticaNeueMedium);
 
         userNameInitTV = findViewById(R.id.userNameInitTV);
         sharedPrefUtils.applyFont(userNameInitTV, AppUtils.FONTS.HelveticaNeueMedium);
@@ -244,6 +253,43 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
 //            }
 //        }
 
+        /*httpService.getListsData("announcementCount", null, new HttpResponseCallback() {
+            @Override
+            public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+                if (response!= null){
+
+                }
+            }
+        } , false);*/
+
+        imgAnnoucement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int id = PFASideMenuRB.itemId - 1;
+                if (lastClicked == id) {
+                    Log.d("NavDrawerClick", "last click and id same ");
+                    drawer.closeDrawer(GravityCompat.START);
+                    return;
+                }
+
+                addFragment(menuItemFragments.get(id), id == 0, pfaMenuInfos.get(id).getMenuItemName());
+                Log.d("NavDrawerClick", "PFASideMenuRB item name = " + pfaMenuInfos.get(id).getMenuItemName());
+                if (drawer != null)
+                    drawer.closeDrawer(GravityCompat.START);
+
+                lastClicked = id;
+
+//                if (lastClicked == 0)
+//                    hideNoDataImg();
+
+                removeFilter();
+                setTitle(pfaMenuInfos.get(id).getMenuItemName(), false);
+                hideShowFilters();
+            }
+        });
+
+        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        Log.d("FCMToken", "token = " + refreshedToken);
 
     }
 
@@ -313,6 +359,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             public void onClick(View v) {
 
                 MenuListFragment menuListFragment = null;
+                MenuMapFragment menuMapFragment = null;
                 if (menuItemFragments.get(lastClicked) instanceof TabbedFragment) {
                     Fragment fragment = ((TabbedFragment) menuItemFragments.get(lastClicked)).getCurrentFragment();
 
@@ -327,6 +374,8 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                     }
                 } else if (menuItemFragments.get(lastClicked) instanceof MenuListFragment) {
                     menuListFragment = (MenuListFragment) menuItemFragments.get(lastClicked);
+                } else if (menuItemFragments.get(lastClicked) instanceof MenuMapFragment) {
+                    menuMapFragment = (MenuMapFragment) menuItemFragments.get(lastClicked);
                 }
 
                 if (menuListFragment != null) {
@@ -337,7 +386,21 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                             menuListFragment.formFilteredData.clear();
                     }
                     bundle.putSerializable(EXTRA_FILTERS_DATA, menuListFragment.formFilteredData);
+                    bundle.putString(EXTRA_SEARCH_FRAGMENT, "list");
                     bundle.putSerializable(EXTRA_FORM_SECTION_LIST, (Serializable) menuListFragment.formSectionInfos);
+
+                    sharedPrefUtils.startActivityForResult(PFADrawerActivity.this, PFAFiltersActivity.class, bundle, RC_ACTIVITY);
+                } else if (menuMapFragment != null) {
+                    Log.d("mapSearchData", "map pfa drawer instance");
+                    Bundle bundle = new Bundle();
+                    bundle.putString(EXTRA_ACTIVITY_TITLE, "Select List Filters");
+                    if (filterCountTV.getText().toString().isEmpty()) {
+                        if (menuMapFragment.formFilteredData != null && menuMapFragment.formFilteredData.size() > 0)
+                            menuMapFragment.formFilteredData.clear();
+                    }
+                    bundle.putSerializable(EXTRA_FILTERS_DATA, menuMapFragment.formFilteredData);
+                    bundle.putString(EXTRA_SEARCH_FRAGMENT, "map");
+                    bundle.putSerializable(EXTRA_FORM_SECTION_LIST, (Serializable) menuMapFragment.formSectionInfos);
 
                     sharedPrefUtils.startActivityForResult(PFADrawerActivity.this, PFAFiltersActivity.class, bundle, RC_ACTIVITY);
                 }
@@ -428,7 +491,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                                         Bundle bundle = new Bundle();
                                         bundle.putString(EXTRA_URL_TO_CALL, suffix);
                                         bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
-                                        sharedPrefUtils.startNewActivity(PFADetailActivity.class, bundle,   true);
+                                        sharedPrefUtils.startNewActivity(PFADetailActivity.class, bundle, true);
                                     } else
                                         sharedPrefUtils.showMsgDialog("No Business Found", null);
                                 }
@@ -491,8 +554,10 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             Log.d("SideDrawerMenu", "getDrawerMenu_null");
             httpService.getSideMenu("" + sharedPrefUtils.getSharedPrefValue(SP_STAFF_ID, ""), sharedPrefUtils.getSharedPrefValue(SP_LOGIN_TYPE, ""), this);
         } else {
+//            counter = 0;
             Log.d("SideDrawerMenu", "populateSideMenu");
-            populateSideMenu();
+//            if (counter == 0)
+                populateSideMenu();
         }
     }
 
@@ -602,21 +667,22 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                 Fragment menuItemFragment;
                 switch (pfaMenuInfo.getMenuType()) {
                     case "list":
-//                            if (!firstTime) {
-                        menuItemFragment = MenuListFragment.newInstance(pfaMenuInfo, true, true, true, null);
-                        ((MenuListFragment) menuItemFragment).setFetchDataInterface(new ListDataFetchedInterface() {
-                            @Override
-                            public void listDataFetched() {
-                                hideShowFilters();
-                            }
-                        });
-                        Log.d("SideMenuType", "MenuListFragment enforcement");
-                            firstTime = true;
-                        break;
-//                            }
+//                        if (counter == 0 && firstTime) {
+                            menuItemFragment = MenuListFragment.newInstance(pfaMenuInfo, true, true, true, null);
+                            ((MenuListFragment) menuItemFragment).setFetchDataInterface(new ListDataFetchedInterface() {
+                                @Override
+                                public void listDataFetched() {
+                                    hideShowFilters();
+                                }
+                            });
+                            Log.d("SideMenuType", "MenuListFragment enforcement");
+                            Log.d("multipleRequestFrag", "MenuListFragment enforcement123");
+                            firstTime = false;
+                            counter++;
+                            break;
+//                        }
                     case "menu":
                         menuItemFragment = TabbedFragment.newInstance(pfaMenuInfo, true);
-                        Log.d("SideMenuType", "TabbedFragment");
                         Log.d("SideMenuType", "TabbedFragment");
                         break;
                     case "ci_menu":
@@ -629,6 +695,12 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                         break;
                     case "googlemap":
                         menuItemFragment = MenuMapFragment.newInstance(pfaMenuInfo, null);
+                        ((MenuMapFragment) menuItemFragment).setFetchDataInterface(new ListDataFetchedInterface() {
+                            @Override
+                            public void listDataFetched() {
+                                hideShowFilters();
+                            }
+                        });
                         Log.d("SideMenuType", "MenuMapFragment");
                         break;
                     case "dashboard":
@@ -705,6 +777,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
     public void onClickRB(View view) {
 
         Log.d("NavDrawerClick", "PFASideMenuRB after click tag = " + view.getTag());
+        Log.d("NavDrawerClick", "PFASideMenuRB after click id = " + view.getId());
 
 
         if (view.getTag().toString().equalsIgnoreCase("logout")) {
@@ -771,7 +844,6 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             sharedPrefUtils.startNewActivity(FPrintActivity.class, bundle, false);
             return;
         }
-
 
 
         int id = view.getId();
@@ -846,16 +918,23 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
     }
 
     private void hideShowFilters() {
-        Log.d("hideShowFilters" , "hideShowFilters = 1");
+        Log.d("hideShowFilters", "hideShowFilters = 1");
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Log.d("hideShowFilters" , "hideShowFilters = 2");
+                Log.d("hideShowFilters", "hideShowFilters = 2");
                 searchFilterFL.setVisibility(View.GONE);
                 if (menuItemFragments.get(lastClicked) instanceof MenuListFragment) {
-                    Log.d("hideShowFilters" , "hideShowFilters = 3");
+                    Log.d("hideShowFilters", "hideShowFilters = 3");
                     if (((MenuListFragment) menuItemFragments.get(lastClicked)).showFilter) {
-                        Log.d("hideShowFilters" , "hideShowFilters = 4");
+                        Log.d("hideShowFilters", "hideShowFilters = 4");
+                        searchFilterFL.setVisibility(View.VISIBLE);
+                    }
+                }
+                if (menuItemFragments.get(lastClicked) instanceof MenuMapFragment) {
+                    Log.d("hideShowFilters", "hideShowFilters = 3");
+                    if (((MenuMapFragment) menuItemFragments.get(lastClicked)).showFilter) {
+                        Log.d("hideShowFilters", "hideShowFilters = 4");
                         searchFilterFL.setVisibility(View.VISIBLE);
                     }
                 }
@@ -905,6 +984,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                 transaction.setReorderingAllowed(true);
                 transaction.add(getFrameLayoutId(isHome), frag);
                 transaction.addToBackStack(getSupportFragmentManager().getBackStackEntryCount() == 0 ? KEY_FRAG_FIRST : currentTab).commit();
+//                transaction.addToBackStack(getSupportFragmentManager().getBackStackEntryCount() == 0 ? KEY_FRAG_FIRST : currentTab).commitAllowingStateLoss();
             }
         }
 

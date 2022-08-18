@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     android:clickable="true"
     android:focusable="true"
@@ -10,27 +11,29 @@
     android:scrollbars="none"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <LinearLayout
+    <com.rey.material.widget.LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/light_green"
             android:orientation="vertical"
             android:padding="15dp">
 
-            <TextView
+            <com.rey.material.widget.TextView
                 android:id="@+id/userNameInitTV"
                 style="@style/black_35_sp_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/name_circle"
-                android:gravity="center" />
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
-            <TextView
+            <com.rey.material.widget.TextView
                 android:id="@+id/loggedUserNameTV"
                 style="@style/white_20_sp"
                 android:layout_width="match_parent"
@@ -39,15 +42,44 @@
                 android:maxLines="2"
                 android:inputType="textCapWords"
                 android:text="@string/app_name"
-                tools:ignore="TextViewEdits" />
+                tools:ignore="TextViewEdits"
+                app:layout_constraintTop_toBottomOf="@+id/userNameInitTV"
+                app:layout_constraintStart_toStartOf="parent"/>
             <!--android:capitalize="words"-->
-            <TextView
+            <com.rey.material.widget.TextView
                 android:id="@+id/userAddressTV"
                 style="@style/white_10_sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/app_name" />
-        </LinearLayout>
+                android:text="@string/app_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loggedUserNameTV"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgAnnoucement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/userNameInitTV"
+                android:src="@drawable/annoucement"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"/>
+
+            <com.rey.material.widget.TextView
+                android:id="@+id/notificationCountTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/name_circle_count"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/imgAnnoucement"
+                app:layout_constraintBottom_toTopOf="@+id/imgAnnoucement"
+                android:translationX="@dimen/_3sdp"
+                android:translationY="@dimen/_10sdp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <RadioGroup
             android:id="@+id/sideMenuOptionsRG"
@@ -66,5 +98,5 @@
             android:layout_gravity="center_horizontal"
             android:text="@string/version_name" />
 
-    </LinearLayout>
+    </com.rey.material.widget.LinearLayout>
 </ScrollView>

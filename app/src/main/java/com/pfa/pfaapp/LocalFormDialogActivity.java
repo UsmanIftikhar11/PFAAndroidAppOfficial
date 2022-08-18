@@ -63,7 +63,7 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
         formSectionInfo = (FormSectionInfo) getIntent().getSerializableExtra(EXTRA_DIALOG_ADD_ITEM_FORM_SECTION);
         formSectionInfos.add(formSectionInfo);
 
-        Log.d("sampleData" , "data = " + formSectionInfo);
+        Log.d("sampleData" , "data = " + formSectionInfo.getSection_name());
 
         setTitle(formSectionInfo.getSection_name(), true);
 

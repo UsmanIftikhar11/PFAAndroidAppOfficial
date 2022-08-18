@@ -219,9 +219,12 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
 
                     if (tabClickable) {
                         ((MenuListFragment) getCurrentFragment()).firstTimee = false;
+                        Log.d("doAPiCaLL" , "Ci Tab 1");
                         ((MenuListFragment) getCurrentFragment()).doAPICall(enforcementUrlToCall);
-                    } else
+                    } else {
+                        Log.d("doAPiCaLL" , "Ci Tab 2");
                         ((MenuListFragment) getCurrentFragment()).doAPICall();
+                    }
                 }
 
             } else if (getCurrentFragment() instanceof DraftsFragment) {
@@ -349,6 +352,7 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
 
                 switch (pfaMenuInfo.getMenuType()) {
                     case "list":
+                        Log.d("multipleRequestFrag" , "list frag ciTab");
                         menuItemFragment = MenuListFragment.newInstance(pfaMenuInfo, false, isDrawer, isDrawer, null);
                         ((MenuListFragment) menuItemFragment).setFetchDataInterface(new ListDataFetchedInterface() {
                             @Override

@@ -278,8 +278,16 @@ public class PFAEditText extends ClearableEditText {
     }
 
     private void populateData() {
-        if (formFieldInfo != null && formFieldInfo.getData() != null && formFieldInfo.getData().size() >= 1) {
-            setText(formFieldInfo.getData().get(0).getValue());
+        Log.d("edittextData" , "populateData 1= ");
+        if (formFieldInfo != null) {
+            Log.d("edittextData" , "populateData 2= ");
+            if (formFieldInfo.getData() != null) {
+                Log.d("edittextData" , "populateData 3= " + formFieldInfo.getData().size());
+                if (formFieldInfo.getData().size() >= 1) {
+                    Log.d("edittextData", "populateData 4= ");
+                    setText(formFieldInfo.getData().get(0).getValue());
+                }
+            }
         }
 
     }

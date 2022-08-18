@@ -6,7 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="duplicateEntry" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="viewCreated" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
@@ -151,10 +151,22 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8954ad4f-1517-491e-a5ce-7a6dfe8af176" name="Default Changelist" comment="PFA App Files v1.69">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__me_zhanghai_android_materialratingbar_library_1_4_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/release/PFA Official - VC-70 VN-1.70-release.aab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/rating_bar_ll.xml" afterDir="false" />
+    <list default="true" id="8954ad4f-1517-491e-a5ce-7a6dfe8af176" name="Default Changelist" comment="PFA App Files v1.70">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_maps_android_android_maps_utils_2_4_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/pfa/pfaapp/BuildConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/release/PFA Official - VC-71 VN-1.71-release.aab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/release/PFA Official - VC-72 VN-1.72-release.aab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/release/PFA Official - VC-73 VN-1.73-release.aab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/release/PFA Official - VC-74 VN-1.74-release.aab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/fragments/MyItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/annoucement.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/name_circle_count.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/textview_border.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/textview_border_green.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/textview_border_red.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/textview_border_stroke.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/map_detail_ll_large.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/generated/source/buildConfig/debug/com/darsh/multipleimageselect/BuildConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" afterDir="false" />
@@ -169,28 +181,40 @@
       <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_firebase_firebase_jobdispatcher_0_8_5_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_firebase_firebase_jobdispatcher_0_8_5_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_blikoon_QRCodeScanner_0_1_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_blikoon_QRCodeScanner_0_1_2_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_rey5137_material_1_2_2_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_rey5137_material_1_2_2_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_journeyapps_zxing_android_embedded_3_2_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_journeyapps_zxing_android_embedded_3_2_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__me_dm7_barcodescanner_core_1_9_8_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__me_dm7_barcodescanner_core_1_9_8_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/app/PFAAndroidAppLatest.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/PFAAndroidAppLatest.app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/escposprinter/PFAAndroidAppLatest.escposprinter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/escposprinter/PFAAndroidAppLatest.escposprinter.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/multipleimageselect/PFAAndroidAppLatest.multipleimageselect.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/multipleimageselect/PFAAndroidAppLatest.multipleimageselect.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/LocalFormsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/LocalFormsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/BaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/BaseActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/LocalFormDialogActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/LocalFormDialogActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/PFADetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/PFADetailActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/PFADrawerActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/PFADrawerActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/PFAFiltersActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/PFAFiltersActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/SplashActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/SplashActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/VerifyActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/VerifyActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/adapters/PFATableAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/adapters/PFATableAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/CustomViewCreate.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/CustomViewCreate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PFASearchACTV.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PFASearchACTV.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/FormFieldsHideShow.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/FormFieldsHideShow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/LocalFormLL.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/LocalFormLL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PFADDACTV.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PFADDACTV.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PFAEditText.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PFAEditText.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PFASideMenuRB.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PFASideMenuRB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PFAViewsUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PFAViewsUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PopulateLicenseCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PopulateLicenseCategory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/fragments/CiTabbedFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/fragments/CiTabbedFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/fragments/LocalTabbedFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/fragments/LocalTabbedFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/fragments/MenuListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/fragments/MenuListFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/fragments/MenuMapFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/fragments/MenuMapFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/fragments/TabbedFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/fragments/TabbedFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/interfaces/RBClickCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/interfaces/RBClickCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pfa_search_actv.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pfa_search_actv.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/httputils/HttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/httputils/HttpUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/httputils/LocalFormHttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/httputils/LocalFormHttpUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/utils/AppConst.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/utils/AppConst.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/utils/CustomDialogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/utils/CustomDialogs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_menu_map.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_menu_map.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/nav_header_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,10 +261,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="resourceFile" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="layoutResourceFile" />
+        <option value="resourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -335,16 +359,23 @@
     <property name="android-custom-viewC:/Users/PFA/Downloads/Android App/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/PopulateLicenseCategory.java_SELECTED" value="PopulateLicenseCategory" />
     <property name="android-custom-viewC:/Users/PFA/Downloads/Android App/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/PopulateParentLicense.java_SELECTED" value="PopulateParentLicense" />
     <property name="android-custom-viewC:/Users/Usman/.gradle/caches/modules-2/files-2.1/com.mcxiaoke.volley/library/1.0.19/2bac9e638b022ca09262960f83e8c9da93d80468/library-1.0.19-sources.jar!/com/android/volley/toolbox/NetworkImageView.java_SELECTED" value="NetworkImageView" />
+    <property name="android-custom-viewC:/Users/Usman/AppData/Local/Android/Sdk/sources/android-30/android/view/View.java_SELECTED" value="View" />
+    <property name="android-custom-viewC:/Users/Usman/AppData/Local/Android/Sdk/sources/android-30/android/widget/EditText.java_SELECTED" value="EditText" />
     <property name="android-custom-viewC:/Users/Usman/AppData/Local/Android/Sdk/sources/android-30/android/widget/ImageView.java_SELECTED" value="ImageView" />
+    <property name="android-custom-viewC:/Users/Usman/AppData/Local/Android/Sdk/sources/android-30/android/widget/RadioGroup.java_SELECTED" value="RadioGroup" />
     <property name="android-custom-viewC:/Users/Usman/AppData/Local/Android/Sdk/sources/android-30/android/widget/TextView.java_SELECTED" value="TextView" />
     <property name="android-custom-viewC:/Users/Usman/AppData/Local/Android/Sdk/sources/android-30/android/widget/VideoView.java_SELECTED" value="VideoView" />
+    <property name="android-custom-viewD:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/CNICEditText.java_SELECTED" value="CNICEditText" />
     <property name="android-custom-viewD:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/CustomNetworkImageView.java_SELECTED" value="CustomNetworkImageView" />
+    <property name="android-custom-viewD:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/LocalFormLL.java_SELECTED" value="LocalFormLL" />
     <property name="android-custom-viewD:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/LocalListLL.java_SELECTED" value="LocalListLL" />
     <property name="android-custom-viewD:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/PFAButton.java_SELECTED" value="PFAButton" />
     <property name="android-custom-viewD:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/PFADDACTV.java_SELECTED" value="PFADDACTV" />
     <property name="android-custom-viewD:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/PFAEditText.java_SELECTED" value="PFAEditText" />
     <property name="android-custom-viewD:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/PFASearchACTV.java_SELECTED" value="PFASearchACTV" />
     <property name="android-custom-viewD:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/PFATextInputLayout.java_SELECTED" value="PFATextInputLayout" />
+    <property name="android-custom-viewD:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/PopulateLicenseCategory.java_SELECTED" value="PopulateLicenseCategory" />
+    <property name="android-custom-viewD:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/PopulateParentLicense.java_SELECTED" value="PopulateParentLicense" />
     <property name="android-custom-viewD:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/VerifyFBOBusiness.java_SELECTED" value="VerifyFBOBusiness" />
     <property name="android-custom-viewD:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/VerifyFBOBusiness.java_VerifyFBOBusiness_DIMENSIONS" value="1080&#10;1920" />
     <property name="android-custom-viewD:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/custominputlayout/CustomTextInputLayout.java_SELECTED" value="CustomTextInputLayout" />
@@ -387,7 +418,7 @@
     <property name="android-custom-viewE:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/custominputlayout/CustomTextInputLayout.java_SELECTED" value="CustomTextInputLayout" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PFAStarRating" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../New folder/PFAAndroidAppLatest" />
     <property name="multi-representation-previewC:/Users/HP/.gradle/caches/modules-2/files-2.1/com.facebook.fresco/drawee/2.0.0/fd8babf68363a8fb0585271b553e1d8537de137f/drawee-2.0.0-sources.jar!/com/facebook/drawee/view/SimpleDraweeView.java_selected" value="Custom views" />
     <property name="multi-representation-previewC:/Users/HP/AndroidStudioProjects/PFA Project/PFAMainRepo/app/src/main/java/com/pfa/pfaapp/customviews/CustomNetworkImageView.java_selected" value="Custom views" />
     <property name="multi-representation-previewC:/Users/HP/AndroidStudioProjects/PFA Project/PFAMainRepo/app/src/main/java/com/pfa/pfaapp/customviews/LocalFormLL.java_selected" value="Custom views" />
@@ -458,10 +489,10 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\PFAAndroidAppLatest\app\src\main\res\drawable" />
+      <recent name="D:\PFAAndroidAppLatest\app\src\main\res\layout" />
       <recent name="E:\PFAAndroidAppLatest\app\src\main\res\layout" />
       <recent name="E:\PFAAndroidAppLatest\app\src\main\res\xml" />
       <recent name="C:\Users\HP\AndroidStudioProjects\PFAMainRepo\app\src\main\res\mipmap-hdpi" />
-      <recent name="C:\Users\HP\AndroidStudioProjects\PFAMainRepo\app\src\main\res\drawable" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Usman\PFAAndroidAppLatest\app\src\main\res\raw" />
@@ -750,7 +781,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652774206371</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="PFA App Files v1.70">
+      <created>1654076901840</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1654076901840</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TodoView">
@@ -806,7 +844,8 @@
     <MESSAGE value="PFA App Files v1.64" />
     <MESSAGE value="PFA App Files v1.65" />
     <MESSAGE value="PFA App Files v1.69" />
-    <option name="LAST_COMMIT_MESSAGE" value="PFA App Files v1.69" />
+    <MESSAGE value="PFA App Files v1.70" />
+    <option name="LAST_COMMIT_MESSAGE" value="PFA App Files v1.70" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

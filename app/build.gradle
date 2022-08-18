@@ -9,8 +9,8 @@ android {
         applicationId "com.pfaofficial.test"
         minSdkVersion 25
         targetSdkVersion 30
-        versionCode 70
-        versionName "1.70"
+        versionCode 74
+        versionName "1.74"
         setProperty("archivesBaseName", "PFA Official" + " - VC-" + versionCode + " VN-" + versionName)
         multiDexEnabled true
     }
@@ -74,6 +74,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:21.0.1'
 
     implementation 'com.google.android.gms:play-services-maps:17.0.1'
+    implementation 'com.google.maps.android:android-maps-utils:2.4.0'
     implementation 'com.google.android.gms:play-services-location:18.0.0'
 
     implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'

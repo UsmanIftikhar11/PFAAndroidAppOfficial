@@ -217,8 +217,7 @@ public class PFADetailActivity extends BaseActivity implements HttpResponseCallb
 
         if (response != null && response.optBoolean("status")) {
             try {
-                Type type = new TypeToken<List<PFATableInfo>>() {
-                }.getType();
+                Type type = new TypeToken<List<PFATableInfo>>() {}.getType();
 
                 if (response.has("data")) {
                     Log.d("enfrocementData" , "dada = " + response);

@@ -2,6 +2,7 @@ package com.pfa.pfaapp.customviews;
 
 import android.content.Context;
 import android.text.Html;
+import android.util.Log;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -70,6 +71,8 @@ class FormFieldsHideShow {
                 reqPFAET.getFormFieldInfo().setInvisible(!isShow);
                 reqPFAET.textInputLayout.setVisibility(isShow ? VISIBLE : GONE);
                 reqPFAET.addTextInputLayout(reqPFAET.textInputLayout);
+                Log.d("parentLicCat1", "Rendering Units parent dd onChange 222 req = " + reqPFAET.getFormFieldInfo().isRequired());
+                Log.d("parentLicCat1", "Rendering Units parent dd onChange 222 req = " + reqPFAET.getTag());
 
                 if (!isShow) {
                     reqPFAET.setText("");
@@ -148,15 +151,18 @@ class FormFieldsHideShow {
 
         List<String> checkViews = null;
 
+        Log.d("parentLicCat", "Rendering Units parent dd onChange 222");
         for (ShowHiddenFalseFields showHiddenFalseField : required_false_fields) {
             if (showHiddenFalseField.getCheckKey().equals(checkValue)) {
                 checkViews = showHiddenFalseField.getCheckViews();
             } else {
+                Log.d("parentLicCat1", "Rendering Units parent dd onChange 222 111");
                 showHideReqFields(false, showHiddenFalseField.getCheckViews(), menuFragParentLL, sectionRequired);
             }
         }
 
         if (checkViews != null && checkViews.size() > 0) {
+            Log.d("parentLicCat1", "Rendering Units parent dd onChange 222 222");
             showHideReqFields(true, checkViews, menuFragParentLL, sectionRequired);
         }
 

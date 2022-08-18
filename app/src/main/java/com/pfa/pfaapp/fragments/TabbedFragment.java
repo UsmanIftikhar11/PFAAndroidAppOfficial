@@ -70,6 +70,7 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
     private boolean isInspectionsTabBar;
     private String enforcementUrlToCall;
     public static boolean tabClickable = true;
+    private int counter = 0;
 
     public TabbedFragment() {
         // Required empty public constructor
@@ -226,9 +227,12 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
 
                 if (tabClickable) {
                     ((MenuListFragment) getCurrentFragment()).firstTimee = false;
+                    Log.d("doAPiCaLL" , " Tab 1");
                     ((MenuListFragment) getCurrentFragment()).doAPICall(enforcementUrlToCall);
-                } else
+                } else {
+                    Log.d("doAPiCaLL" , " Tab 2");
                     ((MenuListFragment) getCurrentFragment()).doAPICall();
+                }
             }
 
         } else if (menuItemFragments.get(lastClicked) instanceof DraftsFragment) {
@@ -346,28 +350,31 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
             topbarRG.setVisibility(View.VISIBLE);
             for (final PFAMenuInfo pfaMenuInfo : pfaMenuInfos) {
 
-                Fragment menuItemFragment;
+                Fragment menuItemFragment = null;
 
                 switch (pfaMenuInfo.getMenuType()) {
                     case "list":
-                        menuItemFragment = MenuListFragment.newInstance(pfaMenuInfo, false, isDrawer, isDrawer, null);
-                        ((MenuListFragment) menuItemFragment).setFetchDataInterface(new ListDataFetchedInterface() {
-                            @Override
-                            public void listDataFetched() {
-                                hideShowFilters();
-                            }
-                        });
-                        ((MenuListFragment) menuItemFragment).setSendMessageCallback(new SendMessageCallback() {
-                            @Override
-                            public void sendMsg(String message) {
-                                if (message != null && (!message.isEmpty())) {
-                                    RadioButton radioButton = topbarRG.findViewWithTag(pfaMenuInfo.getMenuItemName());
-                                    if (radioButton != null) {
-                                        radioButton.setText(message);
+//                        if (tabClickable) {
+//                            if (counter == 0) {
+                                Log.d("multipleRequestFrag", "list frag Tab");
+                                menuItemFragment = MenuListFragment.newInstance(pfaMenuInfo, false, isDrawer, isDrawer, null);
+                                ((MenuListFragment) menuItemFragment).setFetchDataInterface(new ListDataFetchedInterface() {
+                                    @Override
+                                    public void listDataFetched() {
+                                        hideShowFilters();
                                     }
-                                }
-                            }
-                        });
+                                });
+                                ((MenuListFragment) menuItemFragment).setSendMessageCallback(new SendMessageCallback() {
+                                    @Override
+                                    public void sendMsg(String message) {
+                                        if (message != null && (!message.isEmpty())) {
+                                            RadioButton radioButton = topbarRG.findViewWithTag(pfaMenuInfo.getMenuItemName());
+                                            if (radioButton != null) {
+                                                radioButton.setText(message);
+                                            }
+                                        }
+                                    }
+                                });
 
                         break;
                     case "googlemap":

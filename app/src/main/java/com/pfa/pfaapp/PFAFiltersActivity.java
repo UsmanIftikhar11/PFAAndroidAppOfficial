@@ -40,6 +40,7 @@ import static com.pfa.pfaapp.utils.AppConst.EXTRA_ACTIVITY_TITLE;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_FILTERS_DATA;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_FORM_SECTION_LIST;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_ITEM_COUNT;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_SEARCH_FRAGMENT;
 import static com.pfa.pfaapp.utils.AppConst.RC_DROPDOWN;
 import static com.pfa.pfaapp.utils.AppConst.SEARCH_DATA;
 import static com.pfa.pfaapp.utils.AppConst.SUB_TOWN_TAG;
@@ -56,9 +57,11 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
     HashMap<String, Boolean> reqViews = new HashMap<>();
     HashMap<String, List<FormDataInfo>> formFilteredData;
     List<List<PFATableInfo>> tableData;
+    JSONArray jsonArrayTableData;
     String activityTitle;
     private String nextUrl;
     private String itemCount;
+    private String searchFragment;
 
     PFAFormSubmitUtil pfaFormSubmitUtil;
 
@@ -75,13 +78,15 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
         pfaFormSubmitUtil.init(filtersLL, reqViews);
         bundle = getIntent().getExtras();
 
-        Log.d("onCreateActv" , "PFAFiltersActivity");
+        Log.d("onCreateActv", "PFAFiltersActivity");
 
         if (bundle != null) {
             setTitle(bundle.getString(EXTRA_ACTIVITY_TITLE), true);
 
             if (bundle.containsKey(EXTRA_FILTERS_DATA)) {
                 formViewsData = (HashMap<String, List<FormDataInfo>>) bundle.getSerializable(EXTRA_FILTERS_DATA);
+            }if (bundle.containsKey(EXTRA_SEARCH_FRAGMENT)) {
+                searchFragment = bundle.getString(EXTRA_SEARCH_FRAGMENT);
             }
 
             if (bundle.containsKey(EXTRA_FORM_SECTION_LIST)) {
@@ -161,14 +166,14 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
 
     @Override
     public void showImagePickerDialog(CustomNetworkImageView view) {
-        Log.d("imagePath" , "image selection utils PFA filters activity");
+        Log.d("imagePath", "image selection utils PFA filters activity");
         imageSelectionUtils = new ImageSelectionUtils(this, view);
         imageSelectionUtils.showImagePickerDialog(null, false, false);
     }
 
     @Override
     public void showFilePickerDialog(CustomNetworkImageView view) {
-        Log.d("imagePath" , "file selection utils menu form fragment");
+        Log.d("imagePath", "file selection utils menu form fragment");
         imageSelectionUtils = new ImageSelectionUtils(this, view);
         imageSelectionUtils.showFilePickerDialog(null, false, false);
     }
@@ -186,28 +191,53 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
             public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
                 DO_REFRESH = false;
                 if (response != null && response.optBoolean("status")) {
-
+                    Log.d("mapSearchData", "map pfa filter button click 1");
                     try {
-                        Type type = new TypeToken<List<List<PFATableInfo>>>() {
-                        }.getType();
+                        Log.d("mapSearchData", "map pfa filter button click 2");
+                        if (searchFragment.equals("map")){
 
-                        JSONObject tableJsonObject = response.getJSONObject("table");
+//                            Type type = new TypeToken<JSONArray>() {}.getType();
+                            JSONObject tableJsonObject = response.getJSONObject("table");
 
-                        JSONArray formJSONArray = tableJsonObject.getJSONArray("tableData");
-                        tableData = new GsonBuilder().create().fromJson(formJSONArray.toString(), type);
+                            JSONArray formJSONArray = tableJsonObject.getJSONArray("tableData");
+//                            jsonArrayTableData = new GsonBuilder().create().fromJson(formJSONArray.toString(), type);
+                            jsonArrayTableData = formJSONArray;
 
-                        if (tableJsonObject.has("title")){
-                            activityTitle = tableJsonObject.getString("title");
+                            if (tableJsonObject.has("title")) {
+                                activityTitle = tableJsonObject.getString("title");
+                            }
+
+                            if (tableJsonObject.has("next_page")) {
+                                nextUrl = tableJsonObject.optString("next_page");
+                            }
+
+                            if (tableJsonObject.has("itemCount"))
+                                itemCount = tableJsonObject.optString("itemCount");
+                            submitFilters();
+                        } else {
+                            Type type = new TypeToken<List<List<PFATableInfo>>>() {
+                            }.getType();
+
+                            JSONObject tableJsonObject = response.getJSONObject("table");
+
+                            JSONArray formJSONArray = tableJsonObject.getJSONArray("tableData");
+                            tableData = new GsonBuilder().create().fromJson(formJSONArray.toString(), type);
+
+                            if (tableJsonObject.has("title")) {
+                                activityTitle = tableJsonObject.getString("title");
+                            }
+
+                            if (tableJsonObject.has("next_page")) {
+                                nextUrl = tableJsonObject.optString("next_page");
+                            }
+
+                            if (tableJsonObject.has("itemCount"))
+                                itemCount = tableJsonObject.optString("itemCount");
+                            submitFilters();
                         }
-
-                        if (tableJsonObject.has("next_page")) {
-                            nextUrl = tableJsonObject.optString("next_page");
-                        }
-
-                        itemCount = tableJsonObject.optString("itemCount");
-                        submitFilters();
 
                     } catch (Exception e) {
+                        Log.d("mapSearchData", "map pfa filter button click 2 exception = " + e.toString());
                         sharedPrefUtils.printStackTrace(e);
                     }
                 } else {
@@ -219,16 +249,17 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
     }
 
     @Override
-    public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout ) {
+    public void onClickGetCodeBtn(View view, VerifyFBOLayout verifyFBOLayout) {
 
     }
 
     @Override
-    public void onDropdownItemSelected(FormDataInfo formDataInfo,String dataName) {
+    public void onDropdownItemSelected(FormDataInfo formDataInfo, String dataName) {
 
     }
 
     private void submitFilters() {
+        Log.d("mapSearchData", "map pfa filter button click 3");
         if (formViewsData != null && formViewsData.size() > 0)
             formViewsData.clear();
         formFilteredData = pfaFormSubmitUtil.getViewsData(filtersLL, true);
@@ -239,7 +270,7 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        Log.d("imagePath" , "onActivityResult = " + "PFAFiltersActivity");
+        Log.d("imagePath", "onActivityResult = " + "PFAFiltersActivity");
 
         if (resultCode != RESULT_OK) {
             customViewCreate.clearFocusOfAllViews(filtersLL);
@@ -256,14 +287,21 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
         Bundle bundle = new Bundle();
         bundle.putSerializable(EXTRA_FILTERS_DATA, formFilteredData);
 
-        if (tableData != null && tableData.size() > 0)
-            bundle.putSerializable(SEARCH_DATA, (Serializable) tableData);
-        if (activityTitle != null )
+        if (searchFragment.equals("map")) {
+            if (jsonArrayTableData != null && jsonArrayTableData.length() > 0)
+                bundle.putString(SEARCH_DATA,  jsonArrayTableData.toString());
+        } else {
+            if (tableData != null && tableData.size() > 0)
+                bundle.putSerializable(SEARCH_DATA, (Serializable) tableData);
+        }
+        if (activityTitle != null)
             bundle.putString("activityTitle", activityTitle);
 
         if (nextUrl != null) {
             bundle.putString(AppConst.EXTRA_NEXT_URL, nextUrl);
         }
+
+        Log.d("mapSearchData", "map pfa drawer instance 4");
 
         bundle.putString(EXTRA_ITEM_COUNT, itemCount);
         intent.putExtras(bundle);
@@ -272,7 +310,7 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
     }
 
 
-        public void onClickClearFilterBtn(View view) {
+    public void onClickClearFilterBtn(View view) {
         if (formViewsData != null && formViewsData.size() > 0) {
             DO_REFRESH = true;
             formViewsData.clear();
