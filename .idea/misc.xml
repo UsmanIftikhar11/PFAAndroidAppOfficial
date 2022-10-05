@@ -12,6 +12,7 @@
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/drawable/textview_border_green.xml" value="0.2361111111111111" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/drawable/textview_border_red.xml" value="0.2361111111111111" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/drawable/textview_border_stroke.xml" value="0.22962962962962963" />
+        <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/drawable/textview_border_transparent.xml" value="0.20925925925925926" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/activity_image_gallery.xml" value="0.11302083333333333" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/activity_local_form_dialog.xml" value="0.25416666666666665" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
@@ -25,6 +26,7 @@
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/fragment_menu_grid.xml" value="0.25416666666666665" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/fragment_menu_map.xml" value="0.2" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/fragment_menu_table.xml" value="0.25416666666666665" />
+        <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/fragment_tabbed.xml" value="0.223731884057971" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/img_attachment_ll.xml" value="0.25416666666666665" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/img_detail_ll.xml" value="0.25416666666666665" />
         <entry key="..\:/PFAAndroidAppLatest/app/src/main/res/layout/map_detail_ll.xml" value="0.25416666666666665" />

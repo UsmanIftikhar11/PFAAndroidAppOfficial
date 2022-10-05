@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,7 +21,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -31,11 +34,14 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.google.maps.android.clustering.ClusterManager;
+import com.google.maps.android.collections.MarkerManager;
 import com.pfa.pfaapp.BaseActivity;
+import com.pfa.pfaapp.PFAAddNewActivity;
 import com.pfa.pfaapp.R;
 import com.pfa.pfaapp.interfaces.HttpResponseCallback;
 import com.pfa.pfaapp.interfaces.ListDataFetchedInterface;
@@ -45,7 +51,6 @@ import com.pfa.pfaapp.models.FormSectionInfo;
 import com.pfa.pfaapp.models.PFAMenuInfo;
 import com.pfa.pfaapp.models.PFATableInfo;
 import com.pfa.pfaapp.utils.AppConst;
-import com.rey.material.widget.LinearLayout;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -60,6 +65,7 @@ import static com.pfa.pfaapp.utils.AppConst.APP_LONGITUDE;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_BIZ_FORM_DATA;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_FILTERS_DATA;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_ITEM_COUNT;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_JSON_STR_RESPONSE;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_URL_TO_CALL;
 import static com.pfa.pfaapp.utils.AppConst.RC_ACTIVITY;
 import static com.pfa.pfaapp.utils.AppConst.RC_DROPDOWN;
@@ -75,7 +81,7 @@ import org.json.JSONObject;
  * Use the {@link MenuMapFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MenuMapFragment extends Fragment implements OnMapReadyCallback , HttpResponseCallback {
+public class MenuMapFragment extends Fragment implements OnMapReadyCallback , GoogleMap.OnMarkerClickListener , GoogleMap.OnInfoWindowClickListener , HttpResponseCallback {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_LAT_LNG = "ARG_LAT_LNG";
     private ArrayList<String> latLngArray;
@@ -411,13 +417,14 @@ public class MenuMapFragment extends Fragment implements OnMapReadyCallback , Ht
     }
 */
 
-    public void setMultiMapPins(ArrayList<String> markerTitle, ArrayList<String> markerLat, ArrayList<String> markerLng, ArrayList<String> markerColor, ArrayList<String> markerContent, boolean isHttp) {
+    public void setMultiMapPins(ArrayList<String> markerTitle, ArrayList<String> markerLat, ArrayList<String> markerLng, ArrayList<String> markerColor, ArrayList<String> markerContent, ArrayList<String> markerAPIUrl, boolean isHttp) {
 
         if (theGoogleMap != null) {
             theGoogleMap.clear();
         }
 
         builder = new LatLngBounds.Builder();
+        myMarkerAPIUrl = markerAPIUrl;
 
         for (int i = 0; i < markerTitle.size(); i++) {
 
@@ -432,7 +439,10 @@ public class MenuMapFragment extends Fragment implements OnMapReadyCallback , Ht
             markerOptions.snippet(markerContent.get(i));
 
 
-            theGoogleMap.addMarker(markerOptions);
+
+            theGoogleMap.setOnMarkerClickListener(this);
+            theGoogleMap.setOnInfoWindowClickListener(this);
+            myMarker = theGoogleMap.addMarker(markerOptions);
 //            theGoogleMap.addMarker(new MarkerOptions().position(businessLatLng).title(latLngStr[0]).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
 
             if (i == 0) {
@@ -457,12 +467,67 @@ public class MenuMapFragment extends Fragment implements OnMapReadyCallback , Ht
         }*/
     }
 
+    private Marker myMarker;
+    private ArrayList<String> myMarkerAPIUrl = new ArrayList<>();
+    @Override
+    public boolean onMarkerClick(@NonNull Marker marker) {
+
+        /*Log.d("markerClick" , "marker id = " + marker.getId());
+        Log.d("markerClick" , "marker position = " + marker.getPosition());
+        Log.d("markerClick" , "marker title = " + marker.getTitle());
+        String index = marker.getId();
+        String APIUrl = myMarkerAPIUrl.get(Integer.parseInt(index.substring(1)));
+        Bundle bundle = new Bundle();
+        baseActivity.httpService.getListsData(APIUrl, new HashMap<String, String>(), new HttpResponseCallback() {
+            @Override
+            public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+                if (response != null)
+                    bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+
+                Log.d("viewCreated" , "pfa table adapter new activity 3");
+                baseActivity.sharedPrefUtils.startActivityForResult(baseActivity, PFAAddNewActivity.class, bundle, RC_REFRESH_LIST);
+            }
+        }, true);
+        Log.d("markerClick" , "marker original title = " + myMarkerAPIUrl.get(Integer.parseInt(index.substring(1))));
+        Log.d("markerClick" , "marker tag = " + marker.getTag());
+
+        marker.showInfoWindow();*/
+
+//        if (marker  == myMarker){
+//            Log.d("markerClick" , "title = " + myMarkerTitle);
+//            Toast.makeText(getActivity(), "title = " + myMarkerTitle, Toast.LENGTH_LONG).show();
+//        }
+        return false;
+    }
+
+    @Override
+    public void onInfoWindowClick(@NonNull Marker marker) {
+        Log.d("markerClick" , "marker id = " + marker.getId());
+        Log.d("markerClick" , "marker position = " + marker.getPosition());
+        Log.d("markerClick" , "marker title = " + marker.getTitle());
+        String index = marker.getId();
+        String APIUrl = myMarkerAPIUrl.get(Integer.parseInt(index.substring(1)));
+        Bundle bundle = new Bundle();
+        baseActivity.httpService.getListsData(APIUrl, new HashMap<String, String>(), new HttpResponseCallback() {
+            @Override
+            public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+                if (response != null)
+                    bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+
+                Log.d("viewCreated" , "pfa table adapter new activity 3");
+                baseActivity.sharedPrefUtils.startActivityForResult(baseActivity, PFAAddNewActivity.class, bundle, RC_REFRESH_LIST);
+            }
+        }, true);
+        Log.d("markerClick" , "marker original title = " + myMarkerAPIUrl.get(Integer.parseInt(index.substring(1))));
+        Log.d("markerClick" , "marker tag = " + marker.getTag());
+    }
+
     private void setBusinessPin() {
         Log.d("latLngFromMap" , "here enforcement map business pin");
         if (theGoogleMap == null)
             return;
 
-        if (latLngArray.size() == 1) {
+        if (latLngArray != null && latLngArray.size() == 1) {
             theGoogleMap.clear();
 
             if (latLngStr != null && latLngStr.length > 0)
@@ -500,6 +565,14 @@ public class MenuMapFragment extends Fragment implements OnMapReadyCallback , Ht
                 theGoogleMap.setIndoorEnabled(true);
                 theGoogleMap.setBuildingsEnabled(true);
                 theGoogleMap.getUiSettings().setZoomControlsEnabled(false);
+
+               /* theGoogleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                    @Override
+                    public boolean onMarkerClick(@NonNull Marker marker) {
+                        Log.d("markerClick" , "markler clickkkkkkclickkkkkkclickkkkkk");
+                        return true;
+                    }
+                });*/
 
                 if (currentLocLatLng != null) {
                     locHandler.removeCallbacks(locationRunnable);
@@ -589,6 +662,7 @@ public class MenuMapFragment extends Fragment implements OnMapReadyCallback , Ht
         ArrayList<String> markerLng = new ArrayList();
         ArrayList<String> markerColor = new ArrayList();
         ArrayList<String> markerContent = new ArrayList();
+        ArrayList<String> markerAPIUrl = new ArrayList();
 
         try {
 
@@ -603,6 +677,7 @@ public class MenuMapFragment extends Fragment implements OnMapReadyCallback , Ht
                 markerLng.add(jsonObject.getString("longitude"));
                 markerColor.add(jsonObject.getString("color"));
                 markerContent.add(jsonObject.getString("content"));
+                markerAPIUrl.add(jsonObject.getString("API_URL"));
             }
 
             layoutMapButton.removeAllViews();
@@ -613,9 +688,11 @@ public class MenuMapFragment extends Fragment implements OnMapReadyCallback , Ht
                 params.setMargins(0, 30,0, 0);
                 textView.setLayoutParams(params);
                 textView.setPadding(14,14,14,14);
-                textView.setBackground(getResources().getDrawable(R.drawable.textview_border_stroke));
+
                 JSONObject jsonObject = mapButtonArray.getJSONObject(i);
-                textView.setBackgroundColor(Color.parseColor(jsonObject.getString("background_color")));
+                textView.setBackgroundResource(R.drawable.textview_border_transparent);
+                GradientDrawable drawable = (GradientDrawable) textView.getBackground();
+                drawable.setColor(Color.parseColor(jsonObject.getString("background_color")));
                 textView.setText(jsonObject.getString("label"));
                 textView.setTextColor(Color.parseColor(jsonObject.getString("font_color")));
                 layoutMapButton.addView(textView);
@@ -623,8 +700,16 @@ public class MenuMapFragment extends Fragment implements OnMapReadyCallback , Ht
             new Handler().post(new Runnable() {
                 @Override
                 public void run() {
-                    setMultiMapPins(markerTitle, markerLat, markerLng, markerColor, markerContent, true);
-//                    setUpClusterer(markerTitle, markerLat, markerLng, markerColor, markerContent, true);
+                    try {
+                        if (tableJsonObject1.getBoolean("enable_clusters"))
+                            setUpClusterer(markerTitle, markerLat, markerLng, markerColor, markerContent, markerAPIUrl, true);
+                        else
+                            setMultiMapPins(markerTitle, markerLat, markerLng, markerColor, markerContent, markerAPIUrl, true);
+                    } catch (JSONException e) {
+                        setMultiMapPins(markerTitle, markerLat, markerLng, markerColor, markerContent, markerAPIUrl, true);
+                        e.printStackTrace();
+                    }
+
                 }
             });
 
@@ -718,18 +803,92 @@ public class MenuMapFragment extends Fragment implements OnMapReadyCallback , Ht
 
     }
 
-    private void setUpClusterer(ArrayList<String> markerTitle, ArrayList<String> markerLat, ArrayList<String> markerLng, ArrayList<String> markerColor, ArrayList<String> markerContent, boolean isHttp) {
+    private void setUpClusterer(ArrayList<String> markerTitle, ArrayList<String> markerLat, ArrayList<String> markerLng, ArrayList<String> markerColor, ArrayList<String> markerContent, ArrayList<String> markerAPIUrl, boolean isHttp) {
         // Position the map.
         theGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(markerLat.get(0)), Double.parseDouble(markerLng.get(0))), 10));
 
         // Initialize the manager with the context and the map.
         // (Activity extends context, so we can pass 'this' in the constructor.)
         clusterManager = new ClusterManager(getActivity(), theGoogleMap);
+        myMarkerAPIUrl = new ArrayList<>();
+        myMarkerAPIUrl = markerAPIUrl;
 
         // Point the map's listeners at the listeners implemented by the cluster
         // manager.
+        clusterManager = new ClusterManager<MyItem>(getActivity(), theGoogleMap, new MarkerManager(theGoogleMap){
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                //here will get the clicked marker
+                /*Log.d("clusterMarker" , "marker id = " + marker.getId());
+                Log.d("clusterMarker" , "marker position = " + marker.getPosition());
+                Log.d("clusterMarker" , "marker title = " + marker.getTitle());
+                String index = String.valueOf(marker.getPosition().latitude);
+                int index1 = 0;
+                for (int i = 0 ; i<markerLat.size() ; i++){
+                    if (index.equals(markerLat.get(i))){
+                        index1 = i;
+                    }
+                        
+                }
+                String APIUrl = myMarkerAPIUrl.get(index1);
+                Bundle bundle = new Bundle();
+                baseActivity.httpService.getListsData(APIUrl, new HashMap<String, String>(), new HttpResponseCallback() {
+                    @Override
+                    public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+                        if (response != null)
+                            bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+
+                        Log.d("viewCreated" , "pfa table adapter new activity 3");
+                        baseActivity.sharedPrefUtils.startActivityForResult(baseActivity, PFAAddNewActivity.class, bundle, RC_REFRESH_LIST);
+                    }
+                }, true);
+                Log.d("clusterMarker" , "marker original title = " + myMarkerAPIUrl.get(index1));
+                Log.d("clusterMarker" , "marker tag = " + marker.getTag());*/
+                return super.onMarkerClick(marker);
+            }
+
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                Log.d("clusterMarker" , "marker id = " + marker.getId());
+                Log.d("clusterMarker" , "marker position = " + marker.getPosition());
+                Log.d("clusterMarker" , "marker title = " + marker.getTitle());
+                String markerLati = String.valueOf(marker.getPosition().latitude);
+                String markerTitlee = String.valueOf(marker.getTitle());
+                int index = 0 , titleIndex = 0;
+                for (int i = 0 ; i<markerLat.size() ; i++){
+                    if (markerLati.equals(markerLat.get(i))){
+                        index = i;
+                    }
+
+                }
+                for (int i = 0 ; i<markerTitle.size() ; i++){
+                    if (markerTitlee.equals(markerTitle.get(i))){
+                        titleIndex = i;
+                    }
+
+                }
+                if (index == titleIndex) {
+                    String APIUrl = myMarkerAPIUrl.get(index);
+                    Bundle bundle = new Bundle();
+                    baseActivity.httpService.getListsData(APIUrl, new HashMap<String, String>(), new HttpResponseCallback() {
+                        @Override
+                        public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+                            if (response != null)
+                                bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+
+                            Log.d("viewCreated", "pfa table adapter new activity 3");
+                            baseActivity.sharedPrefUtils.startActivityForResult(baseActivity, PFAAddNewActivity.class, bundle, RC_REFRESH_LIST);
+                        }
+                    }, true);
+                }
+                Log.d("clusterMarker" , "marker original title = " + myMarkerAPIUrl.get(index));
+                Log.d("clusterMarker" , "marker tag = " + marker.getTag());
+                super.onInfoWindowClick(marker);
+            }
+        });
         theGoogleMap.setOnCameraIdleListener(clusterManager);
         theGoogleMap.setOnMarkerClickListener(clusterManager);
+        theGoogleMap.setOnInfoWindowClickListener(clusterManager);
 
         // Add cluster items (markers) to the cluster manager.
         addItems(markerTitle , markerLat , markerLng , markerColor , markerContent);

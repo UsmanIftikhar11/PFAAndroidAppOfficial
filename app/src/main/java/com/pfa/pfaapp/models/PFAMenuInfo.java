@@ -14,6 +14,7 @@ public class PFAMenuInfo implements Serializable {
     private int menuItemOrder;
     private String menuItemImg;
     private String API_URL;
+    private String Clickable_URL;
     private String Back_API_URL;
     private String Deseize_ALL_API_URL;
     private String bg_color;
@@ -34,6 +35,7 @@ public class PFAMenuInfo implements Serializable {
         this.menuItemOrder = pfaMenuInfo.menuItemOrder;
         this.menuItemImg = pfaMenuInfo.menuItemImg;
         this.API_URL = pfaMenuInfo.API_URL;
+        this.Clickable_URL = pfaMenuInfo.Clickable_URL;
         this.bg_color = pfaMenuInfo.bg_color;
         this.slug = pfaMenuInfo.slug;
         this.data = pfaMenuInfo.data;
@@ -125,6 +127,14 @@ public class PFAMenuInfo implements Serializable {
 
     public void setAPI_URL(String API_URL) {
         this.API_URL = API_URL;
+    }
+
+    public String getClickable_URL() {
+        return Clickable_URL;
+    }
+
+    public void setClickable_URL(String Clickable_URL) {
+        this.Clickable_URL = Clickable_URL;
     }
 
     public String getBg_color() {

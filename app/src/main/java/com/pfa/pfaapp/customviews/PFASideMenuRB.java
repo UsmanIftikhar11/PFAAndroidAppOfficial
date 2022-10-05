@@ -38,16 +38,16 @@ public class PFASideMenuRB {
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
 
-        Log.d("NavDrawerClick" , "PFASideMenuRB");
+        Log.d("NavDrawerClick", "PFASideMenuRB");
 
         boolean showMenuBar = false;
 
         for (int i = 0; i < pfaMenuInfos.size(); i++) {
-            Log.d("NavDrawerClick" , "PFASideMenuRB size = " + pfaMenuInfos.size());
-            Log.d("NavDrawerClick" , "PFASideMenuRB name = " + pfaMenuInfos.get(i).getMenuItemName());
-            Log.d("NavDrawerClick" , "PFASideMenuRB id = " + pfaMenuInfos.get(i).getMenuItemID());
+            Log.d("NavDrawerClick", "PFASideMenuRB size = " + pfaMenuInfos.size());
+            Log.d("NavDrawerClick", "PFASideMenuRB name = " + pfaMenuInfos.get(i).getMenuItemName());
+            Log.d("NavDrawerClick", "PFASideMenuRB id = " + pfaMenuInfos.get(i).getMenuItemID());
 
-            if (pfaMenuInfos.get(i).getMenuItemName().equals("Announcements")){
+            if (pfaMenuInfos.get(i).getMenuItemName().equals("Announcements")) {
                 itemId = pfaMenuInfos.get(i).getMenuItemID();
             }
 
@@ -56,14 +56,14 @@ public class PFASideMenuRB {
             if (isVertical) {
                 radioButton = (RadioButton) inflater.inflate(R.layout.pfa_sidemenu_rb, null);
                 params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                Log.d("NavDrawerClick" , "PFASideMenuRB vertical");
+                Log.d("NavDrawerClick", "PFASideMenuRB vertical");
             } else {
                 radioButton = (RadioButton) inflater.inflate(R.layout.pfa_tab_rb, null);
                 params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, (int) mContext.getResources().getDimension(R.dimen.height_60_dp));
                 radioButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
                 radioButton.setAllCaps(true);
                 radioButton.setGravity(Gravity.CENTER);
-                Log.d("NavDrawerClick" , "PFASideMenuRB horizontal");
+                Log.d("NavDrawerClick", "PFASideMenuRB horizontal");
             }
             if (i > 0 && isVertical) {
                 params.setMargins(0, (int) mContext.getResources().getDimension(R.dimen.vertical_margin_1), 0, 0);
@@ -104,14 +104,30 @@ public class PFASideMenuRB {
                 @Override
                 public void onClick(View view) {
 
-                    callbacks.onClickCallUrl(pfaMenuInfos.get(view.getId()).getAPI_URL());
+                    /*if (pfaMenuInfos.get(view.getId()).getMenuItemName().contains("2018"))
+                        callbacks.onClickCallUrl("enforcements/conducted_enforcements/57/1/2018/");
+                    else if (pfaMenuInfos.get(view.getId()).getMenuItemName().contains("2019"))
+                        callbacks.onClickCallUrl("enforcements/conducted_enforcements/57/1/2019/");
+                    else if (pfaMenuInfos.get(view.getId()).getMenuItemName().contains("2020"))
+                        callbacks.onClickCallUrl("enforcements/conducted_enforcements/57/1/2020/");
+                    else if (pfaMenuInfos.get(view.getId()).getMenuItemName().contains("2021"))
+                        callbacks.onClickCallUrl("enforcements/conducted_enforcements/57/1/2021/");
+                    else if (pfaMenuInfos.get(view.getId()).getMenuItemName().contains("2022"))
+                        callbacks.onClickCallUrl("enforcements/conducted_enforcements/57/1/2022/");*/
+//                    callbacks.onClickCallUrl(pfaMenuInfos.get(view.getId()).getAPI_URL());
+                    if (pfaMenuInfos.get(view.getId()).getClickable_URL()!= null)
+                        callbacks.onClickCallUrl(pfaMenuInfos.get(view.getId()).getClickable_URL());
+//                    else
+//                        callbacks.onClickCallUrl(pfaMenuInfos.get(view.getId()).getAPI_URL());
                     callbacks.onClickRB(view);
 
                     Log.d("CiTabbedDrawerClick", "view id = " + view.getTag());
                     Log.d("CiTabbedDrawerClick", "view id i= " + finalI);
+                    Log.d("CiTabbedDrawerClick", "view id i= " + pfaMenuInfos.get(view.getId()).getMenuItemName());
                     Log.d("CiTabbedDrawerClick", "view id url= " + pfaMenuInfos.get(view.getId()).getAPI_URL());
+                    Log.d("CiTabbedDrawerClick", "view id clickable url= " + pfaMenuInfos.get(view.getId()).getClickable_URL());
 
-                    Log.d("NavDrawerClick" , "PFASideMenuRB1 click = " /*+ view.getTag().toString()*/);
+                    Log.d("NavDrawerClick", "PFASideMenuRB1 click = " /*+ view.getTag().toString()*/);
 
                 }
             });

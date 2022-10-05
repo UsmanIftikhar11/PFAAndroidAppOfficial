@@ -586,10 +586,13 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                     if (view != null)
                         view.setVisibility(View.GONE);
                 }
-                if (lastClicked == 0)
+                if (lastClicked == 0) {
+                    Log.d("refreshData" , "refresh listener 1");
                     ((MenuListFragment) getSupportFragmentManager().getFragments().get(lastClicked)).onRefreshListener.onRefresh();
+                }
 
             } else if (getSupportFragmentManager().getFragments().get(lastClicked) instanceof TabbedFragment) {
+                Log.d("refreshData" , "refresh listener 2");
                 ((TabbedFragment) getSupportFragmentManager().getFragments().get(lastClicked)).refreshData();
             } else if (getSupportFragmentManager().getFragments().get(lastClicked) instanceof CiTabbedFragment) {
                 ((CiTabbedFragment) getSupportFragmentManager().getFragments().get(lastClicked)).refreshData();

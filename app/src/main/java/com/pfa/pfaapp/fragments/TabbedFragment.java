@@ -87,6 +87,7 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
         TabbedFragment fragment = new TabbedFragment();
         Bundle args = new Bundle();
         if (pfaMenuInfo != null && pfaMenuInfo.getAPI_URL() != null) {
+            Log.d("TabbedFragmentFlow" , "newInstance = menu not null" );
             args.putString(EXTRA_URL_TO_CALL, pfaMenuInfo.getAPI_URL());
             args.putString(EXTRA_MENU_ITEM_NAME, pfaMenuInfo.getMenuItemName());
         }
@@ -245,6 +246,7 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
     @Override
     public void onClickCallUrl(String url) {
         enforcementUrlToCall = url;
+        Log.d("CiTabbedDrawerClick", "view id url tabbed= " + url);
     }
 
     private void hideShowFilters() {
@@ -348,6 +350,112 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
             new PFASideMenuRB(getContext(), topbarRG, pfaMenuInfos, this, false);
 
             topbarRG.setVisibility(View.VISIBLE);
+            /*
+            for (int i = 0 ; i < pfaMenuInfos.size() ; i++){
+                PFAMenuInfo pfaMenuInfo = pfaMenuInfos.get(i);
+                Fragment menuItemFragment = null;
+
+                if (i ==1) {
+                    switch (pfaMenuInfo.getMenuType()) {
+                        case "list":
+//                        if (tabClickable) {
+//                            if (counter == 0) {
+                            Log.d("multipleRequestFrag", "list frag Tab = " + pfaMenuInfo.getMenuItemName());
+                            menuItemFragment = MenuListFragment.newInstance(pfaMenuInfo, false, isDrawer, isDrawer, null);
+                            ((MenuListFragment) menuItemFragment).setFetchDataInterface(new ListDataFetchedInterface() {
+                                @Override
+                                public void listDataFetched() {
+                                    hideShowFilters();
+                                }
+                            });
+                            ((MenuListFragment) menuItemFragment).setSendMessageCallback(new SendMessageCallback() {
+                                @Override
+                                public void sendMsg(String message) {
+                                    if (message != null && (!message.isEmpty())) {
+                                        RadioButton radioButton = topbarRG.findViewWithTag(pfaMenuInfo.getMenuItemName());
+                                        if (radioButton != null) {
+                                            radioButton.setText(message);
+                                        }
+                                    }
+                                }
+                            });
+
+                            break;
+                        case "googlemap":
+                            menuItemFragment = MenuMapFragment.newInstance(pfaMenuInfo, null);
+                            break;
+                        case "dashboard":
+                        case "grid":
+                            menuItemFragment = MenuGridFragment.newInstance(pfaMenuInfo);
+                            break;
+                        case "draft":
+                            AppConst.draftsRadioButton = topbarRG.findViewWithTag(pfaMenuInfo.getMenuItemName());
+                            menuItemFragment = DraftsFragment.newInstance(pfaMenuInfo, new SendMessageCallback() {
+                                @Override
+                                public void sendMsg(String message) {
+                                    AppConst.draftsRadioButton.setText(message);
+                                }
+                            });
+                            break;
+                        default:
+                            menuItemFragment = MenuFormFragment.newInstance(pfaMenuInfo, null);
+                            break;
+                    }
+
+                    if (menuItemFragment != null)
+                        menuItemFragments.add(menuItemFragment);
+                }switch (pfaMenuInfo.getMenuType()) {
+                    case "list":
+//                        if (tabClickable) {
+//                            if (counter == 0) {
+                        Log.d("multipleRequestFrag", "list frag Tab = " + pfaMenuInfo.getMenuItemName());
+                        menuItemFragment = MenuListFragment.newInstance(pfaMenuInfo, false, isDrawer, isDrawer, null);
+                        ((MenuListFragment) menuItemFragment).setFetchDataInterface(new ListDataFetchedInterface() {
+                            @Override
+                            public void listDataFetched() {
+                                hideShowFilters();
+                            }
+                        });
+                        ((MenuListFragment) menuItemFragment).setSendMessageCallback(new SendMessageCallback() {
+                            @Override
+                            public void sendMsg(String message) {
+                                if (message != null && (!message.isEmpty())) {
+                                    RadioButton radioButton = topbarRG.findViewWithTag(pfaMenuInfo.getMenuItemName());
+                                    if (radioButton != null) {
+                                        radioButton.setText(message);
+                                    }
+                                }
+                            }
+                        });
+
+                        break;
+                    case "googlemap":
+                        menuItemFragment = MenuMapFragment.newInstance(pfaMenuInfo, null);
+                        break;
+                    case "dashboard":
+                    case "grid":
+                        menuItemFragment = MenuGridFragment.newInstance(pfaMenuInfo);
+                        break;
+                    case "draft":
+                        AppConst.draftsRadioButton = topbarRG.findViewWithTag(pfaMenuInfo.getMenuItemName());
+                        menuItemFragment = DraftsFragment.newInstance(pfaMenuInfo, new SendMessageCallback() {
+                            @Override
+                            public void sendMsg(String message) {
+                                AppConst.draftsRadioButton.setText(message);
+                            }
+                        });
+                        break;
+                    default:
+                        menuItemFragment = MenuFormFragment.newInstance(pfaMenuInfo, null);
+                        break;
+                }
+
+                if (menuItemFragment != null)
+                    menuItemFragments.add(menuItemFragment);
+            }
+            */
+
+
             for (final PFAMenuInfo pfaMenuInfo : pfaMenuInfos) {
 
                 Fragment menuItemFragment = null;
@@ -356,7 +464,7 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
                     case "list":
 //                        if (tabClickable) {
 //                            if (counter == 0) {
-                                Log.d("multipleRequestFrag", "list frag Tab");
+                                Log.d("multipleRequestFrag", "list frag Tab = " + pfaMenuInfo.getMenuItemName());
                                 menuItemFragment = MenuListFragment.newInstance(pfaMenuInfo, false, isDrawer, isDrawer, null);
                                 ((MenuListFragment) menuItemFragment).setFetchDataInterface(new ListDataFetchedInterface() {
                                     @Override
@@ -427,6 +535,7 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
                     String menuJSONStr = baseActivity.sharedPrefUtils.getSharedPrefValue(SP_INSPECTIONS_MENU, "");
                     try {
                         setMenus(new JSONArray(menuJSONStr));
+                        Log.d("TabbedFragmentFlow" , "refreshData = setMenus" );
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -435,6 +544,8 @@ public class TabbedFragment extends Fragment implements HttpResponseCallback, RB
                 if (menuItemFragments != null && menuItemFragments.size() > 0)
                     for (int i = 0; i < menuItemFragments.size(); i++)
                         if (menuItemFragments.get(i) instanceof MenuListFragment) {
+                            Log.d("refreshData" , "refresh listener 3");
+                            if (i==0)
                             ((MenuListFragment) menuItemFragments.get(i)).onRefreshListener.onRefresh();
                         }
             }

@@ -5,12 +5,12 @@ android {
     buildToolsVersion '29.0.3'
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
-//        applicationId "com.pfaofficial"
-        applicationId "com.pfaofficial.test"
+        applicationId "com.pfaofficial"
+//        applicationId "com.pfaofficial.test"
         minSdkVersion 25
         targetSdkVersion 30
-        versionCode 74
-        versionName "1.74"
+        versionCode 75
+        versionName "1.75"
         setProperty("archivesBaseName", "PFA Official" + " - VC-" + versionCode + " VN-" + versionName)
         multiDexEnabled true
     }

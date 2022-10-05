@@ -81,6 +81,7 @@ public class AppConst {
     public static final String EXTRA_FILTERS_DATA = "EXTRA_FILTERS_DATA";
     public static final String EXTRA_SEARCH_FRAGMENT = "EXTRA_SEARCH_FRAGMENT";
     public static final String EXTRA_URL_TO_CALL = "EXTRA_URL_TO_CALL";
+    public static final String EXTRA_CLICKABLE_URL_TO_CALL = "EXTRA_CLICKABLE_URL_TO_CALL";
     public static final String EXTRA_JSON_STR_RESPONSE = "EXTRA_JSON_STR_RESPONSE";
     public static final String EXTRA_DOWNLOAD_URL = "EXTRA_DOWNLOAD_URL";
     public static final String EXTRA_IMAGE_POSITION = "EXTRA_IMAGE_POSITION";

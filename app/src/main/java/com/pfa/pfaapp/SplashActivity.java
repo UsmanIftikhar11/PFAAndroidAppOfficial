@@ -24,7 +24,6 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.pfa.pfaapp.interfaces.HttpResponseCallback;
 import com.pfa.pfaapp.interfaces.SendMessageCallback;
 import com.pfa.pfaapp.utils.AppUtils;
-import com.rey.material.widget.SnackBar;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -65,7 +64,7 @@ public class SplashActivity extends BaseActivity {
 
         sharedPrefUtils.applyFont(findViewById(R.id.logoTV), AppUtils.FONTS.HelveticaNeueMedium);
 
-        /*if (android.os.Build.VERSION.SDK_INT < 25){
+        if (android.os.Build.VERSION.SDK_INT < 25){
             new AlertDialog.Builder(SplashActivity.this)
                     .setTitle("Old Android Version")
                     .setMessage("You are using the old Android version. \n" +
@@ -110,9 +109,9 @@ public class SplashActivity extends BaseActivity {
                     }
                 }
             });
-        }*/
+        }
 
-            if (!updateAvailable) {
+            /*if (!updateAvailable) {
                 if (getIntent().getData() != null) {
                     Log.d("onCreateActv", "fbo here 4 ");
                     Uri uri = getIntent().getData();// this is the url
@@ -122,7 +121,7 @@ public class SplashActivity extends BaseActivity {
                 } else {
                     startMain();
                 }
-            }
+            }*/
 
 
 
@@ -221,9 +220,9 @@ public class SplashActivity extends BaseActivity {
             return;
         }
 
-        startLoginScreen(null);
+//        startLoginScreen(null);
 
-        /*httpService.getListsData1("https://app.pfa.gop.pk/api/BaseURL/GetBaseURL?applicationName=cellpfagop", new HashMap<String, String>(), new HttpResponseCallback() {
+        httpService.getListsData1("https://app.pfa.gop.pk/api/BaseURL/GetBaseURL?applicationName=cellpfagop", new HashMap<String, String>(), new HttpResponseCallback() {
             @Override
             public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
                 //"account/api_version?type=softwareVersion"
@@ -265,7 +264,7 @@ public class SplashActivity extends BaseActivity {
                     });
                 }
             }
-        }, false);*/
+        }, false);
     }
 
 

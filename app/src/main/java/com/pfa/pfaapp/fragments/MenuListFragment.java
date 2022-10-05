@@ -1,6 +1,7 @@
 package com.pfa.pfaapp.fragments;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -52,6 +53,7 @@ import java.util.List;
 import java.util.Locale;
 
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_BIZ_FORM_DATA;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_CLICKABLE_URL_TO_CALL;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_FILTERS_DATA;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_ITEM_COUNT;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_JSON_STR_RESPONSE;
@@ -101,6 +103,8 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
     private boolean isDeseize;
     public static boolean firstTimee;
     private int counter = 0;
+    private int counter1 = 0;
+    private PFAMenuInfo pfaMenuInfos;
 
     public MenuListFragment() {
         // Required empty public constructor
@@ -119,10 +123,19 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
         MenuListFragment fragment = new MenuListFragment();
         Bundle args = new Bundle();
         if (pfaMenuInfo != null && pfaMenuInfo.getAPI_URL() != null) {
+            Log.d("MenuListFragment" , "getAPI_URL");
             args.putString(EXTRA_URL_TO_CALL, pfaMenuInfo.getAPI_URL());
+
             args.putString("MENU_NAME", "" + pfaMenuInfo.getMenuItemName());
             args.putSerializable("PFAMenuInfo", pfaMenuInfo);
-        }
+        } /*else {
+            Log.d("MenuListFragment" , "getAPI_URL1");
+            args.putString(EXTRA_URL_TO_CALL, pfaMenuInfo.getClickable_URL());
+            args.putString("MENU_NAME", "" + pfaMenuInfo.getMenuItemName());
+            args.putSerializable("PFAMenuInfo", pfaMenuInfo);
+        }*/
+        if (pfaMenuInfo != null && pfaMenuInfo.getClickable_URL() !=null)
+            args.putString(EXTRA_CLICKABLE_URL_TO_CALL, pfaMenuInfo.getClickable_URL());
 
         if (pfaMenuInfo != null && pfaMenuInfo.getDeseize_ALL_API_URL() != null && (!pfaMenuInfo.getDeseize_ALL_API_URL().isEmpty())) {
             args.putString("Deseize_ALL_API_URL", pfaMenuInfo.getDeseize_ALL_API_URL());
@@ -191,7 +204,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
 //            Log.e("On Refresh Called", "On refresh called");
             baseActivity.removeFilter();
             Log.d("populateListMain" , "populateListMain 1 ");
-            populateListMain();
+            populateListMainRefresh();
         }
     };
 
@@ -204,8 +217,13 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
 //        baseActivity.filterCountTV.setText(String.format(Locale.getDefault(), "%d", formFilteredData.size())+"1");
 //        baseActivity.filterCountTV.setVisibility(View.VISIBLE);
         Log.d("onActivityCreated" , "onActivityCreated 1 ");
-        Log.d("populateListMain" , "populateListMain 2 ");
-        populateListMain();
+//        int counter = getActivity().getSharedPreferences("appPrefs" , Context.MODE_PRIVATE).getInt("reqCounter" , 0);
+//        int counter = getActivity().getSharedPreferences("appPrefs" , Context.MODE_PRIVATE).edit().getClass("reqCounter" , false).apply();
+//        if(counter1 == 0) {
+            Log.d("populateListMain", "populateListMain 2 ");
+            populateListMain();
+            counter1++;
+//        }
     }
 
     public void setFetchDataInterface(ListDataFetchedInterface listDataFetchedInterface) {
@@ -241,6 +259,100 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
         if (getArguments() != null) {
             Log.d("onActivityCreated" , "onActivityCreated 5 ");
             urlToCall = getArguments().getString(EXTRA_URL_TO_CALL);
+            Log.d("onActivityCreated" , "onActivityCreated url = " + urlToCall);
+            assert getArguments() != null;
+            isDrawer = getArguments().getBoolean("isDrawer");
+
+            showProgress = getArguments().getBoolean("showProgress");
+
+        } else {
+            Log.d("onActivityCreated" , "onActivityCreated 6 ");
+            baseActivity.removeFilter();
+        }
+
+        if (getArguments() != null && getArguments().containsKey(EXTRA_BIZ_FORM_DATA)) {
+            Log.d("onActivityCreated" , "onActivityCreated 7 ");
+            try {
+                JSONObject dataJsonObject = new JSONObject(getArguments().getString(EXTRA_BIZ_FORM_DATA));
+
+                populateTableData(dataJsonObject, null);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        } else if (urlToCall != null) {
+            Log.d("onActivityCreated" , "onActivityCreated 8 first time = " + firstTimee);
+            firstTimee = false;
+            Log.d("doAPiCaLL" , "Menu List 1");
+            doAPICall();
+        }
+
+        addNewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (baseActivity.httpService.isNetworkDisconnected())
+                    return;
+
+                addNewBtn.setClickable(false);
+                addNewBtn.setEnabled(false);
+                if (add_newUrl != null) {
+
+                    final Bundle bundle = new Bundle();
+                    bundle.putString(EXTRA_URL_TO_CALL, add_newUrl);
+
+                    baseActivity.httpService.getListsData(add_newUrl, new HashMap<String, String>(), new HttpResponseCallback() {
+                        @Override
+                        public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+                            if (response != null)
+                                bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                            Log.d("getListData" , "menuListFragment = 1" );
+                            baseActivity.sharedPrefUtils.startActivityForResult(baseActivity, PFAAddNewActivity.class, bundle, RC_REFRESH_LIST);
+
+                            addNewBtn.setEnabled(true);
+                            addNewBtn.setClickable(true);
+                        }
+                    }, true);
+
+                } else if (local_add_newUrl != null) {
+                    final Bundle bundle = new Bundle();
+                    bundle.putString(EXTRA_URL_TO_CALL, local_add_newUrl);
+
+                    baseActivity.httpService.getListsData(local_add_newUrl, new HashMap<String, String>(), new HttpResponseCallback() {
+                        @Override
+                        public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+                            if (response != null)
+                                bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                            Log.d("getListData" , "menuListFragment = 2" );
+                            baseActivity.sharedPrefUtils.startActivityForResult(baseActivity, LocalFormsActivity.class, bundle, RC_REFRESH_LIST);
+
+                            addNewBtn.setEnabled(true);
+                            addNewBtn.setClickable(true);
+
+                        }
+                    }, true);
+                } else {
+
+                    (new Handler()).postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            addNewBtn.setEnabled(true);
+                            addNewBtn.setClickable(true);
+                        }
+                    }, 2000);
+                }
+            }
+        });
+    }
+
+    private void populateListMainRefresh() {
+        Log.d("onActivityCreated" , "onActivityCreated 4 ");
+        if (tableData != null && tableData.size() > 0)
+            tableData.clear();
+
+        if (getArguments() != null) {
+            Log.d("onActivityCreated" , "onActivityCreated 5 ");
+            urlToCall = getArguments().getString(EXTRA_CLICKABLE_URL_TO_CALL);
             Log.d("onActivityCreated" , "onActivityCreated url = " + urlToCall);
             assert getArguments() != null;
             isDrawer = getArguments().getBoolean("isDrawer");
@@ -491,6 +603,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
                                             });
 
                                         } else {
+                                            Log.d("refreshData" , "refresh listener 4");
                                             onRefreshListener.onRefresh();
                                         }
                                     }
@@ -610,15 +723,18 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
 //                if () {
 //                    if (counter == 0) {
                         baseActivity.httpService.getListsData(urlToCall, new HashMap<String, String>(), MenuListFragment.this, showProgress);
-                        Log.d("getListData", "menuListFragment = 6a");
+                        Log.d("getListDataaaa", "menuListFragment = 6a");
                         firstTimee = true;
-                        counter++;
+//                        counter++;
 //                    }
 //                }
             } else if (!firstTimee){
 
-                baseActivity.httpService.getListsData(urlToCall, new HashMap<String, String>(), MenuListFragment.this, showProgress);
-                Log.d("getListData", "menuListFragment = 6b");
+//                if (counter == 0) {
+                    baseActivity.httpService.getListsData(urlToCall, new HashMap<String, String>(), MenuListFragment.this, showProgress);
+                    counter++;
+                    Log.d("getListDataaaa", "menuListFragment = 6b");
+//                }
                 if (CiTabbedFragment.tabClickable)
                     firstTimee = true;
                 else if (TabbedFragment.tabClickable) {
@@ -685,6 +801,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
                                 });
 
                             } else {
+                                Log.d("refreshData" , "refresh listener 5");
                                 onRefreshListener.onRefresh();
                             }
                         }
