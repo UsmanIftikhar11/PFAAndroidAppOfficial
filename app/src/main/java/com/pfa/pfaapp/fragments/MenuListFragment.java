@@ -204,7 +204,11 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
 //            Log.e("On Refresh Called", "On refresh called");
             baseActivity.removeFilter();
             Log.d("populateListMain" , "populateListMain 1 ");
-            populateListMainRefresh();
+            String url = getArguments().getString(EXTRA_CLICKABLE_URL_TO_CALL);
+            if (url == null)
+                populateListMain();
+            else
+                populateListMainRefresh();
         }
     };
 

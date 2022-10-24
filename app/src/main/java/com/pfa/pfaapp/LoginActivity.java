@@ -93,6 +93,8 @@ public class LoginActivity extends BaseActivity implements HttpResponseCallback 
         sharedPrefUtils.applyFont(pinNumET, AppUtils.FONTS.HelveticaNeue);
         sharedPrefUtils.applyFont(phoneNumET, AppUtils.FONTS.HelveticaNeue);
 
+        Log.d("onCreateActv", "LoginActivity");
+
     }
 
     @Override
@@ -103,7 +105,6 @@ public class LoginActivity extends BaseActivity implements HttpResponseCallback 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
     }
 
     private void initViews() {

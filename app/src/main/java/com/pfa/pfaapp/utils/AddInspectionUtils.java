@@ -463,6 +463,8 @@ public class AddInspectionUtils {
                 Type type = new TypeToken<List<PFAMenuInfo>>() {
                 }.getType();
 
+                Log.d("localMenuData" , "menu = " + menus.toString());
+
                 pfaMenuInfos = new GsonBuilder().create().fromJson(menus.toString(), type);
                 if (inspectionInfo == null) {
                     inspectionInfo = new InspectionInfo();

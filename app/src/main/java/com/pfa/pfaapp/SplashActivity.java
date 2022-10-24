@@ -249,7 +249,8 @@ public class SplashActivity extends BaseActivity {
                             }
 
                         } else {
-                            sharedPrefUtils.showMsgDialog("No Base Url Found", null);
+                            BaseUrl = "https://cell.pfa.gop.pk/api/";
+//                            sharedPrefUtils.showMsgDialog("No Base Url Found", null);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

@@ -292,6 +292,31 @@
                 android:text="@string/sign_up_capital"
                 android:textAllCaps="false"
                 tools:ignore="RelativeOverlap" />
+
+            <TextView
+                android:id="@+id/orTV"
+                style="@style/grey_15_sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="@string/or" />
+
+            <TextView
+                android:id="@+id/alreadyTV"
+                style="@style/grey_15_sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="center_horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:onClick="onClickLoginBtnNew"
+                android:text="@string/already_have_account" />
         </LinearLayout>
     </ScrollView>
 

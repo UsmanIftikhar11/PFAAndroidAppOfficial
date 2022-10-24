@@ -297,7 +297,7 @@ public class LocalFormHttpUtils {
 
        SharedPrefUtils sharedPrefUtils = new SharedPrefUtils(baseActivity);
        String Limit = sharedPrefUtils.getSharedPrefValue("Draft_MAx_Limit","0");
-        if (allRecords != null && allRecords.length() > Integer.parseInt(Limit)) {
+        if (allRecords != null && Limit != null && allRecords.length() > Integer.parseInt(Limit)) {
             new SharedPrefUtils(baseActivity).showMsgDialog("Sorry! Local Inspection Limit (more than"+ Integer.parseInt(Limit)+"records) consumed ", "Inspection Limit!", null);
             return;
         }

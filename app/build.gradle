@@ -1,16 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion '29.0.3'
+    compileSdkVersion 31
+    buildToolsVersion '30.0.3'
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.pfaofficial"
 //        applicationId "com.pfaofficial.test"
         minSdkVersion 25
-        targetSdkVersion 30
-        versionCode 75
-        versionName "1.75"
+        targetSdkVersion 31
+        versionCode 80
+        versionName "1.80"
         setProperty("archivesBaseName", "PFA Official" + " - VC-" + versionCode + " VN-" + versionName)
         multiDexEnabled true
     }

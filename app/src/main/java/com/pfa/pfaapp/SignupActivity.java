@@ -5,6 +5,7 @@
 package com.pfa.pfaapp;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -56,6 +57,8 @@ public class SignupActivity extends BaseActivity implements HttpResponseCallback
         setInputFieldsFocus();
 
         new ConfigHttpUtils(this).fetchConfigData();
+
+        Log.d("onCreateActv", "SignupActivity");
 
     }
 
@@ -281,6 +284,14 @@ public class SignupActivity extends BaseActivity implements HttpResponseCallback
     }
 
     public void onClickLoginBtn(View view) {
+
+        Bundle bundle = new Bundle();
+        bundle.putBoolean(EXTRA_SINGLE_TOP, true);
+
+        sharedPrefUtils.startNewActivity(LoginActivity.class, bundle, false);
+    }
+
+    public void onClickLoginBtnNew(View view) {
 
         Bundle bundle = new Bundle();
         bundle.putBoolean(EXTRA_SINGLE_TOP, true);

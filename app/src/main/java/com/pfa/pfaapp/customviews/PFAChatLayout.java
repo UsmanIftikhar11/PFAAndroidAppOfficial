@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import androidx.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -191,7 +192,9 @@ public class PFAChatLayout extends LinearLayout implements HttpResponseCallback,
                         public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
                             if (response != null) {
                                 if (response.optBoolean("status")) {
-                                    if ((!("" + (selectedFormDataMap.get("forwarded_to") == null ? "" : selectedFormDataMap.get("forwarded_to").getValue())).equalsIgnoreCase("Operations"))) {
+                                    Log.d("redirectOnListings" , "redirectOnListings = " + response.optBoolean("redirectOnListings"));
+//                                    if ((!("" + (selectedFormDataMap.get("forwarded_to") == null ? "" : selectedFormDataMap.get("forwarded_to").getValue())).equalsIgnoreCase("Operations"))) {
+                                    if (response.optBoolean("redirectOnListings")) {
 
                                         ((Activity) getContext()).finish();
                                         return;

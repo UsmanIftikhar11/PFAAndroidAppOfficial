@@ -10,6 +10,8 @@
         android:name="android.hardware.camera.autofocus"
         android:required="false" />
 
+<!--    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
+<!--    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -73,13 +75,17 @@
         tools:ignore="GoogleAppIndexingWarning,HardcodedDebugMode,RtlEnabled"
         tools:targetApi="ICE_CREAM_SANDWICH">
 
-        <activity android:name=".printing.PrinterActivity" />
-        <activity android:name=".BTDeviceList" />
-        <activity android:name=".WebAppActivity" />
+        <activity android:name=".printing.PrinterActivity"
+            android:exported="true"/>
+        <activity android:name=".BTDeviceList"
+            android:exported="true"/>
+        <activity android:name=".WebAppActivity"
+            android:exported="true"/>
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme">
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -100,11 +106,13 @@
         </activity>
         <activity
             android:name=".BaseActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:exported="true"/>
         <activity
             android:name=".LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme" />
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/>
         <!--
              Set color used with incoming notification messages. This is used when no color is set for the incoming
              notification message. See README(https://goo.gl/6BKBk7) for more.
@@ -113,13 +121,15 @@
             android:name=".VerifyActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme" /> <!-- [END fcm_default_icon] -->
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/> <!-- [END fcm_default_icon] -->
         <!-- [START fcm_default_channel] -->
         <activity
             android:name=".PFADrawerActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme" /> <!-- [END fcm_default_channel] -->
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/> <!-- [END fcm_default_channel] -->
         <!--
                   The API key for Google Maps-based APIs is defined as a string resource.
                   (See the file "res/values/google_maps_api.xml").
@@ -131,94 +141,112 @@
         <activity
             android:name=".PFAFiltersActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme" />
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/>
         <activity
             android:name=".PFADetailActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/DrawerActivityTheme"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:exported="true"/>
         <activity
             android:name=".PFAAddNewActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme" />
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/>
         <activity
             android:name=".SignupActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme" />
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/>
         <activity
             android:name=".FBOMainGridActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme" />
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/>
         <activity
             android:name=".LocalFormsActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme" />
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/>
         <activity
             android:name=".MapsActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme" /> <!-- [START firebase_service] -->
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/> <!-- [START firebase_service] -->
         <activity
             android:name=".DropdownActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme" /> <!-- [END firebase_service] -->
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/> <!-- [END firebase_service] -->
         <!-- [START firebase_iid_service] -->
         <!-- [END firebase_iid_service] -->
         <activity
             android:name=".ImageGalleryActivity"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/DrawerActivityTheme" />
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/>
         <activity
             android:name=".ForgotPinActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme" />
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/>
         <activity
             android:name=".PFASearchActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme" />
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/>
         <activity
             android:name=".FPrintActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme" />
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/>
         <activity
             android:name=".LocalFormDialogActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme" />
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/>
         <activity
             android:name=".SetPinActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme" />
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/>
         <activity
             android:name=".PinSuccessActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme" />
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/>
         <activity
             android:name=".VerifySMSActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme" /> <!-- android:launchMode="singleInstance" -->
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/> <!-- android:launchMode="singleInstance" -->
         <activity
             android:name=".NotificationActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/DrawerActivityTheme" />
+            android:theme="@style/DrawerActivityTheme"
+            android:exported="true"/>
         <activity
             android:name=".emergency.LockHelpActivity"
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/app_name"
             android:launchMode="singleInstance"
-            android:theme="@style/Theme_Dialog_Translucent" />
+            android:theme="@style/Theme_Dialog_Translucent"
+            android:exported="true"/>
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
@@ -264,7 +292,8 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <receiver android:name=".receivers.BootBroadcast">
+        <receiver android:name=".receivers.BootBroadcast"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
