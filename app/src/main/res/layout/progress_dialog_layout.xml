@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.rey.material.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,7 +23,17 @@
         app:indicatorColor="@color/green_btn_color"
         app:indicatorName="BallClipRotatePulseIndicator" />-->
 
-    <com.airbnb.lottie.LottieAnimationView
+    <ImageView
+        android:id="@+id/animationView"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_70sdp"/>
+    <ImageView
+        android:id="@+id/animationView1"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_70sdp"
+        android:translationY="-25dp"/>
+
+    <!--<com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animationView"
         android:layout_width="@dimen/_70sdp"
         android:layout_height="@dimen/_70sdp"
@@ -38,6 +48,6 @@
         android:text="Loading please wait..."
         android:textSize="@dimen/_14sdp"
         android:textStyle="bold"
-        android:textColor="@color/colorPrimary1"/>
+        android:textColor="@color/colorPrimary1"/>-->
 
-</LinearLayout>
+</com.rey.material.widget.LinearLayout>

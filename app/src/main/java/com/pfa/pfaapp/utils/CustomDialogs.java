@@ -17,11 +17,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.pfa.pfaapp.BaseActivity;
@@ -120,6 +122,14 @@ public class CustomDialogs {
 
         alertDialog.setContentView(view);
         alertDialog.setCancelable(cancelable);
+
+        ImageView imageView = view.findViewById(R.id.animationView);
+//        GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(imageView);
+        Glide.with(mContext).load(R.raw.loader3a).into(imageView);
+
+        ImageView animationView1 = view.findViewById(R.id.animationView1);
+//        GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(imageView);
+        Glide.with(mContext).load(R.raw.loader3).into(animationView1);
 
        try {
            if (mContext != null && !((Activity) mContext).isDestroyed()) {

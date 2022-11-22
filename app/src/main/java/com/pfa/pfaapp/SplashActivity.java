@@ -117,6 +117,8 @@ public class SplashActivity extends BaseActivity {
                     Uri uri = getIntent().getData();// this is the url
                     List<String> segments = uri.getPathSegments();// this is the url segments
                     sharedPrefUtils.printLog("uri 1=>", uri.toString());
+                    Log.d("SplashUri", "intent uri = " + uri.toString());
+                    Log.d("SplashUri", "intent uri segment= " + uri.getPathSegments());
                     startLoginScreen(segments);
                 } else {
                     startMain();

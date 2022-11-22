@@ -2,11 +2,13 @@
 <project version="4">
   <component name="AndroidLayouts">
     <shared>
-      <config />
+      <config>
+        <device id="pixel_3a_xl" />
+      </config>
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="NavDrawerClick" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="SplashUri" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
@@ -151,9 +153,120 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8954ad4f-1517-491e-a5ce-7a6dfe8af176" name="Default Changelist" comment="PFA App Files v1.75">
-      <change afterPath="$PROJECT_DIR$/app/release/PFA Official - VC-76 VN-1.76-release.aab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/release/PFA Official - VC-77 VN-1.77-release.aab" afterDir="false" />
+    <list default="true" id="8954ad4f-1517-491e-a5ce-7a6dfe8af176" name="Default Changelist" comment="PFA App Files v1.80">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_itextpdf_itextpdf_5_5_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/assets/fonts/FallingSky.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/assets/fonts/NotoNastaliqUrdu-Bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/assets/fonts/NotoNastaliqUrdu-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/assets/fonts/SourceSansPro-Bold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/assets/fonts/SourceSansPro-Regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/assets/fonts/SourceSansPro-SemiBold.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/DownloadLicenseActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/license_certificate_layout.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/license_qrcode.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/license_signature.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_download_license.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/raw/imageloader1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/raw/loader2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/raw/loader3.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/raw/loader3a.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/values-night/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/.transforms/c235b04515a744f57142fef338cc6ea9.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/.transforms/c235b04515a744f57142fef338cc6ea9/classes/classes.dex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/aapt_friendly_merged_manifests/debug/aapt/output-metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/aar_main_jar/debug/classes.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/aar_metadata/debug/aar-metadata.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/annotation_processor_list/debug/annotationProcessors.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/annotations_typedef_file/debug/typedefs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compile_library_classes_jar/debug/classes.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compile_r_class_jar/debug/R.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compile_symbol_list/debug/R.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/drawable-hdpi-v4_ic_arrow_back.png.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/drawable-hdpi-v4_ic_done_white.png.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/drawable-mdpi-v4_ic_arrow_back.png.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/drawable-mdpi-v4_ic_done_white.png.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/drawable-xhdpi-v4_ic_arrow_back.png.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/drawable-xhdpi-v4_ic_done_white.png.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/drawable-xxhdpi-v4_ic_arrow_back.png.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/drawable-xxhdpi-v4_ic_done_white.png.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/drawable_image_placeholder.xml.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/layout_activity_album_select.xml.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/layout_activity_image_select.xml.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/layout_grid_view_item_album_select.xml.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/layout_grid_view_item_image_select.xml.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/layout_toolbar.xml.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/menu_menu_contextual_action_bar.xml.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/mipmap-hdpi-v4_ic_launcher.png.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/mipmap-mdpi-v4_ic_launcher.png.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/mipmap-xhdpi-v4_ic_launcher.png.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/compiled_local_resources/debug/out/mipmap-xxhdpi-v4_ic_launcher.png.flat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/incremental/debug-mergeJavaRes/merge-state" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/incremental/packageDebugAssets/merger.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/incremental/packageDebugResources/compile-file-map.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/incremental/packageDebugResources/merged.dir/values-w820dp-v13/values-w820dp-v13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/incremental/packageDebugResources/merged.dir/values/values.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/incremental/packageDebugResources/merger.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/BuildConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/activities/AlbumSelectActivity$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/activities/AlbumSelectActivity$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/activities/AlbumSelectActivity$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/activities/AlbumSelectActivity$AlbumLoaderRunnable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/activities/AlbumSelectActivity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/activities/HelperActivity$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/activities/HelperActivity$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/activities/HelperActivity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/activities/ImageSelectActivity$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/activities/ImageSelectActivity$2.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/activities/ImageSelectActivity$3.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/activities/ImageSelectActivity$4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/activities/ImageSelectActivity$ImageLoaderRunnable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/activities/ImageSelectActivity.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/adapters/CustomAlbumSelectAdapter$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/adapters/CustomAlbumSelectAdapter$ViewHolder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/adapters/CustomAlbumSelectAdapter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/adapters/CustomGenericAdapter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/adapters/CustomImageSelectAdapter$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/adapters/CustomImageSelectAdapter$ViewHolder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/adapters/CustomImageSelectAdapter.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/helpers/Constants.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/models/Album.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/models/Image$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/javac/debug/classes/com/darsh/multipleimageselect/models/Image.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/library_manifest/debug/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/local_only_symbol_list/debug/R-def.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/merged_java_res/debug/out.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/navigation_json/debug/navigation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_manifests/debug/output-metadata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/drawable-hdpi-v4/ic_arrow_back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/drawable-hdpi-v4/ic_done_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/drawable-mdpi-v4/ic_arrow_back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/drawable-mdpi-v4/ic_done_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/drawable-xhdpi-v4/ic_arrow_back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/drawable-xhdpi-v4/ic_done_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/drawable-xxhdpi-v4/ic_arrow_back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/drawable-xxhdpi-v4/ic_done_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/drawable/image_placeholder.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/layout/activity_album_select.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/layout/activity_image_select.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/layout/grid_view_item_album_select.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/layout/grid_view_item_image_select.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/layout/toolbar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/menu/menu_contextual_action_bar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/mipmap-hdpi-v4/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/mipmap-mdpi-v4/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/mipmap-xhdpi-v4/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/mipmap-xxhdpi-v4/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/values-w820dp-v13/values-w820dp-v13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/packaged_res/debug/values/values.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/runtime_library_classes_jar/debug/classes.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/intermediates/symbol_list_with_package_name/debug/package-aware-r.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/outputs/aar/multipleimageselect-debug.aar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multipleimageselect/build/tmp/compileDebugJavaWithJavac/source-classes-mapping.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" afterDir="false" />
@@ -165,25 +278,28 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_http_legacy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_http_legacy.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules/app/PFAAndroidAppLatest.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/PFAAndroidAppLatest.app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/escposprinter/PFAAndroidAppLatest.escposprinter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/escposprinter/PFAAndroidAppLatest.escposprinter.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/multipleimageselect/PFAAndroidAppLatest.multipleimageselect.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/multipleimageselect/PFAAndroidAppLatest.multipleimageselect.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/pfa/pfaapp/BuildConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/pfa/pfaapp/BuildConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/SignupActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/SignupActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/SplashActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/SplashActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PFAChatLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PFAChatLayout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/fragments/MenuListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/fragments/MenuListFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/httputils/LocalFormHttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/httputils/LocalFormHttpUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/utils/AddInspectionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/utils/AddInspectionUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_signup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_signup.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/CustomViewCreate.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/CustomViewCreate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PFADetailMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PFADetailMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PFAListItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PFAListItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PopulateLicenseCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/customviews/PopulateLicenseCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/models/FormFieldInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/models/FormFieldInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/models/PFATableInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/models/PFATableInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/utils/CustomDialogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/utils/CustomDialogs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/progress_dialog_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/progress_dialog_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/multipleimageselect/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/multipleimageselect/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,6 +350,7 @@
         <option value="layoutResourceFile" />
         <option value="resourceFile" />
         <option value="Class" />
+        <option value="valueResourceFile" />
       </list>
     </option>
   </component>
@@ -334,7 +451,9 @@
     <property name="android-custom-viewC:/Users/Usman/AppData/Local/Android/Sdk/sources/android-30/android/widget/RadioGroup.java_SELECTED" value="RadioGroup" />
     <property name="android-custom-viewC:/Users/Usman/AppData/Local/Android/Sdk/sources/android-30/android/widget/TextView.java_SELECTED" value="TextView" />
     <property name="android-custom-viewC:/Users/Usman/AppData/Local/Android/Sdk/sources/android-30/android/widget/VideoView.java_SELECTED" value="VideoView" />
+    <property name="android-custom-viewD:/PFA Official - VC-76 VN-1.76/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/CustomNetworkImageView.java_SELECTED" value="CustomNetworkImageView" />
     <property name="android-custom-viewD:/PFA Official - VC-76 VN-1.76/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/LocalFormLL.java_SELECTED" value="LocalFormLL" />
+    <property name="android-custom-viewD:/PFA Official - VC-76 VN-1.76/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/PopulateLicenseCategory.java_SELECTED" value="PopulateLicenseCategory" />
     <property name="android-custom-viewD:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/CNICEditText.java_SELECTED" value="CNICEditText" />
     <property name="android-custom-viewD:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/CustomNetworkImageView.java_SELECTED" value="CustomNetworkImageView" />
     <property name="android-custom-viewD:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/LocalFormLL.java_SELECTED" value="LocalFormLL" />
@@ -390,7 +509,7 @@
     <property name="android-custom-viewE:/PFAAndroidAppLatest/app/src/main/java/com/pfa/pfaapp/customviews/custominputlayout/CustomTextInputLayout.java_SELECTED" value="CustomTextInputLayout" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/assets/fonts" />
     <property name="multi-representation-previewC:/Users/HP/.gradle/caches/modules-2/files-2.1/com.facebook.fresco/drawee/2.0.0/fd8babf68363a8fb0585271b553e1d8537de137f/drawee-2.0.0-sources.jar!/com/facebook/drawee/view/SimpleDraweeView.java_selected" value="Custom views" />
     <property name="multi-representation-previewC:/Users/HP/AndroidStudioProjects/PFA Project/PFAMainRepo/app/src/main/java/com/pfa/pfaapp/customviews/CustomNetworkImageView.java_selected" value="Custom views" />
     <property name="multi-representation-previewC:/Users/HP/AndroidStudioProjects/PFA Project/PFAMainRepo/app/src/main/java/com/pfa/pfaapp/customviews/LocalFormLL.java_selected" value="Custom views" />
@@ -460,11 +579,14 @@
       <recent name="com.pfa.pfaapp" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\app\src\main\assets\fonts" />
+      <recent name="D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\app\src\main\res\drawable" />
+      <recent name="D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\app\src\main\res\layout" />
+      <recent name="D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\app\src\main\res\raw" />
       <recent name="D:\PFAAndroidAppLatest\app\src\main\res\drawable" />
-      <recent name="D:\PFAAndroidAppLatest\app\src\main\res\layout" />
-      <recent name="E:\PFAAndroidAppLatest\app\src\main\res\layout" />
-      <recent name="E:\PFAAndroidAppLatest\app\src\main\res\xml" />
-      <recent name="C:\Users\HP\AndroidStudioProjects\PFAMainRepo\app\src\main\res\mipmap-hdpi" />
+    </key>
+    <key name="android.template.1233721904">
+      <recent name="com.pfa.pfaapp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Usman\PFAAndroidAppLatest\app\src\main\res\raw" />
@@ -774,7 +896,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664948237582</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="PFA App Files v1.80">
+      <created>1666593823282</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1666593823282</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TodoView">
@@ -833,14 +962,15 @@
     <MESSAGE value="PFA App Files v1.70" />
     <MESSAGE value="PFA App Files v1.74" />
     <MESSAGE value="PFA App Files v1.75" />
-    <option name="LAST_COMMIT_MESSAGE" value="PFA App Files v1.75" />
+    <MESSAGE value="PFA App Files v1.80" />
+    <option name="LAST_COMMIT_MESSAGE" value="PFA App Files v1.80" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/pfa/pfaapp/models/FormFieldInfo.java</url>
-          <line>379</line>
+          <line>388</line>
           <properties class="com.pfa.pfaapp.models.FormFieldInfo" method="setClickable_textUrdu" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>

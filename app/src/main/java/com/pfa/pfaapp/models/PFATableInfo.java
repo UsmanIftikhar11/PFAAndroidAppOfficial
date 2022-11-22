@@ -18,6 +18,7 @@ public class PFATableInfo implements Serializable {
     private String data;//": "Swift Beef Company Recalls Beef Stew Products Due ",
     private String dataUrdu;
     private String API_URL;//": "LatestNews\/news\/5"
+    private String DOWNLOAD_URL;
     private String status_color;
     private boolean invisible;
     private String font_size;
@@ -127,6 +128,14 @@ public class PFATableInfo implements Serializable {
 
     public void setAPI_URL(String API_URL) {
         this.API_URL = API_URL;
+    }
+
+    public String getDOWNLOAD_URL() {
+        return DOWNLOAD_URL;
+    }
+
+    public void setDOWNLOAD_URL(String DOWNLOAD_URL) {
+        this.DOWNLOAD_URL = DOWNLOAD_URL;
     }
 
     public String getField_name() {

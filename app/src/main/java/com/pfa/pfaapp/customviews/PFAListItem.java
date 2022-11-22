@@ -7,10 +7,12 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Html;
 import android.text.InputType;
 import android.text.util.Linkify;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +25,11 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.facebook.drawee.generic.RoundingParams;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.pfa.pfaapp.DownloadLicenseActivity;
 import com.pfa.pfaapp.R;
+import com.pfa.pfaapp.httputils.HttpService;
 import com.pfa.pfaapp.httputils.ImageHttpUtils;
+import com.pfa.pfaapp.interfaces.HttpResponseCallback;
 import com.pfa.pfaapp.interfaces.ImageCallback;
 import com.pfa.pfaapp.models.PFATableInfo;
 import com.pfa.pfaapp.utils.SharedPrefUtils;
@@ -32,12 +37,17 @@ import com.pfa.pfaapp.utils.SharedPrefUtils;
 import java.io.File;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
 
 
 import static android.view.View.GONE;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_JSON_STR_RESPONSE;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_URL_TO_CALL;
+
+import org.json.JSONObject;
 
 public class PFAListItem extends SharedPrefUtils {
 
@@ -46,11 +56,13 @@ public class PFAListItem extends SharedPrefUtils {
     }
 
     public RelativeLayout createViews(List<PFATableInfo> fields, List<String> columnTags, boolean isDetail) {
+        Log.d("onCreateActv" , "PFAListItem 1");
         return createViews(fields, columnTags, true, isDetail);
     }
 
     @SuppressLint("InflateParams")
     public RelativeLayout createViews(List<PFATableInfo> fields, List<String> columnTags, boolean autoLink, boolean isDetail) {
+        Log.d("onCreateActv" , "PFAListItem 2");
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         RelativeLayout parentView = (RelativeLayout) inflater.inflate(R.layout.pfa_list_item, null, false);
@@ -81,6 +93,7 @@ public class PFAListItem extends SharedPrefUtils {
 
             if (fieldType.equalsIgnoreCase("text") || fieldType.equalsIgnoreCase("numeric") || fieldType.equalsIgnoreCase("textarea") ||
                     fieldType.equalsIgnoreCase("phone") || fieldType.equalsIgnoreCase("dropdown")) {
+                Log.d("PFAListItemView" , "PFAListItem 1");
 
                 LinearLayout subviewLL;
                 if (isDetail) {
@@ -100,6 +113,9 @@ public class PFAListItem extends SharedPrefUtils {
                 lblTV.setText(String.format(Locale.getDefault(), "%s: ", (isEnglishLang()?fieldInfo.getValue():fieldInfo.getValueUrdu())));
                 subviewTV.setText(Html.fromHtml("" + (isEnglishLang()?fieldInfo.getData():fieldInfo.getDataUrdu())));
 
+                Log.d("PFAListItemView" , "PFAListItem value = " + fieldInfo.getValue());
+                Log.d("PFAListItemView" , "PFAListItem Data = " + fieldInfo.getData());
+
                 subviewTV.setTag(fieldInfo.getField_name());
                 if (autoLink) {
                     Linkify.addLinks(subviewTV, Linkify.EMAIL_ADDRESSES);
@@ -114,6 +130,26 @@ public class PFAListItem extends SharedPrefUtils {
                 LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) subviewLL.getLayoutParams();
 
                 applyFont(subviewTV, FONTS.HelveticaNeue);
+
+                if (fieldInfo.getData().equals("Download")) {
+                    subviewTV.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            final Bundle bundle = new Bundle();
+                            HttpService httpService = new HttpService(mContext);
+
+                            bundle.putString(EXTRA_URL_TO_CALL, "" + fieldInfo.getAPI_URL());
+                            httpService.getListsData(fieldInfo.getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
+                                @Override
+                                public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+                                    if (response != null)
+                                        bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                                    startNewActivity(DownloadLicenseActivity.class, bundle, false);
+                                }
+                            }, true);
+                        }
+                    });
+                }
 
                 applyStyle(fieldInfo.getFont_style(), fieldInfo.getFont_size(), fieldInfo.getFont_color(), subviewTV);
 
@@ -227,6 +263,7 @@ public class PFAListItem extends SharedPrefUtils {
                 }
             } else if (fieldType.equalsIgnoreCase("abc") || fieldType.equalsIgnoreCase("abc_phone")) {
 
+                Log.d("PFAListItemView" , "PFAListItem 2");
                 pfaListCNIVLeft.setVisibility(View.GONE);
                 pfaListCNIVRight.setVisibility(View.GONE);
 

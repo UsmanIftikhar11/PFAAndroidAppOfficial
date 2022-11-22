@@ -22,6 +22,7 @@ public class FormFieldInfo implements Serializable {
     private boolean horizontal;
     private List<FormDataInfo> data;
     private String API_URL;
+    private String DOWNLOAD_URL;
     private String action;
     private boolean isNotEditable;
     private String calendarType;
@@ -183,6 +184,14 @@ public class FormFieldInfo implements Serializable {
 
     public void setAPI_URL(String API_URL) {
         this.API_URL = API_URL;
+    }
+
+    public String getDOWNLOAD_URL() {
+        return DOWNLOAD_URL;
+    }
+
+    public void setDOWNLOAD_URL(String DOWNLOAD_URL) {
+        this.DOWNLOAD_URL = DOWNLOAD_URL;
     }
 
     public String getAction() {

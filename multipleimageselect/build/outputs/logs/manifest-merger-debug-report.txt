@@ -1,0 +1,93 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-41:12
+	package
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:3:5-44
+		INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-41:12
+		INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:1-41:12
+		INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:5:5-80
+	android:name
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:5:22-78
+uses-permission#android.permission.CAMERA
+ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:6:5-64
+	android:name
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:6:22-62
+uses-feature#android.hardware.camera.any
+ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:9:5-11:35
+	android:required
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:11:9-32
+	android:name
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:10:9-51
+uses-feature#android.hardware.camera.autofocus
+ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:12:5-14:36
+	android:required
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:14:9-33
+	android:name
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:13:9-57
+application
+ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:16:5-39:19
+	android:label
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:18:9-41
+	android:allowBackup
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:17:9-35
+activity#com.darsh.multipleimageselect.activities.AlbumSelectActivity
+ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:19:9-28:20
+	android:label
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:21:13-45
+	android:exported
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:24:13-36
+	android:configChanges
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:23:13-59
+	android:theme
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:22:13-60
+	android:name
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:20:13-59
+intent-filter#category:name:android.intent.category.DEFAULT
+ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:25:13-27:29
+category#android.intent.category.DEFAULT
+ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:26:17-75
+	android:name
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:26:27-73
+activity#com.darsh.multipleimageselect.activities.ImageSelectActivity
+ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:29:9-38:20
+	android:label
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:31:13-45
+	android:exported
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:34:13-36
+	android:configChanges
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:33:13-59
+	android:theme
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:32:13-60
+	android:name
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml:30:13-59
+uses-sdk
+INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		ADDED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml
+		INJECTED from D:\PFA Official - VC-76 VN-1.76\PFAAndroidAppLatest\multipleimageselect\src\main\AndroidManifest.xml

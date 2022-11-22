@@ -6,6 +6,8 @@ package com.pfa.pfaapp.customviews;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -18,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.pfa.pfaapp.AppController;
+import com.pfa.pfaapp.DownloadLicenseActivity;
 import com.pfa.pfaapp.ImageGalleryActivity;
 import com.pfa.pfaapp.PFADetailActivity;
 import com.pfa.pfaapp.R;
@@ -115,24 +118,46 @@ public class PFADetailMenu extends SharedPrefUtils {
                         clickableTV.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Log.d("viewCreated", "PFADetailMenu headingClick");
-                                final Bundle bundle = new Bundle();
-                                bundle.putString(EXTRA_URL_TO_CALL, "" + fieldInfo.getAPI_URL());
-                                bundle.putString(EXTRA_ACTIVITY_TITLE, isEnglishLang()?fieldInfo.getValue():fieldInfo.getValueUrdu());
+                                Log.d("viewCreatedd", "PFADetailMenu headingClick = " + fieldInfo.getField_name());
+                                Log.d("viewCreatedd", "PFADetailMenu headingClick url = " + fieldInfo.getAPI_URL());
+
+                                if (fieldInfo.getField_name().equals("download_link")){
+                                    Log.d("viewCreatedd", "PFADetailMenu headingClick url = 314324");
+//                                    startNewActivity(DownloadLicenseActivity.class, null, false);
+                                    /*Uri uri = Uri.parse(fieldInfo.getDOWNLOAD_URL()); // missing 'http://' will cause crashed
+                                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                                    mContext.startActivity(intent);*/
+                                    final Bundle bundle = new Bundle();
+                                    HttpService httpService = new HttpService(mContext);
+
+                                    bundle.putString(EXTRA_URL_TO_CALL, "" + fieldInfo.getAPI_URL());
+                                    httpService.getListsData(fieldInfo.getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
+                                        @Override
+                                        public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+                                            if (response != null)
+                                                bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                                            startNewActivity(DownloadLicenseActivity.class, bundle, false);
+                                        }
+                                    }, true);
+                                } else {
+                                    final Bundle bundle = new Bundle();
+                                    bundle.putString(EXTRA_URL_TO_CALL, "" + fieldInfo.getAPI_URL());
+                                    bundle.putString(EXTRA_ACTIVITY_TITLE, isEnglishLang()?fieldInfo.getValue():fieldInfo.getValueUrdu());
 //                                startNewActivity(PFADetailActivity.class, bundle, false);
 
-                                /////////////
-                                HttpService httpService = new HttpService(mContext);
+                                    /////////////
+                                    HttpService httpService = new HttpService(mContext);
 
-                                httpService.getListsData(fieldInfo.getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
-                                    @Override
-                                    public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-                                        if (response != null)
-                                            bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
-                                        startNewActivity(PFADetailActivity.class, bundle, false);
-                                    }
-                                }, true);
-                                /////////////
+                                    httpService.getListsData(fieldInfo.getAPI_URL(), new HashMap<String, String>(), new HttpResponseCallback() {
+                                        @Override
+                                        public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
+                                            if (response != null)
+                                                bundle.putString(EXTRA_JSON_STR_RESPONSE, response.toString());
+                                            startNewActivity(PFADetailActivity.class, bundle, false);
+                                        }
+                                    }, true);
+                                    /////////////
+                                }
                             }
                         });
                     }
