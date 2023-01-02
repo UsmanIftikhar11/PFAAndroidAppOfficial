@@ -76,6 +76,7 @@ public class PFADetailMenu extends SharedPrefUtils {
 
             columnTags.add(fieldInfo.getField_name());
 
+            Log.d("viewCreatedNames", "name = " + fieldInfo.getField_name());
             switch (fieldInfo.getField_type()) {
                 case "button":
                     Log.d("viewCreated", "PFADetailMenu button");

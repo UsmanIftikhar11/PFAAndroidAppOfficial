@@ -22,7 +22,7 @@ public class HttpService extends HttpUtils {
 //    private static final String BASE_URL = "https://cell.pfa.gop.pk/dev/api/";
 //    private static final String BASE_URL = "http://192.168.1.129/api/";
 //    private static final String BASE_URL = "http://182.176.112.99/pfa/api/";
-//    private static final String BASE_URL = "https://cell.pfa.gop.pk/dev/api/";
+    private static final String BASE_URL = "https://cell.pfa.gop.pk/dev/api/";
 //    private static final String BASE_URL = "https://test.pfa.gop.pk/api/";
 //    private static final String BASE_URL = "http://182.176.112.99:8087/api/";
 

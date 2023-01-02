@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.rey.material.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/chatBoxLL"
     android:layout_width="match_parent"
@@ -9,13 +9,26 @@
     android:padding="7dp"
     android:visibility="visible">
 
-    <LinearLayout
+    <com.rey.material.widget.LinearLayout
         android:id="@+id/statusSectionLL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" />
 
-    <com.pfa.pfaapp.customviews.PFAEditText
+    <com.rey.material.widget.EditText
+        android:id="@+id/inspectionET"
+        style="@style/black_17_sp_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@mipmap/text_bg"
+        android:gravity="top|left"
+        android:hint="@string/inspection_id"
+        android:padding="7dp"
+        android:minHeight="@dimen/_40sdp"
+        tools:ignore="RtlHardcoded" />
+
+    <com.rey.material.widget.EditText
         android:id="@+id/msgET"
         style="@style/black_17_sp_et"
         android:layout_width="match_parent"
@@ -37,4 +50,4 @@
         android:background="@drawable/button_green_rounded"
         android:text="@string/send" />
 
-</LinearLayout>
+</com.rey.material.widget.LinearLayout>

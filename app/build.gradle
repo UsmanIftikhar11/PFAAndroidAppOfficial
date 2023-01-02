@@ -9,8 +9,8 @@ android {
 //        applicationId "com.pfaofficial.test"
         minSdkVersion 25
         targetSdkVersion 31
-        versionCode 83
-        versionName "1.83"
+        versionCode 85
+        versionName "1.85"
         setProperty("archivesBaseName", "PFA Official" + " - VC-" + versionCode + " VN-" + versionName)
         multiDexEnabled true
     }

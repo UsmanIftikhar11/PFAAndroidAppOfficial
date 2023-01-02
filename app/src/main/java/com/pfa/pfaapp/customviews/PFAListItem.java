@@ -115,6 +115,7 @@ public class PFAListItem extends SharedPrefUtils {
 
                 Log.d("PFAListItemView" , "PFAListItem value = " + fieldInfo.getValue());
                 Log.d("PFAListItemView" , "PFAListItem Data = " + fieldInfo.getData());
+                Log.d("PFAListItemView" , "PFAListItem visibility = " + fieldInfo.isInvisible());
 
                 subviewTV.setTag(fieldInfo.getField_name());
                 if (autoLink) {

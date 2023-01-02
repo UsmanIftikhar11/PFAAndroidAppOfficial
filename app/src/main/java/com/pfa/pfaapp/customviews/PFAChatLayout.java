@@ -32,6 +32,7 @@ import com.pfa.pfaapp.models.FormSectionInfo;
 import com.pfa.pfaapp.models.PFATableInfo;
 import com.pfa.pfaapp.utils.AppUtils;
 import com.pfa.pfaapp.utils.SharedPrefUtils;
+import com.rey.material.widget.EditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,7 +45,8 @@ import java.util.List;
 public class PFAChatLayout extends LinearLayout implements HttpResponseCallback, WhichItemClicked {
 
     private ListView msgsLV;
-    private PFAEditText msgET;
+    private EditText msgET;
+    private EditText inspectionET;
     private TextView chatTtlTV;
     private HttpService httpService;
     private SharedPrefUtils sharedPrefUtils;
@@ -153,7 +155,9 @@ public class PFAChatLayout extends LinearLayout implements HttpResponseCallback,
         statusSectionLL = chatFooterLL.findViewById(R.id.statusSectionLL);
 
         msgET = chatFooterLL.findViewById(R.id.msgET);
+        inspectionET = chatFooterLL.findViewById(R.id.inspectionET);
         sharedPrefUtils.applyFont(msgET, AppUtils.FONTS.HelveticaNeue);
+        sharedPrefUtils.applyFont(inspectionET, AppUtils.FONTS.HelveticaNeue);
 
 
         sharedPrefUtils.applyFont(chatTtlTV, AppUtils.FONTS.HelveticaNeueBold);
@@ -170,13 +174,14 @@ public class PFAChatLayout extends LinearLayout implements HttpResponseCallback,
                     return;
                 }
 
-                if (!msgET.getText().toString().isEmpty() || (!("" + (selectedFormDataMap.get("forwarded_to") == null ? "" : selectedFormDataMap.get("forwarded_to").getValue())).equalsIgnoreCase("Operations"))) {
+                if (!msgET.getText().toString().isEmpty() || !inspectionET.getText().toString().isEmpty() || (!("" + (selectedFormDataMap.get("forwarded_to") == null ? "" : selectedFormDataMap.get("forwarded_to").getValue())).equalsIgnoreCase("Operations"))) {
                     // Select the last row so it will scroll into view...
                     if (pfaTableAdapter.getCount() > 0)
                         msgsLV.setSelection(pfaTableAdapter.getCount() - 1);
 
                     HashMap<String, String> reqParams = new HashMap<>();
                     reqParams.put("message", msgET.getText().toString());
+                    reqParams.put("inspection_id", inspectionET.getText().toString());
 
                     if (selectedFormDataMap.size() > 0) {
                         for (String key : selectedFormDataMap.keySet())
@@ -200,6 +205,7 @@ public class PFAChatLayout extends LinearLayout implements HttpResponseCallback,
                                         return;
                                     }
                                     msgET.setText("");
+                                    inspectionET.setText("");
                                     callChatUrl();
                                 }
                             }
@@ -209,6 +215,7 @@ public class PFAChatLayout extends LinearLayout implements HttpResponseCallback,
 
                 } else {
                     msgET.setError("Please enter comment!");
+                    inspectionET.setError("Please enter Inspection Id");
                 }
             }
         });

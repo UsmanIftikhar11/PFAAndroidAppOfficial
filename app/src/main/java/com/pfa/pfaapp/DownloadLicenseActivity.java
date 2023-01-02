@@ -205,22 +205,24 @@ public class DownloadLicenseActivity extends BaseActivity implements HttpRespons
 
     private void populateData(JSONObject jsonObject) {
         try {
-            txtBusinessNameEng.setText(jsonObject.getString("business_english"));
-            txtLicenseDurationVal1.setText(jsonObject.getString("issue"));
-            txtLicenseDurationVal2.setText(jsonObject.getString("expiry"));
-            txtLicenseNumberVal.setText(jsonObject.getString("license_number"));
-            txtOwnerNameVal.setText(jsonObject.getString("owner_english"));
-            txtBusinessAddressVal.setText(jsonObject.getString("address_english"));
-            txtCNICVal.setText(jsonObject.getString("cnic_number"));
-            txtLicenseCategoryVal.setText(jsonObject.getString("item_title"));
-            txtBusinessNameUrdu.setText(jsonObject.getString("business_urdu"));
-            txtLicenseDurationVal1Urdu.setText(jsonObject.getString("issue"));
-            txtLicenseDurationVal2Urdu.setText(jsonObject.getString("expiry"));
-            txtLicenseNumberValUrdu.setText(jsonObject.getString("license_number"));
-            txtOwnerNameValUrdu.setText(jsonObject.getString("owner_urdu"));
-            txtBusinessAddressValUrdu.setText(jsonObject.getString("address_urdu"));
-            txtCNICValUrdu.setText(jsonObject.getString("cnic_number"));
-            txtLicenseCategoryValUrdu.setText(jsonObject.getString("item_urdu_title"));
+            txtBusinessNameEng.setText(jsonObject.getString("business_english").replaceAll("\n" , " "));
+            txtLicenseDurationVal1.setText(jsonObject.getString("issue").replaceAll("\n" , " "));
+            txtLicenseDurationVal2.setText(jsonObject.getString("expiry").replaceAll("\n" , " "));
+            txtLicenseNumberVal.setText(jsonObject.getString("license_number").replaceAll("\n" , " "));
+            txtOwnerNameVal.setText(jsonObject.getString("owner_english").replaceAll("\n" , " "));
+//            String address = jsonObject.getString("address_english");
+//            address = address.replaceAll("\n" , " ");
+            txtBusinessAddressVal.setText(jsonObject.getString("address_english").replaceAll("\n" , " "));
+            txtCNICVal.setText(jsonObject.getString("cnic_number").replaceAll("\n" , " "));
+            txtLicenseCategoryVal.setText(jsonObject.getString("item_title").replaceAll("\n" , " "));
+            txtBusinessNameUrdu.setText(jsonObject.getString("business_urdu").replaceAll("\n" , " "));
+            txtLicenseDurationVal1Urdu.setText(jsonObject.getString("issue").replaceAll("\n" , " "));
+            txtLicenseDurationVal2Urdu.setText(jsonObject.getString("expiry").replaceAll("\n" , " "));
+            txtLicenseNumberValUrdu.setText(jsonObject.getString("license_number").replaceAll("\n" , " "));
+            txtOwnerNameValUrdu.setText(jsonObject.getString("owner_urdu").replaceAll("\n" , " "));
+            txtBusinessAddressValUrdu.setText(jsonObject.getString("address_urdu").replaceAll("\n" , " "));
+            txtCNICValUrdu.setText(jsonObject.getString("cnic_number").replaceAll("\n" , " "));
+            txtLicenseCategoryValUrdu.setText(jsonObject.getString("item_urdu_title").replaceAll("\n" , " "));
             Glide.with(this).load(jsonObject.getString("qrcode")).into(imgQrCode);
             Glide.with(this).load(jsonObject.getString("dg_signature")).into(imgSignature);
 
@@ -239,7 +241,7 @@ public class DownloadLicenseActivity extends BaseActivity implements HttpRespons
                 layoutParams1.topMargin = (int) getResources().getDimension(R.dimen._90sdp);
                 layoutParams1.leftMargin = 0;
                 txtBusinessNameEng.setLayoutParams(layoutParams1);
-                txtWarning.setTranslationY(-20);
+                txtWarning.setTranslationY(-30);
             } else {
                 ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) txtBusinessNameUrdu.getLayoutParams();
                 layoutParams.endToEnd = R.id.clCertificate;
@@ -256,7 +258,17 @@ public class DownloadLicenseActivity extends BaseActivity implements HttpRespons
                 layoutParams1.topMargin = (int) getResources().getDimension(R.dimen._85sdp);
                 layoutParams1.leftMargin = (int) getResources().getDimension(R.dimen._45sdp);
                 txtBusinessNameEng.setLayoutParams(layoutParams1);
-                txtWarning.setTranslationY(0);
+                txtWarning.setTranslationY(-15);
+            }
+
+            if (jsonObject.getString("address_english").length() > 50 ||
+                    jsonObject.getString("address_urdu").length() > 50){
+                imgQrCode.setTranslationY(-15);
+                txtVerifyQrCode.setTranslationY(-30);
+                Log.d("enfrocementDataaaa" , "dada = here123");
+            } else {
+                imgQrCode.setTranslationY(0);
+                txtVerifyQrCode.setTranslationY(-4);
             }
 
             new Handler().postDelayed(new Runnable() {
@@ -272,7 +284,7 @@ public class DownloadLicenseActivity extends BaseActivity implements HttpRespons
     }
 
     String dirpath;
-    java.io.File photo;
+    File photo;
     public void layoutToImage(/*View view*/) {
         // get view group using reference
 //        relativeLayout = (ConstraintLayout) view.findViewById(R.id.print);
@@ -290,9 +302,12 @@ public class DownloadLicenseActivity extends BaseActivity implements HttpRespons
 //
 //        photo = new File(imagesFolder+ "/layout.jpg");
 
-        photo = new java.io.File(Environment
+        currentDate = new SimpleDateFormat("ddMMyyyy", Locale.getDefault()).format(new Date());
+        currentTime = new SimpleDateFormat("HHmm", Locale.getDefault()).format(new Date());
+        String pdfName = "/FoodLicense"+currentDate+currentTime+".jpg";
+        photo = new File(Environment
                 .getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-                + "/Filename.jpg");
+                + pdfName);
         try {
 //            if (!photo.exists())
                 photo.createNewFile();
@@ -347,6 +362,8 @@ public class DownloadLicenseActivity extends BaseActivity implements HttpRespons
                     share.putExtra(Intent.EXTRA_STREAM, fileURI);
 //                    share.setPackage("com.whatsapp");
                     startActivity(share);
+//                    if (photo.exists())
+//                        photo.delete();
 
                     /*Intent sendIntent = new Intent(Intent.ACTION_SEND);
                     sendIntent.setDataAndType(fileURI, "application/pdf");
