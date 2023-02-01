@@ -190,6 +190,9 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
 
     private String wholesaler_investment, wholesaler_avg_sale, wholesaler_rent, wholesaler_employees, wholesaler_location , wholesaler_bills;
     private String wholesaler_investment_key, wholesaler_avg_sale_key, wholesaler_rent_key, wholesaler_employees_key, wholesaler_location_key , wholesaler_bills_key;
+
+    private String  mp_animals, mp_animals_key;
+
     private String businessCatVal;
     private boolean isCallStatusDUplicate, isStatusDUplicate;
     private TextView txtCalulateCategory;
@@ -1211,7 +1214,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                     });
                                 } else
                                     sharedPrefUtils.showMsgDialog("Please fill above retailer assessment dropdowns", null);
-                            } else if (parent_license_type.equals("Manufacturer")) {
+                            }
+                            else if (parent_license_type.equals("Manufacturer")) {
                                 Log.d("liscentype", "Manufacturer");
                                 if (manufacturer_investment != null && manufacturer_inventory != null && manufacturer_units_produced != null &&
                                         manufacturer_sales != null && manufacturer_rent != null && manufacturer_employees != null &&
@@ -1269,7 +1273,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                     });
                                 } else
                                     sharedPrefUtils.showMsgDialog("Please fill above manufacturer assessment dropdowns", null);
-                            } else if (parent_license_type.equals("Restaurants")) {
+                            }
+                            else if (parent_license_type.equals("Restaurants")) {
                                 Log.d("liscentype", "Restaurants");
                                 if (restaurant_investment != null && restaurant_inventory != null && restaurant_sales != null &&
                                         restaurant_rent != null && restaurant_employees != null && restaurant_seating_capacity != null &&
@@ -1328,7 +1333,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                     });
                                 } else
                                     sharedPrefUtils.showMsgDialog("Please fill above restaurants assessment dropdowns", null);
-                            } else if (parent_license_type.equals("E-Commerce")) {
+                            }
+                            else if (parent_license_type.equals("E-Commerce")) {
                                 Log.d("liscentype", "E-Commerce");
                                 if (e_commerce_investment != null && e_commerce_sales != null && e_commerce_employees != null &&
                                         e_commerce_riders != null && e_commerce_registered_fbos != null) {
@@ -1378,7 +1384,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                     });
                                 } else
                                     sharedPrefUtils.showMsgDialog("Please fill above E-Commerce assessment dropdowns", null);
-                            }else if (parent_license_type.equals("Wholesalers")) {
+                            }
+                            else if (parent_license_type.equals("Wholesalers")) {
                                 Log.d("liscentype", "E-Commerce");
                                 if (wholesaler_investment != null && wholesaler_avg_sale != null && wholesaler_rent != null &&
                                         wholesaler_employees != null && wholesaler_location != null && wholesaler_bills != null) {
@@ -1401,6 +1408,48 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                     retailer_val_key.add(wholesaler_employees_key);
                                     retailer_val_key.add(wholesaler_location_key);
                                     retailer_val_key.add(wholesaler_bills_key);
+
+                                    new PopulateLicenseCategory(mContext, revisedLicesneUrl, retailer_val, retailer_val_key, parent_license_type, parent_license_type_key, new CheckUserCallback() {
+                                        @Override
+                                        public void getExistingUser(JSONArray jsonArray) {
+                                        }
+
+                                        @Override
+                                        public void getExistingBusiness(JSONArray jsonArray, String msg) {
+                                            Log.d("liscentype", "Wholesaler fields response");
+                                            confirmRevisedCatMsg = msg;
+                                            for (int i = 0; i < jsonArray.length(); i++) {
+
+                                                JSONObject jsonObject = jsonArray.optJSONObject(i);
+
+                                                if (parentView.findViewWithTag(jsonObject.optString("key")) instanceof PFAEditText) {
+                                                    PFAEditText pfaEditText = parentView.findViewWithTag(jsonObject.optString("key"));
+                                                    try {
+                                                        pfaEditText.setText(jsonObject.getString("value"));
+                                                    } catch (JSONException e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                    Log.d("liscentype", "Wholesalers response not null");
+                                                }
+
+                                            }
+                                        }
+                                    });
+                                } else
+                                    sharedPrefUtils.showMsgDialog("Please fill above Wholesalers assessment dropdowns", null);
+                            }
+                            else if (parent_license_type.equals("Milk Producers")) {
+                                Log.d("liscentype", "E-Commerce");
+                                if (mp_animals != null) {
+
+
+                                    Log.d("liscentype", "E-Commerce fields not null");
+                                    retailer_val.clear();
+                                    retailer_val_key.clear();
+
+                                    retailer_val.add(mp_animals);
+
+                                    retailer_val_key.add(mp_animals_key);
 
                                     new PopulateLicenseCategory(mContext, revisedLicesneUrl, retailer_val, retailer_val_key, parent_license_type, parent_license_type_key, new CheckUserCallback() {
                                         @Override
@@ -4236,6 +4285,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                 pfaddactv.setVisibility(GONE);
                                 pfaddactv.showHideDropDown(false);
                             }
+                            if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
                         } else if (id.equals("Manufacturer")) {
                             parent_license_type = "Manufacturer";
                             parent_license_type_key = "ParentLicenseType";
@@ -4430,6 +4484,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                             }
                             if (parentView.findViewWithTag("wholesaler_bills") instanceof PFADDACTV) {
                                 PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_bills");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
                                 pfaddactv.setVisibility(GONE);
                                 pfaddactv.showHideDropDown(false);
                             }
@@ -4631,6 +4690,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                 pfaddactv.setVisibility(GONE);
                                 pfaddactv.showHideDropDown(false);
                             }
+                            if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
                         } else if (id.equals("E-Commerce")) {
                             parent_license_type = "E-Commerce";
                             parent_license_type_key = "ParentLicenseType";
@@ -4825,6 +4889,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                             }
                             if (parentView.findViewWithTag("wholesaler_bills") instanceof PFADDACTV) {
                                 PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_bills");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
                                 pfaddactv.setVisibility(GONE);
                                 pfaddactv.showHideDropDown(false);
                             }
@@ -5025,7 +5094,216 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                 pfaddactv.setVisibility(VISIBLE);
                                 pfaddactv.showHideDropDown(true);
                             }
-                        } else if (id.equals("Rendering Units")) {
+                            if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                        }
+                        else if (id.equals("Milk Producers")) {
+                            parent_license_type = "Milk Producers";
+                            parent_license_type_key = "ParentLicenseType";
+                            if (txtCalulateCategory != null)
+                                txtCalulateCategory.setVisibility(VISIBLE);
+                            if (parentView.findViewWithTag("fat_rendering_license_type") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("fat_rendering_license_type");
+                                if (pfaddactv != null) {
+                                    Log.d("duplicateEntry", "fat_rendering_license_type not null");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                            }
+                            if (parentView.findViewWithTag("revised_license_type") instanceof PFAEditText) {
+                                PFAEditText pfaddactv = parentView.findViewWithTag("revised_license_type");
+                                if (pfaddactv != null) {
+                                    Log.d("duplicateEntry123", "revised_license_type not null 1");
+                                    pfaddactv.setVisibility(VISIBLE);
+                                    pfaddactv.showHideDropDown(true);
+                                }
+                            }
+                            Log.d("liscentype", "E-Commerce dd onChange");
+                            if (parentView.findViewWithTag("retailer_investment") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_investment");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("retailer_avg_sale") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_avg_sale");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("retailer_rent") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_rent");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("retailer_employees") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_employees");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("retailer_location") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_location");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("retailer_bills") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_bills");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("manufacturer_investment") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_investment");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("manufacturer_inventory") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_inventory");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("manufacturer_units_produced") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_units_produced");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("manufacturer_sales") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_sales");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("manufacturer_rent") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_rent");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("manufacturer_employees") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_employees");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("manufacturer_machines") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_machines");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("manufacturer_products") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_products");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("manufacturer_bills") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_bills");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("restaurant_investment") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_investment");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("restaurant_inventory") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_inventory");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("restaurant_sales") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_sales");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("restaurant_rent") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_rent");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("restaurant_employees") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_employees");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("restaurant_seating_capacity") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_seating_capacity");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("restaurant_location") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_location");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("restaurant_menu_range") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_menu_range");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("restaurant_bills") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_bills");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("e_commerce_investment") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_investment");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("e_commerce_sales") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_sales");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("e_commerce_employees") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_employees");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("e_commerce_riders") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_riders");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("e_commerce_registered_fbos") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_registered_fbos");
+                                pfaddactv.setVisibility(GONE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("wholesaler_investment") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_investment");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("wholesaler_avg_sale") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_avg_sale");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("wholesaler_rent") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_rent");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("wholesaler_employees") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_employees");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("wholesaler_location") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_location");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("wholesaler_bills") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_bills");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(false);
+                            }
+                            if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
+                                pfaddactv.setVisibility(VISIBLE);
+                                pfaddactv.showHideDropDown(true);
+                            }
+                        }
+                        else if (id.equals("Rendering Units")) {
 
                             Log.d("liscentype", "Rendering Units dd onChange");
                             new Handler().postDelayed(new Runnable() {
@@ -5211,6 +5489,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                         pfaddactv.setVisibility(VISIBLE);
                                         pfaddactv.showHideDropDown(false);
                                     }
+                                    if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                        PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
+                                        pfaddactv.setVisibility(GONE);
+                                        pfaddactv.showHideDropDown(false);
+                                    }
                                     if (parentView.findViewWithTag("fat_rendering_license_type") instanceof PFADDACTV) {
                                         PFADDACTV pfaddactv = parentView.findViewWithTag("fat_rendering_license_type");
                                         if (pfaddactv != null) {
@@ -5240,14 +5523,15 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
 
                                 @Override
                                 public void getExistingBusiness(JSONArray jsonArray, String msg) {
-                                    Log.d("liscentype", "business category field repsone revise_business_category");
+                                    Log.d("liscentypedf", "business category field repsone revise_business_categorydfsgf");
                                     for (int i = 0; i < jsonArray.length(); i++) {
 
                                         JSONObject jsonObject = jsonArray.optJSONObject(i);
 
-                                        Log.d("parentLicCat", "Rendering Units parent dd onChange");
 
                                         try {
+                                            Log.d("liscentypedf", "Rendering Units parent dd onChange = " + jsonObject.getString("value"));
+
                                             switch (jsonObject.getString("value")) {
                                                 case "Retailer":
                                                     parent_license_type = "Retailer";
@@ -5448,6 +5732,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                                         pfaddactv.setVisibility(GONE);
                                                         pfaddactv.showHideDropDown(false);
                                                     }
+                                                    if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
                                                     break;
                                                 case "Manufacturer":
                                                     parent_license_type = "Manufacturer";
@@ -5643,6 +5932,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                                     }
                                                     if (parentView.findViewWithTag("wholesaler_bills") instanceof PFADDACTV) {
                                                         PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_bills");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
                                                         pfaddactv.setVisibility(GONE);
                                                         pfaddactv.showHideDropDown(false);
                                                     }
@@ -5845,6 +6139,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                                         pfaddactv.setVisibility(GONE);
                                                         pfaddactv.showHideDropDown(false);
                                                     }
+                                                    if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
                                                     break;
                                                 case "E-Commerce":
                                                     parent_license_type = "E-Commerce";
@@ -6040,6 +6339,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                                     }
                                                     if (parentView.findViewWithTag("wholesaler_bills") instanceof PFADDACTV) {
                                                         PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_bills");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
                                                         pfaddactv.setVisibility(GONE);
                                                         pfaddactv.showHideDropDown(false);
                                                     }
@@ -6241,6 +6545,215 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                                         pfaddactv.setVisibility(VISIBLE);
                                                         pfaddactv.showHideDropDown(true);
                                                     }
+                                                    if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    break;
+                                                case "Milk Producers":
+                                                    Log.d("liscentypedf", "Milk Producersadsasdsad");
+                                                    parent_license_type = "Milk Producers";
+                                                    parent_license_type_key = "ParentLicenseType";
+                                                    if (txtCalulateCategory != null)
+                                                        txtCalulateCategory.setVisibility(VISIBLE);
+                                                    if (parentView.findViewWithTag("fat_rendering_license_type") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("fat_rendering_license_type");
+                                                        if (pfaddactv != null) {
+                                                            Log.d("duplicateEntry", "fat_rendering_license_type not null");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                    }
+                                                    if (parentView.findViewWithTag("revised_license_type") instanceof PFAEditText) {
+                                                        PFAEditText pfaddactv = parentView.findViewWithTag("revised_license_type");
+                                                        if (pfaddactv != null) {
+                                                            Log.d("duplicateEntry123", "revised_license_type not null 1");
+                                                            pfaddactv.setVisibility(VISIBLE);
+                                                            pfaddactv.showHideDropDown(true);
+                                                        }
+                                                    }
+                                                    Log.d("liscentype", "E-Commerce dd onChange");
+                                                    if (parentView.findViewWithTag("retailer_investment") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_investment");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("retailer_avg_sale") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_avg_sale");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("retailer_rent") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_rent");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("retailer_employees") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_employees");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("retailer_location") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_location");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("retailer_bills") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_bills");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("manufacturer_investment") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_investment");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("manufacturer_inventory") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_inventory");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("manufacturer_units_produced") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_units_produced");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("manufacturer_sales") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_sales");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("manufacturer_rent") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_rent");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("manufacturer_employees") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_employees");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("manufacturer_machines") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_machines");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("manufacturer_products") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_products");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("manufacturer_bills") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_bills");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("restaurant_investment") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_investment");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("restaurant_inventory") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_inventory");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("restaurant_sales") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_sales");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("restaurant_rent") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_rent");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("restaurant_employees") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_employees");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("restaurant_seating_capacity") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_seating_capacity");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("restaurant_location") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_location");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("restaurant_menu_range") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_menu_range");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("restaurant_bills") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_bills");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("e_commerce_investment") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_investment");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("e_commerce_sales") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_sales");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("e_commerce_employees") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_employees");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("e_commerce_riders") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_riders");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("e_commerce_registered_fbos") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_registered_fbos");
+                                                        pfaddactv.setVisibility(GONE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("wholesaler_investment") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_investment");
+                                                        pfaddactv.setVisibility(VISIBLE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("wholesaler_avg_sale") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_avg_sale");
+                                                        pfaddactv.setVisibility(VISIBLE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("wholesaler_rent") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_rent");
+                                                        pfaddactv.setVisibility(VISIBLE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("wholesaler_employees") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_employees");
+                                                        pfaddactv.setVisibility(VISIBLE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("wholesaler_location") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_location");
+                                                        pfaddactv.setVisibility(VISIBLE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("wholesaler_bills") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_bills");
+                                                        pfaddactv.setVisibility(VISIBLE);
+                                                        pfaddactv.showHideDropDown(false);
+                                                    }
+                                                    if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                                        PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
+                                                        pfaddactv.setVisibility(VISIBLE);
+                                                        pfaddactv.showHideDropDown(true);
+                                                    }
                                                     break;
                                                 case "Rendering Units":
 
@@ -6428,6 +6941,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                                                 pfaddactv.setVisibility(GONE);
                                                                 pfaddactv.showHideDropDown(false);
                                                             }
+                                                            if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                                                PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
+                                                                pfaddactv.setVisibility(GONE);
+                                                                pfaddactv.showHideDropDown(false);
+                                                            }
                                                             if (parentView.findViewWithTag("fat_rendering_license_type") instanceof PFADDACTV) {
                                                                 PFADDACTV pfaddactv = parentView.findViewWithTag("fat_rendering_license_type");
                                                                 if (pfaddactv != null) {
@@ -6480,6 +6998,10 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                                         break;
                                                     case "Wholesalers":
                                                         pfaEditText.setDropdownSelection(5, pfaViewsCallbacks);
+                                                        Log.d("parentLicCat1", "Rendering Units parent dd onChange 111");
+                                                        break;
+                                                    case "Milk Producers":
+                                                        pfaEditText.setDropdownSelection(6, pfaViewsCallbacks);
                                                         Log.d("parentLicCat1", "Rendering Units parent dd onChange 111");
                                                         break;
                                                 }
@@ -6703,6 +7225,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                                             pfaddactv.setVisibility(GONE);
                                                             pfaddactv.showHideDropDown(false);
                                                         }
+                                                        if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
                                                         break;
                                                     case "Manufacturer":
                                                         parent_license_type = "Manufacturer";
@@ -6880,6 +7407,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                                         }
                                                         if (parentView.findViewWithTag("wholesaler_bills") instanceof PFADDACTV) {
                                                             PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_bills");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
                                                             pfaddactv.setVisibility(GONE);
                                                             pfaddactv.showHideDropDown(false);
                                                         }
@@ -7064,6 +7596,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                                             pfaddactv.setVisibility(GONE);
                                                             pfaddactv.showHideDropDown(false);
                                                         }
+                                                        if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
                                                         break;
                                                     case "E-Commerce":
                                                         parent_license_type = "E-Commerce";
@@ -7241,6 +7778,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                                         }
                                                         if (parentView.findViewWithTag("wholesaler_bills") instanceof PFADDACTV) {
                                                             PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_bills");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
                                                             pfaddactv.setVisibility(GONE);
                                                             pfaddactv.showHideDropDown(false);
                                                         }
@@ -7424,6 +7966,196 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                                             pfaddactv.setVisibility(VISIBLE);
                                                             pfaddactv.showHideDropDown(true);
                                                         }
+                                                        if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        break;
+                                                        case "Milk Producers":
+                                                        parent_license_type = "Milk Producers";
+                                                        parent_license_type_key = "ParentLicenseType";
+                                                        Log.d("liscentype", "E-Commerce dd onChange");
+                                                        if (parentView.findViewWithTag("retailer_investment") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_investment");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("retailer_avg_sale") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_avg_sale");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("retailer_rent") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_rent");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("retailer_employees") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_employees");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("retailer_location") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_location");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("retailer_bills") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_bills");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("manufacturer_investment") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_investment");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("manufacturer_inventory") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_inventory");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("manufacturer_units_produced") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_units_produced");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("manufacturer_sales") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_sales");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("manufacturer_rent") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_rent");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("manufacturer_employees") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_employees");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("manufacturer_machines") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_machines");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("manufacturer_products") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_products");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("manufacturer_bills") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_bills");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("restaurant_investment") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_investment");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("restaurant_inventory") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_inventory");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("restaurant_sales") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_sales");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("restaurant_rent") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_rent");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("restaurant_employees") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_employees");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("restaurant_seating_capacity") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_seating_capacity");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("restaurant_location") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_location");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("restaurant_menu_range") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_menu_range");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("restaurant_bills") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_bills");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("e_commerce_investment") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_investment");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("e_commerce_sales") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_sales");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("e_commerce_employees") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_employees");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("e_commerce_riders") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_riders");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("e_commerce_registered_fbos") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_registered_fbos");
+                                                            pfaddactv.setVisibility(GONE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("wholesaler_investment") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_investment");
+                                                            pfaddactv.setVisibility(VISIBLE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("wholesaler_avg_sale") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_avg_sale");
+                                                            pfaddactv.setVisibility(VISIBLE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("wholesaler_rent") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_rent");
+                                                            pfaddactv.setVisibility(VISIBLE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("wholesaler_employees") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_employees");
+                                                            pfaddactv.setVisibility(VISIBLE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("wholesaler_location") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_location");
+                                                            pfaddactv.setVisibility(VISIBLE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("wholesaler_bills") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_bills");
+                                                            pfaddactv.setVisibility(VISIBLE);
+                                                            pfaddactv.showHideDropDown(false);
+                                                        }
+                                                        if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                                            PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
+                                                            pfaddactv.setVisibility(VISIBLE);
+                                                            pfaddactv.showHideDropDown(true);
+                                                        }
                                                         break;
                                                 }
 
@@ -7594,6 +8326,10 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                         if (fieldInfo.getField_name().equals("wholesaler_bills")) {
                             wholesaler_bills_key = "wholesaler_bills";
                             wholesaler_bills = id;
+                        }
+                        if (fieldInfo.getField_name().equals("mp_animals")) {
+                            mp_animals_key = "mp_animals";
+                            mp_animals = id;
                         }
                     }
 
@@ -7797,6 +8533,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                     pfaddactv.setVisibility(GONE);
                                     pfaddactv.showHideDropDown(false);
                                 }
+                                if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
                             }
                             else if (dropDownId.equals("Manufacturer")) {
                                 if (parentView.findViewWithTag("retailer_investment") instanceof PFADDACTV) {
@@ -7976,6 +8717,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                 }
                                 if (parentView.findViewWithTag("wholesaler_bills") instanceof PFADDACTV) {
                                     PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_bills");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
                                     pfaddactv.setVisibility(GONE);
                                     pfaddactv.showHideDropDown(false);
                                 }
@@ -8161,6 +8907,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                     pfaddactv.setVisibility(GONE);
                                     pfaddactv.showHideDropDown(false);
                                 }
+                                if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
                             }
                             else if (dropDownId.equals("E-Commerce")) {
                                 if (parentView.findViewWithTag("retailer_investment") instanceof PFADDACTV) {
@@ -8343,6 +9094,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                     pfaddactv.setVisibility(GONE);
                                     pfaddactv.showHideDropDown(false);
                                 }
+                                if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
                             }
                             else if (dropDownId.equals("Wholesalers")) {
                                 if (parentView.findViewWithTag("retailer_investment") instanceof PFADDACTV) {
@@ -8522,6 +9278,198 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                 }
                                 if (parentView.findViewWithTag("wholesaler_bills") instanceof PFADDACTV) {
                                     PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_bills");
+                                    pfaddactv.setVisibility(VISIBLE);
+                                    pfaddactv.showHideDropDown(true);
+                                }
+                                if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                            }
+                            else if (dropDownId.equals("Milk Producers")) {
+                                if (parentView.findViewWithTag("retailer_investment") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_investment");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("retailer_avg_sale") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_avg_sale");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("retailer_rent") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_rent");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("retailer_employees") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_employees");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("retailer_location") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_location");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("retailer_bills") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("retailer_bills");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("manufacturer_investment") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_investment");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("manufacturer_inventory") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_inventory");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("manufacturer_units_produced") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_units_produced");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("manufacturer_sales") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_sales");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("manufacturer_rent") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_rent");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("manufacturer_employees") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_employees");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("manufacturer_machines") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_machines");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("manufacturer_products") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_products");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("manufacturer_bills") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("manufacturer_bills");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("restaurant_investment") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_investment");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("restaurant_inventory") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_inventory");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("restaurant_sales") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_sales");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("restaurant_rent") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_rent");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("restaurant_employees") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_employees");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("restaurant_seating_capacity") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_seating_capacity");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("restaurant_location") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_location");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("restaurant_menu_range") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_menu_range");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("restaurant_bills") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_bills");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("restaurant_bills_empty") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("restaurant_bills_empty");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("e_commerce_investment") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_investment");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("e_commerce_sales") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_sales");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("e_commerce_employees") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_employees");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("e_commerce_riders") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_riders");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("e_commerce_registered_fbos") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("e_commerce_registered_fbos");
+                                    pfaddactv.setVisibility(GONE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("wholesaler_investment") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_investment");
+                                    pfaddactv.setVisibility(VISIBLE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("wholesaler_avg_sale") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_avg_sale");
+                                    pfaddactv.setVisibility(VISIBLE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("wholesaler_rent") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_rent");
+                                    pfaddactv.setVisibility(VISIBLE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("wholesaler_employees") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_employees");
+                                    pfaddactv.setVisibility(VISIBLE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("wholesaler_location") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_location");
+                                    pfaddactv.setVisibility(VISIBLE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("wholesaler_bills") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("wholesaler_bills");
+                                    pfaddactv.setVisibility(VISIBLE);
+                                    pfaddactv.showHideDropDown(false);
+                                }
+                                if (parentView.findViewWithTag("mp_animals") instanceof PFADDACTV) {
+                                    PFADDACTV pfaddactv = parentView.findViewWithTag("mp_animals");
                                     pfaddactv.setVisibility(VISIBLE);
                                     pfaddactv.showHideDropDown(true);
                                 }
@@ -9387,7 +10335,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                 actvTag.equals("e_commerce_employees") || actvTag.equals("e_commerce_riders") || actvTag.equals("e_commerce_registered_fbos")
                                 || actvTag.equals("revise_business_category") || actvTag.equals("wholesaler_investment") || actvTag.equals("wholesaler_avg_sale")
                                 || actvTag.equals("wholesaler_rent") || actvTag.equals("wholesaler_employees") || actvTag.equals("wholesaler_location")
-                                || actvTag.equals("wholesaler_bills")) {
+                                || actvTag.equals("wholesaler_bills") || actvTag.equals("mp_animals")) {
                             PFAEditText pfaddactv2 = parentView.findViewWithTag("revised_license_type");
                             PFAEditText pfaddactv3 = parentView.findViewWithTag("license_type_id");
                             pfaddactv2.setText("");

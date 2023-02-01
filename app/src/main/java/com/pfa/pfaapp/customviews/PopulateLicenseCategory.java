@@ -111,6 +111,10 @@ public class PopulateLicenseCategory extends LinearLayout implements HttpRespons
             reqParams.put(retailer_val_key.get(3), retailer_val.get(3));
             reqParams.put(retailer_val_key.get(4), retailer_val.get(4));
             reqParams.put(retailer_val_key.get(5), retailer_val.get(5));
+        } else if (parent_license_type.equals("Milk Producers")) {
+            Log.d("liscentype" , "E-Commerce PopulateLicenseCategory");
+            reqParams.put("parent_license_type" , "Milk Producers");
+            reqParams.put(retailer_val_key.get(0), retailer_val.get(0));
         }
 
         HttpService httpService = new HttpService(mContext);
