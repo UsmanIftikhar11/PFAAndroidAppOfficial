@@ -153,7 +153,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8954ad4f-1517-491e-a5ce-7a6dfe8af176" name="Default Changelist" comment="PFA App Files v1.86">
+    <list default="true" id="8954ad4f-1517-491e-a5ce-7a6dfe8af176" name="Default Changelist" comment="PFA App Files v1.88">
       <change afterPath="$PROJECT_DIR$/.idea/modules/app/PFAAndroidAppLatest.app.androidTest.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/modules/app/PFAAndroidAppLatest.app.main.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/modules/app/PFAAndroidAppLatest.app.unitTest.iml" afterDir="false" />
@@ -745,7 +745,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675248388097</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="PFA App Files v1.88">
+      <created>1677056364252</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1677056364253</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TodoView">
@@ -807,7 +814,8 @@
     <MESSAGE value="PFA App Files v1.83" />
     <MESSAGE value="PFA App Files v1.85" />
     <MESSAGE value="PFA App Files v1.86" />
-    <option name="LAST_COMMIT_MESSAGE" value="PFA App Files v1.86" />
+    <MESSAGE value="PFA App Files v1.88" />
+    <option name="LAST_COMMIT_MESSAGE" value="PFA App Files v1.88" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
