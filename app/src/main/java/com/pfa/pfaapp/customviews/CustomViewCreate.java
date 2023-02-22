@@ -3800,7 +3800,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
 //                                parentView.addView(sampleBrandName , 2);
 
                             }
-                        } else if (fieldInfo.getField_name().equals("product_name_dropdown")) {
+                        }
+                        else if (fieldInfo.getField_name().equals("product_name_dropdown")) {
                             if (!firstTime) {
 //                                    if (textView_name != null)
                                 textView_name.setVisibility(GONE);
@@ -3854,7 +3855,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                 }
                                 firstTime = false;
                             }
-                        } else if (fieldInfo.getField_name().equals("local_business")) {
+                        }
+                        else if (fieldInfo.getField_name().equals("local_business")) {
                             /*final VerifyFBOBusiness verifyFBOLayout =*/
 
                             if (id.equals("add_new")) {
@@ -3921,7 +3923,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                     }
                                 }
                             });
-                        } else if (fieldInfo.getField_name().equals("call_status")) {
+                        }
+                        else if (fieldInfo.getField_name().equals("call_status")) {
                             Log.d("duplicateEntry", "call_status");
                             if (id.equals("7")) {
                                 isCallStatusDUplicate = true;
@@ -3956,7 +3959,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                 }
 //                                pfaddactv1.setRequired(false);
                             }
-                        } else if (fieldInfo.getField_name().equals("status")) {
+                        }
+                        else if (fieldInfo.getField_name().equals("status")) {
                             Log.d("duplicateEntry", "status");
                             if (id.equals("7")) {
                                 isStatusDUplicate = true;
@@ -3989,7 +3993,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                 }
 //                                pfaddactv1.setRequired(false);
                             }
-                        } else if (fieldInfo.getField_name().equals("parent_business_category") && parentBusinessCatUrl != null) {
+                        }
+                        else if (fieldInfo.getField_name().equals("parent_business_category") && parentBusinessCatUrl != null) {
                             new PopulateParentLicense(mContext, parentBusinessCatUrl, id, new CheckUserCallback() {
                                 @Override
                                 public void getExistingUser(JSONArray jsonArray) {
@@ -4290,7 +4295,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                 pfaddactv.setVisibility(GONE);
                                 pfaddactv.showHideDropDown(false);
                             }
-                        } else if (id.equals("Manufacturer")) {
+                        }
+                        else if (id.equals("Manufacturer")) {
                             parent_license_type = "Manufacturer";
                             parent_license_type_key = "ParentLicenseType";
                             if (txtCalulateCategory != null)
@@ -4492,7 +4498,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                 pfaddactv.setVisibility(GONE);
                                 pfaddactv.showHideDropDown(false);
                             }
-                        } else if (id.equals("Restaurants")) {
+                        }
+                        else if (id.equals("Restaurants")) {
                             parent_license_type = "Restaurants";
                             parent_license_type_key = "ParentLicenseType";
                             if (txtCalulateCategory != null)
@@ -4695,7 +4702,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                 pfaddactv.setVisibility(GONE);
                                 pfaddactv.showHideDropDown(false);
                             }
-                        } else if (id.equals("E-Commerce")) {
+                        }
+                        else if (id.equals("E-Commerce")) {
                             parent_license_type = "E-Commerce";
                             parent_license_type_key = "ParentLicenseType";
                             if (txtCalulateCategory != null)
@@ -4897,7 +4905,8 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                 pfaddactv.setVisibility(GONE);
                                 pfaddactv.showHideDropDown(false);
                             }
-                        } else if (id.equals("Wholesalers")) {
+                        }
+                        else if (id.equals("Wholesalers")) {
                             parent_license_type = "Wholesalers";
                             parent_license_type_key = "ParentLicenseType";
                             if (txtCalulateCategory != null)
@@ -10419,8 +10428,10 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                             if (pfaddactv1.getSelectedValues() != null && pfaddactv1.getSelectedValues().size() > 0) {
                                 Log.d("parentLicCat", "Rendering Units parent dd onChange here1");
                                 if (pfaddactv1.formFieldInfo.getShow_check_value().contains(pfaddactv1.getSelectedValues().get(0).getValue())) {
+                                    Log.d("parentLicCat", "Rendering Units parent dd onChange here1 if = " + pfaddactv1.formFieldInfo.getShow_hidden_false_fields().size());
                                     formFieldsHideShow.setFieldsRequiredAndVisible(pfaddactv1.formFieldInfo.getShow_hidden_false_fields(), true, sectionRequired, parentView, pfaddactv1.getSelectedValues().get(0).getValue());
                                 } else {
+                                    Log.d("parentLicCat", "Rendering Units parent dd onChange here1 else");
                                     formFieldsHideShow.setFieldsRequiredAndVisible(pfaddactv1.formFieldInfo.getShow_hidden_false_fields(), false, sectionRequired, parentView, pfaddactv1.getSelectedValues().get(0).getValue());
                                 }
 //                                String value = pfaddactv1.getSelectedValues().get(0).getValue();

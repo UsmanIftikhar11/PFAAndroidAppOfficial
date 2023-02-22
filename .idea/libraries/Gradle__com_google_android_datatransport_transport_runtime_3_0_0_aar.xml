@@ -2,7 +2,6 @@
   <library name="Gradle: com.google.android.datatransport:transport-runtime:3.0.0@aar">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5b090c409d2b09f81d765be193c3d1be/jetified-transport-runtime-3.0.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5b090c409d2b09f81d765be193c3d1be/jetified-transport-runtime-3.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5b090c409d2b09f81d765be193c3d1be/jetified-transport-runtime-3.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>

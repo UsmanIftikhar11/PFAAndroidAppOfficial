@@ -37,6 +37,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.security.cert.X509Certificate;
@@ -56,6 +57,7 @@ import static com.pfa.pfaapp.utils.AppConst.SP_APP_AUTH_TOKEN;
 import static com.pfa.pfaapp.utils.AppConst.SP_AUTH_TOKEN;
 import static com.pfa.pfaapp.utils.AppConst.SP_FCM_ID;
 import static com.pfa.pfaapp.utils.AppConst.SP_STAFF_ID;
+import static com.pfa.pfaapp.SplashActivity.BaseUrl;
 
 import androidx.annotation.NonNull;
 
@@ -160,6 +162,7 @@ class HttpUtils extends ScalingUtilities implements LocationListener /*implement
         printLog("Request Url=>", "" + url.toString());
 //        HttpsTrustManager.allowAllSSL();
         updateAndroidSecurityProvider();
+        String finalRequestUrl = requestUrl;
         StringRequest stringRequest = new StringRequest(Method.GET, url.toString().replaceAll(" ", "%20"), new Response.Listener<String>() {
 
             @Override
@@ -229,11 +232,24 @@ class HttpUtils extends ScalingUtilities implements LocationListener /*implement
 
 
                 ////////
-                if (volleyError.networkResponse != null) {
-                    showMsgDialog("Some Error Occurred, Please Try Again!1" /*+ "\n" + url.toString()*/, null);
-                } else {
-                    showMsgDialog("Please Check Your Internet Connection and Try Again!1", null);
+                if (finalRequestUrl.equals("https://app.pfa.gop.pk/api/BaseURL/GetBaseURL?applicationName=cellpfagop")){
+                    try {
+                        JSONObject obj = new JSONObject(loadJSONFromAsset());
+                        callback.onCompleteHttpResponse(obj , null);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Log.d("currentApiVersion", "httpUtils= 1");
                 }
+                else {
+                    Log.d("currentApiVersion", "httpUtils= 2");
+                    if (volleyError.networkResponse != null) {
+                        showMsgDialog("Some Error Occurred, Please Try Again!1" /*+ "\n" + url.toString()*/, null);
+                    } else {
+                        showMsgDialog("Please Check Your Internet Connection and Try Again!1", null);
+                    }
+                }
+
 
             }
         }) {
@@ -697,5 +713,21 @@ class HttpUtils extends ScalingUtilities implements LocationListener /*implement
         double lng = location.getLongitude();
 
 
+    }
+
+    public String loadJSONFromAsset() {
+        String json = null;
+        try {
+            InputStream is = context.getAssets().open("baseurl.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
     }
 }

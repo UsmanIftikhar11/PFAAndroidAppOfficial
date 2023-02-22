@@ -243,16 +243,11 @@ public class SplashActivity extends BaseActivity {
                             Log.d("currentApiVersion", "version from api= " + BaseUrl);
 //                            startLoginScreen(null);
 
-                            if (!BaseUrl.isEmpty())
-                                startLoginScreen(null);
-                            else {
+                            if (BaseUrl.isEmpty())
                                 BaseUrl = "https://cell.pfa.gop.pk/api/";
-//                                sharedPrefUtils.showMsgDialog("No Base Url Found", null);
-                            }
 
-                        } else {
-                            BaseUrl = "https://cell.pfa.gop.pk/api/";
-//                            sharedPrefUtils.showMsgDialog("No Base Url Found", null);
+                            startLoginScreen(null);
+
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -263,6 +258,8 @@ public class SplashActivity extends BaseActivity {
                         @Override
                         public void sendMsg(String message) {
 //                            startMain();
+                            BaseUrl = "https://cell.pfa.gop.pk/api/";
+                            startLoginScreen(null);
                         }
                     });
                 }

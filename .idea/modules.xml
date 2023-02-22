@@ -4,8 +4,17 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/PFAAndroidAppLatest.iml" filepath="$PROJECT_DIR$/.idea/modules/PFAAndroidAppLatest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PFAAndroidAppLatest.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PFAAndroidAppLatest.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PFAAndroidAppLatest.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PFAAndroidAppLatest.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PFAAndroidAppLatest.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PFAAndroidAppLatest.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PFAAndroidAppLatest.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PFAAndroidAppLatest.app.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/escposprinter/PFAAndroidAppLatest.escposprinter.iml" filepath="$PROJECT_DIR$/.idea/modules/escposprinter/PFAAndroidAppLatest.escposprinter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/escposprinter/PFAAndroidAppLatest.escposprinter.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/escposprinter/PFAAndroidAppLatest.escposprinter.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/escposprinter/PFAAndroidAppLatest.escposprinter.main.iml" filepath="$PROJECT_DIR$/.idea/modules/escposprinter/PFAAndroidAppLatest.escposprinter.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/escposprinter/PFAAndroidAppLatest.escposprinter.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/escposprinter/PFAAndroidAppLatest.escposprinter.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/multipleimageselect/PFAAndroidAppLatest.multipleimageselect.iml" filepath="$PROJECT_DIR$/.idea/modules/multipleimageselect/PFAAndroidAppLatest.multipleimageselect.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/multipleimageselect/PFAAndroidAppLatest.multipleimageselect.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/multipleimageselect/PFAAndroidAppLatest.multipleimageselect.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/multipleimageselect/PFAAndroidAppLatest.multipleimageselect.main.iml" filepath="$PROJECT_DIR$/.idea/modules/multipleimageselect/PFAAndroidAppLatest.multipleimageselect.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/multipleimageselect/PFAAndroidAppLatest.multipleimageselect.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/multipleimageselect/PFAAndroidAppLatest.multipleimageselect.unitTest.iml" />
     </modules>
   </component>
 </project>

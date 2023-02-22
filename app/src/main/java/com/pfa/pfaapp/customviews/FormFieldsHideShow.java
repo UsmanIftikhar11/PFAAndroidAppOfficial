@@ -60,6 +60,7 @@ class FormFieldsHideShow {
 
         AppUtils appUtils = new AppUtils(mContext);
 
+        Log.d("checkReqFieldss" , "fields = " + required_false_fields);
         if (required_false_fields == null || required_false_fields.size() == 0)
             return;
         for (String sectionReqFieldKey : required_false_fields) {
@@ -127,12 +128,20 @@ class FormFieldsHideShow {
                 }
             } else if (menuFragParentLL.findViewWithTag(sectionReqFieldKey) instanceof PFADDACTV) {
                 FrameLayout pfaddLL = menuFragParentLL.findViewWithTag(sectionReqFieldKey + "01");
+//                PFADDACTV pfaddLL = menuFragParentLL.findViewWithTag(sectionReqFieldKey);
 
+                Log.d("checkReqFieldss" , "here = " + sectionReqFieldKey);
+                Log.d("checkReqFieldss" , "here1 = " + pfaddLL.getTag().toString());
+                Log.d("checkReqFieldss" , "show = " + isShow);
                 if (pfaddLL != null) {
+                    Log.d("checkReqFieldss" , "here 2");
                     PFADDACTV pfa_dd_actv = pfaddLL.findViewById(R.id.pfa_dd_actv);
 
-                    pfa_dd_actv.formFieldInfo.setRequired(isShow);
-                    pfa_dd_actv.formFieldInfo.setInvisible(!isShow);
+                    pfa_dd_actv.getFormFieldInfo().setRequired(isShow);
+                    pfa_dd_actv.getFormFieldInfo().setInvisible(!isShow);
+//                    pfaddLL.showHideDropDownVisibility(true);
+//                    pfaddLL.showHideDropDown(true);
+//                    pfaddLL.setVisibility(VISIBLE);
                     pfa_dd_actv.getTextInputLayout().setVisibility(isShow ? VISIBLE : GONE);
                     pfa_dd_actv.setTextInputLayout(pfa_dd_actv.getTextInputLayout());
                 }

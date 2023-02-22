@@ -210,6 +210,10 @@ public class PFADDACTV extends androidx.appcompat.widget.AppCompatAutoCompleteTe
         clearFocus();
     }
 
+    public FormFieldInfo getFormFieldInfo() {
+        return formFieldInfo;
+    }
+
     private void setSelectedPosition(final FormDataInfo filterDataInfo, final boolean showConfirmMsg) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             setShowSoftInputOnFocus(false);

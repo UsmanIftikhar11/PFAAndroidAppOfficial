@@ -1,0 +1,13 @@
+{
+  "Version": "1.0",
+  "StatusCode": 200,
+  "Message": "success",
+  "Result": {
+    "Pagination": null,
+    "Data": "https://cell.pfa.gop.pk/api/"
+  },
+  "Timestamp": "2023-02-07T10:52:54.4166512+05:00",
+  "Errors": [
+
+  ]
+}

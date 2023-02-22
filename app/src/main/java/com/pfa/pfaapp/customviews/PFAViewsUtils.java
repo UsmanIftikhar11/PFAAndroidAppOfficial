@@ -279,16 +279,20 @@ public class PFAViewsUtils extends SharedPrefUtils {
                         SharedPrefUtils sharedPrefUtils = new SharedPrefUtils(mContext);
 
 
-                        if (Fake && sharedPrefUtils.getRLF("RequiredFalseField").contains(sharedPrefUtils.getSharedPrefValue("SLUG", ""))) {
+                        Log.d("checkRLF" , "value = " + sharedPrefUtils.getSharedPrefValue("SLUG", ""));
+                        Log.d("checkRLF" , "RLF = " + getRLF("RequiredFalseField"));
+                        if (sharedPrefUtils.getRLF("RequiredFalseField") != null) {
+                            if (Fake && sharedPrefUtils.getRLF("RequiredFalseField").contains(sharedPrefUtils.getSharedPrefValue("SLUG", ""))) {
 //                             if (Fake){
 
-                            PFARadioGroup pfaRadioGroup = (PFARadioGroup) view;
+                                PFARadioGroup pfaRadioGroup = (PFARadioGroup) view;
 
-                            pfaRadioGroup.setBackgroundResource(R.mipmap.text_bg);
-                            pfaRadioGroup.setPadding(convertDpToPixel(10), convertDpToPixel(20), convertDpToPixel(10), convertDpToPixel(20));
+                                pfaRadioGroup.setBackgroundResource(R.mipmap.text_bg);
+                                pfaRadioGroup.setPadding(convertDpToPixel(10), convertDpToPixel(20), convertDpToPixel(10), convertDpToPixel(20));
 
 
-                        } else {
+                            }
+                        }else {
 //                        SharedPreferences sharedPreferencesf = PreferenceManager
 //                                .getDefaultSharedPreferences(mContext);
 //                        boolean Fake = sharedPreferencesf.getBoolean("IsNotRequired", false);
