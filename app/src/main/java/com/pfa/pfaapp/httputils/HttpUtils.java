@@ -64,7 +64,7 @@ import androidx.annotation.NonNull;
 /**
  * HttpUtils->SharedPrefUtils->AppUtils->CustomDialogs
  */
-class HttpUtils extends ScalingUtilities implements LocationListener /*implements X509TrustManager*/ {
+class HttpUtils extends ScalingUtilities implements LocationListener , X509TrustManager {
     private static final X509Certificate[] _AcceptedIssuers = new X509Certificate[]{};
      ProgressDialog progressDialog;
      Context context;
@@ -152,7 +152,7 @@ class HttpUtils extends ScalingUtilities implements LocationListener /*implement
                 url.append("&").append(SP_FCM_ID).append("=").append(URLEncoder.encode(getSharedPrefValue(SP_FCM_ID, ""), "UTF-8"));
             //////////////THIISSS
                 if (!SP_APP_AUTH_TOKEN.isEmpty())
-                url.append("&").append(SP_APP_AUTH_TOKEN).append("=").append(URLEncoder.encode(getSharedPrefValue(SP_APP_AUTH_TOKEN, ""), "UTF-8"));
+                    url.append("&").append(SP_APP_AUTH_TOKEN).append("=").append(URLEncoder.encode(getSharedPrefValue(SP_APP_AUTH_TOKEN, ""), "UTF-8"));
 
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
@@ -232,7 +232,7 @@ class HttpUtils extends ScalingUtilities implements LocationListener /*implement
 
 
                 ////////
-                if (finalRequestUrl.equals("https://app.pfa.gop.pk/api/BaseURL/GetBaseURL?applicationName=cellpfagop")){
+                /*if (finalRequestUrl.equals("https://app.pfa.gop.pk/api/BaseURL/GetBaseURL?applicationName=cellpfagop")){
                     try {
                         JSONObject obj = new JSONObject(loadJSONFromAsset());
                         callback.onCompleteHttpResponse(obj , null);
@@ -241,14 +241,14 @@ class HttpUtils extends ScalingUtilities implements LocationListener /*implement
                     }
                     Log.d("currentApiVersion", "httpUtils= 1");
                 }
-                else {
+                else {*/
                     Log.d("currentApiVersion", "httpUtils= 2");
                     if (volleyError.networkResponse != null) {
                         showMsgDialog("Some Error Occurred, Please Try Again!1" /*+ "\n" + url.toString()*/, null);
                     } else {
                         showMsgDialog("Please Check Your Internet Connection and Try Again!1", null);
                     }
-                }
+//                }
 
 
             }
@@ -486,7 +486,7 @@ class HttpUtils extends ScalingUtilities implements LocationListener /*implement
         stringRequest.setShouldCache(false);
         AppController.getInstance().addToRequestQueue(stringRequest, "" + requestUrl);
     }
-    /*@Override
+    @Override
     public void checkClientTrusted(X509Certificate[] chain, String authType) {
         printLog("checkClientTrusted =>", "X509Certificate authType " + authType);
     }
@@ -499,7 +499,7 @@ class HttpUtils extends ScalingUtilities implements LocationListener /*implement
     @Override
     public X509Certificate[] getAcceptedIssuers() {
         return _AcceptedIssuers;
-    }*/
+    }
 
     void httpMultipartAPICall(final String requestUrl, Map<String, String> params, Map<String, File> fileParams,
                               final HttpResponseCallback callback, boolean showProgress) {
@@ -688,7 +688,7 @@ class HttpUtils extends ScalingUtilities implements LocationListener /*implement
             Log.d("volleyErrorMsg" , "try = ");
             String res = null;
             if (response !=null)
-            res = new String(response.data, HttpHeaderParser.parseCharset(response.headers, "utf-8"));
+                res = new String(response.data, HttpHeaderParser.parseCharset(response.headers, "utf-8"));
             // Now you can use any deserializer to make sense of data
 //            JSONObject obj = new JSONObject(res);
 //            Toast.makeText(context, obj.getString("message"), Toast.LENGTH_LONG).show();

@@ -64,7 +64,8 @@ public class SplashActivity extends BaseActivity {
 
         sharedPrefUtils.applyFont(findViewById(R.id.logoTV), AppUtils.FONTS.HelveticaNeueMedium);
 
-        if (android.os.Build.VERSION.SDK_INT < 25){
+        /*if (android.os.Build.VERSION.SDK_INT < 25){
+            Log.d("onCreateActv", "fbo here 16666 ");
             new AlertDialog.Builder(SplashActivity.this)
                     .setTitle("Old Android Version")
                     .setMessage("You are using the old Android version. \n" +
@@ -82,7 +83,7 @@ public class SplashActivity extends BaseActivity {
         }
         else {
             appUpdateManager = AppUpdateManagerFactory.create(SplashActivity.this);
-
+            Log.d("onCreateActv", "fbo here 16sdgf ");
             appUpdateManager.getAppUpdateInfo().addOnSuccessListener(appUpdateInfo -> {
                 Log.d("onCreateActv", "fbo here 16 ");
                 if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
@@ -109,9 +110,24 @@ public class SplashActivity extends BaseActivity {
                     }
                 }
             });
-        }
+            appUpdateManager.getAppUpdateInfo().addOnFailureListener(appUpdateInfo -> {
+                Log.d("onCreateActv", "fbo here 15f ");
+                updateAvailable = false;
+                if (getIntent().getData() != null) {
+                    Log.d("onCreateActv", "fbo here 5f ");
+                    Uri uri = getIntent().getData();// this is the url
+                    List<String> segments = uri.getPathSegments();// this is the url segments
+                    sharedPrefUtils.printLog("uri 1=>", uri.toString());
+                    startLoginScreen(segments);
+                } else {
 
-            /*if (!updateAvailable) {
+                    startMain();
+
+                }
+            });
+        }*/
+
+            if (!updateAvailable) {
                 if (getIntent().getData() != null) {
                     Log.d("onCreateActv", "fbo here 4 ");
                     Uri uri = getIntent().getData();// this is the url
@@ -123,7 +139,7 @@ public class SplashActivity extends BaseActivity {
                 } else {
                     startMain();
                 }
-            }*/
+            }
 
 
 
@@ -222,8 +238,9 @@ public class SplashActivity extends BaseActivity {
             return;
         }
 
-//        startLoginScreen(null);
+        startLoginScreen(null);
 
+/*
         httpService.getListsData1("https://app.pfa.gop.pk/api/BaseURL/GetBaseURL?applicationName=cellpfagop", new HashMap<String, String>(), new HttpResponseCallback() {
             @Override
             public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
@@ -265,6 +282,7 @@ public class SplashActivity extends BaseActivity {
                 }
             }
         }, false);
+*/
     }
 
 

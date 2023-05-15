@@ -3,6 +3,8 @@ package com.pfa.pfaapp.customviews;
 import android.app.Activity;
 import android.content.Context;
 import androidx.annotation.Nullable;
+
+import android.text.InputType;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -158,6 +160,8 @@ public class PFAChatLayout extends LinearLayout implements HttpResponseCallback,
         inspectionET = chatFooterLL.findViewById(R.id.inspectionET);
         sharedPrefUtils.applyFont(msgET, AppUtils.FONTS.HelveticaNeue);
         sharedPrefUtils.applyFont(inspectionET, AppUtils.FONTS.HelveticaNeue);
+
+        inspectionET.setInputType(InputType.TYPE_CLASS_NUMBER);
 
 
         sharedPrefUtils.applyFont(chatTtlTV, AppUtils.FONTS.HelveticaNeueBold);

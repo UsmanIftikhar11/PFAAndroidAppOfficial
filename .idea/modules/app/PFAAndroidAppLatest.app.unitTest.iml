@@ -146,7 +146,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: com.journeyapps:zxing-android-embedded:3.2.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.intuit.sdp:sdp-android:1.0.6@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.wang.avi:library:2.1.3@aar" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: com.google.android.play:core:1.10.2@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.google.android.play:core:1.10.3@aar" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="PFAAndroidAppLatest.app.main" />
 </module>
