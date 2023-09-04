@@ -284,7 +284,11 @@ public class AppUtils extends CustomDialogs {
                     e.printStackTrace();
                 } finally {
                     if (mediaMetadataRetriever != null) {
-                        mediaMetadataRetriever.release();
+                        try {
+                            mediaMetadataRetriever.release();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
                 }
 

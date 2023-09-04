@@ -2,6 +2,7 @@ package com.pfa.pfaapp.interfaces;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.EditText;
 
 /**
@@ -34,6 +35,11 @@ public class CNICTextWatcher implements TextWatcher {
     private final String checkText = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-";
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
         String message = editText.getText().toString();
 
 
@@ -42,6 +48,7 @@ public class CNICTextWatcher implements TextWatcher {
 
             if (fieldType != null && fieldType.contains("cnic")) {
 
+                Log.d("CNICHere" , "here");
 
                 if (message.endsWith("-") && message.length() != 6 && message.length() != 14) {
                     message = message.substring(0, message.length() - 1);
@@ -67,9 +74,5 @@ public class CNICTextWatcher implements TextWatcher {
 
         charCount = message.length();
         callback.sendMsg(message);
-    }
-
-    @Override
-    public void afterTextChanged(Editable s) {
     }
 }

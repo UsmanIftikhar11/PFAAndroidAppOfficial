@@ -521,6 +521,7 @@ public class LocalListLL extends LinearLayout implements WhichItemClicked {
             default:
 
                 if (localFormDialog != null && data != null) {
+                    Log.d("DDPathCheck", "local list ll");
                     localFormDialog.customViewCreate.updateDropdownViewsData(data.getExtras(), localFormDialog.menuFragParentLL, null);
                     break;
                 }

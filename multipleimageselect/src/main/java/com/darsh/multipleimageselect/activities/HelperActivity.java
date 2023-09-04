@@ -4,9 +4,12 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.Settings;
 import androidx.annotation.NonNull;
 import com.google.android.material.snackbar.Snackbar;
+
+import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,15 +21,20 @@ import com.darsh.multipleimageselect.helpers.Constants;
 /**
  * Created by darshan on 26/9/16.
  */
+@RequiresApi(api = Build.VERSION_CODES.TIRAMISU)
 public class HelperActivity extends AppCompatActivity {
     protected View view;
 
-    private final String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    private final String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.READ_MEDIA_VIDEO};
     private final String[] permissions_c = new String[]{Manifest.permission.CAMERA};
 
     protected void checkPermission() {
         if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.READ_MEDIA_VIDEO) == PackageManager.PERMISSION_GRANTED) {
             permissionGranted();
 
         } else {
@@ -38,6 +46,12 @@ public class HelperActivity extends AppCompatActivity {
 
     private void requestPermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            showRequestPermissionRationale();
+
+        }else if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_MEDIA_IMAGES)) {
+            showRequestPermissionRationale();
+
+        }else if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_MEDIA_VIDEO)) {
             showRequestPermissionRationale();
 
         } else {

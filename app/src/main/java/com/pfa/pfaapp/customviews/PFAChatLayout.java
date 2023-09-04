@@ -320,7 +320,7 @@ public class PFAChatLayout extends LinearLayout implements HttpResponseCallback,
             });
             statusSectionLL.removeAllViews();
 
-            customViewCreate.createViews(formSectionInfo, statusSectionLL, new HashMap<String, HashMap<String, Boolean>>(), null, false, null);
+            customViewCreate.createViews(formSectionInfo, statusSectionLL, new HashMap<String, HashMap<String, Boolean>>(), null, false, null , getContext());
 
 //            if(forward_sectionFormSectionInfo!=null)
 //            {

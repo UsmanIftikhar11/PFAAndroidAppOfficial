@@ -58,6 +58,7 @@ public class PFAFormSubmitUtil extends PFAViewsUtils {
         }
 
         if (isFormDataValid(sectionRequired, menuFragParentLL, showError)) {
+            Log.d("checkTraversalViewData" , "view = 2");
             HashMap<String, List<FormDataInfo>> formViewsData = getViewsData(menuFragParentLL, showError);
             final Map<String, File> filesMap = getFilesMap();
 
@@ -65,17 +66,21 @@ public class PFAFormSubmitUtil extends PFAViewsUtils {
 
             for (String key : formViewsData.keySet()) {
 
+                Log.d("formKeys" , "keys = " + formViewsData.get(key));
                 List<FormDataInfo> formDataInfos = formViewsData.get(key);
                 if (formDataInfos != null && formDataInfos.size() != 0) {
                     String formValues = "";
                     if (formDataInfos.size() == 1) {
+                        Log.d("formKeys" , "values = " + formValues);
                         formValues = formDataInfos.get(0).getKey();
                     } else {
 
                         for (int i = 0; i < formDataInfos.size(); i++) {
                             if (i == 0) {
+                                Log.d("formKeys" , "values1 = " + formValues);
                                 formValues += formDataInfos.get(i).getKey();
                             } else {
+                                Log.d("formKeys" , "values2 = " + formValues);
                                 formValues = String.format(Locale.getDefault(), "%s,%s", formValues, formDataInfos.get(i).getKey());
                             }
                         }
@@ -134,13 +139,18 @@ public class PFAFormSubmitUtil extends PFAViewsUtils {
                     showTwoBtnsMsgDialog(mContext.getString(R.string.business_submit_prompt), new SendMessageCallback() {
                         @Override
                         public void sendMsg(String message) {
-                            if (message != null && (!message.equalsIgnoreCase(AppConst.CANCEL)))
+                            if (message != null && (!message.equalsIgnoreCase(AppConst.CANCEL))) {
                                 baseActivity.httpService.formSubmit(reqParams, filesMap, button.getButtonUrl(), callback, true, button.getFormFieldInfo().getAction());
+                                Log.d("formSubmit" , "values = 1");
+                            }
                         }
                     });
                 } else {
                     baseActivity.httpService.showProgressDialog(false);
-                    baseActivity.httpService.formSubmit(reqParams, filesMap, button.getButtonUrl(), callback, true, button.getFormFieldInfo().getAction());
+                    {
+                        baseActivity.httpService.formSubmit(reqParams, filesMap, button.getButtonUrl(), callback, true, button.getFormFieldInfo().getAction());
+                        Log.d("formSubmit" , "values = 2");
+                    }
                 }
             } else {
                 baseActivity.sharedPrefUtils.showMsgDialog(mContext.getResources().getString(R.string.fill_atleast_one_field), null);

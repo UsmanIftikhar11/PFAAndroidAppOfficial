@@ -51,8 +51,8 @@ public class PFAMultiSpinner extends androidx.appcompat.widget.AppCompatSpinner 
 
         setTag(formFieldInfo.getField_name());
         setGravity(Gravity.CENTER_VERTICAL);
-        setPadding(appUtils.convertDpToPixel(5), appUtils.convertDpToPixel(5), appUtils.convertDpToPixel(10), appUtils.convertDpToPixel(5));
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, appUtils.convertDpToPixel(40));
+        setPadding(appUtils.convertDpToPixel(15), appUtils.convertDpToPixel(5), appUtils.convertDpToPixel(10), appUtils.convertDpToPixel(15));
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         params.setMargins(0, appUtils.convertDpToPixel(10), 0, 0);
         setLayoutParams(params);
 
@@ -133,7 +133,7 @@ public class PFAMultiSpinner extends androidx.appcompat.widget.AppCompatSpinner 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.textview_for_spinner, new String[]{spinnerText});
         setAdapter(adapter);
         if (selected.length > 0) {
-            listener.onItemsSelected(selected, formFieldInfo);
+            listener.onItemsSelected(selected, formFieldInfo , selectedValues);
         }
 
     }

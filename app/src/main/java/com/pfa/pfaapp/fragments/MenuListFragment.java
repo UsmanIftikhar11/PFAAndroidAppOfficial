@@ -16,8 +16,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.TypeAdapter;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
+import com.google.gson.stream.JsonWriter;
 import com.pfa.pfaapp.BaseActivity;
 import com.pfa.pfaapp.LocalFormsActivity;
 import com.pfa.pfaapp.PFAAddNewActivity;
@@ -46,11 +52,23 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_BIZ_FORM_DATA;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_CLICKABLE_URL_TO_CALL;
@@ -83,6 +101,8 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
     private String nextUrl;
     private String add_newUrl = null, local_add_newUrl = null;
     private ImageButton addNewBtn;
+    private String BusinessListing = "BusinessListing";
+    private String EnforcementListing = "EnforcementListing";
     private String urlToCall;
     public List<FormSectionInfo> formSectionInfos;
     private boolean isDrawer;
@@ -285,10 +305,89 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
             }
 
         } else if (urlToCall != null) {
-            Log.d("onActivityCreated" , "onActivityCreated 8 first time = " + firstTimee);
-            firstTimee = false;
-            Log.d("doAPiCaLL" , "Menu List 1");
-            doAPICall();
+            /*Log.d("doAPiCaLLJson", "Menu List 1");
+            if (urlToCall.contains("client/nearestBusinesses")){
+                Log.d("doAPiCaLLJson", "Menu List 2");
+                InputStream is = getResources().openRawResource(R.raw.business);
+                Writer writer = new StringWriter();
+                char[] buffer = new char[1024];
+                try {
+                    Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+                    int n;
+                    while ((n = reader.read(buffer)) != -1) {
+                        writer.write(buffer, 0, n);
+                    }
+                } catch (UnsupportedEncodingException e) {
+                    throw new RuntimeException(e);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } finally {
+                    try {
+                        is.close();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
+                String jsonString = writer.toString();
+                String url = "https://cell.pfa.gop.pk/dev/api/client/nearestBusinesses/57?HTTP_CURRENT_LAT=31.5158983&HTTP_CURRENT_LNG=74.3167301&user_id=57&fcmId=flPG0MS2Q9KdSPBbpTNgyB%3AAPA91bEqYpyyTGVx1GkMA_hTpQBZDeSnWIoL7PbnhQ5KSfBm3fK2G9TOR6ju6_CyhFoFeCo-K55QnYndmxbUyFskVc6dmpwedhJduBgZsxKv3CPz2kzkCicfRpuq7-U97CnkYqPVqItl&AUTH_APP_TOKEN=PFAqVOIYfqs%3APUT1bGDNXx-8JELLbelRQcb9EN9srz";
+                try {
+                    JSONObject jsonObject = new JSONObject(jsonString);
+                    onCompleteHttpResponse(jsonObject , null);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+            else {*/
+            if (urlToCall.contains("client/nearestBusinesses")){
+                boolean isLoggedIn = requireActivity().getSharedPreferences("appPrefs", Context.MODE_PRIVATE).getBoolean("isLoggedIn", false);
+                if (isLoggedIn){
+                    Log.d("stringResp" , "hereee");
+                    String jsonResponse = mReadJsonData(BusinessListing);
+                    if (!jsonResponse.equals("Fail")) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(jsonResponse);
+                            onCompleteHttpResponse(jsonObject, null);
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    } else {
+                        firstTimee = false;
+                        Log.d("doAPiCaLL", "Menu List 1");
+                        doAPICall();
+                    }
+
+                } else {
+                    firstTimee = false;
+                    Log.d("doAPiCaLL", "Menu List 1");
+                    doAPICall();
+                }
+            } /*else if (urlToCall.contains("enforcements/conducted_enforcements")){
+                boolean isLoggedIn = requireActivity().getSharedPreferences("appPrefs", Context.MODE_PRIVATE).getBoolean("isLoggedIn", false);
+                if (isLoggedIn){
+                    Log.d("stringResp" , "hereee");
+                    String jsonResponse = mReadJsonData(EnforcementListing);
+                    try {
+                        JSONObject jsonObject = new JSONObject(jsonResponse);
+                        onCompleteHttpResponse(jsonObject , null);
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                } else {
+                    firstTimee = false;
+                    Log.d("doAPiCaLL", "Menu List 1");
+                    doAPICall();
+                }
+            } 1*/
+            else {
+                Log.d("onActivityCreated", "onActivityCreated 8 first time = " + firstTimee);
+                firstTimee = false;
+                Log.d("doAPiCaLL", "Menu List 1");
+                doAPICall();
+            }
+//            }
         }
 
         addNewBtn.setOnClickListener(new View.OnClickListener() {
@@ -490,13 +589,15 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
         for (FormSectionInfo formSectionInfo : formSectionInfos) {
             if (customViewCreate == null)
                 createSearchFilterView();
-            customViewCreate.createViews(formSectionInfo, newsSearchLL, sectionRequired, null, false, null);
+            customViewCreate.createViews(formSectionInfo, newsSearchLL, sectionRequired, null, false, null , getActivity());
         }
     }
 
     private void updateSearch() {
-        fetchDataInProgress = true;
-        baseActivity.httpService.getListsData(nextUrl, new HashMap<String, String>(), MenuListFragment.this, false);
+//        if (!nextUrl.contains("client/nearestBusinesses")) {
+            fetchDataInProgress = true;
+            baseActivity.httpService.getListsData(nextUrl, new HashMap<String, String>(), MenuListFragment.this, false);
+//        }
         Log.d("getListData" , "menuListFragment = 4" );
     }
 
@@ -561,8 +662,10 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
             populateListMain();
             Log.d("populateListMain" , "populateListMain 5 ");
         } else if (requestCode == RC_DROPDOWN) {
-            if (data != null)
+            if (data != null) {
+                Log.d("DDPathCheck", "menu list fragment");
                 customViewCreate.updateDropdownViewsData(data.getExtras(), newsSearchLL, sectionRequired);
+            }
         }
 
     }
@@ -660,7 +763,10 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
                     endRefresh();
                     return;
                 }
-                updateSearch();
+                if (nextUrl.contains("client/nearestBusinesses") /*|| nextUrl.contains("enforcements/conducted_enforcements") 2*/)
+                    endRefresh();
+                else
+                    updateSearch();
             }
         });
 
@@ -685,7 +791,29 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
 
     @Override
     public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
-        Log.d("getListData" , "menuListFragment = 10" );
+        Log.d("getListData" , "menuListFragment = 10 = " + requestUrl );
+
+        if (requestUrl != null) {
+            if (requestUrl.contains("client/nearestBusinesses")) {
+                requireActivity().getSharedPreferences("appPrefs", Context.MODE_PRIVATE).edit().putBoolean("isLoggedIn", true).apply();
+                String result = mCreateAndSaveFile(BusinessListing, response.toString());
+                if (result.equals("Success")) {
+                    Log.d("stringResp", "success");
+                } else {
+                    Log.d("stringResp", "fail");
+                }
+            }
+            /*if (requestUrl.contains("enforcements/conducted_enforcements")) {
+                requireActivity().getSharedPreferences("appPrefs", Context.MODE_PRIVATE).edit().putBoolean("isLoggedIn", true).apply();
+                String result = mCreateAndSaveFile(EnforcementListing, response.toString());
+                if (result.equals("Success")) {
+                    Log.d("stringResp", "success");
+                } else {
+                    Log.d("stringResp", "fail");
+                }
+            } 3*/
+        }
+
         fetchDataInProgress = false;
         endRefresh();
         sorry_iv.setVisibility(View.GONE);
@@ -870,9 +998,12 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
             }.getType();
 
             String itemCount = tableJsonObject.optString("itemCount");
-            if (sendMessageCallback != null) {
-                sendMessageCallback.sendMsg(itemCount);
+            if (!itemCount.startsWith("20")){
+                if (sendMessageCallback != null) {
+                    sendMessageCallback.sendMsg(itemCount);
+                }
             }
+
             JSONArray formJSONArray = tableJsonObject.getJSONArray("tableData");
 
             if ((tableData == null || tableData.size() == 0)) {
@@ -987,5 +1118,35 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
 
     void setSendMessageCallback(SendMessageCallback sendMessageCallback) {
         this.sendMessageCallback = sendMessageCallback;
+    }
+
+    public String mCreateAndSaveFile(String fileName, String mJsonResponse) {
+        try {
+            FileWriter file = new FileWriter("/data/data/" + requireActivity().getPackageName() + "/" + fileName);
+            file.write(mJsonResponse);
+            file.flush();
+            file.close();
+            return "Success";
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Fail";
+        }
+    }
+
+    public String mReadJsonData(String fileName) {
+        try {
+            File f = new File("/data/data/" + requireActivity().getPackageName() + "/" + fileName);
+            FileInputStream is = new FileInputStream(f);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            String mResponse = new String(buffer);
+            Log.d("stringResp" , "resp = " + mResponse);
+            return mResponse;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Fail";
+        }
     }
 }

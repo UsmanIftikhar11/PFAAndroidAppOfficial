@@ -1,5 +1,6 @@
 package com.pfa.pfaapp.httputils;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -50,6 +51,7 @@ public class LocalFormHttpUtils {
     private String inspectionID;
     private String staffID;
     private boolean containsFineImage = false;
+    private BaseActivity baseActivity;
     public LocalFormHttpUtils() { }
 
     /**
@@ -67,8 +69,10 @@ public class LocalFormHttpUtils {
         Log.d("svaeInspection" , "url = " + API_URL);
     }
 
-    public void sendInspectionToServer(final HttpResponseCallback httpResponseCallback, String action) {
+    public void sendInspectionToServer(final HttpResponseCallback httpResponseCallback, String action , BaseActivity baseActivity) {
 
+
+        this.baseActivity = baseActivity;
         final HashMap<String, String> reqParams = new HashMap<>();
 
 //         Files based on Tab sections. Key is Tab Slug and files is the file to be sent to server
@@ -102,6 +106,7 @@ public class LocalFormHttpUtils {
 
                             for (int x = 0; x < formSectionInfo.getFields().size(); x++) {
 
+                                Log.d("getKeys" , "keys = " + formSectionInfo.getFields().get(x).getField_name());
                                 if (formSectionInfo.getFields().get(x).getField_name().equalsIgnoreCase(String.valueOf(AppUtils.FIELD_TYPE.mediaFormField))) {
 
                                     if (formSectionInfo.getFields().get(x).getData() != null && formSectionInfo.getFields().get(x).getData().size() > 0) {
@@ -221,6 +226,12 @@ public class LocalFormHttpUtils {
                                 }
                             }
                             if (formDataKeyValuesJSONObj.length() > 0) {
+
+                                int fieldSize = baseActivity.getSharedPreferences("fieldsPrefs" , Context.MODE_PRIVATE).getInt("milk_consumption_size" , 0);
+                                for(int i=0 ; i<fieldSize ; i++){
+                                    String milk = baseActivity.getSharedPreferences("fieldsPrefs" , Context.MODE_PRIVATE).getString("milk_consumption" + i , null);
+                                    formDataKeyValuesJSONObj.put("milk_consumption" + i, milk);
+                                }
 //                                 Add key value pairs json into sections array
                                 menuSectionsJSONArray.put(formDataKeyValuesJSONObj);
                             }
@@ -285,6 +296,7 @@ public class LocalFormHttpUtils {
 
         if(action.equalsIgnoreCase(String.valueOf(AppUtils.INSPECTION_ACTION.Complete))) {
             if (httpService.getContext() != null && isDataValid) {
+                Log.d("formSubmitCheck" , "formSubmit 1= here");
                 httpService.formSubmit(reqParams, filesMap, API_URL, httpResponseCallback, true, null);
             }
         }

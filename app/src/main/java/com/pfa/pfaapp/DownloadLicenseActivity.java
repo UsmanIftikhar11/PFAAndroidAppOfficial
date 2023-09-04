@@ -51,7 +51,7 @@ import java.util.Locale;
 
 public class DownloadLicenseActivity extends BaseActivity implements HttpResponseCallback {
 
-    private TextView txtDateTime , txtAppUrl , txtSignature , txtWarning , txtVerifyQrCode;
+    private TextView txtDateTime , /*txtAppUrl ,*/ txtSignature , txtWarning , txtVerifyQrCode;
     private TextView txtBusinessNameEng , txtLicenseDurationVal1 , txtLicenseDurationVal2 , txtLicenseNumberVal , txtOwnerNameVal ,
             txtBusinessAddressVal , txtCNICVal , txtLicenseCategoryVal;
     private TextView txtLicenseDuration , txtLicenseNumber , txtOwnerName , txtBusinessAddress , txtCNIC , txtLicenseCategory;
@@ -87,7 +87,7 @@ public class DownloadLicenseActivity extends BaseActivity implements HttpRespons
 
     private void initViews() {
         txtDateTime = findViewById(R.id.txtDateTime);
-        txtAppUrl = findViewById(R.id.txtAppUrl);
+//        txtAppUrl = findViewById(R.id.txtAppUrl);
         txtBusinessNameEng = findViewById(R.id.txtBusinessNameEng);
         txtLicenseDurationVal1 = findViewById(R.id.txtLicenseDurationVal1);
         txtLicenseDurationVal2 = findViewById(R.id.txtLicenseDurationVal2);
@@ -130,7 +130,7 @@ public class DownloadLicenseActivity extends BaseActivity implements HttpRespons
         Typeface typefaceUrdu = Typeface.createFromAsset(getAssets(), "fonts/NotoNastaliqUrdu-Regular.ttf");
         Typeface typefaceUrduTitle = Typeface.createFromAsset(getAssets(), "fonts/NotoNastaliqUrdu-Bold.ttf");
         txtDateTime.setTypeface(typefaceEng);
-        txtAppUrl.setTypeface(typefaceEng);
+//        txtAppUrl.setTypeface(typefaceEng);
         txtBusinessNameEng.setTypeface(typefaceEngTitle);
         txtLicenseDurationVal1.setTypeface(typefaceEng);
         txtLicenseDurationVal2.setTypeface(typefaceEng);
@@ -169,11 +169,12 @@ public class DownloadLicenseActivity extends BaseActivity implements HttpRespons
 
     private void getIntentData() {
         Bundle bundle = getIntent().getExtras();
-        if (bundle != null && bundle.containsKey(EXTRA_URL_TO_CALL)) {
+        /*if (bundle != null && bundle.containsKey(EXTRA_URL_TO_CALL)) {
             api_url = getIntent().getStringExtra(EXTRA_URL_TO_CALL);
             api_url = api_url.substring(38 , 44);
+            Log.d("downloadURLLLL", "url = " + api_url);
             txtAppUrl.setText("https://cell.pfa.gop.pk/license/download/"+api_url);
-        }
+        }*/
         if (bundle != null && bundle.containsKey(EXTRA_JSON_STR_RESPONSE)) {
             if (getIntent().hasExtra(EXTRA_JSON_STR_RESPONSE)) {
                 String responseStr = getIntent().getStringExtra(EXTRA_JSON_STR_RESPONSE);

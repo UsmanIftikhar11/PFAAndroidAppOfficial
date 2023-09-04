@@ -160,7 +160,7 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
 
         if (formSectionInfos != null && formSectionInfos.size() > 0)
             for (FormSectionInfo formSectionInfo : formSectionInfos) {
-                customViewCreate.createViews(formSectionInfo, filtersLL, sectionRequired, this, false, (ScrollView) findViewById(R.id.filtersSV));
+                customViewCreate.createViews(formSectionInfo, filtersLL, sectionRequired, this, false, (ScrollView) findViewById(R.id.filtersSV) , this);
             }
     }
 
@@ -321,45 +321,47 @@ public class PFAFiltersActivity extends BaseActivity implements HttpResponseCall
         if (tableData != null)
             tableData.clear();
 
-        for (int i = 0; i < formSectionInfos.size(); i++) {
-            FormSectionInfo formSectionInfo = formSectionInfos.get(i);
+        if (formSectionInfos != null && formSectionInfos.size() >0) {
+            for (int i = 0; i < formSectionInfos.size(); i++) {
+                FormSectionInfo formSectionInfo = formSectionInfos.get(i);
 
-            if (formSectionInfo.getFields() != null && formSectionInfo.getFields().size() > 0) {
-                List<FormFieldInfo> fieldInfos = formSectionInfo.getFields();
-                if (fieldInfos != null && fieldInfos.size() > 0) {
-                    for (int j = 0; j < fieldInfos.size(); j++) {
-                        if (fieldInfos.get(j).getField_type().equalsIgnoreCase("location_fields")) {
-                            AddressObjInfo addressObjInfo = fieldInfos.get(j).getDefault_locations();
+                if (formSectionInfo.getFields() != null && formSectionInfo.getFields().size() > 0) {
+                    List<FormFieldInfo> fieldInfos = formSectionInfo.getFields();
+                    if (fieldInfos != null && fieldInfos.size() > 0) {
+                        for (int j = 0; j < fieldInfos.size(); j++) {
+                            if (fieldInfos.get(j).getField_type().equalsIgnoreCase("location_fields")) {
+                                AddressObjInfo addressObjInfo = fieldInfos.get(j).getDefault_locations();
 
-                            PFALocationACTV town = filtersLL.findViewWithTag(TOWN_TAG);
-                            PFALocationACTV subTown = filtersLL.findViewWithTag(SUB_TOWN_TAG);
+                                PFALocationACTV town = filtersLL.findViewWithTag(TOWN_TAG);
+                                PFALocationACTV subTown = filtersLL.findViewWithTag(SUB_TOWN_TAG);
 
 
-                            if (town != null && town.getTextInputLayout() != null && town.getTextInputLayout().getVisibility() == View.VISIBLE) {
-                                town.setText("");
-                                addressObjInfo.setTown_id(0);
-                                addressObjInfo.setTown_name("");
+                                if (town != null && town.getTextInputLayout() != null && town.getTextInputLayout().getVisibility() == View.VISIBLE) {
+                                    town.setText("");
+                                    addressObjInfo.setTown_id(0);
+                                    addressObjInfo.setTown_name("");
+                                }
+
+                                if (subTown != null && subTown.getTextInputLayout() != null && subTown.getTextInputLayout().getVisibility() == View.VISIBLE) {
+                                    subTown.setText("");
+                                    addressObjInfo.setSubtown_id(0);
+                                    addressObjInfo.setSubtown_name("");
+                                }
+
+                                fieldInfos.get(j).setDefault_locations(addressObjInfo);
+                            } else {
+                                fieldInfos.get(j).setDefault_value(null);
+
+                                if (fieldInfos.get(j).getData() != null && fieldInfos.get(j).getData().size() > 0)
+                                    fieldInfos.get(j).getData().get(0).setKey("");
                             }
-
-                            if (subTown != null && subTown.getTextInputLayout() != null && subTown.getTextInputLayout().getVisibility() == View.VISIBLE) {
-                                subTown.setText("");
-                                addressObjInfo.setSubtown_id(0);
-                                addressObjInfo.setSubtown_name("");
-                            }
-
-                            fieldInfos.get(j).setDefault_locations(addressObjInfo);
-                        } else {
-                            fieldInfos.get(j).setDefault_value(null);
-
-                            if (fieldInfos.get(j).getData() != null && fieldInfos.get(j).getData().size() > 0)
-                                fieldInfos.get(j).getData().get(0).setKey("");
                         }
-                    }
 
-                    formSectionInfo.setFields(fieldInfos);
+                        formSectionInfo.setFields(fieldInfos);
+                    }
                 }
+                formSectionInfos.set(i, formSectionInfo);
             }
-            formSectionInfos.set(i, formSectionInfo);
         }
         createFiltersView();
     }

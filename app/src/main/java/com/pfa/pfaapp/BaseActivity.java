@@ -1,5 +1,19 @@
 package com.pfa.pfaapp;
 
+import static com.pfa.pfaapp.utils.AppConst.APP_LATITUDE;
+import static com.pfa.pfaapp.utils.AppConst.APP_LONGITUDE;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_JSON_STR_RESPONSE;
+import static com.pfa.pfaapp.utils.AppConst.SP_APP_AUTH_TOKEN;
+import static com.pfa.pfaapp.utils.AppConst.SP_APP_LANG;
+import static com.pfa.pfaapp.utils.AppConst.SP_CNIC;
+import static com.pfa.pfaapp.utils.AppConst.SP_FCM_ID;
+import static com.pfa.pfaapp.utils.AppConst.SP_IS_LOGED_IN;
+import static com.pfa.pfaapp.utils.AppConst.SP_LOGIN_TYPE;
+import static com.pfa.pfaapp.utils.AppConst.SP_MAIN_MENU;
+import static com.pfa.pfaapp.utils.AppConst.SP_PHONE_NUM;
+import static com.pfa.pfaapp.utils.AppConst.SP_STAFF_ID;
+import static com.pfa.pfaapp.utils.AppConst.SP_USER_INFO;
+
 import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -11,12 +25,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
-import android.provider.Settings;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.MotionEvent;
@@ -30,6 +41,13 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
@@ -58,34 +76,11 @@ import com.samsung.android.sdk.pass.SpassFingerprint;
 
 import org.json.JSONObject;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
-import static com.pfa.pfaapp.utils.AppConst.APP_LATITUDE;
-import static com.pfa.pfaapp.utils.AppConst.APP_LONGITUDE;
-import static com.pfa.pfaapp.utils.AppConst.EXTRA_JSON_STR_RESPONSE;
-import static com.pfa.pfaapp.utils.AppConst.SP_APP_AUTH_TOKEN;
-import static com.pfa.pfaapp.utils.AppConst.SP_APP_LANG;
-import static com.pfa.pfaapp.utils.AppConst.SP_CNIC;
-import static com.pfa.pfaapp.utils.AppConst.SP_FCM_ID;
-import static com.pfa.pfaapp.utils.AppConst.SP_IS_LOGED_IN;
-import static com.pfa.pfaapp.utils.AppConst.SP_LOGIN_TYPE;
-import static com.pfa.pfaapp.utils.AppConst.SP_MAIN_MENU;
-import static com.pfa.pfaapp.utils.AppConst.SP_PHONE_NUM;
-import static com.pfa.pfaapp.utils.AppConst.SP_STAFF_ID;
-import static com.pfa.pfaapp.utils.AppConst.SP_USER_INFO;
 
 //import static com.pfa.pfaapp.utils.AppConst.SP_SECURITY_CODE;
 
@@ -344,8 +339,25 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void checkPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
+            if ((ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED) ||
+                    (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_VIDEO) != PackageManager.PERMISSION_GRANTED) ||
+                    (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) ||
+                    (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) ||
+                    (ContextCompat.checkSelfPermission(this, Manifest.permission.CHANGE_WIFI_STATE) != PackageManager.PERMISSION_GRANTED) ||
+                    (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) ||
+                    (ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_BOOT_COMPLETED) != PackageManager.PERMISSION_GRANTED) ||
+                    (ContextCompat.checkSelfPermission(this, Manifest.permission.SYSTEM_ALERT_WINDOW) != PackageManager.PERMISSION_GRANTED)
+            ) {
+                //Can add more as per requirement
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.CALL_PHONE
+                                , Manifest.permission.RECEIVE_BOOT_COMPLETED, Manifest.permission.SYSTEM_ALERT_WINDOW, Manifest.permission.READ_MEDIA_IMAGES
+                                , Manifest.permission.READ_MEDIA_VIDEO},
+                        123);
+            }
+        } else {
             if ((ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) ||
                     (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) ||
                     (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) ||

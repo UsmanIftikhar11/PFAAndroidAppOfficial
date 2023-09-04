@@ -112,7 +112,7 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
                 customViewCreate.onDDSelectedAPIUrl(formDataInfo, menuFragParentLL, sectionRequired, (ScrollView) findViewById(R.id.formDialogSV), formSectionInfos);
 
             }
-        }, false, (ScrollView) findViewById(R.id.formDialogSV));
+        }, false, (ScrollView) findViewById(R.id.formDialogSV) , this);
 
          yesbtn = findViewById(R.id.yesbtn);
          saveProgressDialog = findViewById(R.id.saveProgressDialog);
@@ -289,6 +289,7 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
 
     public void updateDropdownViewsData(Bundle bundle) {
 
+        Log.d("DDPathCheck", "Local form dialog activity");
         customViewCreate.updateDropdownViewsData(bundle, menuFragParentLL, null);
     }
 

@@ -212,6 +212,7 @@ public class AddInspectionUtils {
 
                     String apiUrl = null;
 
+                    Log.d("productReg1", "message = " + response.toString());
 //                    {"status":true,"message_code":"REQUEST COMPLETED SUCCESSFULLY","localMenu":"Only Checklist is updated."}
                     if (response != null && response.optBoolean("status")) {
 
@@ -257,7 +258,7 @@ public class AddInspectionUtils {
                             baseActivity.sharedPrefUtils.showMsgDialog("Error Occurred" + response, null);
                     }
                 }
-            }, action);
+            }, action , baseActivity);
         } else if (action.equalsIgnoreCase(String.valueOf(AppUtils.INSPECTION_ACTION.Draft))) {
             initInspectionInfo(false);
             saveDraft(finish);
@@ -341,6 +342,7 @@ public class AddInspectionUtils {
             baseActivity.sharedPrefUtils.showThreeBtnsMsgDialog( addProduct , new SendMessageCallback() {
                     @Override
                     public void sendMsg(String message) {
+                        Log.d("saveFormBtn" , "here");
                         performInspAction(message, false);
                     }
                 }, String.valueOf(AppUtils.INSPECTION_ACTION.Complete), (downloadLocalImgBtn.getVisibility() != View.VISIBLE && !isDraft));
@@ -555,6 +557,7 @@ public class AddInspectionUtils {
                         break;
 
                     default:
+                        Log.d("DDPathCheck", "add inspection util");
                         LocalFormLL localFormLL4 = new LocalFormLL(pfaMenuInfo, baseActivity, ddSelectedCallback);
                         localFormsLL.addView(localFormLL4);
                         break;

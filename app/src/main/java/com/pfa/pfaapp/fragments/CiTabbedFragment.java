@@ -256,10 +256,10 @@ public class CiTabbedFragment extends Fragment implements HttpResponseCallback, 
     }
 
     public Fragment getCurrentFragment() {
-//        if (lastClicked < menuItemFragments.size() && menuItemFragments.get(lastClicked) != null)
-        return menuItemFragments.get(lastClicked);
-//        else
-//            return menuItemFragments.get(lastClicked-1);
+        if (lastClicked > -1)
+            return menuItemFragments.get(lastClicked);
+        else
+            return menuItemFragments.get(0);
     }
 
 

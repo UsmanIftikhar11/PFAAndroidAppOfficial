@@ -1,6 +1,13 @@
 package com.pfa.pfaapp.customviews;
 
+import static android.content.Context.CLIPBOARD_SERVICE;
+import static android.view.View.GONE;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_JSON_STR_RESPONSE;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_URL_TO_CALL;
+
 import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -17,10 +24,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.facebook.drawee.generic.RoundingParams;
@@ -34,20 +41,14 @@ import com.pfa.pfaapp.interfaces.ImageCallback;
 import com.pfa.pfaapp.models.PFATableInfo;
 import com.pfa.pfaapp.utils.SharedPrefUtils;
 
+import org.json.JSONObject;
+
 import java.io.File;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-
-
-
-import static android.view.View.GONE;
-import static com.pfa.pfaapp.utils.AppConst.EXTRA_JSON_STR_RESPONSE;
-import static com.pfa.pfaapp.utils.AppConst.EXTRA_URL_TO_CALL;
-
-import org.json.JSONObject;
 
 public class PFAListItem extends SharedPrefUtils {
 
@@ -60,6 +61,9 @@ public class PFAListItem extends SharedPrefUtils {
         return createViews(fields, columnTags, true, isDetail);
     }
 
+
+    private ClipboardManager myClipboard;
+    private ClipData myClip;
     @SuppressLint("InflateParams")
     public RelativeLayout createViews(List<PFATableInfo> fields, List<String> columnTags, boolean autoLink, boolean isDetail) {
         Log.d("onCreateActv" , "PFAListItem 2");
@@ -149,6 +153,25 @@ public class PFAListItem extends SharedPrefUtils {
                                 }
                             }, true);
                         }
+                    });
+                }
+
+                if (fieldInfo.getField_name().equals("template_name") ||
+                        fieldInfo.getField_name().equals("sms_message") ||
+                        fieldInfo.getField_name().equals("sms_datetime")){
+
+                    myClipboard = (ClipboardManager) mContext.getSystemService(CLIPBOARD_SERVICE);
+                    subviewTV.setTextIsSelectable(true);
+                    subviewTV.setOnLongClickListener(v -> {
+                        String text;
+                        text = subviewTV.getText().toString();
+
+                        myClip = ClipData.newPlainText("text", text);
+                        myClipboard.setPrimaryClip(myClip);
+
+                        Toast.makeText(mContext, "Text Copied to Clipboard", Toast.LENGTH_LONG).show();
+
+                        return true;
                     });
                 }
 

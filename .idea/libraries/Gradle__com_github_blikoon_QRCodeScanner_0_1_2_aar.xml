@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.blikoon:QRCodeScanner:0.1.2@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4fbf4bda9ba4cb4642e622a899e87041/jetified-QRCodeScanner-0.1.2/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4fbf4bda9ba4cb4642e622a899e87041/jetified-QRCodeScanner-0.1.2/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/4fbf4bda9ba4cb4642e622a899e87041/jetified-QRCodeScanner-0.1.2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7ebd9fdbc6f3aa66459c2685efa97b81/jetified-QRCodeScanner-0.1.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7ebd9fdbc6f3aa66459c2685efa97b81/jetified-QRCodeScanner-0.1.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7ebd9fdbc6f3aa66459c2685efa97b81/jetified-QRCodeScanner-0.1.2/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

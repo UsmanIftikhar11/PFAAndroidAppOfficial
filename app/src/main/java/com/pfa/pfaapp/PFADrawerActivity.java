@@ -216,30 +216,52 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
         };
         timer.schedule(doAsynchronousTask, 0, 60000);*/
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.CAMERA) ==
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
                     PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(Manifest.permission.CAMERA) ==
+                            PackageManager.PERMISSION_DENIED ||
                     checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                            PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(Manifest.permission.READ_MEDIA_IMAGES) ==
+                            PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(Manifest.permission.READ_MEDIA_VIDEO) ==
                             PackageManager.PERMISSION_DENIED ||
                     checkSelfPermission(Manifest.permission.CALL_PHONE) ==
                             PackageManager.PERMISSION_DENIED) {
                 //permission not enabled, request it
-                String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE};
+                String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE, Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.READ_MEDIA_VIDEO};
                 //show popup to request permissions
                 requestPermissions(permission, 11);
             }
 
-        }
+        }*/
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(Manifest.permission.CAMERA) ==
+                            PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(Manifest.permission.READ_MEDIA_IMAGES) ==
+                            PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(Manifest.permission.READ_MEDIA_VIDEO) ==
+                            PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(Manifest.permission.CALL_PHONE) ==
+                            PackageManager.PERMISSION_DENIED) {
+                //permission not enabled, request it
+                String[] permission = {Manifest.permission.CAMERA, Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.READ_MEDIA_VIDEO, Manifest.permission.CALL_PHONE};
+                //show popup to request permissions
+                requestPermissions(permission, 10);
+            }
+        } else {
+            if (checkSelfPermission(Manifest.permission.CAMERA) ==
+                    PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
                     PackageManager.PERMISSION_DENIED ||
                     checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
                             PackageManager.PERMISSION_DENIED ||
                     checkSelfPermission(Manifest.permission.CALL_PHONE) ==
                             PackageManager.PERMISSION_DENIED) {
                 //permission not enabled, request it
-                String[] permission = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE};
+                String[] permission = {Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE};
                 //show popup to request permissions
                 requestPermissions(permission, 10);
             }
@@ -296,7 +318,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 11) {
+        /*if (requestCode == 11) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "camera permission granted", Toast.LENGTH_LONG).show();
 
@@ -306,7 +328,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                 Toast.makeText(this, "camera permission denied", Toast.LENGTH_LONG).show();
             }
 
-        } else if (requestCode == 10) {
+        } else*/ if (requestCode == 10) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "gallery permission granted", Toast.LENGTH_LONG).show();
 
@@ -414,6 +436,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
 
         lastClicked = 0;
         currentTab = pfaMenuInfos.get(lastClicked).getMenuItemName();
+        removeFilter();
 
         actionOnViewChange();
 
@@ -557,7 +580,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
 //            counter = 0;
             Log.d("SideDrawerMenu", "populateSideMenu");
 //            if (counter == 0)
-                populateSideMenu();
+            populateSideMenu();
         }
     }
 
@@ -587,12 +610,12 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                         view.setVisibility(View.GONE);
                 }
                 if (lastClicked == 0) {
-                    Log.d("refreshData" , "refresh listener 1");
+                    Log.d("refreshData", "refresh listener 1");
                     ((MenuListFragment) getSupportFragmentManager().getFragments().get(lastClicked)).onRefreshListener.onRefresh();
                 }
 
             } else if (getSupportFragmentManager().getFragments().get(lastClicked) instanceof TabbedFragment) {
-                Log.d("refreshData" , "refresh listener 2");
+                Log.d("refreshData", "refresh listener 2");
                 ((TabbedFragment) getSupportFragmentManager().getFragments().get(lastClicked)).refreshData();
             } else if (getSupportFragmentManager().getFragments().get(lastClicked) instanceof CiTabbedFragment) {
                 ((CiTabbedFragment) getSupportFragmentManager().getFragments().get(lastClicked)).refreshData();
@@ -670,19 +693,19 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                 Fragment menuItemFragment;
                 switch (pfaMenuInfo.getMenuType()) {
                     case "list":
-//                        if (counter == 0 && firstTime) {
-                            menuItemFragment = MenuListFragment.newInstance(pfaMenuInfo, true, true, true, null);
-                            ((MenuListFragment) menuItemFragment).setFetchDataInterface(new ListDataFetchedInterface() {
-                                @Override
-                                public void listDataFetched() {
-                                    hideShowFilters();
-                                }
-                            });
-                            Log.d("SideMenuType", "MenuListFragment enforcement");
-                            Log.d("multipleRequestFrag", "MenuListFragment enforcement123");
-                            firstTime = false;
-                            counter++;
-                            break;
+//                        if (!pfaMenuInfo.getMenuItemName().equals("Enforcements")) {
+                        menuItemFragment = MenuListFragment.newInstance(pfaMenuInfo, true, true, true, null);
+                        ((MenuListFragment) menuItemFragment).setFetchDataInterface(new ListDataFetchedInterface() {
+                            @Override
+                            public void listDataFetched() {
+                                hideShowFilters();
+                            }
+                        });
+                        Log.d("SideMenuType", "MenuListFragment enforcement");
+                        Log.d("multipleRequestFrag", "MenuListFragment enforcement123");
+                        firstTime = false;
+                        counter++;
+                        break;
 //                        }
                     case "menu":
                         menuItemFragment = TabbedFragment.newInstance(pfaMenuInfo, true);
@@ -836,6 +859,17 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             Log.d("NavDrawerClick", "Scan Business By QR after click");
             Intent i = new Intent(PFADrawerActivity.this, QrCodeActivity.class);
             startActivityForResult(i, REQUEST_CODE_QR_SCAN);
+            return;
+        }
+
+        if (view.getTag().toString().equalsIgnoreCase("Privacy Policy")) {
+            /*String url = "https://pfa.gop.pk/privacy-policy/";
+            Intent defaultBrowser = Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, Intent.CATEGORY_APP_BROWSER);
+            defaultBrowser.setData(Uri.parse(url));
+            startActivity(defaultBrowser);*/
+            Intent intent = new Intent(this, PrivacyPolicy.class);
+            startActivity(intent);
+            this.overridePendingTransition(R.anim.slide_in_from_right, R.anim.fade_out);
             return;
         }
 

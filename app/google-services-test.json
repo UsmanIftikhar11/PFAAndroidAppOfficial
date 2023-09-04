@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "168588805996",
+    "project_id": "pfa-test-601be",
+    "storage_bucket": "pfa-test-601be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168588805996:android:7bd150fec9f09e410a9549",
+        "android_client_info": {
+          "package_name": "com.pfaofficial.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168588805996-cpup6pd0blodbgi624oktuhi5edqta5o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pfaofficial.test",
+            "certificate_hash": "a0c38c7a2e90b9f5dc20bbc8f78ef9ee6fc328a4"
+          }
+        },
+        {
+          "client_id": "168588805996-92fil193mam6v23un65c4011sib005nj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAK4pzOc4vu8uLY6_Pu1uL9N1-o34dZfUM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168588805996-92fil193mam6v23un65c4011sib005nj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

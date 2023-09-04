@@ -251,6 +251,7 @@ public class MenuFormFragment extends Fragment implements HttpResponseCallback, 
                     break;
 
                 case RC_DROPDOWN:
+                    Log.d("DDPathCheck", "menu form fragment");
                     customViewCreate.updateDropdownViewsData(data.getExtras(), menuFragParentLL, sectionRequired);
                     break;
 
@@ -265,7 +266,7 @@ public class MenuFormFragment extends Fragment implements HttpResponseCallback, 
 //        if more than one section then do decision based on that accordingly
         menuFragParentLL.removeAllViews();
         for (FormSectionInfo formSectionInfo : formSectionInfos) {
-            customViewCreate.createViews(formSectionInfo, menuFragParentLL, sectionRequired, null, false, fragMenuItemSV);
+            customViewCreate.createViews(formSectionInfo, menuFragParentLL, sectionRequired, null, false, fragMenuItemSV , getActivity());
         }
     }
 

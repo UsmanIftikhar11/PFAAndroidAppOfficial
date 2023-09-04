@@ -34,6 +34,8 @@ import static com.pfa.pfaapp.utils.AppConst.DISTRICT_TAG;
 import static com.pfa.pfaapp.utils.AppConst.SP_VERIFICATION_CODE;
 import static com.pfa.pfaapp.utils.AppConst.TOWN_TAG;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import me.zhanghai.android.materialratingbar.MaterialRatingBar;
 
 public class PFAViewsUtils extends SharedPrefUtils {
@@ -60,6 +62,7 @@ public class PFAViewsUtils extends SharedPrefUtils {
 
     public void getVerificationCode(ViewGroup viewGroup, String API_URL, final View getCodeView, final VerifyFBOLayout verifyFBOLayout) {
         HttpService httpService = new HttpService(mContext);
+        Log.d("checkTraversal" , "view = 1");
         traversSubviews(viewGroup);
 
         PFAEditText cnicET = null, phoneNumET = null;
@@ -166,6 +169,7 @@ public class PFAViewsUtils extends SharedPrefUtils {
 
         boolean allFieldsValid = true;
 
+        Log.d("checkTraversal" , "view = 2");
         traversSubviews(viewGroup);
 
         for (View view : viewList) {
@@ -188,7 +192,28 @@ public class PFAViewsUtils extends SharedPrefUtils {
 
                         }
 
-                    } /*else if (view instanceof PFASearchACTV) {
+                    } /*else if (view.getTag().equals("vehicle_number")) {
+                        boolean isRequire = mContext.getSharedPreferences("fieldsPrefs" , Context.MODE_PRIVATE).getBoolean("vehicle_number_req" , true);
+                        ConstraintLayout constraintLayout = (ConstraintLayout) view;
+                        Log.d("checkViewNameee" , "name = " + viewGroup.findViewWithTag(""));
+                        PFAEditText pfaEditText = constraintLayout.findViewById(R.id.txtVehicleNumberText);
+                        PFAEditText pfaEditText1 = constraintLayout.findViewById(R.id.txtVehicleNumberDigit);
+                        TextView txtRequiredField = constraintLayout.findViewById(R.id.txtRequiredField);
+                        if (isRequire) {
+
+                            Log.d("requiredFields", "required = " + true);
+                            if (pfaEditText.getText().toString().isEmpty()) {
+                                allFieldsValid = false;
+                                txtRequiredField.setVisibility(View.VISIBLE);
+                            }
+                            if (pfaEditText1.getText().toString().isEmpty()) {
+                                allFieldsValid = false;
+                                txtRequiredField.setVisibility(View.VISIBLE);
+                            }
+
+                        }
+
+                    } *//*else if (view instanceof PFASearchACTV) {
                         PFASearchACTV pfaSearchACTV = (PFASearchACTV) view;
                         if (pfaSearchACTV.getPfaSearchInfo() == null)
                             allFieldsValid = false;
@@ -229,22 +254,27 @@ public class PFAViewsUtils extends SharedPrefUtils {
                         Log.d("formDataValid", "instance of edittext created = " + view.getTag());
 
                         SharedPrefUtils sharedPrefUtils = new SharedPrefUtils(mContext);
+                        boolean isRequired = mContext.getSharedPreferences("fieldsPrefs" , Context.MODE_PRIVATE).getBoolean(view.getTag().toString() , false);
                         if (sharedPrefUtils.getRLF("RequiredFalseField") != null) {
 
                             Log.d("formDataValid", "RequiredFalseField = " + "not null");
 
-                            if (sharedPrefUtils.getRLF("RequiredFalseField").contains(view.getTag().toString())) {
 
-                                validateEditText(false, view, showError);
+                            if (sharedPrefUtils.getRLF("RequiredFalseField").contains(view.getTag().toString()) || !isRequired) {
+
+                                validateEditText(false, view, showError , isRequired);
                                 Log.d("formDataValid", "RequiredFalseField = " + "here");
-                            } else if (validateEditText(true, view, showError)) {
+                                Log.d("validateEditText123", "0 = ");
+                            } else if (validateEditText(true, view, showError , isRequired)) {
                                 allFieldsValid = false;
                                 Log.d("formDataValid", "RequiredFalseField = " + "here 1 ");
+                                Log.d("validateEditText123", "1 = ");
                             }
                         }
 
-                        if (validateEditText(true, view, showError)) {
+                        if (validateEditText(true, view, showError , isRequired) && !isRequired) {
                             allFieldsValid = false;
+                            Log.d("validateEditText123", "2 = ");
                         }
 
 
@@ -351,7 +381,9 @@ public class PFAViewsUtils extends SharedPrefUtils {
                     }
                 } else {
                     if (view instanceof PFAEditText) {
-                        if (validateEditText(false, view, showError)) {
+                        boolean isRequired = mContext.getSharedPreferences("fieldsPrefs" , Context.MODE_PRIVATE).getBoolean(view.getTag().toString() , false);
+                        if (validateEditText(false, view, showError , isRequired)) {
+                            Log.d("validateEditText123", "3 = ");
                             allFieldsValid = false;
                         }
                     }
@@ -362,7 +394,7 @@ public class PFAViewsUtils extends SharedPrefUtils {
         return allFieldsValid;
     }
 
-    private boolean validateEditText(boolean isFieldReq, View view, boolean showError) {
+    private boolean validateEditText(boolean isFieldReq, View view, boolean showError , boolean showHideNotRequired) {
         boolean allFieldsValid = true;
         PFAEditText pfaEditText = (PFAEditText) view;
 
@@ -377,7 +409,10 @@ public class PFAViewsUtils extends SharedPrefUtils {
             if (isFieldReq)
                 allFieldsValid = false;
 
-            if (showError) {
+            if (showHideNotRequired)
+                allFieldsValid = false;
+
+            if (showError && !showHideNotRequired) {
                 if (pfaEditText.textInputLayout != null && isFieldReq) {
 
                     Log.d("requiredFields", "required = " + true);
@@ -427,10 +462,12 @@ public class PFAViewsUtils extends SharedPrefUtils {
 
     public HashMap<String, List<FormDataInfo>> getViewsData(ViewGroup parent, boolean showError) {
         viewGroup = parent;
+        Log.d("checkTraversal" , "view = 3");
         traversSubviews(parent);
         filesMap.clear();
         formViewsData.clear();
         for (View view : viewList) {
+            Log.d("viewTags" , "view1 = " + view.getTag());
             addDataToFormViewsData(view, showError);
         }
 
@@ -440,6 +477,7 @@ public class PFAViewsUtils extends SharedPrefUtils {
     private void addDataToFormViewsData(View view, boolean showError) {
         if (view.getTag() != null && (!view.getTag().toString().isEmpty())) {
 
+            Log.d("viewTags" , "view = " + view.getTag());
 //            if (formFieldInfo.getRequired_false_fields().contains(view.getTag()))
 
             if (view instanceof PFALocationACTV) {
@@ -585,8 +623,17 @@ public class PFAViewsUtils extends SharedPrefUtils {
 
                 PFAMultiSpinner spinner = (PFAMultiSpinner) view;
                 List<FormDataInfo> selectedValues = spinner.getSelectedValues();
+                List<FormDataInfo> selectedValuesMulti = new ArrayList<>();
+                FormDataInfo formDataInfo = new FormDataInfo();
                 if (selectedValues.size() > 0) {
-                    formViewsData.put(spinner.getTag().toString(), selectedValues);
+                    for (int i=0 ; i<selectedValues.size() ; i++){
+                        formDataInfo.setKey(selectedValues.get(i).getKey());
+                        formDataInfo.setValue(selectedValues.get(i).getValue());
+                        selectedValuesMulti.add(formDataInfo);
+
+                    }
+                    Log.d("sizeOfMulti" , "size = " + selectedValuesMulti.size());
+                    formViewsData.put(spinner.getTag().toString(), selectedValuesMulti);
                 }
 
             } else if (view instanceof PFARadioGroup) {
@@ -644,6 +691,7 @@ public class PFAViewsUtils extends SharedPrefUtils {
      *               All the traversed values added into list @viewList
      */
     private void traversSubviews(ViewGroup parent) {
+        Log.d("viewParentTags" , "view = " + parent.getTag());
         int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);

@@ -3,6 +3,7 @@
     <dimen name="sp_20">25sp</dimen>
 
     <dimen name="sp_17">@dimen/_13sdp</dimen>
+    <dimen name="side_menu">@dimen/_25sdp</dimen>
     <dimen name="business_dialog_text_size">@dimen/_7sdp</dimen>
 
     <dimen name="sp_15">16sp</dimen>

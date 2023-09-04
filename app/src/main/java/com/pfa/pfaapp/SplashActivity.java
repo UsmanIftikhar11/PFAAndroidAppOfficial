@@ -81,7 +81,7 @@ public class SplashActivity extends BaseActivity {
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .show();
         }
-        else {
+        else {*/
             appUpdateManager = AppUpdateManagerFactory.create(SplashActivity.this);
             Log.d("onCreateActv", "fbo here 16sdgf ");
             appUpdateManager.getAppUpdateInfo().addOnSuccessListener(appUpdateInfo -> {
@@ -125,9 +125,9 @@ public class SplashActivity extends BaseActivity {
 
                 }
             });
-        }*/
+//        }
 
-            if (!updateAvailable) {
+            /*if (!updateAvailable) {
                 if (getIntent().getData() != null) {
                     Log.d("onCreateActv", "fbo here 4 ");
                     Uri uri = getIntent().getData();// this is the url
@@ -139,7 +139,7 @@ public class SplashActivity extends BaseActivity {
                 } else {
                     startMain();
                 }
-            }
+            }*/
 
 
 
@@ -148,17 +148,17 @@ public class SplashActivity extends BaseActivity {
 //        updateLocale();
     }
 
-    private InstallStateUpdatedListener installStateUpdatedListener = new InstallStateUpdatedListener() {
+    /*private InstallStateUpdatedListener installStateUpdatedListener = new InstallStateUpdatedListener() {
         @Override
         public void onStateUpdate(InstallState state) {
             if (state.installStatus() == InstallStatus.DOWNLOADED)
                 showCompletedUpdate();
         }
-    };
+    };*/
 
-    private void showCompletedUpdate() {
+    /*private void showCompletedUpdate() {
         Toast.makeText(this, "Update Completed", Toast.LENGTH_SHORT).show();
-    }
+    }*/
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -238,9 +238,8 @@ public class SplashActivity extends BaseActivity {
             return;
         }
 
-        startLoginScreen(null);
+//        startLoginScreen(null);
 
-/*
         httpService.getListsData1("https://app.pfa.gop.pk/api/BaseURL/GetBaseURL?applicationName=cellpfagop", new HashMap<String, String>(), new HttpResponseCallback() {
             @Override
             public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
@@ -282,7 +281,6 @@ public class SplashActivity extends BaseActivity {
                 }
             }
         }, false);
-*/
     }
 
 
@@ -299,6 +297,7 @@ public class SplashActivity extends BaseActivity {
                 public void run() {
                     sharedPrefUtils.printLog("LoginType==>", "" + (sharedPrefUtils.getSharedPrefValue(SP_LOGIN_TYPE, "")));
                     if (String.valueOf(AppUtils.USER_LOGIN_TYPE.fbo).equalsIgnoreCase(sharedPrefUtils.getSharedPrefValue(SP_LOGIN_TYPE, ""))) {
+                        Log.d("afterSplash" , "here");
                         sharedPrefUtils.startHomeActivity(FBOMainGridActivity.class, null);
                     } else if (String.valueOf(AppUtils.USER_LOGIN_TYPE.mto).equalsIgnoreCase((sharedPrefUtils.getSharedPrefValue(SP_LOGIN_TYPE, "")))) {
                         sharedPrefUtils.startHomeActivity(WebAppActivity.class, null);

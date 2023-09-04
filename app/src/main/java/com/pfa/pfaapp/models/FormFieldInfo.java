@@ -27,6 +27,8 @@ public class FormFieldInfo implements Serializable {
     private boolean isNotEditable;
     private String calendarType;
     private boolean invisible;
+
+    private boolean showHideNotRequired;
     private String font_size;
     private String font_style;
     private String font_color;
@@ -224,6 +226,14 @@ public class FormFieldInfo implements Serializable {
 
     public void setInvisible(boolean invisible) {
         this.invisible = invisible;
+    }
+
+    public boolean isShowHideNotRequired() {
+        return showHideNotRequired;
+    }
+
+    public void setShowHideNotRequired(boolean showHideNotRequired) {
+        this.showHideNotRequired = showHideNotRequired;
     }
 
     public String getFont_size() {

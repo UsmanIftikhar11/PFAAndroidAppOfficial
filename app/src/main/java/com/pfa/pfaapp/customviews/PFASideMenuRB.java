@@ -26,11 +26,13 @@ import com.pfa.pfaapp.interfaces.RBClickCallback;
 import com.pfa.pfaapp.models.PFAMenuInfo;
 import com.pfa.pfaapp.utils.AppUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PFASideMenuRB {
 
     public static int itemId;
+//    List<Integer> indexList = new ArrayList<>() 1;
 
     @SuppressLint("InflateParams")
     public PFASideMenuRB(final Context mContext, RadioGroup radioGroup, List<PFAMenuInfo> pfaMenuInfos, final RBClickCallback callbacks, final boolean isVertical) {
@@ -55,6 +57,8 @@ public class PFASideMenuRB {
             LinearLayout.LayoutParams params;
             if (isVertical) {
                 radioButton = (RadioButton) inflater.inflate(R.layout.pfa_sidemenu_rb, null);
+                /*if(pfaMenuInfos.get(i).getMenuItemName().startsWith("20"))
+                    radioButton.setVisibility(View.GONE); 2*/
                 params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 Log.d("NavDrawerClick", "PFASideMenuRB vertical");
             } else {
@@ -66,7 +70,10 @@ public class PFASideMenuRB {
                 Log.d("NavDrawerClick", "PFASideMenuRB horizontal");
             }
             if (i > 0 && isVertical) {
-                params.setMargins(0, (int) mContext.getResources().getDimension(R.dimen.vertical_margin_1), 0, 0);
+                /*if (pfaMenuInfos.get(i).getMenuItemName().startsWith("20"))
+                    params.setMargins((int) mContext.getResources().getDimension(R.dimen.side_menu), (int) mContext.getResources().getDimension(R.dimen.vertical_margin_1), 0, 0);
+                else 3*/
+                    params.setMargins(0, (int) mContext.getResources().getDimension(R.dimen.vertical_margin_1), 0, 0);
             }
 
             radioButton.setLayoutParams(params);
@@ -115,11 +122,26 @@ public class PFASideMenuRB {
                     else if (pfaMenuInfos.get(view.getId()).getMenuItemName().contains("2022"))
                         callbacks.onClickCallUrl("enforcements/conducted_enforcements/57/1/2022/");*/
 //                    callbacks.onClickCallUrl(pfaMenuInfos.get(view.getId()).getAPI_URL());
-                    if (pfaMenuInfos.get(view.getId()).getClickable_URL()!= null)
-                        callbacks.onClickCallUrl(pfaMenuInfos.get(view.getId()).getClickable_URL());
+
+                    /*if (view.getTag().equals("Enforcements")){
+                            Log.d("EnforcementsClick", "list size = " + indexList.size());
+                            for (int i = 0; i < indexList.size(); i++){
+                                Log.d("EnforcementsClick", "view id = here");
+                                if (radioGroup.getChildAt(indexList.get(i)).getVisibility() == View.GONE){
+                                    Log.d("EnforcementsClick", "view id = " + view.getTag());
+                                    radioGroup.getChildAt(indexList.get(i)).setVisibility(View.VISIBLE);
+                                }
+                                else {
+                                    radioGroup.getChildAt(indexList.get(i)).setVisibility(View.GONE);
+                                }
+                            }
+                    } else { 4*/
+                        if (pfaMenuInfos.get(view.getId()).getClickable_URL() != null)
+                            callbacks.onClickCallUrl(pfaMenuInfos.get(view.getId()).getClickable_URL());
 //                    else
 //                        callbacks.onClickCallUrl(pfaMenuInfos.get(view.getId()).getAPI_URL());
-                    callbacks.onClickRB(view);
+                        callbacks.onClickRB(view);
+//                    } 5
 
                     Log.d("CiTabbedDrawerClick", "view id = " + view.getTag());
                     Log.d("CiTabbedDrawerClick", "view id i= " + finalI);
@@ -136,7 +158,34 @@ public class PFASideMenuRB {
             } else {
                 showMenuBar = true;
             }
+
+            /*if (pfaMenuInfos.get(i).getMenuItemName().startsWith("20"))
+                indexList.add(i); 6*/
             radioGroup.addView(radioButton);
+
+            /*if (pfaMenuInfos.get(i).getMenuItemName().equals("Enforcements")){
+                LinearLayout.LayoutParams params1;
+                params1 = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                params1.leftMargin = (int) mContext.getResources().getDimension(R.dimen.side_menu);
+                RadioButton radioButton1;
+                radioButton1 = (RadioButton) inflater.inflate(R.layout.pfa_sidemenu_rb_child, null);
+                radioButton1.setLayoutParams(params1);
+                radioButton1.setText("2018");
+//                radioButton1.setId(pfaMenuInfos.get(i).getMenuItemOrder()-3+4);
+//                radioButton1.setTag(pfaMenuInfos.get(i).getMenuItemName()+"2017");
+//                pfaMenuInfos.get(i).setAPI_URL("enforcements/conducted_enforcements/411/1/2019");
+                appUtils.applyFont(radioButton1, AppUtils.FONTS.HelveticaNeueBold);
+                if (pfaMenuInfos.get(i).getBg_color() != null) {
+                    radioButton1.setBackgroundColor(appUtils.colorFromHexDecimal(pfaMenuInfos.get(i).getBg_color()));
+                }
+                radioButton1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        callbacks.onClickRB(v);
+                    }
+                });
+                radioGroup.addView(radioButton1);
+            }*/
         }
 
         if (!showMenuBar)

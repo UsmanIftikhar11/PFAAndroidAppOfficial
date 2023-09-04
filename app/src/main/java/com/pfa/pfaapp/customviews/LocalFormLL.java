@@ -132,7 +132,7 @@ public class LocalFormLL extends LinearLayout implements PFAViewsCallbacks{
                     public void onDropdownItemSelected(FormDataInfo formDataInfo, String dataName) {
 
                     }
-                }, false, (ScrollView) findViewById(R.id.fragMenuItemSV));
+                }, false, (ScrollView) findViewById(R.id.fragMenuItemSV) , mContext);
             }
         }
 
@@ -178,6 +178,7 @@ public class LocalFormLL extends LinearLayout implements PFAViewsCallbacks{
             case RC_DROPDOWN:
                 if (customViewCreate != null) {
                     Bundle bundle = data.getExtras();
+                    Log.d("DDPathCheck", "local form ll 1");
                     customViewCreate.updateDropdownViewsData(bundle, menuFragParentLL, sectionRequired);
 
                     if (bundle != null && bundle.containsKey(EXTRA_ACTV_TAG)) {
@@ -247,6 +248,10 @@ public class LocalFormLL extends LinearLayout implements PFAViewsCallbacks{
 
 
     public void getPfaMenuInfo(LocalFormsCallback callback, boolean showError) {
+
+        for(int i = 0 ; i<menuFragParentLL.getChildCount() ; i++){
+            Log.d("checkTraversalViewData" , "view = " + menuFragParentLL.getChildAt(i).getTag());
+        }
 
         HashMap<String, List<FormDataInfo>> formViewsData = pfaFormSubmitUtil.getViewsData(menuFragParentLL, showError);
 

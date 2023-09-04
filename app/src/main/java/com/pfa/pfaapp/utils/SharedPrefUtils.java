@@ -554,6 +554,7 @@ public class SharedPrefUtils extends AppUtils {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                        mContext.getSharedPreferences("appPrefs", Context.MODE_PRIVATE).edit().putBoolean("isLoggedIn", false).apply();
                         clearSharedPref();
                         startHomeActivity(FBOMainGridActivity.class, null);
                         dbQueriesUtil.deleteRecordsOfAllTable();
@@ -577,6 +578,7 @@ public class SharedPrefUtils extends AppUtils {
             public void onCompleteHttpResponse(JSONObject response, String requestUrl) {
                 if (response != null) {
                     if (response.optBoolean("status")) {
+                        mContext.getSharedPreferences("appPrefs", Context.MODE_PRIVATE).edit().putBoolean("isLoggedIn", false).apply();
                         clearSharedPref();
                         startHomeActivity(FBOMainGridActivity.class, null);
                         dbQueriesUtil.deleteRecordsOfAllTable();

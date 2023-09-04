@@ -282,7 +282,7 @@ public class LocalFormDialog extends CustomDialogs implements PFAViewsCallbacks 
                     });
 
                     for (FormSectionInfo formSectionInfo : formSectionInfos) {
-                        customViewCreate.createViews(formSectionInfo, menuFragParentLL, sectionRequired, null, false, (ScrollView) view.findViewById(R.id.addBizDialogSV));
+                        customViewCreate.createViews(formSectionInfo, menuFragParentLL, sectionRequired, null, false, (ScrollView) view.findViewById(R.id.addBizDialogSV) , mContext);
                     }
 
                 }
@@ -311,6 +311,7 @@ public class LocalFormDialog extends CustomDialogs implements PFAViewsCallbacks 
 
     public void updateDropdownViewsData(Bundle bundle) {
 
+        Log.d("DDPathCheck", "local form dialog");
         customViewCreate.updateDropdownViewsData(bundle, menuFragParentLL, sectionRequired);
 
 //        if (bundle != null && bundle.containsKey(EXTRA_ACTV_TAG)) {

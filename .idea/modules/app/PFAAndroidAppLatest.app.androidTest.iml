@@ -20,6 +20,8 @@
     <content url="file://$MODULE_DIR$/../../../app/build/generated/aidl_source_output_dir/debugAndroidTest/out" />
     <content url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/debugAndroidTest/out">
       <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/debugAndroidTest/out" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/debugAndroidTest/out" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/ap_generated_sources/debugAndroidTest/out" isTestSource="true" generated="true" />
     </content>
     <content url="file://$MODULE_DIR$/../../../app/build/generated/renderscript_source_output_dir/debugAndroidTest/out" />
     <content url="file://$MODULE_DIR$/../../../app/build/generated/res/resValues/androidTest/debug">
@@ -28,10 +30,12 @@
     <content url="file://$MODULE_DIR$/../../../app/build/generated/res/rs/androidTest/debug" />
     <content url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/androidTest/debug">
       <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/androidTest/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/androidTest/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../app/build/generated/source/buildConfig/androidTest/debug" isTestSource="true" generated="true" />
     </content>
     <content url="file://$MODULE_DIR$/../../../app/src/androidTest" />
     <content url="file://$MODULE_DIR$/../../../app/src/androidTestDebug" />
-    <orderEntry type="jdk" jdkName="Android API 31 Platform" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Android API 33, extension level 3 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="PFAAndroidAppLatest.multipleimageselect.main" scope="TEST" />
     <orderEntry type="module" module-name="PFAAndroidAppLatest.escposprinter.main" scope="TEST" />
@@ -40,7 +44,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: D./PFA Official - VC-76 VN-1.76/PFAAndroidAppLatest/app/libs/isoparser-1.0.6.jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: D./PFA Official - VC-76 VN-1.76/PFAAndroidAppLatest/app/libs/pass-v1.2.6.jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: D./PFA Official - VC-76 VN-1.76/PFAAndroidAppLatest/app/libs/sdk-v1.0.0.jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: com.google.code.gson:gson:2.8.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.google.code.gson:gson:2.8.9" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.itextpdf:itextpdf:5.5.13" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.mcxiaoke.volley:library:1.0.19" level="project" />

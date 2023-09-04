@@ -286,7 +286,8 @@ public class MapsActivity extends BaseActivity implements HttpResponseCallback, 
             @Override
             public void run() {
                 if (sharedPrefUtils.getSharedPrefValue(APP_LATITUDE, "") != null) {
-                    ((MenuMapFragment) getSupportFragmentManager().getFragments().get(0)).setMapPins(mapData);
+                    if (getSupportFragmentManager().getFragments().get(0) instanceof MenuMapFragment)
+                        ((MenuMapFragment) getSupportFragmentManager().getFragments().get(0)).setMapPins(mapData);
                 } else {
                     getCurrentLoction(mapData);
                 }

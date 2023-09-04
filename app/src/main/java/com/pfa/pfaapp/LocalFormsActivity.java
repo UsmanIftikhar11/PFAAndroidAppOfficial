@@ -139,21 +139,21 @@ public class LocalFormsActivity extends BaseActivity implements HttpResponseCall
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        Log.d("imagePath" , "onActivityResult = " + "localFormActivity");
+        Log.d("imagePath3432" , "onActivityResult = " + "localFormActivity");
 
         if (addInspectionUtils.lastClicked >= 0) {
             if (addInspectionUtils.localFormsLL.getChildAt(addInspectionUtils.lastClicked) instanceof LocalFormLL) {
-                Log.d("imagePath" , "onActivityResult = " + "localFormActivity1");
+                Log.d("imagePath3432" , "onActivityResult = " + "localFormActivity1");
                 ((LocalFormLL) addInspectionUtils.localFormsLL.getChildAt(addInspectionUtils.lastClicked)).onActivityResult(requestCode, resultCode, data);
             }
 
             if (addInspectionUtils.localFormsLL.getChildAt(addInspectionUtils.lastClicked) instanceof LocalGridLL) {
-                Log.d("imagePath" , "onActivityResult = " + "localFormActivity2");
+                Log.d("imagePath3432" , "onActivityResult = " + "localFormActivity2");
                 ((LocalGridLL) addInspectionUtils.localFormsLL.getChildAt(addInspectionUtils.lastClicked)).onActivityResult(requestCode, resultCode, data);
             }
 
             if (addInspectionUtils.localFormsLL.getChildAt(addInspectionUtils.lastClicked) instanceof LocalListLL) {
-                Log.d("imagePath" , "onActivityResult = " + "localFormActivity3");
+                Log.d("imagePath3432" , "onActivityResult = " + "localFormActivity3");
                 ((LocalListLL) addInspectionUtils.localFormsLL.getChildAt(addInspectionUtils.lastClicked)).onActivityResult(requestCode, resultCode, data);
             }
         }

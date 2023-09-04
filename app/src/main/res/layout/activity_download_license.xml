@@ -812,7 +812,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.rey.material.widget.TextView
+        <!--<com.rey.material.widget.TextView
             android:id="@+id/txtAppUrl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -821,7 +821,7 @@
             android:text="https://cell.pfa.gop.pk/license/download/57573"
             android:textColor="@color/black"
             android:layout_marginStart="@dimen/_10sdp"
-            android:textSize="@dimen/_3sdp"/>
+            android:textSize="@dimen/_3sdp"/>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

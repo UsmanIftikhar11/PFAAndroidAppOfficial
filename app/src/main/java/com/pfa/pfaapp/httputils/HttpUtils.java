@@ -64,7 +64,7 @@ import androidx.annotation.NonNull;
 /**
  * HttpUtils->SharedPrefUtils->AppUtils->CustomDialogs
  */
-class HttpUtils extends ScalingUtilities implements LocationListener , X509TrustManager {
+class HttpUtils extends ScalingUtilities implements LocationListener /*, X509TrustManager*/ {
     private static final X509Certificate[] _AcceptedIssuers = new X509Certificate[]{};
      ProgressDialog progressDialog;
      Context context;
@@ -232,7 +232,7 @@ class HttpUtils extends ScalingUtilities implements LocationListener , X509Trust
 
 
                 ////////
-                /*if (finalRequestUrl.equals("https://app.pfa.gop.pk/api/BaseURL/GetBaseURL?applicationName=cellpfagop")){
+                if (finalRequestUrl.equals("https://app.pfa.gop.pk/api/BaseURL/GetBaseURL?applicationName=cellpfagop")){
                     try {
                         JSONObject obj = new JSONObject(loadJSONFromAsset());
                         callback.onCompleteHttpResponse(obj , null);
@@ -241,14 +241,14 @@ class HttpUtils extends ScalingUtilities implements LocationListener , X509Trust
                     }
                     Log.d("currentApiVersion", "httpUtils= 1");
                 }
-                else {*/
+                else {
                     Log.d("currentApiVersion", "httpUtils= 2");
                     if (volleyError.networkResponse != null) {
                         showMsgDialog("Some Error Occurred, Please Try Again!1" /*+ "\n" + url.toString()*/, null);
                     } else {
                         showMsgDialog("Please Check Your Internet Connection and Try Again!1", null);
                     }
-//                }
+                }
 
 
             }
@@ -486,7 +486,7 @@ class HttpUtils extends ScalingUtilities implements LocationListener , X509Trust
         stringRequest.setShouldCache(false);
         AppController.getInstance().addToRequestQueue(stringRequest, "" + requestUrl);
     }
-    @Override
+    /*@Override
     public void checkClientTrusted(X509Certificate[] chain, String authType) {
         printLog("checkClientTrusted =>", "X509Certificate authType " + authType);
     }
@@ -499,7 +499,7 @@ class HttpUtils extends ScalingUtilities implements LocationListener , X509Trust
     @Override
     public X509Certificate[] getAcceptedIssuers() {
         return _AcceptedIssuers;
-    }
+    }*/
 
     void httpMultipartAPICall(final String requestUrl, Map<String, String> params, Map<String, File> fileParams,
                               final HttpResponseCallback callback, boolean showProgress) {
