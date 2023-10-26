@@ -1,20 +1,35 @@
 package com.pfa.pfaapp.utils;
 
+import static androidx.core.content.ContextCompat.startActivity;
+import static androidx.core.content.PermissionChecker.checkSelfPermission;
+
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
+import android.provider.Settings;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.Window;
 import android.webkit.MimeTypeMap;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -36,6 +51,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Objects;
 
 import static com.pfa.pfaapp.utils.AppConst.CAPTURE_PHOTO;
 import static com.pfa.pfaapp.utils.AppConst.CHOOSE_FROM_GALLERY;
@@ -71,17 +87,98 @@ public class ImageSelectionUtils extends ScalingUtilities {
             filePathOfCamera = null;
             int i = Integer.parseInt(message);
             if (i == CAPTURE_PHOTO) {
-                Log.d("imagePath", "image selection utils capture camera");
-                capturePicFromCamera();
+                if (mContext.checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED){
+                    Log.d("imagePath", "image selection utils capture camera");
+                    capturePicFromCamera();
+                } else {
+                    showPermissionDialog(CAPTURE_PHOTO);
+                }
 
             } else if (i == CHOOSE_FROM_GALLERY) {
-                pickImageFromGallery(showVideoBtns);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
+                    if (mContext.checkSelfPermission(Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_GRANTED ||
+                            mContext.checkSelfPermission(Manifest.permission.READ_MEDIA_VIDEO) == PackageManager.PERMISSION_GRANTED){
+                        pickImageFromGallery(showVideoBtns);
+                    } else
+                        showPermissionDialog(CHOOSE_FROM_GALLERY);
+                } else {
+                    if (mContext.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED ||
+                            mContext.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+                        pickImageFromGallery(showVideoBtns);
+                    } else
+                        showPermissionDialog(CHOOSE_FROM_GALLERY);
+                }
+
             } else if (i == MULTIPLE_IMAGES) {
-                pickMultipleImages();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
+                    if (mContext.checkSelfPermission(Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_GRANTED ||
+                            mContext.checkSelfPermission(Manifest.permission.READ_MEDIA_VIDEO) == PackageManager.PERMISSION_GRANTED){
+                        pickMultipleImages();
+                    } else
+                        showPermissionDialog(MULTIPLE_IMAGES);
+                } else {
+                    if (mContext.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED ||
+                            mContext.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
+                        pickMultipleImages();
+                    } else
+                        showPermissionDialog(MULTIPLE_IMAGES);
+                }
             } else if (i == RECORD_VIDEO) {
-                captureVideoFromCamera();
+                if (mContext.checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED)
+                    captureVideoFromCamera();
+                else
+                    showPermissionDialog(RECORD_VIDEO);
+
             }
         }, showVideoBtns, isMultiple), 100);
+    }
+
+    private static Dialog alertDialog;
+    private void showPermissionDialog(int i) {
+        if ((alertDialog != null) && (alertDialog.isShowing()))
+            alertDialog.dismiss();
+        alertDialog = new Dialog(mContext);
+        alertDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        Objects.requireNonNull(alertDialog.getWindow()).setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        LayoutInflater li = LayoutInflater.from(mContext);
+        @SuppressLint("InflateParams") View view = li.inflate(R.layout.permission_denied_dialog, null);
+
+        Button okBtn = view.findViewById(R.id.okBtn);
+        TextView cameraDescTV = view.findViewById(R.id.cameraDescTV);
+        TextView galleryDescTV = view.findViewById(R.id.galleryDescTV);
+
+        if (i == CAPTURE_PHOTO || i == RECORD_VIDEO){
+            cameraDescTV.setVisibility(View.VISIBLE);
+            galleryDescTV.setVisibility(View.GONE);
+        } else if (i == MULTIPLE_IMAGES || i == CHOOSE_FROM_GALLERY){
+            cameraDescTV.setVisibility(View.GONE);
+            galleryDescTV.setVisibility(View.VISIBLE);
+        }
+
+        okBtn.setOnClickListener(v -> {
+            if (alertDialog != null)
+                alertDialog.dismiss();
+            alertDialog = null;
+            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+            Uri uri = Uri.fromParts("package", mContext.getPackageName(), null);
+            intent.setData(uri);
+            mContext.startActivity(intent);
+        });
+        applyFont(view.findViewById(R.id.titleTV), AppUtils.FONTS.HelveticaNeueMedium);
+        applyFont(okBtn, AppUtils.FONTS.HelveticaNeue);
+        applyFont(view.findViewById(R.id.cameraDescTV), AppUtils.FONTS.HelveticaNeue);
+        applyFont(view.findViewById(R.id.galleryDescTV), AppUtils.FONTS.HelveticaNeue);
+
+        alertDialog.setCancelable(false);
+        alertDialog.setContentView(view);
+        if (!((Activity) mContext).isFinishing()) {
+            Window window = alertDialog.getWindow();
+            window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            alertDialog.show();
+        } else {
+            printLog("Activity Finishing", "CustomDialogs.java Activity Finishing");
+        }
     }
 
     public void showFilePickerDialog(VideoFileCallback filePathCallback, final boolean showVideoBtns, final boolean isMultiple) {

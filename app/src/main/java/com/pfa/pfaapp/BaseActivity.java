@@ -348,13 +348,14 @@ public class BaseActivity extends AppCompatActivity {
                     (ContextCompat.checkSelfPermission(this, Manifest.permission.CHANGE_WIFI_STATE) != PackageManager.PERMISSION_GRANTED) ||
                     (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) ||
                     (ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_BOOT_COMPLETED) != PackageManager.PERMISSION_GRANTED) ||
-                    (ContextCompat.checkSelfPermission(this, Manifest.permission.SYSTEM_ALERT_WINDOW) != PackageManager.PERMISSION_GRANTED)
+                    (ContextCompat.checkSelfPermission(this, Manifest.permission.SYSTEM_ALERT_WINDOW) != PackageManager.PERMISSION_GRANTED) ||
+                    (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED)
             ) {
                 //Can add more as per requirement
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.CALL_PHONE
                                 , Manifest.permission.RECEIVE_BOOT_COMPLETED, Manifest.permission.SYSTEM_ALERT_WINDOW, Manifest.permission.READ_MEDIA_IMAGES
-                                , Manifest.permission.READ_MEDIA_VIDEO},
+                                , Manifest.permission.READ_MEDIA_VIDEO, Manifest.permission.POST_NOTIFICATIONS},
                         123);
             }
         } else {

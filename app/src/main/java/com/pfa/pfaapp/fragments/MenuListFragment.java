@@ -1,6 +1,20 @@
 package com.pfa.pfaapp.fragments;
 
 
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_ACTIVITY_TITLE;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_BIZ_FORM_DATA;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_CLICKABLE_URL_TO_CALL;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_FILTERS_DATA;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_FORM_SECTION_LIST;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_ITEM_COUNT;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_JSON_STR_RESPONSE;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_SEARCH_FRAGMENT;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_URL_TO_CALL;
+import static com.pfa.pfaapp.utils.AppConst.RC_ACTIVITY;
+import static com.pfa.pfaapp.utils.AppConst.RC_DROPDOWN;
+import static com.pfa.pfaapp.utils.AppConst.RC_REFRESH_LIST;
+import static com.pfa.pfaapp.utils.AppConst.SEARCH_DATA;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,24 +23,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonSyntaxException;
-import com.google.gson.TypeAdapter;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
 import com.pfa.pfaapp.BaseActivity;
 import com.pfa.pfaapp.LocalFormsActivity;
 import com.pfa.pfaapp.PFAAddNewActivity;
+import com.pfa.pfaapp.PFAFiltersActivity;
 import com.pfa.pfaapp.R;
 import com.pfa.pfaapp.adapters.PFATableAdapter;
 import com.pfa.pfaapp.customviews.CustomNetworkImageView;
@@ -52,34 +63,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
+import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
-
-import static com.pfa.pfaapp.utils.AppConst.EXTRA_BIZ_FORM_DATA;
-import static com.pfa.pfaapp.utils.AppConst.EXTRA_CLICKABLE_URL_TO_CALL;
-import static com.pfa.pfaapp.utils.AppConst.EXTRA_FILTERS_DATA;
-import static com.pfa.pfaapp.utils.AppConst.EXTRA_ITEM_COUNT;
-import static com.pfa.pfaapp.utils.AppConst.EXTRA_JSON_STR_RESPONSE;
-import static com.pfa.pfaapp.utils.AppConst.EXTRA_URL_TO_CALL;
-import static com.pfa.pfaapp.utils.AppConst.RC_ACTIVITY;
-import static com.pfa.pfaapp.utils.AppConst.RC_DROPDOWN;
-import static com.pfa.pfaapp.utils.AppConst.RC_REFRESH_LIST;
-import static com.pfa.pfaapp.utils.AppConst.SEARCH_DATA;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -89,7 +82,10 @@ import static com.pfa.pfaapp.utils.AppConst.SEARCH_DATA;
 public class MenuListFragment extends Fragment implements HttpResponseCallback, WhichItemClicked {
 
     private PullAndLoadListView menuTableLV;
-    private LinearLayout sorry_iv;
+    private LinearLayout sorry_iv , sorry_ivCustom;
+    private TextView txt_sorry_ivCustom;
+    private Button btn_search;
+    private String splash_page;
 
     private LinearLayout searchLL, newsSearchLL;
     private BaseActivity baseActivity;
@@ -189,6 +185,9 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
         newsSearchLL = rootView.findViewById(R.id.newsSearchLL);
 
         sorry_iv = rootView.findViewById(R.id.sorry_iv12);
+        sorry_ivCustom = rootView.findViewById(R.id.sorry_ivCustom);
+        txt_sorry_ivCustom = rootView.findViewById(R.id.txt_sorry_ivCustom);
+        btn_search = rootView.findViewById(R.id.btn_search);
 
         addNewBtn = rootView.findViewById(R.id.addNewBtn);
         sharedPrefUtils.applyFont(addNewBtn, AppUtils.FONTS.HelveticaNeue);
@@ -777,14 +776,44 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
 
     private void setNoDataFound() {
         if (tableData == null || tableData.size() == 0) {
-            menuTableLV.setVisibility(View.GONE);
-            sorry_iv.setVisibility(View.VISIBLE);
-            if ((baseActivity.findViewById(R.id.sorry_iv)) != null)
-                (baseActivity.findViewById(R.id.sorry_iv)).setVisibility(View.VISIBLE);
+            if (splash_page != null && !splash_page.isEmpty()){
+                menuTableLV.setVisibility(View.GONE);
+                sorry_iv.setVisibility(View.GONE);
+                sorry_ivCustom.setVisibility(View.VISIBLE);
+                txt_sorry_ivCustom.setText(splash_page);
+
+                btn_search.setOnClickListener(v -> {
+                    Bundle bundle = new Bundle();
+                    bundle.putString(EXTRA_ACTIVITY_TITLE, "Select List Filters");
+                    if (baseActivity.filterCountTV.getText().toString().isEmpty()) {
+                        if (formFilteredData != null && formFilteredData.size() > 0)
+                            formFilteredData.clear();
+                    }
+                    bundle.putSerializable(EXTRA_FILTERS_DATA, formFilteredData);
+                    bundle.putString(EXTRA_SEARCH_FRAGMENT, "list");
+                    bundle.putSerializable(EXTRA_FORM_SECTION_LIST, (Serializable) formSectionInfos);
+
+                    Intent intent = new Intent(requireActivity(), PFAFiltersActivity.class);
+                    intent.putExtras(bundle);
+                    requireActivity().startActivityForResult(intent, RC_ACTIVITY);
+                    requireActivity().overridePendingTransition(R.anim.slide_in_from_right, R.anim.fade_out);
+                });
+
+                if ((baseActivity.findViewById(R.id.sorry_iv)) != null)
+                    (baseActivity.findViewById(R.id.sorry_iv)).setVisibility(View.GONE);
+
+            } else {
+                menuTableLV.setVisibility(View.GONE);
+                sorry_iv.setVisibility(View.VISIBLE);
+                sorry_ivCustom.setVisibility(View.GONE);
+                if ((baseActivity.findViewById(R.id.sorry_iv)) != null)
+                    (baseActivity.findViewById(R.id.sorry_iv)).setVisibility(View.VISIBLE);
+            }
 
         } else {
             menuTableLV.setVisibility(View.VISIBLE);
             sorry_iv.setVisibility(View.GONE);
+            sorry_ivCustom.setVisibility(View.GONE);
 
         }
     }
@@ -817,6 +846,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
         fetchDataInProgress = false;
         endRefresh();
         sorry_iv.setVisibility(View.GONE);
+        sorry_ivCustom.setVisibility(View.GONE);
         if (response != null)
 
             if (response.optBoolean("status")) {
@@ -850,6 +880,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
             }
             setResetData(false);
             sorry_iv.setVisibility(View.GONE);
+            sorry_ivCustom.setVisibility(View.GONE);
 
             if (urlToCall.contains("enforcementsListing_tabs") && !firstTimee ) {
 //                if () {
@@ -892,6 +923,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
             }
             setResetData(true);
             sorry_iv.setVisibility(View.GONE);
+            sorry_ivCustom.setVisibility(View.GONE);
 
             if (urlToCall.contains("enforcementsListing_tabs") && !firstTimee) {
                 baseActivity.httpService.getListsData(urlToCall, new HashMap<String, String>(), MenuListFragment.this, showProgress);
@@ -998,6 +1030,7 @@ public class MenuListFragment extends Fragment implements HttpResponseCallback, 
             }.getType();
 
             String itemCount = tableJsonObject.optString("itemCount");
+            splash_page = tableJsonObject.optString("splash_page");
             if (!itemCount.startsWith("20")){
                 if (sendMessageCallback != null) {
                     sendMessageCallback.sendMsg(itemCount);

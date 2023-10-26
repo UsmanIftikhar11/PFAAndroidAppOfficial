@@ -2,6 +2,7 @@ package com.pfa.pfaapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 
 import com.pfa.pfaapp.customviews.CustomNetworkImageView;
 import com.pfa.pfaapp.customviews.CustomViewCreate;
+import com.pfa.pfaapp.customviews.FormFieldsHideShow;
+import com.pfa.pfaapp.customviews.PFADDACTV;
 import com.pfa.pfaapp.customviews.PFASectionTV;
 import com.pfa.pfaapp.customviews.VerifyFBOLayout;
 import com.pfa.pfaapp.httputils.PFAFormSubmitUtil;
@@ -22,13 +25,16 @@ import com.pfa.pfaapp.models.FormDataInfo;
 import com.pfa.pfaapp.models.FormSectionInfo;
 import com.pfa.pfaapp.utils.AppUtils;
 import com.pfa.pfaapp.utils.ImageSelectionUtils;
+import com.pfa.pfaapp.utils.SharedPrefUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.pfa.pfaapp.utils.AddInspectionUtils.IS_FAKE;
 import static com.pfa.pfaapp.utils.AppConst.CAPTURE_PHOTO;
 import static com.pfa.pfaapp.utils.AppConst.CHOOSE_FROM_GALLERY;
+import static com.pfa.pfaapp.utils.AppConst.EXTRA_ACTV_TAG;
 import static com.pfa.pfaapp.utils.AppConst.EXTRA_DIALOG_ADD_ITEM_FORM_SECTION;
 import static com.pfa.pfaapp.utils.AppConst.OTHER_FILES;
 import static com.pfa.pfaapp.utils.AppConst.RC_DROPDOWN;
@@ -38,6 +44,7 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
     public CustomViewCreate customViewCreate;
     private HashMap<String, HashMap<String, Boolean>> sectionRequired = new HashMap<>();
     private PFAFormSubmitUtil pfaFormSubmitUtil;
+    public FormFieldsHideShow formFieldsHideShow;
     public ImageSelectionUtils imageSelectionUtils;
     public LinearLayout menuFragParentLL;
     FormSectionInfo formSectionInfo;
@@ -64,6 +71,8 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
         formSectionInfos.add(formSectionInfo);
 
         Log.d("sampleData" , "data = " + formSectionInfo.getSection_name());
+
+        formFieldsHideShow = new FormFieldsHideShow(this);
 
         setTitle(formSectionInfo.getSection_name(), true);
 
@@ -306,16 +315,89 @@ public class LocalFormDialogActivity extends BaseActivity implements PFAViewsCal
                 break;
 
             case CHOOSE_FROM_GALLERY:
-                imageSelectionUtils.chooseFromGalleryImgPath(data, null);
-                break;
 
             case RECORD_VIDEO:
                 imageSelectionUtils.chooseFromGalleryImgPath(data, null);
                 break;
 
             case RC_DROPDOWN:
-                if(data!=null )
-                    updateDropdownViewsData(data.getExtras());
+                Log.d("DDPathCheck", "local form dialog ll 000");
+                if(data!=null ) {
+                    Log.d("DDPathCheck", "local form dialog ll 0");
+//                    updateDropdownViewsData(data.getExtras());
+                    if (customViewCreate != null) {
+                        Bundle bundle = data.getExtras();
+                        Log.d("DDPathCheck", "local form dialog ll 1");
+                        customViewCreate.updateDropdownViewsData(bundle, menuFragParentLL, sectionRequired);
+
+                        if (bundle != null && bundle.containsKey(EXTRA_ACTV_TAG)) {
+                            Log.d("DDPathCheck", "local form dialog ll 1 here 1");
+                            String actvTag = bundle.getString(EXTRA_ACTV_TAG);
+                            View pfaddactv = menuFragParentLL.findViewWithTag(actvTag);
+                            if (pfaddactv instanceof PFADDACTV) {
+                                Log.d("DDPathCheck", "local form dialog ll 1 here 2");
+                                PFADDACTV pfaddactv1 = (PFADDACTV) pfaddactv;
+
+//                            Check values to set them required fields in inspection forms/ no required
+                                if (pfaddactv1.formFieldInfo.getField_name() != null && (pfaddactv1.formFieldInfo.getCheck_value() != null)
+                                        && (pfaddactv1.formFieldInfo.getCheck_value().size() > 0)) {
+                                    Log.d("DDPathCheck", "local form dialog ll 1 here 3");
+
+                                    if (pfaddactv1.getSelectedValues() != null && pfaddactv1.getSelectedValues().size() > 0) {
+                                        Log.d("DDPathCheck", "local form dialog ll 1 here 4");
+                                        boolean isFake = false;
+                                        IS_FAKE = false;
+//                                    Import_Required_false.addAll(pfaddactv1.formFieldInfo.getRequired_false_fields());
+
+                                        SharedPrefUtils sharedPrefUtils = new SharedPrefUtils(this);
+                                        if (pfaddactv1.formFieldInfo.getRequired_false_fields() != null){
+                                            sharedPrefUtils.saveRLF((ArrayList<String>) pfaddactv1.formFieldInfo.getRequired_false_fields());
+                                        }
+
+                                        if (pfaddactv1.formFieldInfo.getCheck_value().contains(pfaddactv1.getSelectedValues().get(0).getValue())) {
+                                            Log.d("DDPathCheck", "local form dialog ll 1 here 5");
+                                            isFake = true;
+                                            formFieldsHideShow.setFieldsRequired(pfaddactv1.formFieldInfo.getRequired_false_fields(),pfaddactv1.formFieldInfo.getCheck_value(), false, sectionRequired, menuFragParentLL);
+                                        } else {
+                                            Log.d("DDPathCheck", "local form dialog ll 1 here 6");
+                                            formFieldsHideShow.setFieldsRequired(pfaddactv1.formFieldInfo.getRequired_false_fields(),pfaddactv1.formFieldInfo.getCheck_value(), true, sectionRequired, menuFragParentLL);
+                                        }
+
+//                                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+
+                                        SharedPreferences sharedPreferences = this.getSharedPreferences("pref", Context.MODE_PRIVATE);
+
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putBoolean("IsNotRequired", isFake);
+                                        editor.apply();
+
+                                        if (pfaddactv1.formFieldInfo.getField_name().equalsIgnoreCase("recommendation")) {
+                                            IS_FAKE = isFake;
+                                        }
+                                    }
+                                }
+
+//                            Check fields to set them required and visible
+                                if (pfaddactv1.formFieldInfo.getField_name() != null && (pfaddactv1.formFieldInfo.getShow_check_value() != null)
+                                        && (pfaddactv1.formFieldInfo.getShow_check_value().size() > 0)) {
+
+                                    if (pfaddactv1.getSelectedValues() != null && pfaddactv1.getSelectedValues().size() > 0) {
+                                        Log.d("DDPathCheck", "Rendering Units parent dd onChange here1");
+                                        if (pfaddactv1.formFieldInfo.getShow_check_value().contains(pfaddactv1.getSelectedValues().get(0).getValue())) {
+                                            Log.d("DDPathCheck", "Rendering Units parent dd onChange here if 2= " + pfaddactv1.formFieldInfo.getShow_hidden_false_fields().size());
+                                            formFieldsHideShow.setFieldsRequiredAndVisible(pfaddactv1.formFieldInfo.getShow_hidden_false_fields(), true, sectionRequired, menuFragParentLL, pfaddactv1.getSelectedValues().get(0).getValue());
+                                        } else {
+                                            Log.d("DDPathCheck", "Rendering Units parent dd onChange here else 3");
+                                            formFieldsHideShow.setFieldsRequiredAndVisible(pfaddactv1.formFieldInfo.getShow_hidden_false_fields(), false, sectionRequired, menuFragParentLL, pfaddactv1.getSelectedValues().get(0).getValue());
+                                        }
+
+                                    }
+                                }
+//                            Check fields to set them required and visible end
+                            }
+                        }
+                    }
+                }
                 break;
 
             case OTHER_FILES:

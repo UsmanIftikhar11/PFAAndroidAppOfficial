@@ -385,7 +385,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                     break;*/
 
                 case "button":
-                    Log.d("viewCreated", "button");
+                    Log.d("viewCreated", "button = " + fieldInfo.getField_name());
                     createGenButton(formSectionInfo, fieldInfo, parentView, imageLayout, addDynamicSubItem, sectionRequired, pfaViewsCallbacks2);
                     break;
 
@@ -395,7 +395,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                     break;
 
                 case "autoSearch":
-                    Log.d("viewCreated", "autoSearch 123");
+                    Log.d("viewCreated", "autoSearch 123 = " + fieldInfo.getField_name());
                     createAutoSearchView(parentView, inflater, fieldInfo);
                     break;
 
@@ -485,6 +485,15 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
             @Override
             public void onClick(View view) {
                 Log.d("enfrocementData2312", "button clicked = ");
+
+                /*PFADDACTV collection_center_district = parentView.findViewWithTag("collection_center_district");
+
+                if (collection_center_district != null && collection_center_district.formFieldInfo.isInvisible()) {
+                    Log.d("collection_center_district", "button clicked = ");
+                    collection_center_district.getFormFieldInfo().setRequired(false);
+                    collection_center_district.formFieldInfo.setRequired(false);
+                    collection_center_district.setRequired(false);
+                }*/
 
                 Log.d("submitButtonCLick", "button clicked action = " + button.getFormFieldInfo().getAction());
                 PFADDACTV fat_rendering_license_typeDD = parentView.findViewWithTag("fat_rendering_license_type");
@@ -1648,6 +1657,30 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
 
         if (fieldInfo.getData() != null && fieldInfo.getData().size() > 0) {
             autoSearchPFAET.setText(Html.fromHtml(fieldInfo.getData().get(0).getValue()));
+            PFASearchInfo pfaSearchInfo = new PFASearchInfo();
+            if (!fieldInfo.getData().get(0).getKey().equals("")){
+                try{
+                    pfaSearchInfo.setId(Integer.parseInt(fieldInfo.getData().get(0).getKey()));
+                } catch(NumberFormatException ex){ // handle your exception
+                }
+                pfaSearchInfo.setFull_name(fieldInfo.getData().get(0).getValue());
+                autoSearchPFAET.setPfaSearchInfo(pfaSearchInfo);
+            }
+            Log.d("autosearch11" , "here = " + fieldInfo.getData().get(0).getValue());
+            Log.d("autosearch11" , "here = " + fieldInfo.getData().get(0).getKey());
+           /* Log.d("formSectionName123", "httpService url=  " + pfaSearchInfo.getId());
+            Log.d("formSectionName123", "httpService url=  " + pfaSearchInfo.getFull_name());
+            Log.d("formSectionName123", "httpService url=  " + pfaSearchInfo.getCnic_number());
+            Log.d("formSectionName123", "httpService url=  " + pfaSearchInfo.getPhonenumber());
+            Log.d("formSectionName123", "httpService url=  " + pfaSearchInfo.getAPI_URL());*/
+            autoSearchPFAET.addTextChangedListener(new PFATextWatcher(new SendMessageCallback() {
+                @Override
+                public void sendMsg(String message) {
+                    if (message != null && message.length() > 1) {
+                        autoSearchClearBtn.setVisibility(VISIBLE);
+                    }
+                }
+            }));
         }
         autoSearchPFAET.setTextWatcher(fieldInfo);
 
@@ -4111,7 +4144,7 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                                 textView_name.setVisibility(GONE);
                                 if (Objects.requireNonNull(editTextName.getText()).toString() != null && !editTextName.getText().toString().isEmpty())
                                     editTextName.setText("");
-                                if (product_categoryDD.getText() != null /*&& !product_categoryDD.getText().toString().isEmpty()*/) {
+                                if (product_categoryDD != null && product_categoryDD.getText() != null) {
                                     product_categoryDD.setText("");
                                     product_categoryDD.setSelectedValues(null);
 
@@ -5497,6 +5530,11 @@ public class CustomViewCreate extends SearchBizData implements BizLocCallback {
                         if (bundle.containsKey(PFA_SEARCH_TAG)) {
                             PFASearchACTV pfaSearchACTV = (PFASearchACTV) pfaddactv;//parentView.findViewWithTag(actvTag);
                             PFASearchInfo pfaSearchInfo = (PFASearchInfo) bundle.getSerializable(PFA_SEARCH_TAG);
+                            Log.d("formSectionName123", "httpService url=  " + pfaSearchInfo.getId());
+                            Log.d("formSectionName123", "httpService url=  " + pfaSearchInfo.getFull_name());
+                            Log.d("formSectionName123", "httpService url=  " + pfaSearchInfo.getCnic_number());
+                            Log.d("formSectionName123", "httpService url=  " + pfaSearchInfo.getPhonenumber());
+                            Log.d("formSectionName123", "httpService url=  " + pfaSearchInfo.getAPI_URL());
                             if (pfaSearchInfo != null) {
                                 pfaSearchACTV.setPfaSearchInfo(pfaSearchInfo);
                                 pfaSearchACTV.setText(String.format(Locale.getDefault(), "%s%s", pfaSearchInfo.getFull_name(), (pfaSearchInfo.getCnic_number() == null || pfaSearchInfo.getCnic_number().isEmpty()) ? "" : " / " + pfaSearchInfo.getCnic_number()));

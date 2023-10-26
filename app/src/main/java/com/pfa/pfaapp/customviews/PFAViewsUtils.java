@@ -184,13 +184,23 @@ public class PFAViewsUtils extends SharedPrefUtils {
 
                     } else if (view instanceof PFADDACTV) {
                         PFADDACTV pfaddactv = (PFADDACTV) view;
-                        Log.d("checkViewName" , "name = " + viewGroup.findViewWithTag(""));
-                        if (pfaddactv.getSelectedValues() == null || pfaddactv.getSelectedValues().size() == 0) {
-                            allFieldsValid = false;
-                            if (showError)
-                                pfaddactv.getTextInputLayout().setError("Select " + pfaddactv.getHintValue());
 
-                        }
+                        if (pfaddactv.getFormFieldInfo() != null && !pfaddactv.formFieldInfo.isInvisible()) {
+                            Log.d("checkViewNameDD" , "name = " + viewGroup.findViewWithTag(""));
+                            Log.d("checkViewNameDD1" , "name = " + view.getTag());
+                            if (pfaddactv.getSelectedValues() == null || pfaddactv.getSelectedValues().size() == 0) {
+                                Log.d("checkViewNameDD1" , "name1 = " + view.getTag());
+                                Log.d("PFAMultiSpinner valid", "PFADDACTVr false");
+                                allFieldsValid = false;
+                                if (showError)
+                                    pfaddactv.getTextInputLayout().setError("Select " + pfaddactv.getHintValue());
+
+                            }
+                        }/* else {
+                            Log.d("checkViewNameDD" , "name 1= " + viewGroup.findViewWithTag(""));
+                            pfaddactv.formFieldInfo.setRequired(false);
+                            allFieldsValid = true;
+                        }*/
 
                     } /*else if (view.getTag().equals("vehicle_number")) {
                         boolean isRequire = mContext.getSharedPreferences("fieldsPrefs" , Context.MODE_PRIVATE).getBoolean("vehicle_number_req" , true);
@@ -219,8 +229,10 @@ public class PFAViewsUtils extends SharedPrefUtils {
                             allFieldsValid = false;
                     } */else if (view instanceof CustomNetworkImageView) {
                         CustomNetworkImageView customNetworkImageView = (CustomNetworkImageView) view;
-                        if (customNetworkImageView.getImageFile() == null && customNetworkImageView.getImgUrl() == null)
+                        if (customNetworkImageView.getImageFile() == null && customNetworkImageView.getImgUrl() == null) {
+                            Log.d("PFAMultiSpinner valid", "custom network false");
                             allFieldsValid = false;
+                        }
 
                     } else if (view instanceof PFAButton) {
                         printLog("PFAButton", "selected PFAButton empty");
@@ -251,36 +263,44 @@ public class PFAViewsUtils extends SharedPrefUtils {
 //                        boolean Fake = sharedPreferencesG.getBoolean("IsNotRequired", false);
 //                        if (Fake) {
 
-                        Log.d("formDataValid", "instance of edittext created = " + view.getTag());
+                        PFAEditText pfaEditText = (PFAEditText) view;
+                        if (pfaEditText.getFormFieldInfo() != null && !pfaEditText.getFormFieldInfo().isInvisible()) {
 
-                        SharedPrefUtils sharedPrefUtils = new SharedPrefUtils(mContext);
-                        boolean isRequired = mContext.getSharedPreferences("fieldsPrefs" , Context.MODE_PRIVATE).getBoolean(view.getTag().toString() , false);
-                        if (sharedPrefUtils.getRLF("RequiredFalseField") != null) {
+                            Log.d("formDataValid", "instance of edittext created = " + view.getTag());
 
-                            Log.d("formDataValid", "RequiredFalseField = " + "not null");
+                            SharedPrefUtils sharedPrefUtils = new SharedPrefUtils(mContext);
+                            boolean isRequired = mContext.getSharedPreferences("fieldsPrefs", Context.MODE_PRIVATE).getBoolean(view.getTag().toString(), false);
+                            if (sharedPrefUtils.getRLF("RequiredFalseField") != null) {
+
+                                Log.d("formDataValid", "RequiredFalseField = " + "not null");
 
 
-                            if (sharedPrefUtils.getRLF("RequiredFalseField").contains(view.getTag().toString()) || !isRequired) {
+                                if (sharedPrefUtils.getRLF("RequiredFalseField").contains(view.getTag().toString()) || !isRequired) {
 
-                                validateEditText(false, view, showError , isRequired);
-                                Log.d("formDataValid", "RequiredFalseField = " + "here");
-                                Log.d("validateEditText123", "0 = ");
-                            } else if (validateEditText(true, view, showError , isRequired)) {
-                                allFieldsValid = false;
-                                Log.d("formDataValid", "RequiredFalseField = " + "here 1 ");
-                                Log.d("validateEditText123", "1 = ");
+                                    validateEditText(false, view, showError, isRequired);
+                                    Log.d("formDataValid", "RequiredFalseField = " + "here");
+                                    Log.d("validateEditText123", "0 = ");
+                                    Log.d("PFAMultiSpinner valid", "edittext false3 = " + view.getTag());
+                                } else if (validateEditText(true, view, showError, isRequired)) {
+                                    allFieldsValid = false;
+                                    Log.d("formDataValid", "RequiredFalseField = " + "here 1 = " + view.getTag());
+                                    Log.d("validateEditText123", "1 = ");
+                                    Log.d("PFAMultiSpinner valid", "edittext false2 = " + view.getTag());
+                                }
                             }
-                        }
 
-                        if (validateEditText(true, view, showError , isRequired) && !isRequired) {
-                            allFieldsValid = false;
-                            Log.d("validateEditText123", "2 = ");
-                        }
+                            if (validateEditText(true, view, showError, isRequired) && !isRequired) {
+                                allFieldsValid = false;
+                                Log.d("validateEditText123", "2 = ");
+                                Log.d("PFAMultiSpinner valid", "Edittext false1");
+                            }
 
+                        }
 
                     } else if (view instanceof TextView) {
                         TextView editText = (TextView) view;
                         if (editText.getText().toString().isEmpty()) {
+                            Log.d("PFAMultiSpinner valid", "textview false");
                             allFieldsValid = false;
                         }
 
@@ -288,6 +308,7 @@ public class PFAViewsUtils extends SharedPrefUtils {
 
                         PFADDSpinner spinner = (PFADDSpinner) view;
                         if (spinner.getSelectedValues() == null || spinner.getSelectedValues().size() == 0) {
+                            Log.d("PFAMultiSpinner valid", "PFADDSpinner false");
                             allFieldsValid = false;
                         }
 
@@ -295,6 +316,7 @@ public class PFAViewsUtils extends SharedPrefUtils {
 
                         PFAMultiSpinner spinner = (PFAMultiSpinner) view;
                         if (spinner.getSelectedValues() == null || spinner.getSelectedValues().size() == 0) {
+                            Log.d("PFAMultiSpinner valid", "PFAMultiSpinner false");
                             allFieldsValid = false;
                         }
 
@@ -381,10 +403,14 @@ public class PFAViewsUtils extends SharedPrefUtils {
                     }
                 } else {
                     if (view instanceof PFAEditText) {
-                        boolean isRequired = mContext.getSharedPreferences("fieldsPrefs" , Context.MODE_PRIVATE).getBoolean(view.getTag().toString() , false);
-                        if (validateEditText(false, view, showError , isRequired)) {
-                            Log.d("validateEditText123", "3 = ");
-                            allFieldsValid = false;
+                        PFAEditText pfaEditText = (PFAEditText) view;
+                        if (pfaEditText.getFormFieldInfo() != null && !pfaEditText.getFormFieldInfo().isInvisible()) {
+                            boolean isRequired = mContext.getSharedPreferences("fieldsPrefs", Context.MODE_PRIVATE).getBoolean(view.getTag().toString(), false);
+                            if (validateEditText(false, view, showError, isRequired)) {
+                                Log.d("validateEditText123", "3 = ");
+                                Log.d("PFAMultiSpinner valid", "Edittext false = " + view.getTag());
+                                allFieldsValid = false;
+                            }
                         }
                     }
                 }
@@ -632,8 +658,10 @@ public class PFAViewsUtils extends SharedPrefUtils {
                         selectedValuesMulti.add(formDataInfo);
 
                     }
-                    Log.d("sizeOfMulti" , "size = " + selectedValuesMulti.size());
-                    formViewsData.put(spinner.getTag().toString(), selectedValuesMulti);
+                    Log.d("sizeOfMulti" , "size = " + selectedValues.size());
+//                    Log.d("sizeOfMulti" , "key = " + selectedValues.get(0).getKey() + selectedValues.get(0).getValue());
+//                    Log.d("sizeOfMulti" , "key = " + selectedValues.get(1).getKey() + selectedValues.get(0).getValue());
+                    formViewsData.put(spinner.getTag().toString(), selectedValues);
                 }
 
             } else if (view instanceof PFARadioGroup) {

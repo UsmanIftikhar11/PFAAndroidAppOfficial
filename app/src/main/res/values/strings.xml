@@ -9,6 +9,8 @@
     <string name="message">message</string>
     <string name="exitmsg">Are you sure you want to EXIT?</string>
     <string name="ok">OK</string>
+    <string name="go_to_settings" translatable="false">Go to Settings</string>
+    <string name="app_version" translatable="false">Version: </string>
 
     <string name="allFieldsRequiredStr">All fields are required.</string>
     <string name="no_internet_connection">No Internet.Please check your connection settings</string>
@@ -117,6 +119,9 @@
     <string name="reset_pin">Reset Pin</string>
     <string name="i_am_test_footer">I am test footer</string>
     <string name="complete_action_using">Complete action using:</string>
+    <string name="permission_denied" translatable="false">Permission Denied!</string>
+    <string name="camera_permission_denied" translatable="false">you have denied permission to access camera. kindly allow it in the settings.</string>
+    <string name="gallery_permission_denied" translatable="false">you have denied permission to access gallery. kindly allow it in the settings.</string>
     <string name="register">Register</string>
     <string name="name">Name</string>
     <string name="login_to_account">Login To Account</string>
@@ -302,5 +307,6 @@
     <string name="try_other_account">Try Other Account</string>
     <string name="login_as_mto" translatable="false">Login as MTO</string>
     <string name="p" translatable="false">Print</string>
+    <string name="search_filters" translatable="false">Search Filters</string>
 
 </resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@drawable/white_dialogbox_rounded_corners"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ImageView
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:src="@drawable/ic_action_cancel"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:id="@+id/titleTV"
+        style="@style/black_17_sp_bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:text="@string/permission_denied"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/cameraDescTV"
+        style="@style/black_15_spa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:text="@string/camera_permission_denied"
+        android:textStyle="bold"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/galleryDescTV"
+        style="@style/black_15_spa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:text="@string/gallery_permission_denied"
+        android:textStyle="bold"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/okBtn"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/button_round_corners"
+        android:gravity="center"
+        android:text="@string/go_to_settings"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:paddingStart="@dimen/_5sdp"
+        android:paddingEnd="@dimen/_5sdp"/>
+
+</LinearLayout>

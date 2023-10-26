@@ -8,6 +8,7 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnMultiChoiceClickListener;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -20,12 +21,14 @@ import com.pfa.pfaapp.models.FormFieldInfo;
 import com.pfa.pfaapp.utils.AppUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 public class PFAMultiSpinner extends androidx.appcompat.widget.AppCompatSpinner implements OnMultiChoiceClickListener, OnCancelListener {
 
     private List<String> items = new ArrayList<>();
+    private List<String> defaultValues = new ArrayList<>();
     private boolean[] selected;
     private String defaultText = "";
     private String spinnerTitle = "";
@@ -40,7 +43,20 @@ public class PFAMultiSpinner extends androidx.appcompat.widget.AppCompatSpinner 
         this.formViewsData = formViewsData;
         AppUtils appUtils = new AppUtils(context);
         this.formFieldInfo = formFieldInfo;
-        defaultText = formFieldInfo.getValue();
+        if (!formFieldInfo.getDefault_value().equals("")) {
+            defaultText = formFieldInfo.getDefault_value();
+            if(formFieldInfo.getDefault_value().contains(","))
+                defaultValues = new ArrayList<>(Arrays.asList(formFieldInfo.getDefault_value().split(",")));
+            else
+                defaultValues.add(formFieldInfo.getDefault_value());
+
+            Log.d("multispinner" , "here default = " + defaultValues.get(0));
+//            Log.d("multispinner" , "here default = " + defaultValues.get(1));
+        }
+        else
+            defaultText = formFieldInfo.getValue();
+
+
 
         if (formFieldInfo.isRequired()) {
             setBackgroundDrawable(context.getResources().getDrawable(appUtils.isEnglishLang() ? R.mipmap.spinner_required : R.mipmap.ur_spinner_required));
@@ -73,14 +89,31 @@ public class PFAMultiSpinner extends androidx.appcompat.widget.AppCompatSpinner 
     }
 
     private void setCheckedValues() {
-        if (formViewsData != null && formViewsData.containsKey(getTag().toString())) {
-            List<FormDataInfo> selectedValues = formViewsData.get(getTag().toString());
-            for (int i = 0; i < items.size(); i++) {
-                if (selectedValues.contains(formFieldInfo.getData().get(i))) {
-                    selected[i] = true;
+        if (formFieldInfo.getDefault_value().equals("")) {
+            Log.d("multispinner", "here = " + getTag().toString());
+            if (formViewsData != null && formViewsData.containsKey(getTag().toString())) {
+                List<FormDataInfo> selectedValues = formViewsData.get(getTag().toString());
+                for (int i = 0; i < items.size(); i++) {
+                    if (selectedValues.contains(formFieldInfo.getData().get(i))) {
+                        selected[i] = true;
+                    }
                 }
+
+                onCancel(null);
             }
-            onCancel(null);
+        } else {
+            if (defaultValues != null && defaultValues.size() > 0) {
+                for (int i = 0; i < defaultValues.size(); i++) {
+                    for (int j = 0; j < formFieldInfo.getData().size(); j++) {
+                        if (defaultValues.get(i).contains(formFieldInfo.getData().get(j).getValue())) {
+                            selected[j] = true;
+                        }
+                    }
+                    Log.d("multispinner", "here1");
+
+                }
+                onCancel(null);
+            }
         }
     }
 
@@ -116,13 +149,16 @@ public class PFAMultiSpinner extends androidx.appcompat.widget.AppCompatSpinner 
         StringBuilder spinnerBuffer = new StringBuilder();
         selectedValues.clear();
         for (int i = 0; i < items.size(); i++) {
+
             if (selected[i]) {
                 spinnerBuffer.append(items.get(i));
                 spinnerBuffer.append(", ");
                 selectedValues.add(formFieldInfo.getData().get(i));
+                Log.d("seletecdVal" , "values = " + formFieldInfo.getData().get(i).getValue());
             }
         }
 
+        Log.d("seletecdVal" , "values1 = " + spinnerBuffer);
         String spinnerText = spinnerBuffer.toString();
         if (spinnerText.length() > 2) {
             spinnerText = spinnerText.substring(0, spinnerText.length() - 2);

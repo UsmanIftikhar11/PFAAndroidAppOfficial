@@ -251,7 +251,7 @@ public class MenuFormFragment extends Fragment implements HttpResponseCallback, 
                     break;
 
                 case RC_DROPDOWN:
-                    Log.d("DDPathCheck", "menu form fragment");
+                    Log.d("DDPathCheck", "menu form fragment123");
                     customViewCreate.updateDropdownViewsData(data.getExtras(), menuFragParentLL, sectionRequired);
                     break;
 

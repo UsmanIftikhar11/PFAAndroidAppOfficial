@@ -49,6 +49,8 @@ public class PFASearchACTV extends androidx.appcompat.widget.AppCompatAutoComple
     public void setTextWatcher(FormFieldInfo fieldInfo) {
         this.formFieldInfo = fieldInfo;
         setTag(formFieldInfo.getField_name());
+        if (formFieldInfo.getData()!= null && formFieldInfo.getData().get(0).getValue() != null)
+            setText(formFieldInfo.getData().get(0).getValue());
         setHint(formFieldInfo.getValue());
         setFocusable(false);
 

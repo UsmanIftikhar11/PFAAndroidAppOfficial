@@ -105,7 +105,7 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
     RadioGroup sideMenuOptionsRG;
     List<PFAMenuInfo> pfaMenuInfos;
 
-    TextView userNameInitTV, loggedUserNameTV, userAddressTV;
+    TextView userNameInitTV, loggedUserNameTV, userAddressTV , appVersionTV;
     public static TextView notificationCountTV;
     public AppCompatImageView imgAnnoucement;
 
@@ -154,7 +154,9 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
         sharedPrefUtils.applyFont(userNameInitTV, AppUtils.FONTS.HelveticaNeueMedium);
 
         userAddressTV = findViewById(R.id.userAddressTV);
+        appVersionTV = findViewById(R.id.appVersionTV);
         sharedPrefUtils.applyFont(userAddressTV, AppUtils.FONTS.HelveticaNeue);
+        sharedPrefUtils.applyFont(appVersionTV, AppUtils.FONTS.HelveticaNeue);
 
         if (sharedPrefUtils.getSharedPrefValue(SP_USER_INFO, "") == null) {
             fetchUserInfo(new HttpResponseCallback() {
@@ -245,9 +247,12 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                     checkSelfPermission(Manifest.permission.READ_MEDIA_VIDEO) ==
                             PackageManager.PERMISSION_DENIED ||
                     checkSelfPermission(Manifest.permission.CALL_PHONE) ==
+                            PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) ==
                             PackageManager.PERMISSION_DENIED) {
                 //permission not enabled, request it
-                String[] permission = {Manifest.permission.CAMERA, Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.READ_MEDIA_VIDEO, Manifest.permission.CALL_PHONE};
+                String[] permission = {Manifest.permission.CAMERA, Manifest.permission.READ_MEDIA_IMAGES,
+                        Manifest.permission.READ_MEDIA_VIDEO, Manifest.permission.CALL_PHONE, Manifest.permission.POST_NOTIFICATIONS};
                 //show popup to request permissions
                 requestPermissions(permission, 10);
             }
@@ -261,7 +266,8 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
                     checkSelfPermission(Manifest.permission.CALL_PHONE) ==
                             PackageManager.PERMISSION_DENIED) {
                 //permission not enabled, request it
-                String[] permission = {Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE};
+                String[] permission = {Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CALL_PHONE};
                 //show popup to request permissions
                 requestPermissions(permission, 10);
             }
@@ -329,12 +335,21 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             }
 
         } else*/ if (requestCode == 10) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "gallery permission granted", Toast.LENGTH_LONG).show();
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_DENIED)
+                Toast.makeText(this, "Camera permission denied", Toast.LENGTH_LONG).show();
+//            else
+//                Toast.makeText(this, "Camera permission denied", Toast.LENGTH_LONG).show();
 
-            } else {
-                Toast.makeText(this, "gallery permission denied", Toast.LENGTH_LONG).show();
-            }
+            if (grantResults.length > 0 && grantResults[1] == PackageManager.PERMISSION_DENIED && grantResults[2] == PackageManager.PERMISSION_DENIED)
+                Toast.makeText(this, "Gallery permission denied", Toast.LENGTH_LONG).show();
+//            else
+//                Toast.makeText(this, "Gallery permission denied", Toast.LENGTH_LONG).show();
+
+            if (grantResults.length > 0 && grantResults[3] == PackageManager.PERMISSION_DENIED)
+                Toast.makeText(this, "Call permission denied", Toast.LENGTH_LONG).show();
+//            else
+//                Toast.makeText(this, "Call permission denied", Toast.LENGTH_LONG).show();
+
         } else {
             Toast.makeText(this, "Error in permissions", Toast.LENGTH_LONG).show();
         }
@@ -571,6 +586,9 @@ public class PFADrawerActivity extends BaseActivity implements HttpResponseCallb
             }
 
             userAddressTV.setText(addressStr.toString());
+            int versionCode = BuildConfig.VERSION_CODE;
+            String versionName = BuildConfig.VERSION_NAME;
+            appVersionTV.setText("version: " + versionName);
         }
 
         if (sharedPrefUtils.getDrawerMenu() == null) {

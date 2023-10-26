@@ -20,14 +20,14 @@ import static android.view.View.VISIBLE;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-class FormFieldsHideShow {
+public class FormFieldsHideShow {
     Context mContext;
 
-    FormFieldsHideShow(Context mContext) {
+    public FormFieldsHideShow(Context mContext) {
         this.mContext = mContext;
     }
 
-    void setFieldsRequired(List<String> required_false_fields, List<String> checkvalues, boolean isRequired, HashMap<String, HashMap<String, Boolean>> sectionRequired, LinearLayout menuFragParentLL) {
+    public void setFieldsRequired(List<String> required_false_fields, List<String> checkvalues, boolean isRequired, HashMap<String, HashMap<String, Boolean>> sectionRequired, LinearLayout menuFragParentLL) {
         if (sectionRequired != null && sectionRequired.size() > 0) {
             for (String sectionKey : sectionRequired.keySet())
                 if (sectionRequired.get(sectionKey) != null && sectionRequired.get(sectionKey).size() > 0)
@@ -71,12 +71,12 @@ class FormFieldsHideShow {
 
             if (menuFragParentLL.findViewWithTag(sectionReqFieldKey) instanceof PFAEditText) {
                 PFAEditText reqPFAET = menuFragParentLL.findViewWithTag(sectionReqFieldKey);
-                boolean isRequired = mContext.getSharedPreferences("fieldsPrefs", Context.MODE_PRIVATE).getBoolean(reqPFAET.getFormFieldInfo().getField_name(), false);
-                if (isRequired) {
-                    reqPFAET.getFormFieldInfo().setRequired(false);
-                } else {
+//                boolean isRequired = mContext.getSharedPreferences("fieldsPrefs", Context.MODE_PRIVATE).getBoolean(reqPFAET.getFormFieldInfo().getField_name(), false);
+//                if (isRequired) {
+//                    reqPFAET.getFormFieldInfo().setRequired(false);
+//                } else {
                     reqPFAET.getFormFieldInfo().setRequired(isShow);
-                }
+//                }
 
 
                 Log.d("vehicleNUmbercheck", "views EditText = " + sectionReqFieldKey);
@@ -170,8 +170,9 @@ class FormFieldsHideShow {
 
                     pfa_dd_actv.getFormFieldInfo().setRequired(isShow);
                     pfa_dd_actv.getFormFieldInfo().setInvisible(!isShow);
-//                    pfa_dd_actv.showHideDropDownVisibility(true);
-//                    pfa_dd_actv.setRequired(isShow);
+                    pfa_dd_actv.formFieldInfo.setRequired(isShow);
+                    pfa_dd_actv.showHideDropDownVisibility(true);
+                    pfa_dd_actv.setRequired(isShow);
                     pfaddLL.setVisibility(VISIBLE);
                     pfa_dd_actv.getTextInputLayout().setVisibility(isShow ? VISIBLE : GONE);
                     pfa_dd_actv.setTextInputLayout(pfa_dd_actv.getTextInputLayout());
@@ -248,7 +249,7 @@ class FormFieldsHideShow {
 
     }
 
-    void setFieldsRequiredAndVisible(List<ShowHiddenFalseFields> required_false_fields, boolean isReq, HashMap<String, HashMap<String, Boolean>> sectionRequired, LinearLayout menuFragParentLL, String checkValue) {
+    public void setFieldsRequiredAndVisible(List<ShowHiddenFalseFields> required_false_fields, boolean isReq, HashMap<String, HashMap<String, Boolean>> sectionRequired, LinearLayout menuFragParentLL, String checkValue) {
 
         List<String> checkViews = null;
 
